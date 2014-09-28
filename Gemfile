@@ -37,6 +37,9 @@ end
 group :production, :staging do
   # Use postgres for Heroku production
   gem "pg"
+
+  # Help serving assets in produciton on Heroku
+  gem 'rails_12factor'
 end
 
 group :development do
