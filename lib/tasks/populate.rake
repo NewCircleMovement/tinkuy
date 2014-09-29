@@ -9,16 +9,16 @@ namespace :tinkuy do
 		tempdate18 = DateTime.now.change({hour:18, min: 30})
 
 		#eftermiddag
-		Event.create(:name=>"Yoga", :description=>"lorum ipsom", :starttime=>tempdate15)
-		Event.create(:name=>"Kimpro", :description=>"lorum ipsom", :starttime=>tempdate15 + 1)
-		Event.create(:name=>"Hjertebrydning", :description=>"lorum ipsom", :starttime=>tempdate15 + 2)
-		Event.create(:name=>"Inner Fitness", :description=>"lorum ipsom", :starttime=>tempdate15 + 3)
+		Event.create(:name=>"Kimpro", :description=>"lorum ipsom", :starttime=>tempdate15)
+		Event.create(:name=>"Inner Fitness", :description=>"lorum ipsom", :starttime=>tempdate15 + 1)
+		Event.create(:name=>"Yoga", :description=>"lorum ipsom", :starttime=>tempdate15 + 2)
+		Event.create(:name=>"Hjertebrydning", :description=>"lorum ipsom", :starttime=>tempdate15 + 3)
 
 		#aften
-		Event.create(:name=>"aften1", :description=>"lorum ipsom", :starttime=>tempdate18)
-		Event.create(:name=>"aften2", :description=>"lorum ipsom", :starttime=>tempdate18 + 1)
-		Event.create(:name=>"aften3", :description=>"lorum ipsom", :starttime=>tempdate18 + 2)
-		Event.create(:name=>"aften4", :description=>"lorum ipsom", :starttime=>tempdate18 + 3)		
+		Event.create(:name=>"sharingcircle", :description=>"lorum ipsom", :starttime=>tempdate18)
+		Event.create(:name=>"Open Space", :description=>"lorum ipsom", :starttime=>tempdate18 + 1)
+		Event.create(:name=>"Stand up", :description=>"lorum ipsom", :starttime=>tempdate18 + 2)
+		Event.create(:name=>"Evas nye koncept", :description=>"lorum ipsom", :starttime=>tempdate18 + 3)
 		Event.create(:name=>"koncert", :description=>"lorum ipsom", :starttime=>tempdate18 + 4)
 		Event.create(:name=>"oplæsning", :description=>"lorum ipsom", :starttime=>tempdate18 + 5)
 		Event.create(:name=>"foredrag", :description=>"lorum ipsom", :starttime=>tempdate18 + 6)
