@@ -3,8 +3,8 @@ class CreateEvents < ActiveRecord::Migration
     create_table :events do |t|
       t.string :name
       t.string :description
-      t.date :startdate
-      t.time :starttime
+      t.datetime :starttime
+      t.integer :week_number
 
       t.timestamps
     end

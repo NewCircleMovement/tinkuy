@@ -1,4 +1,4 @@
-#encoding: utf-8
+
 
 namespace :tinkuy do
 	desc "Erase and fill database" 
@@ -42,6 +42,9 @@ namespace :tinkuy do
 		Event.create(:name=>"Meditation", :description=>"lorum ipsom", :starttime=>tempdate07 + 8)
 		Event.create(:name=>"Meditation", :description=>"lorum ipsom", :starttime=>tempdate07 + 9)
 
+	end
 
+	task :test => :environment do
+		Event.create(:name=>"Kimpro", :description=>"lorum ipsom", :starttime=>DateTime.now)
 	end
 end
