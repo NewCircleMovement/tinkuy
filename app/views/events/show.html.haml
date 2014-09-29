@@ -8,9 +8,7 @@
 %p
   %strong Startdate:
   = @event.startdate
-%p
-  %strong Starttime:
-  = @event.starttime
+
 = link_to 'Edit', edit_event_path(@event)
 |
 \#{link_to 'Back', events_path}

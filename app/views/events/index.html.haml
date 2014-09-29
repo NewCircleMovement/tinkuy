@@ -1,43 +1,55 @@
 .row
   .col-md-8
     .row
-      .col-md-2
+      .col-md-3
         %p
-          %strong Mandag  
-      .col-md-2
-        %p Tirsdag 
-      .col-md-2
-        %p Onsdag 
-      .col-md-2
-        %p Torsdag
-      .col-md-2
-        %p Fredag 
-      .col-md-2
-        %p Lørdag 
-      .col-md-2
-        %p Søndag
+          %strong Mandag
+        %hr/
+      .col-md-3
+        %p 
+          %strong Tirsdag
+        %hr/
+      .col-md-3
+        %p 
+          %strong Onsdag
+        %hr/
+      .col-md-3
+        %p 
+          %strong Torsdag
+        %hr/
+      .col-md-3
+        %p 
+          %strong Fredag
+        %hr/
+      .col-md-3
+        %p 
+          %strong Lørdag
+        %hr/
+      .col-md-3
+        %p 
+          %strong Søndag
+        %hr/
   .col-md-4
-    Sidebar                       
-  %h1 Listing events
-  %table
-    %thead
-      %tr
-        %th Name
-        %th Description
-        %th Startdate
-        %th Starttime
-        %th
-        %th
-        %th
-    %tbody
-      - @events.each do |event|
+    Sidebar
+  .col-md-12                      
+    %h1 Listing events
+    %table
+      %thead
         %tr
-          %td= event.name
-          %td= event.description
-          %td= event.startdate
-          %td= event.starttime
-          %td= link_to 'Show', event
-          %td= link_to 'Edit', edit_event_path(event)
-          %td= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }
-  %br/
-  = link_to 'New Event', new_event_path
+          %th Name
+          %th Description
+          %th Startdate
+          %th
+          %th
+          %th
+      %tbody
+        - @events.each do |event|
+          %tr
+            %td= event.name
+            %td= event.description
+            %td= event.startdate
+            %td= link_to 'Show', event
+            %td= link_to 'Edit', edit_event_path(event)
+            %td= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }
+    %br/
+    = link_to 'New Event', new_event_path
