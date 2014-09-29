@@ -18,10 +18,9 @@
   .field
     = f.label :startdate
     %br/
-    = f.text_field :startdate
-  .field
-    = f.label :starttime
-    %br/
-    = f.time_select :starttime
+    = f.text_field :startdate, :class => 'form_datetime'
   .actions
     = f.submit
+
+:javascript
+  $(".form_datetime").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
