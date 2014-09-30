@@ -1,34 +1,82 @@
 .row
   .col-md-8
+    %h1 
+      Show week:
+      = @show_week
     .row
       .col-md-3
         %p
           %strong Mandag
         %hr/
+        %ul.list-unstyled
+          - @events.each do |event|
+            - if event.my_week_day == 1 && event.my_week == @show_week
+              %li
+                = event.name
       .col-md-3
         %p 
           %strong Tirsdag
         %hr/
+        %ul.list-unstyled
+          - @events.each do |event|
+            - if event.my_week_day == 2 && event.my_week == @show_week
+              %li
+                = event.name
+
       .col-md-3
         %p 
           %strong Onsdag
         %hr/
+        %ul.list-unstyled
+          - @events.each do |event|
+            - if event.my_week_day == 3 && event.my_week == @show_week
+              %li
+                = event.name
+
       .col-md-3
         %p 
           %strong Torsdag
         %hr/
+        %ul.list-unstyled
+          - @events.each do |event|
+            - if event.my_week_day == 4 && event.my_week == @show_week
+              %li
+                = event.name
+
       .col-md-3
         %p 
           %strong Fredag
         %hr/
+        %ul.list-unstyled
+          - @events.each do |event|
+            - if event.my_week_day == 5 && event.my_week == @show_week
+              %li
+                = event.name
+
       .col-md-3
         %p 
           %strong Lørdag
         %hr/
+        %ul.list-unstyled
+          - @events.each do |event|
+            - if event.my_week_day == 6 && event.my_week == @show_week
+              %li
+                = event.name
+
       .col-md-3
         %p 
           %strong Søndag
         %hr/
+        %ul.list-unstyled
+          - @events.each do |event|
+            - if event.my_week_day == 7 && event.my_week == @show_week
+              %li
+                = event.name
+
+      .col-md-12
+        = link_to "Sidste uge", events_path(:increment => "down")
+        |
+        = link_to "Næste uge", events_path(:increment => "up")
   .col-md-4
     Sidebar
   .col-md-12                      
@@ -39,6 +87,8 @@
           %th Name
           %th Description
           %th Startdate
+          %th Starttime
+          %th Duration
           %th
           %th
           %th
@@ -48,6 +98,8 @@
             %td= event.name
             %td= event.description
             %td= event.startdate
+            %td= event.starttime.present?
+            %td= event.duration
             %td= link_to 'Show', event
             %td= link_to 'Edit', edit_event_path(event)
             %td= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }

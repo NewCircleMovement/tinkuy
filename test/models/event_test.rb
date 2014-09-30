@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: events
+#
+#  id          :integer          not null, primary key
+#  name        :string(255)
+#  description :string(255)
+#  starttime   :datetime
+#  week_number :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#  startdate   :date
+#
+
 require 'test_helper'
 
 class EventTest < ActiveSupport::TestCase

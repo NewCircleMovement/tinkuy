@@ -2,15 +2,15 @@ namespace :tinkuy do
   desc "Erase and fill database" 
   task :populate => :environment do
     Time.zone = 'Copenhagen'
-    tempdate07 = DateTime.now.change({hour:7, min: 0})
-    tempdate15 = DateTime.now.change({hour:15, min: 30})
-    tempdate18 = DateTime.now.change({hour:18, min: 30})
+    tempdate07 = DateTime.now.beginning_of_week.change({hour:7, min: 0})
+    tempdate15 = DateTime.now.beginning_of_week.change({hour:15, min: 30})
+    tempdate18 = DateTime.now.beginning_of_week.change({hour:18, min: 30})
 
     #eftermiddag
-    Event.create(:name=>"Kimpro", :description=>"lorum ipsom", :startdate=>tempdate15)
-    Event.create(:name=>"Inner Fitness", :description=>"lorum ipsom", :startdate=>tempdate15 + 1)
-    Event.create(:name=>"Yoga", :description=>"lorum ipsom", :startdate=>tempdate15 + 2)
-    Event.create(:name=>"Hjertebrydning", :description=>"lorum ipsom", :startdate=>tempdate15 + 3)
+    Event.create(:name=>"Kimpro", :description=>"lorum ipsom", :startdate=>tempdate15, :starttime=>tempdate15)
+    Event.create(:name=>"Inner Fitness", :description=>"lorum ipsom", :startdate=>tempdate15 + 1, :starttime=>tempdate15+1)
+    Event.create(:name=>"Yoga", :description=>"lorum ipsom", :startdate=>tempdate15 + 2, :starttime => tempdate15+2)
+    Event.create(:name=>"Hjertebrydning", :description=>"lorum ipsom", :startdate=>tempdate15 + 3, :starttime => tempdate15+3)
 
     #aften
     Event.create(:name=>"sharingcircle", :description=>"lorum ipsom", :startdate=>tempdate18)

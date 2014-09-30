@@ -8,6 +8,13 @@
 %p
   %strong Startdate:
   = @event.startdate
+%p
+  %strong Starttime:
+  = @event.starttime
+%p
+  %strong Duration
+  = @event.duration
+
 
 = link_to 'Edit', edit_event_path(@event)
 |

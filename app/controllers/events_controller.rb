@@ -1,10 +1,23 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
+  @@week_number = Time.now.strftime("%U").to_i
+
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    @events = Event.all.order(startdate: :asc)    
+    if params[:increment] == "up"
+      @@week_number = @@week_number + 1 
+    end
+    if params[:increment] == "down"
+      @@week_number = @@week_number - 1
+    end
+    @show_week = @@week_number
+    
+    # @events = Event.where(:startdate => time.beginning_of_week..time.end_of_week)
+    # @event_days = @events.group_by { |x| x.startdate.strftime("%Y-%m-%d")}
+
   end
 
   # GET /events/1
@@ -69,6 +82,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:name, :description, :startdate)
+      params.require(:event).permit(:name, :description, :duration, :starttime, :startdate)
     end
 end

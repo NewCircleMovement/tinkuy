@@ -1,14 +1,7 @@
-# if RUBY_VERSION =~ /1.9/
-#    Encoding.default_external = Encoding::UTF_8
-#    Encoding.default_internal = Encoding::UTF_8
-# end
-
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.3'
-
-
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -33,6 +26,10 @@ gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
+
+# Annotate models
+gem 'annotate'
+
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
