@@ -20,10 +20,9 @@
         #bs-example-navbar-collapse-1.collapse.navbar-collapse
           %ul.nav.navbar-nav
             %li.active
-              %a{:href => "#"} Aktiviteter
+              = link_to "Aktiviteter", events_path
             %li
               %a{:href => "#"} Medlemmer
-          
           %ul.nav.navbar-nav.navbar-right
             - if user_signed_in?
               %li.dropdown
@@ -35,9 +34,8 @@
                     = link_to "Rediger profil", edit_user_registration_path
                     = link_to "Log ud", destroy_user_session_path, :method => :delete
             - else
-              %li
-                = link_to "Bliv medlem", new_user_registration_path
-                = link_to "Log ind", new_user_session_path
+              %li= link_to "Bliv medlem", new_user_registration_path
+              %li= link_to "Log ind", new_user_session_path
     .container
       - flash.each do |name, msg|
         .alert.alert-success

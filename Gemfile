@@ -9,6 +9,8 @@ gem 'haml-rails'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 
+gem 'simple_form'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
@@ -29,7 +31,6 @@ gem 'jbuilder', '~> 1.2'
 
 # Authentication
 gem 'devise'
-
 
 # Annotate models
 gem 'annotate'

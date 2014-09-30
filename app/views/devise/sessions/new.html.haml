@@ -1,16 +1,20 @@
 %h2 Log ind
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  %div
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true
-  %div
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "off"
+= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  = f.input :email, autofocus: true, placeholder: "Din email", :class => "form-control"
+  = f.input :password, autocomplete: "off", placeholder: "Password"
   - if devise_mapping.rememberable?
-    %div
-      = f.check_box :remember_me
-      = f.label :remember_me
-  %div= f.submit "Log ind"
+    = f.check_box :remember_me
+    = f.label :remember_me
+  %br/
+  = f.submit "Log ind"
 = render "devise/shared/links"
+
+/ = simple_form_for resource, as: resource_name, url: session_path(resource_name), wrapper: :inline_form, html: { class: 'form-inline' }, wrapper_mappings: { boolean: :vertical_boolean } do |f|
+/   = f.error_notification
+/   = f.input :email, autofocus: true, placeholder: "Din email", :class => "form-control"
+/   = f.input :password, autocomplete: "off", placeholder: "Password"
+/   - if devise_mapping.rememberable?
+/     = f.check_box :remember_me
+/     = f.label :remember_me
+/   %br/
+/   = f.submit "Log ind"
