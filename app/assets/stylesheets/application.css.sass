@@ -34,13 +34,16 @@ body
 
   /* IE 10 */
   background: -ms-radial-gradient(circle, $start_color, $stop_color)
-
-  h1
-    font-family: "Indie Flower" 
+  h1.home, h1.page
     color: white
-    font-size: 120px
     margin: 0
     text-shadow: 0 0 10px darken(#A2838B, 30)
+  h1.home
+    font-family: "Indie Flower" 
+    font-size: 120px
+  h1.page
+    font-size: 2.6em
+    padding: 0
   h2
     color: lighten(#A2838B, 30)
   h3
@@ -63,6 +66,9 @@ body
     font-size: 2.5em
     letter-spacing: 6px
     color: darken(white, 15)
+
+.jumbotron.page
+  padding: 23px 0
 
 .btn-signup
   font-size: 2em

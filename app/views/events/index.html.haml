@@ -1,13 +1,16 @@
+.jumbotron.page
+  .container
+    .row
+      .col-md-12
+        %h1.page
+          Aktiviteter
+          %small
+            Uge
+            = @show_week
+            = "(fra #{@events.first.startdate.strftime("%d. %b")})"
 .container
   .row
     .col-md-8
-      %h1 
-        Aktiviteter
-        %small
-          Uge
-          = @show_week
-          = "(fra #{@events.first.startdate.strftime("%d. %b")})"
-      %hr/
       .row      
         .col-md-3
           %h4 Mandag
