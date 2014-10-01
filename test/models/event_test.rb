@@ -5,7 +5,7 @@
 #  id          :integer          not null, primary key
 #  name        :string(255)
 #  description :string(255)
-#  starttime   :datetime
+#  starttime   :time
 #  week_number :integer
 #  created_at  :datetime
 #  updated_at  :datetime
