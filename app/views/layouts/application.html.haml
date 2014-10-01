@@ -4,6 +4,7 @@
     %title Tinkuy
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
+    %link{:href => "http://fonts.googleapis.com/css?family=Indie+Flower", :rel => "stylesheet", :type => "text/css"}/
     = csrf_meta_tags
   %body
     %nav.navbar.navbar-default{:role => "navigation"}
@@ -19,9 +20,9 @@
         / Collect the nav links, forms, and other content for toggling
         #bs-example-navbar-collapse-1.collapse.navbar-collapse
           %ul.nav.navbar-nav
-            %li.active
+            %li{:class => ( controller_name == 'events' ? 'active' : '' )}
               = link_to "Aktiviteter", events_path
-            %li
+            %li{:class => ( controller_name == 'users' ? 'active' : '' )}
               = link_to "Medlemmer", users_path
           %ul.nav.navbar-nav.navbar-right
             - if user_signed_in?
@@ -36,8 +37,10 @@
             - else
               %li= link_to "Bliv medlem", new_user_registration_path
               %li= link_to "Log ind", new_user_session_path
-    .container
-      - flash.each do |name, msg|
-        .alert.alert-success
+  
+    - flash.each do |name, msg|
+      .alert.alert-success
+        .container
           = content_tag :div, msg, id: "flash_#{name}"
-      = yield
+    
+    = yield

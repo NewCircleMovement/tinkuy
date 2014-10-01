@@ -1,5 +1,78 @@
 @import "bootstrap-sprockets"
 @import "bootstrap"
 @import "bootstrap-datetimepicker.min"
+@import "font-awesome-sprockets"
+@import "font-awesome"
 
 @import "events"
+
+.navbar
+  margin-bottom: 0
+
+body
+  background: darken(white, 10)
+
+.jumbotron
+  $start_color: lighten(#8F585B, 10)
+  $stop_color: #4D1F22
+
+  /* fallback */
+  background-color: $stop_color
+  background-position: center center
+  background-repeat: no-repeat
+
+  /* Safari 4-5, Chrome 1-9 */
+  /* Can't specify a percentage size? Laaaaaame. */
+  // background: -webkit-gradient(radial, center center, 0, center center, 460, from(#1a82f7), to(#2F2727))
+  background: -webkit-gradient(radial, center center, 0, center center, 460, from($start_color), to(#4D1F22))
+
+  /* Safari 5.1+, Chrome 10+ */
+  background: -webkit-radial-gradient(circle, $start_color, $stop_color)
+
+  /* Firefox 3.6+ */
+  background: -moz-radial-gradient(circle, $start_color, $stop_color)
+
+  /* IE 10 */
+  background: -ms-radial-gradient(circle, $start_color, $stop_color)
+
+  h1
+    font-family: "Indie Flower" 
+    color: white
+    font-size: 120px
+    margin: 0
+    text-shadow: 0 0 10px darken(#A2838B, 30)
+  h2
+    color: lighten(#A2838B, 30)
+  h3
+    float: left
+    margin-right: 10px
+    margin-bottom: 40px
+  .number-counter
+    border-radius: 3px
+    float: left
+    background: black
+    padding: 4px 8px
+    color: white
+    font-size: 1.5em
+    margin-top: 15px
+    margin-right: 3px
+  p.subtitle
+    margin-top: -27px
+    margin-left: 40px
+    font-family: "Indie Flower" 
+    font-size: 2.5em
+    letter-spacing: 6px
+    color: darken(white, 15)
+
+.btn-signup
+  font-size: 2em
+  box-shadow: 0 0 10px 0 darken(#A2838B, 20)
+  i
+    padding-left: 9px
+  span
+    margin: 0
+    padding: 0
+    font-size: 0.5em
+    font-style: italic
+    color: lighten(#5FB760, 35)
+    float: left

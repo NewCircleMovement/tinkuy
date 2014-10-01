@@ -1,14 +1,49 @@
-%h1
-  Tinkuy
-%h2
-  Et spirituelt fitness center
+.jumbotron
+  .container
+    .row
+      .col-md-6
+        %h1
+          Tinkuy
+        %p.subtitle
+          København
+      .col-md-6
+        %h2
+          %i.fa.fa-quote-left
+          Et spirituelt fitness center
+          %i.fa.fa-quote-right
+        %h3
+          Antal pladser tilbage
+        - @places_left.to_s.chars.map(&:to_i).each do |digit|
+          .number-counter
+            = digit
+        .clearfix
+        - if current_user
+        - else
+          = link_to new_user_registration_path, :class => "btn btn-lg btn-success btn-signup" do            
+            Bliv medlem nu
+            %i.fa.fa-chevron-circle-right
+            %br
+            %span.small For kr. 108 per måned
 
-%h3
-  Antal pladser tilbage:
-  = @places_left
-%p
-  Bekræftede medlemmer:
-  = @confirmed_members
-
-= link_to "Bliv medlem nu", new_user_registration_path, :class => "btn btn-lg btn-primary"
-= link_to "Log ind", new_user_session_path, :class => "btn btn-lg btn-default"
+.container
+  .row
+    .col-md-4
+      %h2
+        %i.fa.fa-lightbulb-o
+        Inspiration
+      %p.lead
+        Lad dig bevæge i krop, sind og ånd via workshops, tankevækkende oplæg og samskabende "open space" arrangementer.
+    .col-md-4
+      %h2
+        %i.fa.fa-heart-o
+        Samvær
+      %p.lead
+        Mød nye mennesker i et trygt og hjertevarmt miljø, øg pulsen med trommedans og sænk den igen med vores 
+        = link_to "oxytocinstimulerende", "http://da.wikipedia.org/wiki/Oxytocin", :target => "_blank"
+        café.
+    .col-md-4
+      %h2
+        %i.fa.fa-bullseye
+        Fokus
+      %p.lead
+        Vi vedligeholder vores spirituelle praksis via meditation, yoga og bevægelse. Kobl dig på feltet og mærk hvordan din egen disciplin styrkes.

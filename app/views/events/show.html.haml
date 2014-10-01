@@ -1,26 +1,29 @@
-%p#notice= notice
-%p
-  %strong Name:
-  = @event.name
-%p
-  %strong Description:
-  = @event.description
-%p
-  %strong Startdate:
-  = @event.startdate
-%p
-  %strong Starttime:
-  = @event.starttime.strftime("%H:%M")
+.container
+  .row
+    .col-md-12
+      %p#notice= notice
+      %p
+        %strong Name:
+        = @event.name
+      %p
+        %strong Description:
+        = @event.description
+      %p
+        %strong Startdate:
+        = @event.startdate
+      %p
+        %strong Starttime:
+        = @event.starttime.strftime("%H:%M")
 
-%p
-  %strong Tidspunkt:
-  = "#{@event.hour}:#{@event.minute}"
+      %p
+        %strong Tidspunkt:
+        = "#{@event.hour}:#{@event.minute}"
 
-%p
-  %strong Duration
-  = @event.duration
+      %p
+        %strong Duration
+        = @event.duration
 
 
-= link_to 'Edit', edit_event_path(@event)
-|
-\#{link_to 'Back', events_path}
+      = link_to 'Edit', edit_event_path(@event)
+      |
+      \#{link_to 'Back', events_path}
