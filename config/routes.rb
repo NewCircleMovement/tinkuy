@@ -1,4 +1,11 @@
 Tinkuy::Application.routes.draw do
+
+  namespace :admin do
+    resources :users
+    resources :events
+  end
+  
+
   devise_for :users, :controllers => {:registrations => "registrations"}
   resources :events
   resources :users

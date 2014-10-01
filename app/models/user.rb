@@ -30,4 +30,5 @@ class User < ActiveRecord::Base
 
   validates :confirm_payment, :acceptance => {:accept => true}
     
+  has_many :events
 end

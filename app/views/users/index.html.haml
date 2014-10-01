@@ -6,12 +6,16 @@
     %h3 
       Bekræftede medlemmer:
       = @confirmed_users.length
+    %hr/
     - @confirmed_users.each do |user|
       = user.email
+    
   .col-md-6
-    %h2 
+    %h3
       Afventer bekræftelse:
       = @pending_users.length
+    %hr/
     - @pending_users.each do |user|
       = user.email
+
 

@@ -11,4 +11,12 @@ class ApplicationController < ActionController::Base
     # devise_parameter_sanitizer.for(:account_update) {|u| u.permit(..)}
   end
 
+  def active_user
+    if current_user
+      unless current_user.active?
+        redirect_to events_path, notice: 'Du er endnu ikke bekræftet som betalende medlem.'
+      end
+    end
+  end
+
 end

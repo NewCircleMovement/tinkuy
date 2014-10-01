@@ -17,9 +17,8 @@
 
 class Event < ActiveRecord::Base
   
-  #def self.on_day
-   # where("DATE(startdate) = DATE(?)", DateTime.now.beginning_of_week)
-  #end
+  belongs_to :user
+
 
   def my_week_day
     startdate.wday
