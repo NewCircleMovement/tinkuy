@@ -1,6 +1,7 @@
 Tinkuy::Application.routes.draw do
 
   namespace :admin do
+    get '/' => 'events#index'
     resources :users
     resources :events
   end

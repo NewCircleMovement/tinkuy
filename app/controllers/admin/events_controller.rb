@@ -1,4 +1,4 @@
-class Admin::EventsController < ApplicationController
+class Admin::EventsController < Admin::BaseController
 
   def index
     @confirmed_events = Event.where(:confirmed => true).order(startdate: :asc, starttime: :asc)
