@@ -1,6 +1,7 @@
 Tinkuy::Application.routes.draw do
   devise_for :users, :controllers => {:registrations => "registrations"}
   resources :events
+  resources :users
 
   root :to => "pages#index"
   

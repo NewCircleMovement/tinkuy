@@ -1,4 +1,6 @@
 %h2 Bliv medlem
+.well
+  Medlemsskab koster kr. 108 per måned og giver adgang til centerets aktiviteter mandag til torsdag
 = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
   = devise_error_messages!
   = f.input :firstname, label: 'Fornavn'
@@ -19,7 +21,7 @@
     %br/
     = f.password_field :password_confirmation, autocomplete: "off"
   = f.check_box :confirm_payment
-  Jeg bekræfter at jeg vil overføre kr 108,- til reg:
+  Jeg bekræfter hermed, at jeg har oprettet en månedlig overførsel på kr 108,- til reg:
   %strong 9860
   konto: 
   %strong 8730066121

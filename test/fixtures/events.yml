@@ -11,6 +11,8 @@
 #  updated_at  :datetime
 #  startdate   :date
 #  duration    :integer
+#  hour        :integer
+#  minute      :integer
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

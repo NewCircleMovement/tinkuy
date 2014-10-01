@@ -1,4 +1,4 @@
-= form_for(@event) do |f|
+= simple_form_for @event do |f|
   - if @event.errors.any?
     #error_explanation
       %h2
@@ -7,34 +7,41 @@
       %ul
         - @event.errors.full_messages.each do |msg|
           %li= msg
-  .field
-    = f.label :name
-    %br/
-    = f.text_field :name
-  .field
-    = f.label :description
-    %br/
-    = f.text_field :description
-  .field
-    = f.label :startdate
-    %br/
-    = f.text_field :startdate, :class => 'form_date'
-  .field
-    = f.label :starttime
-    %br/
-    = f.text_field :starttime, :class => 'form_time'
-  .field
-    = f.label :duration
-    %br/
-    = f.text_field :duration
+  
+  = f.input :name
+  = f.input :description
+  
+  %label
+    Dato og tidspunkt
+  %br/
+  = f.text_field :startdate, :class => 'date form_date'
+  = f.text_field :starttime, :class => 'date form_time'
+
+  %br/  
+  / = f.label :hour, "Starttidspunkt (Time, Minute)"
+  / = f.input :hour, :label => "Time (0-24)"
+  / = f.input :minute, :label => "Minut (0-60)"
+  = f.input :duration, :label => "Varighed (minutter)"
+
   .actions
     = f.submit
 
 :javascript
+  $(".form_datetime").datetimepicker({
+    format: 'yyyy-mm-dd hh:ii',
+    language: 'dk',
+    weekStart: 1,
+    todayBtn:  1,
+    autoclose: 1,
+    todayHighlight: 1,
+    startView: 2,
+    forceParse: 0,
+    showMeridian: 1
+  });
   $('.form_date').datetimepicker({
-        language:  'fr',
-        weekStart: 1,
-        todayBtn:  1,
+    language:  'dk',
+    weekStart: 1,
+    todayBtn:  1,
     autoclose: 1,
     todayHighlight: 1,
     startView: 2,
@@ -42,11 +49,11 @@
     forceParse: 0
     });
   $('.form_time').datetimepicker({
-        language:  'fr',
-        weekStart: 1,
-        todayBtn:  1,
+    language:  'en',
+    weekStart: 1,
+    todayBtn:  0,
     autoclose: 1,
-    todayHighlight: 1,
+    todayHighlight: 0,
     startView: 1,
     minView: 0,
     maxView: 1,

@@ -10,7 +10,12 @@
   = @event.startdate
 %p
   %strong Starttime:
-  = @event.starttime
+  = @event.starttime.strftime("%H:%M")
+
+%p
+  %strong Tidspunkt:
+  = "#{@event.hour}:#{@event.minute}"
+
 %p
   %strong Duration
   = @event.duration

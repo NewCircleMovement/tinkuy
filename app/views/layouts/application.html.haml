@@ -22,7 +22,8 @@
             %li.active
               = link_to "Aktiviteter", events_path
             %li
-              %a{:href => "#"} Medlemmer
+              = link_to "Medlemmer", users_path
+              
           %ul.nav.navbar-nav.navbar-right
             - if user_signed_in?
               %li.dropdown

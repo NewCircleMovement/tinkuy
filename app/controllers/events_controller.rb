@@ -7,7 +7,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all.order(startdate: :asc)    
+    @events = Event.all.order(startdate: :asc, starttime: :asc)    
     if params[:increment] == "up"
       @@week_number = @@week_number + 1 
     end
@@ -83,6 +83,7 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:name, :description, :duration, :starttime, :startdate)
+      params.require(:event).permit(:name, :description, :duration, :starttime, :startdate, :hour, :minute)
+      # params.require(:event).permit!
     end
 end

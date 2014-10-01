@@ -11,6 +11,8 @@
 #  updated_at  :datetime
 #  startdate   :date
 #  duration    :integer
+#  hour        :integer
+#  minute      :integer
 #
 
 require 'test_helper'

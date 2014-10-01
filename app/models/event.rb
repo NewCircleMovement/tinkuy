@@ -11,6 +11,8 @@
 #  updated_at  :datetime
 #  startdate   :date
 #  duration    :integer
+#  hour        :integer
+#  minute      :integer
 #
 
 class Event < ActiveRecord::Base
