@@ -10,6 +10,7 @@
 #  created_at  :datetime
 #  updated_at  :datetime
 #  startdate   :date
+#  duration    :integer
 #
 
 require 'test_helper'

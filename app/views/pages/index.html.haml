@@ -5,7 +5,10 @@
 
 %h3
   Antal pladser tilbage:
-  = 300 - User.all.count
+  = @places_left
+%p
+  Bekræftede medlemmer:
+  = @confirmed_members
 
 = link_to "Bliv medlem nu", new_user_registration_path, :class => "btn btn-lg btn-primary"
 = link_to "Log ind", new_user_session_path, :class => "btn btn-lg btn-default"
