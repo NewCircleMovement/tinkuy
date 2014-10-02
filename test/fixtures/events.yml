@@ -14,6 +14,7 @@
 #  hour        :integer
 #  minute      :integer
 #  confirmed   :boolean          default(FALSE)
+#  user_id     :integer
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

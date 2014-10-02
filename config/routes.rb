@@ -6,9 +6,12 @@ Tinkuy::Application.routes.draw do
     resources :events
   end
   
-
   devise_for :users, :controllers => {:registrations => "registrations"}
-  resources :events
+  
+  resources :events do
+    member { post :accept_fruit }
+  end
+
   resources :users
 
   root :to => "pages#index"

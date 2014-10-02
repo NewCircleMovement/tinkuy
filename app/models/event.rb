@@ -14,11 +14,13 @@
 #  hour        :integer
 #  minute      :integer
 #  confirmed   :boolean          default(FALSE)
+#  user_id     :integer
 #
 
 class Event < ActiveRecord::Base
   
   belongs_to :user
+  has_many :fruits
 
   def my_week_day
     startdate.wday
@@ -26,6 +28,13 @@ class Event < ActiveRecord::Base
 
   def my_week
     startdate.beginning_of_week(start_day = :monday).strftime("%U").to_i
+  end
+
+  def receive_fruit
+    @@frugt = 1
+    # @frugt = @frugt + 1
+    puts self.id
+    puts @@frugt
   end
 
 end

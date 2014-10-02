@@ -14,6 +14,7 @@
 #  hour        :integer
 #  minute      :integer
 #  confirmed   :boolean          default(FALSE)
+#  user_id     :integer
 #
 
 require 'test_helper'

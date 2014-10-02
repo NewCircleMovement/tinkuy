@@ -17,7 +17,7 @@ class EventsController < ApplicationController
       @@week_number = @@week_number - 1
     end
     @show_week = @@week_number
-    
+    @unconfirmed_events = Event.where(:confirmed => false).order(startdate: :asc, starttime: :asc)
     # @events = Event.where(:startdate => time.beginning_of_week..time.end_of_week)
     # @event_days = @events.group_by { |x| x.startdate.strftime("%Y-%m-%d")}
 
@@ -75,6 +75,13 @@ class EventsController < ApplicationController
       format.html { redirect_to events_url }
       format.json { head :no_content }
     end
+  end
+
+  def accept_fruit
+    value = 1
+    @event = Event.find(params[:id])
+    Fruit.create(:event_id => @event.id, :user_id => current_user.id)
+    redirect_to :back, notice: "Tak for din stemme!"
   end
 
   private

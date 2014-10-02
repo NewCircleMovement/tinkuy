@@ -32,4 +32,10 @@ class User < ActiveRecord::Base
   validates :firstname, :surname, :presence => true
     
   has_many :events
+  has_many :fruits
+
+  def give_fruit
+  	Event.last.receive_fruit
+  end
+
 end

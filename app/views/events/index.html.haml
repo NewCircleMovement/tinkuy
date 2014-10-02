@@ -56,33 +56,37 @@
             %td Hep
             %td Heppp
 
-    / .col-md-12
-    /   %h1 Listing events
-    /   %table
-    /     %thead
-    /       %tr
-    /         %th Name
-    /         %th Description
-    /         %th Startdate
-    /         %th Starttime
-    /         %th Weekday
-    /         %th My week
-    /         %th Duration
-    /         %th
-    /         %th
-    /         %th
-    /     %tbody
-    /       - @events.each do |event|
-    /         %tr
-    /           %td= event.name
-    /           %td= event.description
-    /           %td= event.startdate
-    /           %td= event.starttime.strftime("%H:%M")
-    /           %td= event.startdate.wday
-    /           %td= event.my_week
-    /           %td= event.duration
-    /           %td= link_to 'Show', event
-    /           %td= link_to 'Edit', edit_event_path(event)
-    /           %td= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }
-    /   %br/
-    /   = link_to 'New Event', new_event_path
+    .col-md-12
+      %h1 Listing events
+      %table
+        %thead
+          %tr
+            %th Name
+            %th Description
+            %th Startdate
+            %th Starttime
+            %th Weekday
+            %th My week
+            %th Duration
+            %th Stemmer
+            %th Stem
+            %th
+            %th
+            %th
+        %tbody
+          - @unconfirmed_events.each do |event|
+            %tr
+              %td= event.name
+              %td= event.description
+              %td= event.startdate
+              %td= event.starttime.strftime("%H:%M")
+              %td= event.startdate.wday
+              %td= event.my_week
+              %td= event.duration
+              %td= event.fruits.count
+              %td= link_to 'Gi frugt', accept_fruit_event_path(event), method: "post"
+              %td= link_to 'Show', event
+              %td= link_to 'Edit', edit_event_path(event)
+              %td= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }
+      %br/
+      = link_to 'New Event', new_event_path
