@@ -1,4 +1,6 @@
 %p
-  Welcome #{@email}!
-%p You can confirm your account email through the link below:
-%p= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token)
+  Velkommen til Tinkuy
+%p
+	Du har registreret dig med email: #{@email}!
+%p Du kan bekræfte din konto ved at klikke på det følgende link:
+%p= link_to 'bekræft min konto', confirmation_url(@resource, confirmation_token: @token)

@@ -28,7 +28,6 @@
                 %li
                   %strong= event.starttime.strftime("%H:%M")
                   = event.name
-
         .col-md-3
           %h4 Onsdag
           %ul.list-unstyled
@@ -37,7 +36,6 @@
                 %li
                   %strong= event.starttime.strftime("%H:%M")
                   = event.name
-
         .col-md-3
           %h4 Torsdag
           %ul.list-unstyled
@@ -55,7 +53,6 @@
                 %li
                   %strong= event.starttime.strftime("%H:%M")
                   = event.name
-
         .col-md-3
           %h4 Lørdag
           %ul.list-unstyled
@@ -64,7 +61,6 @@
                 %li
                   %strong= event.starttime.strftime("%H:%M")
                   = event.name
-
         .col-md-3
           %h4 Søndag
           %ul.list-unstyled
@@ -73,8 +69,11 @@
                 %li
                   %strong= event.starttime.strftime("%H:%M")
                   = event.name
-
         .col-md-12
+          %hr/
+          .pull-left
+            = link_to new_event_path, :class => "btn btn-primary" do
+              Foreslå ny aktivitet
           .pull-right
             = link_to events_path(:increment => "down"), :class => "btn btn-default" do
               %i.fa.fa-angle-left
@@ -83,8 +82,13 @@
               Næste uge
               %i.fa.fa-angle-right
     .col-md-4
-      Sidebar
-    
+      .well.well-small
+        %h4
+          Stem på aktiviteter
+        %table
+          %tr
+            %td Hep
+            %td Heppp
 
     / .col-md-12                      
     /   %h1 Listing events
