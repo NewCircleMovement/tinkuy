@@ -7,7 +7,7 @@
           %small
             Uge
             = @show_week
-            - if @events
+            - if @events.present?
               = "(fra #{@events.first.startdate.strftime("%d. %b")})"
 .container
   .row

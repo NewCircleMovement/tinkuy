@@ -16,7 +16,9 @@
         %tr
           %td= event.fruits.count
           %td= event.startdate
-          %td= event.starttime.strftime('%H:%M')
+          %td
+            - if event.starttime?
+              = event.starttime.strftime('%H:%M')
           %td= event.name
           %td
             = link_to "Ret", edit_admin_event_path(event), :class => "btn btn-primary btn-xs"
@@ -36,7 +38,9 @@
         %tr
           %td= event.fruits.count
           %td= event.startdate
-          %td= event.starttime.strftime('%H:%M')
+          %td
+            - if event.starttime?
+              = event.starttime.strftime('%H:%M')
           %td= event.name
           %td
             = link_to "Ret", edit_admin_event_path(event), :class => "btn btn-primary btn-xs"
