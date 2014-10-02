@@ -29,6 +29,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :confirm_payment, :acceptance => {:accept => true}
+  validates :firstname, :surname, :presence => true
     
   has_many :events
 end

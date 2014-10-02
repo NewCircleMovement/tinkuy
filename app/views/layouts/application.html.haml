@@ -35,12 +35,12 @@
                     = link_to "Rediger profil", edit_user_registration_path
                     = link_to "Log ud", destroy_user_session_path, :method => :delete
             - else
-              %li= link_to "Bliv medlem", new_user_registration_path
+              - if @places_left > ZERO
+                %li= link_to "Bliv medlem", new_user_registration_path
               %li= link_to "Log ind", new_user_session_path
   
     - flash.each do |name, msg|
       .alert.alert-success
         .container
           = content_tag :div, msg, id: "flash_#{name}"
-    
     = yield

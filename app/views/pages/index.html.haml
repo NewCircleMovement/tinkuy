@@ -13,17 +13,37 @@
           %i.fa.fa-quote-right
         %h3
           Antal pladser tilbage
-        - @places_left.to_s.chars.map(&:to_i).each do |digit|
+        - if @places_left > ZERO
+          - @places_left.to_s.chars.map(&:to_i).each do |digit|
+            .number-counter
+              = digit
+        - else
           .number-counter
-            = digit
+            0
         .clearfix
         - if current_user
+          .well.lead
+
+            Velkommen
+            %span
+              = succeed "!" do
+                %strong= current_user.firstname
+              %em
+                Se alle 
+                = link_to "aktiviteter her", events_path
         - else
-          = link_to new_user_registration_path, :class => "btn btn-lg btn-success btn-signup" do            
-            Bliv medlem nu
-            %i.fa.fa-chevron-circle-right
-            %br
-            %span.small For kr. 108 per måned
+          - if @places_left > ZERO
+            = link_to new_user_registration_path, :class => "btn btn-lg btn-success btn-signup" do            
+              Bliv medlem nu
+              %i.fa.fa-chevron-circle-right
+              %br
+              %span.small For kr. 108 per måned
+          - else
+            .well.well-small
+              %p 
+                Der er desværre ikke plads til flere medlemmer på nuværende tidspunkt. Skriv til 
+                = link_to "venteliste@tinkuy,dk", "mailto:venteliste@tinkuy.dk"
+                hvis du vil have besked når der åbnes for flere medlemmer.
 
 .container
   .row

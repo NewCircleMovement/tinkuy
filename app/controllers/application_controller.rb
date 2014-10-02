@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_filter :update_sanitized_params, if: :devise_controller?
+  before_filter :get_places_left
+
 
   #accept additional attribute for user table
   def update_sanitized_params
@@ -14,9 +16,13 @@ class ApplicationController < ActionController::Base
   def active_user
     if current_user
       unless current_user.active?
-        redirect_to events_path, notice: 'Du er endnu ikke bekræftet som betalende medlem.'
+        redirect_to events_path, notice: 'Velkommen! Inden for få dage vil vi bekræfte dit medlemsskab, og du vil få adgang til yderligere funktioner på siden'
       end
     end
+  end
+
+  def get_places_left
+    @places_left = MAX_USERS - User.all.length
   end
 
 end
