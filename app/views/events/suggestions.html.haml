@@ -1,0 +1,35 @@
+.jumbotron.page
+  .container
+    .row
+      .col-md-12
+        %h1.page
+          Foreslåede Aktiviteter
+
+.container
+  .row
+    .col-md-8
+      %table
+        %thead
+          %tr
+            %th Navn
+            %th Beskrivelse
+            %th Dato
+            %th Ugenr
+            %th Frugt
+            %th Stem med frugt
+            %th
+            %th
+            %th
+        %tbody
+          - @events.each do |event|
+            %tr
+              %td= event.name
+              %td= event.description
+              %td
+                = event.startdate
+                = event.starttime.strftime("- %H:%M")
+              %td= event.my_week
+              %td= event.fruits.count
+              %td= link_to 'Gi frugt', accept_fruit_event_path(event), method: "post", :class => "btn btn-primary btn-xs"
+      %br/
+      = link_to 'New Event', new_event_path

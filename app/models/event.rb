@@ -18,9 +18,10 @@
 #
 
 class Event < ActiveRecord::Base
-  
   belongs_to :user
   has_many :fruits
+
+  after_create :fruit_donation
 
   def my_week_day
     startdate.wday
@@ -30,11 +31,8 @@ class Event < ActiveRecord::Base
     startdate.beginning_of_week(start_day = :monday).strftime("%U").to_i
   end
 
-  def receive_fruit
-    @@frugt = 1
-    # @frugt = @frugt + 1
-    puts self.id
-    puts @@frugt
+  def fruit_donation
+    Fruit.create(:event_id => self.id)
   end
 
 end

@@ -18,9 +18,11 @@ class EventsController < ApplicationController
     end
     @show_week = @@week_number
     @unconfirmed_events = Event.where(:confirmed => false).order(startdate: :asc, starttime: :asc)
-    # @events = Event.where(:startdate => time.beginning_of_week..time.end_of_week)
-    # @event_days = @events.group_by { |x| x.startdate.strftime("%Y-%m-%d")}
+    @top_events = Event.joins(:fruits).group("fruits.event_id").order("count(fruits.event_id) desc").limit(10)
+  end
 
+  def suggestions
+    @events = Event.where(:confirmed => false).joins(:fruits).group("fruits.event_id").order("count(fruits.event_id) desc").limit(10)
   end
 
   # GET /events/1
@@ -79,9 +81,16 @@ class EventsController < ApplicationController
 
   def accept_fruit
     value = 1
-    @event = Event.find(params[:id])
-    Fruit.create(:event_id => @event.id, :user_id => current_user.id)
-    redirect_to :back, notice: "Tak for din stemme!"
+    if current_user.fruits.where(:event_id => nil).count > 0
+      @event = Event.find(params[:id])
+      @fruit = current_user.fruits.where(:event_id => nil).first
+      @fruit.event_id = @event.id
+      @fruit.save!
+      # @Fruit.create(:event_id => @event.id, :user_id => current_user.id)
+      redirect_to :back, notice: "Tak for din stemme!"
+    else
+      redirect_to :back, notice: "Du har ikke flere frugter i denne måned"
+    end
   end
 
   private

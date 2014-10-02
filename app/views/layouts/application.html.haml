@@ -27,8 +27,9 @@
           %ul.nav.navbar-nav.navbar-right
             - if user_signed_in?
               %li
-                %i.fa.fa-lemon-o
-                = current_user.fruits.count
+                = link_to "" do
+                  %i.fa.fa-lemon-o
+                  = current_user.fruits.where(:event_id => nil).count
               %li.dropdown
                 %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
                   Min profil

@@ -7,13 +7,16 @@ Tinkuy::Application.routes.draw do
   end
   
   devise_for :users, :controllers => {:registrations => "registrations"}
-  
-  resources :events do
-    member { post :accept_fruit }
-  end
-
   resources :users
 
+  resources :events do
+    member { 
+      post :accept_fruit
+    }
+  end
+  # get 'events/suggestions' => "events#suggestions"
+  get '/suggestions' => 'events#suggestions'
+  
   root :to => "pages#index"
   
   # The priority is based upon order of creation: first created -> highest priority.

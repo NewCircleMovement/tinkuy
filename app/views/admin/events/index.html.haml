@@ -14,7 +14,7 @@
       %tbody
       - @confirmed_events.each do |event|
         %tr
-          %td X
+          %td= event.fruits.count
           %td= event.startdate
           %td= event.starttime.strftime('%H:%M')
           %td= event.name
@@ -34,7 +34,7 @@
       %tbody
       - @unconfirmed_events.each do |event|
         %tr
-          %td X
+          %td= event.fruits.count
           %td= event.startdate
           %td= event.starttime.strftime('%H:%M')
           %td= event.name
