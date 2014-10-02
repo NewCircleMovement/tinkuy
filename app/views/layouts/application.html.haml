@@ -26,6 +26,9 @@
               = link_to "Medlemmer", users_path
           %ul.nav.navbar-nav.navbar-right
             - if user_signed_in?
+              %li
+                %i.fa.fa-lemon-o
+                = current_user.fruits.count
               %li.dropdown
                 %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
                   Min profil

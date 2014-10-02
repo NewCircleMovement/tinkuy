@@ -34,8 +34,12 @@ class User < ActiveRecord::Base
   has_many :events
   has_many :fruits
 
-  def give_fruit
-  	Event.last.receive_fruit
+  after_create :produce_fruits
+
+  def produce_fruits
+    100.times do
+      Fruit.create(:user_id => self.id)
+    end
   end
 
 end
