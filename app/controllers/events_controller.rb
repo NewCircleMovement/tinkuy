@@ -18,11 +18,12 @@ class EventsController < ApplicationController
     end
     @show_week = @@week_number
     @unconfirmed_events = Event.where(:confirmed => false).order(startdate: :asc, starttime: :asc)
-    @top_events = Event.joins(:fruits).group("fruits.event_id").order("count(fruits.event_id) desc").limit(10)
+    @top_events = Event.where(:confirmed => false).where("startdate >= ?", Date.today).order(fruits_count: :desc).limit(10)
+    # @top_events = Event.joins(:fruits).group("fruits.event_id").order("count(fruits.event_id) desc").limit(10)
   end
 
   def suggestions
-    @events = Event.where(:confirmed => false).joins(:fruits).group("fruits.event_id").order("count(fruits.event_id) desc").limit(10)
+    @events = Event.where(:confirmed => false).where("startdate >= ?", Date.today).order(fruits_count: :desc)
   end
 
   # GET /events/1

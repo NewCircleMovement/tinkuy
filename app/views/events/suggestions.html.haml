@@ -29,7 +29,7 @@
                 = event.startdate
                 = event.starttime.strftime("- %H:%M")
               %td= event.my_week
-              %td= event.fruits.count
+              %td= event.fruits_count
               %td= link_to 'Gi frugt', accept_fruit_event_path(event), method: "post", :class => "btn btn-primary btn-xs"
       %br/
       = link_to 'New Event', new_event_path
