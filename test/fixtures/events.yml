@@ -13,6 +13,7 @@
 #  duration    :integer
 #  hour        :integer
 #  minute      :integer
+#  confirmed   :boolean          default(FALSE)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

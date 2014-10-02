@@ -13,19 +13,19 @@
 #  duration    :integer
 #  hour        :integer
 #  minute      :integer
+#  confirmed   :boolean          default(FALSE)
 #
 
 class Event < ActiveRecord::Base
   
   belongs_to :user
 
-
   def my_week_day
     startdate.wday
   end
 
   def my_week
-    startdate.strftime("%U").to_i
+    startdate.beginning_of_week(start_day = :monday).strftime("%U").to_i
   end
 
 end

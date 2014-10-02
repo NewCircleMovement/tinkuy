@@ -8,7 +8,8 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all.order(startdate: :asc, starttime: :asc)    
+    @events = Event.where(:confirmed => true).order(startdate: :asc, starttime: :asc)
+    # @events = Event.all.order(startdate: :asc, starttime: :asc)
     if params[:increment] == "up"
       @@week_number = @@week_number + 1 
     end
@@ -43,7 +44,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
+        format.html { redirect_to @event, notice: 'Tak, dit forslag er registreret.' }
         format.json { render action: 'show', status: :created, location: @event }
       else
         format.html { render action: 'new' }
@@ -57,7 +58,7 @@ class EventsController < ApplicationController
   def update
     respond_to do |format|
       if @event.update(event_params)
-        format.html { redirect_to @event, notice: 'Event was successfully updated.' }
+        format.html { redirect_to @event, notice: 'Aktiviteten er nu blevet opdateret.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

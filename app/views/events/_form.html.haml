@@ -8,8 +8,8 @@
         - @event.errors.full_messages.each do |msg|
           %li= msg
   
-  = f.input :name
-  = f.input :description
+  = f.input :name, :label => "Navn på aktivitet"
+  = f.input :description, :label => "Beskrivelse"
   
   %label
     Dato og tidspunkt
@@ -24,7 +24,7 @@
   = f.input :duration, :label => "Varighed (minutter)"
 
   .actions
-    = f.submit
+    = f.submit "Opret", :class => "btn btn-primary"
 
 :javascript
   $(".form_datetime").datetimepicker({

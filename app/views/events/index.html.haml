@@ -7,68 +7,34 @@
           %small
             Uge
             = @show_week
-            = "(fra #{@events.first.startdate.strftime("%d. %b")})"
+            - if @vents
+              = "(fra #{@events.first.startdate.strftime("%d. %b")})"
 .container
   .row
     .col-md-8
       .row      
         .col-md-3
           %h4 Mandag
-          %ul.list-unstyled
-            - @events.each do |event|
-              - if event.my_week_day == 1 && event.my_week == @show_week
-                %li
-                  %strong= event.starttime.strftime("%H:%M")
-                  = event.name
+          = render :partial => "list_events", :locals => {:week_day => 1, :events => @events}
         .col-md-3
           %h4 Tirsdag
-          %ul.list-unstyled
-            - @events.each do |event|
-              - if event.my_week_day == 2 && event.my_week == @show_week
-                %li
-                  %strong= event.starttime.strftime("%H:%M")
-                  = event.name
+          = render :partial => "list_events", :locals => {:week_day => 2, :events => @events}
         .col-md-3
           %h4 Onsdag
-          %ul.list-unstyled
-            - @events.each do |event|
-              - if event.my_week_day == 3 && event.my_week == @show_week
-                %li
-                  %strong= event.starttime.strftime("%H:%M")
-                  = event.name
+          = render :partial => "list_events", :locals => {:week_day => 3, :events => @events}
         .col-md-3
           %h4 Torsdag
-          %ul.list-unstyled
-            - @events.each do |event|
-              - if event.my_week_day == 4 && event.my_week == @show_week
-                %li
-                  %strong= event.starttime.strftime("%H:%M")
-                  = event.name
+          = render :partial => "list_events", :locals => {:week_day => 4, :events => @events}
       .row
         .col-md-3
           %h4 Fredag
-          %ul.list-unstyled
-            - @events.each do |event|
-              - if event.my_week_day == 5 && event.my_week == @show_week
-                %li
-                  %strong= event.starttime.strftime("%H:%M")
-                  = event.name
+          = render :partial => "list_events", :locals => {:week_day => 5, :events => @events}
         .col-md-3
           %h4 Lørdag
-          %ul.list-unstyled
-            - @events.each do |event|
-              - if event.my_week_day == 6 && event.my_week == @show_week
-                %li
-                  %strong= event.starttime.strftime("%H:%M")
-                  = event.name
+          = render :partial => "list_events", :locals => {:week_day => 6, :events => @events}
         .col-md-3
           %h4 Søndag
-          %ul.list-unstyled
-            - @events.each do |event|
-              - if event.my_week_day == 7 && event.my_week == @show_week
-                %li
-                  %strong= event.starttime.strftime("%H:%M")
-                  = event.name
+          = render :partial => "list_events", :locals => {:week_day => 0, :events => @events}
         .col-md-12
           %hr/
           .pull-left
@@ -90,7 +56,7 @@
             %td Hep
             %td Heppp
 
-    / .col-md-12                      
+    / .col-md-12
     /   %h1 Listing events
     /   %table
     /     %thead
@@ -99,6 +65,8 @@
     /         %th Description
     /         %th Startdate
     /         %th Starttime
+    /         %th Weekday
+    /         %th My week
     /         %th Duration
     /         %th
     /         %th
@@ -110,6 +78,8 @@
     /           %td= event.description
     /           %td= event.startdate
     /           %td= event.starttime.strftime("%H:%M")
+    /           %td= event.startdate.wday
+    /           %td= event.my_week
     /           %td= event.duration
     /           %td= link_to 'Show', event
     /           %td= link_to 'Edit', edit_event_path(event)

@@ -1,29 +1,26 @@
 .container
   .row
     .col-md-12
-      %p#notice= notice
-      %p
-        %strong Name:
+      %h1 
+        Aktivitet:
         = @event.name
+      
       %p
-        %strong Description:
+        %strong Beskrivelse:
         = @event.description
       %p
-        %strong Startdate:
+        %strong Dato:
         = @event.startdate
       %p
-        %strong Starttime:
-        = @event.starttime.strftime("%H:%M")
-
-      %p
         %strong Tidspunkt:
-        = "#{@event.hour}:#{@event.minute}"
-
+        = @event.starttime.strftime("%H:%M")
       %p
-        %strong Duration
-        = @event.duration
+        %strong Varighed (minutter):
+        - if @event.duration
+          = @event.duration
+        - else
+          Uoplyst
 
-
-      = link_to 'Edit', edit_event_path(@event)
+      = link_to 'Ret', edit_event_path(@event)
       |
-      \#{link_to 'Back', events_path}
+      = link_to 'Tilbage', events_path

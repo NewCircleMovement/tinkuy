@@ -13,6 +13,7 @@
 #  duration    :integer
 #  hour        :integer
 #  minute      :integer
+#  confirmed   :boolean          default(FALSE)
 #
 
 require 'test_helper'
