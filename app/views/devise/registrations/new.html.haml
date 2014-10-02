@@ -8,31 +8,36 @@
           Medlemsskab koster kr. 108 per måned og giver adgang til centerets aktiviteter mandag til torsdag
 .container
   .row
-    .col-md-8
+    .col-md-6
       = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
         = devise_error_messages!
-        = f.input :firstname, label: 'Fornavn'
-        = f.input :surname, label: 'Efternavn'
-        %div
-          = f.label :email
-          %br/
-          = f.email_field :email, autofocus: true
-        %div
-          = f.label :password
-          - if @validatable
-            %i
-              (mindst #{@minimum_password_length} tegn)
-          %br/
-          = f.password_field :password, autocomplete: "off"
-        %div
-          = f.label :password_confirmation, "Befkræft password"
-          %br/
-          = f.password_field :password_confirmation, autocomplete: "off"
-        = f.check_box :confirm_payment
-        Jeg bekræfter hermed, at jeg har oprettet en månedlig overførsel på kr 108,- til reg:
-        %strong 9860
-        konto: 
-        %strong 8730066121
-        %div= f.submit "Tilmeld", :class => "btn btn-primary"
-      Allerede medlem?
-      = render "devise/shared/links"
+        .row
+          .col-md-6
+            .form-group
+              = f.input :firstname, label: 'Fornavn'
+          .col-md-6
+            .form-group
+              = f.input :surname, label: 'Efternavn'
+          .col-md-12
+            .form-group
+              = f.input :email, :label => "Email"
+          .col-md-6
+            .form-group
+              = f.input :password, autocomplete: "off", :label => "Password"
+              - if @validatable
+                %p.help-block
+                  (mindst #{@minimum_password_length} tegn)
+          .col-md-6
+            .form-group
+              = f.input :password_confirmation, autocomplete: "off", :label => "Befkræft password"
+          .col-md-12
+            .form-group
+              = f.check_box :confirm_payment
+              Jeg bekræfter hermed, at jeg har oprettet en månedlig overførsel på kr 108,- til reg:
+              %strong 9860
+              konto: 
+              %strong 8730066121
+            .form-group
+              = f.submit "Tilmeld", :class => "btn btn-primary"
+            Allerede medlem?
+            = render "devise/shared/links"

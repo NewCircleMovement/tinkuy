@@ -2,22 +2,18 @@
   .row
     .col-md-6
       %h2 Log ind
-      = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-        = f.input :email, autofocus: true, placeholder: "Din email", :class => "form-control"
-        = f.input :password, autocomplete: "off", placeholder: "Password"
-        - if devise_mapping.rememberable?
-          = f.check_box :remember_me
-          = f.label :remember_me, "Husk mig"
-        %br/
-        = f.submit "Log ind", :class => "btn btn-primary"
+      = simple_form_for(resource, role: "form", as: resource_name, url: session_path(resource_name)) do |f|
+        .row
+          .col-md-6
+            .form-group
+              = f.input :email, autofocus: true, placeholder: "Din email"
+          .col-md-6
+            .form-group
+              = f.input :password, autocomplete: "off", placeholder: "Password"
+        .form-group
+          - if devise_mapping.rememberable?
+            = f.check_box :remember_me
+            = f.label :remember_me, "Husk mig"
+        .form-group
+          = f.submit "Log ind", :class => "btn btn-primary"
       = render "devise/shared/links"
-
-/ = simple_form_for resource, as: resource_name, url: session_path(resource_name), wrapper: :inline_form, html: { class: 'form-inline' }, wrapper_mappings: { boolean: :vertical_boolean } do |f|
-/   = f.error_notification
-/   = f.input :email, autofocus: true, placeholder: "Din email", :class => "form-control"
-/   = f.input :password, autocomplete: "off", placeholder: "Password"
-/   - if devise_mapping.rememberable?
-/     = f.check_box :remember_me
-/     = f.label :remember_me
-/   %br/
-/   = f.submit "Log ind"
