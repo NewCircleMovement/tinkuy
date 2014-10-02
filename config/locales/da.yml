@@ -1,0 +1,4 @@
+da:
+  errors:
+    messages:
+      not_saved: "Der var desværre problemer med at gemme"

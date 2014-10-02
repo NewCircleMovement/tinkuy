@@ -12,15 +12,22 @@
         Bekræftede medlemmer:
         = @confirmed_users.length
       %hr/
-      - @confirmed_users.each do |user|
-        = user.email
+      %ul.list-unstyled
+        - @confirmed_users.each do |user|
+          %li
+            = user.firstname
+            = user.surname
       
     .col-md-6
       %h3
         Afventer bekræftelse:
         = @pending_users.length
       %hr/
-      - @pending_users.each do |user|
-        = user.email
+      %ul.list-unstyled
+        - @pending_users.each do |user|
+          %li
+            = user.firstname
+            = user.surname
+
 
 
