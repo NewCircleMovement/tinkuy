@@ -1,0 +1,20 @@
+.container
+  .row
+    .col-md-8
+      %h1
+        Edit:
+        = @event.name
+        %small
+          = @event.startdate.strftime("%A den %e. %b, %Y - ")
+          = @event.starttime.strftime("klokken %H:%M")
+      = simple_form_for [:admin, @event], :html => {:role => 'form' } do |f|
+        = f.input :confirmed, :label => "Gør aktiviteten aktuel"
+        = f.input :name, :label => "Navn"
+        = f.input :description, :label => "Beskrivelse"
+        %label Dato og tidspunkt
+        = f.text_field :startdate, :class => 'date form_date'
+        = f.text_field :starttime, :class => 'date form_time'
+        
+        = f.input :duration, :label => "Varighed (minutter)"
+        = f.submit "Gem", :class => "btn btn-primary"
+        = link_to "Fortryd", :back
