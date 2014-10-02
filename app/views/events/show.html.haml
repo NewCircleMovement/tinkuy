@@ -13,7 +13,8 @@
         = @event.startdate
       %p
         %strong Tidspunkt:
-        = @event.starttime.strftime("%H:%M")
+        - if @event.starttime?
+          = @event.starttime.strftime("%H:%M")
       %p
         %strong Varighed (minutter):
         - if @event.duration
