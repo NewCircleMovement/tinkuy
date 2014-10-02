@@ -7,20 +7,38 @@
       Bekræftede medlemmer:
       = @confirmed_users.length
     %hr/
-    %ul.list-unstyled
-      - @confirmed_users.each do |user|
-        %li
-          = user.email
-          = link_to 'Edit', edit_admin_user_path(user), :class => "btn btn-xs btn-primary"
-          = link_to 'Slet', user, method: :delete, data: { confirm: 'Vil du slette denne bruger?' }, :class => "btn btn-xs btn-danger"
+    %table
+      %thead
+        %th Navn
+        %th Logins
+        %th Sidste
+        %th Aktion
+      %tbody
+        - @confirmed_users.each do |user|
+          %tr
+            %td= link_to "#{user.firstname} #{user.surname}", "mailto:#{user.email}"
+            %td= user.sign_in_count
+            %td= user.last_sign_in_at.strftime("%d/%m/%Y")
+            %td
+              = link_to 'Edit', edit_admin_user_path(user), :class => "btn btn-xs btn-primary"
+              = link_to 'Slet', user, method: :delete, data: { confirm: 'Vil du slette denne bruger?' }, :class => "btn btn-xs btn-danger"
   .col-md-6
     %h3
       Afventer bekræftelse:
       = @pending_users.length
     %hr/
-    %ul.list-unstyled
-      - @pending_users.each do |user|
-        %li
-          = user.email
-          = link_to 'Edit', edit_admin_user_path(user), :class => "btn btn-xs btn-primary"
-          = link_to 'Slet', user, method: :delete, data: { confirm: 'Vil du slette denne bruger?' }, :class => "btn btn-xs btn-danger"
+    %table
+      %thead
+        %th Navn
+        %th Logins
+        %th Sidste
+        %th Aktion
+      %tbody
+        - @pending_users.each do |user|
+          %tr
+            %td= link_to "#{user.firstname} #{user.surname}", "mailto:#{user.email}"
+            %td= user.sign_in_count
+            %td= user.last_sign_in_at.strftime("%d/%m/%Y")
+            %td
+              = link_to 'Edit', edit_admin_user_path(user), :class => "btn btn-xs btn-primary"
+              = link_to 'Slet', user, method: :delete, data: { confirm: 'Vil du slette denne bruger?' }, :class => "btn btn-xs btn-danger"
