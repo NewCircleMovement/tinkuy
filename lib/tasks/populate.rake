@@ -7,7 +7,7 @@ namespace :tinkuy do
     temptime15 = "15:30"
     temptime18 = "18:30"
 
-    User.create(:email => "test@test.com", :password => "12345678")
+    User.create(:email => "test@test.com", :encrypted_password => "12345678")
 
     #eftermiddag
     Event.create(:name=>"Kimpro", :description=>"lorum ipsom", :startdate=>tempdate, :starttime=>temptime15)
