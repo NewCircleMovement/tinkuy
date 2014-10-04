@@ -1,3 +1,6 @@
 git push heroku master --force
 
 heroku run rake db:migrate
+
+git add -A
+git commit -m "message" 
