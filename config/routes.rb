@@ -17,7 +17,12 @@ Tinkuy::Application.routes.draw do
   # get 'events/suggestions' => "events#suggestions"
   get '/suggestions' => 'events#suggestions'
   
+  get '/info' => 'pages#info'
+
+
   root :to => "pages#index"
+
+
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -3,4 +3,12 @@ git push heroku master --force
 heroku run rake db:migrate
 
 git add -A
+git push
 git commit -m "message" 
+
+
+git status
+
+
+
+... brug git bash!
