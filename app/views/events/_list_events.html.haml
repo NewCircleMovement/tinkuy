@@ -3,4 +3,4 @@
     - if event.startdate.wday == week_day && event.week_number == session[:week_number]
       %li
         %strong= event.starttime.strftime("%H:%M")
-        = event.name
+        = link_to event.name, event
