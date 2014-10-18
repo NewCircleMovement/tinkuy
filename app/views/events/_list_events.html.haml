@@ -1,6 +1,6 @@
 %ul.list-unstyled
   - @events.each do |event|
-    - if event.my_week_day == week_day && event.my_week == @show_week
+    - if event.startdate.wday == week_day && event.week_number == session[:week_number]
       %li
         %strong= event.starttime.strftime("%H:%M")
         = event.name

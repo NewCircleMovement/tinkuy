@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
   before_filter :update_sanitized_params, if: :devise_controller?
   before_filter :get_places_left
 
-
   #accept additional attribute for user table
   def update_sanitized_params
     devise_parameter_sanitizer.for(:sign_up) {|u| u.permit(:firstname, :surname, :email, :password, :password_confirmation, :confirm_payment)}

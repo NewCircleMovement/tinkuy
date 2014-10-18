@@ -10,8 +10,6 @@
   .form-group
     = f.input :name, :label => "Navn på aktivitet"
   .form-group
-    = f.input :description, :label => "Beskrivelse"
-  .form-group
     .row
       .col-md-6
         .form-group
@@ -59,6 +57,8 @@
             Vælg tidspunkt for aktivitet
   .form-group
     = f.input :duration, :label => "Varighed (minutter)"
+  .form-group
+    = f.input :description, :label => "Beskrivelse"
 
   .actions
     = f.submit "Opret", :class => "btn btn-primary"

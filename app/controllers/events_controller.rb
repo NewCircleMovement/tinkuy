@@ -2,21 +2,49 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, except: [:index, :show]
   before_filter :active_user, only: [:new, :edit]
-
-  @@week_number = Time.now.strftime("%U").to_i
+  before_filter :get_dates
 
   # GET /events
   # GET /events.json
   def index
     @events = Event.where(:confirmed => true).order(startdate: :asc, starttime: :asc)
-    # @events = Event.all.order(startdate: :asc, starttime: :asc)
-    if params[:increment] == "up"
-      @@week_number = @@week_number + 1 
+
+    if params[:uge].present?
+
+      # set current number of weeks in the year
+      weeks_in_this_year = session[:monday_date].end_of_year.strftime('%W').to_i
+      weeks_in_prev_year = (session[:monday_date].beginning_of_year - 1).strftime('%W').to_i
+
+      # puts "Weeks in this year"
+      # puts "This year = #{session[:monday_date].end_of_year}"
+      # puts weeks_in_this_year
+      # puts "--------------"
+      # puts "Weeks in previous year"
+      # puts "Previous year = #{session[:monday_date].beginning_of_year - 1}"
+      # puts weeks_in_prev_year
+
+
+      # = session[:monday_date].strftime('Uge %V - %B, %Y')
+
+      # If user clicks "next week" then add 7 to :monday_date
+      # if user requests a week number larger than total weeknumbers in year
+      if params[:uge].to_i > weeks_in_this_year
+        params[:uge] = "1"
+        session[:monday_date] = session[:monday_date] + 7
+      elsif params[:uge].to_i < 1
+        params[:uge] = weeks_in_prev_year
+        session[:monday_date] = session[:monday_date] - 7
+      else
+        # Otherwise: within the year 
+        if params[:uge].to_i > session[:week_number]
+          session[:monday_date] = session[:monday_date] + 7
+        elsif params[:uge].to_i < session[:week_number]
+          session[:monday_date] = session[:monday_date] - 7
+        end
+      end
+      session[:week_number] = params[:uge].to_i
     end
-    if params[:increment] == "down"
-      @@week_number = @@week_number - 1
-    end
-    @show_week = @@week_number
+
     @unconfirmed_events = Event.where(:confirmed => false).order(startdate: :asc, starttime: :asc)
     @top_events = Event.where(:confirmed => false).where("startdate >= ?", Date.today).order(fruits_count: :desc).limit(10)
     # @top_events = Event.joins(:fruits).group("fruits.event_id").order("count(fruits.event_id) desc").limit(10)
@@ -92,6 +120,14 @@ class EventsController < ApplicationController
     else
       redirect_to :back, notice: "Du har ikke flere frugter i denne måned"
     end
+  end
+
+  def get_dates
+    unless session[:is_new].present?
+      session[:week_number] = Time.now.strftime("%V").to_i
+      session[:monday_date] = Date.today.beginning_of_week
+    end
+    session[:is_new] = "nej"
   end
 
   private

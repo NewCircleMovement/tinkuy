@@ -4,36 +4,48 @@
       .col-md-12
         %h1.page
           Aktiviteter
-          %small
-            Uge
-            = @show_week
-            - if @events.present?
-              = "(fra #{@events.first.startdate.strftime("%d. %b")})"
 .container
   .row
     .col-md-8
+      %h4
+        = "#{session[:monday_date].strftime('Uge %V - %B, %Y')}"
+      %hr/
       .row      
         .col-md-3
-          %h4 Mandag
+          %h4.day-of-week
+            Mandag
+            %small= "(d. #{session[:monday_date].strftime('%d')})"
           = render :partial => "list_events", :locals => {:week_day => 1, :events => @events}
         .col-md-3
-          %h4 Tirsdag
+          %h4.day-of-week
+            Tirsdag
+            %small= "(d. #{(session[:monday_date]+1).strftime('%d')})"
           = render :partial => "list_events", :locals => {:week_day => 2, :events => @events}
         .col-md-3
-          %h4 Onsdag
+          %h4.day-of-week
+            Onsdag
+            %small= "(d. #{(session[:monday_date]+2).strftime('%d')})"
           = render :partial => "list_events", :locals => {:week_day => 3, :events => @events}
         .col-md-3
-          %h4 Torsdag
+          %h4.day-of-week
+            Torsdag
+            %small= "(d. #{(session[:monday_date]+3).strftime('%d')})"
           = render :partial => "list_events", :locals => {:week_day => 4, :events => @events}
       .row
         .col-md-3
-          %h4 Fredag
+          %h4.day-of-week
+            Fredag
+            %small= "(d. #{(session[:monday_date]+4).strftime('%d')})"
           = render :partial => "list_events", :locals => {:week_day => 5, :events => @events}
         .col-md-3
-          %h4 Lørdag
+          %h4.day-of-week
+            Lørdag
+            %small= "(d. #{(session[:monday_date]+5).strftime('%d')})"
           = render :partial => "list_events", :locals => {:week_day => 6, :events => @events}
         .col-md-3
-          %h4 Søndag
+          %h4.day-of-week
+            Søndag
+            %small= "(d. #{(session[:monday_date]+6).strftime('%d')})"
           = render :partial => "list_events", :locals => {:week_day => 0, :events => @events}
         .col-md-12
           %hr/
@@ -41,10 +53,10 @@
             = link_to new_event_path, :class => "btn btn-primary" do
               Foreslå ny aktivitet
           .pull-right
-            = link_to events_path(:increment => "down"), :class => "btn btn-default" do
+            = link_to events_path(:uge => "#{session[:week_number]-1}"), :class => "btn btn-default" do
               %i.fa.fa-angle-left
-              Sidste uge
-            = link_to events_path(:increment => "up"), :class => "btn btn-default" do
+              Forrige uge
+            = link_to events_path(:uge => "#{session[:week_number]+1}"), :class => "btn btn-default" do
               Næste uge
               %i.fa.fa-angle-right
     .col-md-4

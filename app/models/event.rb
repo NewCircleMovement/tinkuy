@@ -24,12 +24,8 @@ class Event < ActiveRecord::Base
 
   after_create :fruit_donation
 
-  def my_week_day
-    startdate.wday
-  end
-
-  def my_week
-    startdate.beginning_of_week(start_day = :monday).strftime("%U").to_i
+  def week_number
+    startdate.beginning_of_week(start_day = :monday).strftime("%V").to_i
   end
 
   def fruit_donation
