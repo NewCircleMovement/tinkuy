@@ -12,14 +12,14 @@
           Et spirituelt fitness center
           %i.fa.fa-quote-right
         %h3
-          Antal pladser tilbage
-        - if @places_left > ZERO
-          - @places_left.to_s.chars.map(&:to_i).each do |digit|
-            .number-counter
-              = digit
-        - else
-          .number-counter
-            0
+        /   Antal pladser tilbage
+        / - if @places_left > ZERO
+        /   - @places_left.to_s.chars.map(&:to_i).each do |digit|
+        /     .number-counter
+        /       = digit
+        / - else
+        /   .number-counter
+        /     0
         .clearfix
         - if current_user
           .well.lead
