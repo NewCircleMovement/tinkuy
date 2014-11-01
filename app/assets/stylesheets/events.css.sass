@@ -8,3 +8,38 @@ table
 h4.day-of-week
   border-bottom: 1px solid grey  
   padding-bottom: 5px
+
+.event-badge
+  background: white
+  box-shadow: 0 0 5px darken(white, 20)
+  margin-bottom: 20px
+  .title
+    padding: 10px
+    border-bottom: 1px solid darken(white, 10)
+    .info
+      width: 80%
+      float: left
+      h4
+        margin-top: 0
+        padding-top: 0
+      table
+        font-size: 12px
+        color: grey
+    .vote
+      width: 20%
+      float: right
+      text-align: right
+      span.score
+        float: left
+        border: 1px solid grey
+        color: grey
+        padding: 2px 10px
+        font-size: 20px
+        margin-right: 5px
+        @include border-top-radius(3px)
+        @include border-bottom-radius(3px)
+      a.btn
+        float: left
+  .description
+    background: darken(white, 4)
+    padding: 10px
