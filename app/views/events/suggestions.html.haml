@@ -1,13 +1,8 @@
-.jumbotron.page
-  .container
-    .row
-      .col-md-12
-        %h1.page
-          Foreslåede Aktiviteter
-
+= render :partial => "events_header"
 .container
   .row
     .col-md-8
+      %h2 Foreslåede aktiviteter
       %table
         %thead
           %tr
@@ -33,4 +28,4 @@
               %td= event.fruits_count
               %td= link_to 'Gi frugt', accept_fruit_event_path(event), method: "post", :class => "btn btn-primary btn-xs"
       %br/
-      = link_to 'New Event', new_event_path
+      = link_to 'Foreslå ny aktivitet', new_event_path

@@ -1,9 +1,4 @@
-.jumbotron.page
-  .container
-    .row
-      .col-md-12
-        %h1.page
-          Aktiviteter
+= render :partial => "events_header"
 .container
   .row
     .col-md-8
@@ -60,22 +55,5 @@
               Næste uge
               %i.fa.fa-angle-right
     .col-md-4
-      .well.well-small
-        %h4
-          Top 10 foreslåede aktiviteter
-        %hr/
-        %table
-          - @top_events.each do |event|
-            %tr
-              %td
-                .fruit-score= event.fruits.count
-              %td= event.name
-              %td
-                - if event.startdate?
-                  = event.startdate.strftime("%A d %e. %b")
-              %td
-                = link_to accept_fruit_event_path(event), method: "post", :class => "btn btn-success btn-xs" do
-                  %i.fa.fa-thumbs-up
-        %hr/
-        = link_to "Se alle", suggestions_path, :class => "btn btn-primary"
-
+      = render :partial => "top10", :locals => {:top_events => @top_events}
+      

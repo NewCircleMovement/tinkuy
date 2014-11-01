@@ -15,17 +15,6 @@ class EventsController < ApplicationController
       weeks_in_this_year = session[:monday_date].end_of_year.strftime('%W').to_i
       weeks_in_prev_year = (session[:monday_date].beginning_of_year - 1).strftime('%W').to_i
 
-      # puts "Weeks in this year"
-      # puts "This year = #{session[:monday_date].end_of_year}"
-      # puts weeks_in_this_year
-      # puts "--------------"
-      # puts "Weeks in previous year"
-      # puts "Previous year = #{session[:monday_date].beginning_of_year - 1}"
-      # puts weeks_in_prev_year
-
-
-      # = session[:monday_date].strftime('Uge %V - %B, %Y')
-
       # If user clicks "next week" then add 7 to :monday_date
       # if user requests a week number larger than total weeknumbers in year
       if params[:uge].to_i > weeks_in_this_year
@@ -57,6 +46,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    @top_events = Event.where(:confirmed => false).where("startdate >= ?", Date.today).order(fruits_count: :desc).limit(10)
   end
 
   # GET /events/new

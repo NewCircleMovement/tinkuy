@@ -1,0 +1,20 @@
+.well.well-small
+  %h4
+    Top 10 foreslåede aktiviteter
+  %hr/
+  %table
+    - @top_events.each do |event|
+      %tr
+        %td
+          .fruit-score= event.fruits.count
+        %td
+          = link_to event.name, event
+        %td
+          - if event.startdate?
+            = event.startdate.strftime("%A d %e. %b")
+        %td
+          = link_to accept_fruit_event_path(event), method: "post", :class => "btn btn-success btn-xs" do
+            %i.fa.fa-thumbs-up
+  %hr/
+  = link_to "Se alle", suggestions_path, :class => "btn btn-primary"
+
