@@ -14,7 +14,7 @@
             %th Navn
             %th Beskrivelse
             %th Dato
-            %th Ugenr
+            %th Uge
             %th Frugt
             %th Stem med frugt
             %th
@@ -28,7 +28,8 @@
               %td
                 = event.startdate
                 = event.starttime.strftime("- %H:%M")
-              %td= event.my_week
+              %td
+                = event.startdate.strftime("%W")
               %td= event.fruits_count
               %td= link_to 'Gi frugt', accept_fruit_event_path(event), method: "post", :class => "btn btn-primary btn-xs"
       %br/
