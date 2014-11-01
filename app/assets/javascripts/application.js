@@ -19,3 +19,6 @@
 //= require bootstrap-datetimepicker
 //= require_tree .
 
+$(document).on('hidden.bs.modal', function (e) {
+	$(e.target).removeData('bs.modal');
+});
