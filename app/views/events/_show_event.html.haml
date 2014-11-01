@@ -1,0 +1,30 @@
+#event-show-stuff
+  .modal-header
+    %button.close{"data-dismiss" => "modal", :type => "button"}
+      %span{"aria-hidden" => "true"} &times;
+      %span.sr-only Close
+    %h4#myModalLabel.modal-title
+      = @event.name
+  .modal-body
+    %table
+      %tr
+        %td
+          %strong Dato:
+          = @event.startdate
+        %td
+          %strong Tidspunkt:
+          - if @event.starttime?
+            = @event.starttime.strftime("%H:%M")
+        %td
+          %strong Varighed (minutter):
+          - if @event.duration
+            = @event.duration
+          - else
+            Uoplyst     
+    %hr/
+    %h4
+      Beskrivelse
+    %p
+      = @event.description.gsub(/\n/, '<br />').html_safe
+  .modal-footer
+    %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Luk

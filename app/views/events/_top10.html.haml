@@ -8,7 +8,8 @@
         %td
           .fruit-score= event.fruits.count
         %td
-          = link_to event.name, event
+          %a{"data-remote" => "#{event_path(event)} #event-show-stuff", "data-target" => "#ShowEvent", "data-toggle" => "modal"}
+            = event.name
         %td
           - if event.startdate?
             = event.startdate.strftime("%A d %e. %b")

@@ -18,7 +18,8 @@
         %tbody
           - @events.each do |event|
             %tr
-              %td= event.name
+              %td
+                = link_to event.name, event
               %td= event.description
               %td
                 = event.startdate
@@ -26,6 +27,6 @@
               %td
                 = event.startdate.strftime("%W")
               %td= event.fruits_count
-              %td= link_to 'Gi frugt', accept_fruit_event_path(event), method: "post", :class => "btn btn-primary btn-xs"
+              %td= link_to 'Gi frugt', accept_fruit_event_path(event), method: "post", :class => "btn btn-success btn-xs"
       %br/
-      = link_to 'Foreslå ny aktivitet', new_event_path
+      = link_to 'Foreslå ny aktivitet', new_event_path, :class => "btn btn-primary"
