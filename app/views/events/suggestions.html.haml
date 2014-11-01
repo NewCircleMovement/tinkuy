@@ -1,31 +1,33 @@
 = render :partial => "events_header"
+
 .container
   .row
     .col-md-8
       %h2 Foreslåede aktiviteter
-      %table
-        %thead
-          %tr
-            %th Navn
-            %th Beskrivelse
-            %th Dato
-            %th Uge
-            %th Frugt
-            %th Stem med frugt
-            %th
-            %th
-            %th
-        %tbody
-          - @events.each do |event|
-            %tr
-              %td= event.name
-              %td= event.description
-              %td
-                = event.startdate
-                = event.starttime.strftime("- %H:%M")
-              %td
-                = event.startdate.strftime("%W")
-              %td= event.fruits_count
-              %td= link_to 'Gi frugt', accept_fruit_event_path(event), method: "post", :class => "btn btn-primary btn-xs"
-      %br/
-      = link_to 'Foreslå ny aktivitet', new_event_path
+      - @events.each do |event|
+        .event-badge
+          .title
+            .info
+              %h4= event.name
+              %table
+                %tr
+                  %td
+                    %strong Uge
+                    = event.startdate.strftime("%W")
+                  %td
+                    %strong Dato
+                    = event.startdate
+                  %td
+                    %strong Tidspunkt
+                    = event.starttime.strftime("- %H:%M")
+            .vote
+              %span.score= event.fruits_count
+              = link_to accept_fruit_event_path(event), method: "post", :class => "btn btn-success btn" do
+                %i.fa.fa-thumbs-up
+            .clearfix
+          .description
+            %p= event.description
+      %hr/
+      = link_to 'Foreslå ny aktivitet', new_event_path, :class => "btn btn-primary"
+    .col-md-4
+      = link_to 'Foreslå ny aktivitet', new_event_path, :class => "btn btn-primary"

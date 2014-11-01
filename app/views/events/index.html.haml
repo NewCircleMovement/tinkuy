@@ -56,4 +56,7 @@
               %i.fa.fa-angle-right
     .col-md-4
       = render :partial => "top10", :locals => {:top_events => @top_events}
-      
+
+#ShowEvent.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog
+    .modal-content

@@ -3,4 +3,5 @@
     - if event.startdate.wday == week_day && event.week_number == session[:week_number]
       %li
         %strong= event.starttime.strftime("%H:%M")
-        = link_to event.name, event
+        %a{"data-remote" => "#{event_path(event)} #event-show-stuff", "data-target" => "#ShowEvent", "data-toggle" => "modal"}
+          = event.name

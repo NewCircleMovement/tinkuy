@@ -40,7 +40,8 @@ class EventsController < ApplicationController
   end
 
   def suggestions
-    @events = Event.where(:confirmed => false).where("startdate >= ?", Date.today).order(fruits_count: :desc)
+    # @events = Event.where(:confirmed => false).where("startdate >= ?", Date.today).order(fruits_count: :desc)
+    @events = Event.where(:confirmed => false).where("startdate >= ?", Date.today).order(startdate: :asc)
   end
 
   # GET /events/1
