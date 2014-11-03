@@ -1,7 +1,7 @@
 %ul.list-unstyled
   - @events.each do |event|
     - if event.startdate.wday == week_day && event.week_number == session[:week_number]
-      %li
+      %li.event
         %strong= event.starttime.strftime("%H:%M")
         %a{"data-remote" => "#{event_path(event)} #event-show-stuff", "data-target" => "#ShowEvent", "data-toggle" => "modal"}
           = event.name

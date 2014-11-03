@@ -3,44 +3,45 @@
   .row
     .col-md-8
       %h4
-        = "#{session[:monday_date].strftime('Uge %V - %B, %Y')}"
+        Uge
+        = session[:monday_date].strftime('%V - %B, %Y')
       %hr/
       .row      
         .col-md-3
           %h4.day-of-week
             Mandag
-            %small= "(d. #{session[:monday_date].strftime('%d')})"
+            %small= "(#{session[:monday_date].strftime('%-d. %b')})"
           = render :partial => "list_events", :locals => {:week_day => 1, :events => @events}
         .col-md-3
           %h4.day-of-week
             Tirsdag
-            %small= "(d. #{(session[:monday_date]+1).strftime('%d')})"
+            %small= "(#{(session[:monday_date]+1).strftime('%-d. %b')})"
           = render :partial => "list_events", :locals => {:week_day => 2, :events => @events}
         .col-md-3
           %h4.day-of-week
             Onsdag
-            %small= "(d. #{(session[:monday_date]+2).strftime('%d')})"
+            %small= "(#{(session[:monday_date]+2).strftime('%-d. %b')})"
           = render :partial => "list_events", :locals => {:week_day => 3, :events => @events}
         .col-md-3
           %h4.day-of-week
             Torsdag
-            %small= "(d. #{(session[:monday_date]+3).strftime('%d')})"
+            %small= "(#{(session[:monday_date]+3).strftime('%-d. %b')})"
           = render :partial => "list_events", :locals => {:week_day => 4, :events => @events}
       .row
         .col-md-3
           %h4.day-of-week
             Fredag
-            %small= "(d. #{(session[:monday_date]+4).strftime('%d')})"
+            %small= "(#{(session[:monday_date]+4).strftime('%-d. %b')})"
           = render :partial => "list_events", :locals => {:week_day => 5, :events => @events}
         .col-md-3
           %h4.day-of-week
             Lørdag
-            %small= "(d. #{(session[:monday_date]+5).strftime('%d')})"
+            %small= "(#{(session[:monday_date]+5).strftime('%-d. %b')})"
           = render :partial => "list_events", :locals => {:week_day => 6, :events => @events}
         .col-md-3
           %h4.day-of-week
             Søndag
-            %small= "(d. #{(session[:monday_date]+6).strftime('%d')})"
+            %small= "(#{(session[:monday_date]+6).strftime('%-d. %b')})"
           = render :partial => "list_events", :locals => {:week_day => 0, :events => @events}
         .col-md-12
           %hr/
