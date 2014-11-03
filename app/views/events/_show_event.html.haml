@@ -10,15 +10,16 @@
       %tr
         %td
           %strong Dato:
-          = @event.startdate
+          = @event.startdate.strftime("%A %-d. %b, %Y")
         %td
           %strong Tidspunkt:
           - if @event.starttime?
             = @event.starttime.strftime("%H:%M")
         %td
-          %strong Varighed (minutter):
+          %strong Varighed:
           - if @event.duration
             = @event.duration
+            min
           - else
             Uoplyst     
     %hr/

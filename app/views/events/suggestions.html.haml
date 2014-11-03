@@ -23,6 +23,7 @@
             .vote
               %span.score= event.fruits_count
               = link_to accept_fruit_event_path(event), method: "post", :class => "btn btn-success btn" do
+                Stem op
                 %i.fa.fa-thumbs-up
             .clearfix
           .description
