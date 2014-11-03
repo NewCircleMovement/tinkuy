@@ -2,20 +2,20 @@
   %h4
     Top 10 foreslåede aktiviteter
   %hr/
-  %table
+  %ul.list-unstyled.top-events
     - @top_events.each do |event|
-      %tr
-        %td
-          .fruit-score= event.fruits.count
-        %td
+      %li.top-event
+        .event-score
+          .fruit-score
+            = event.fruits.count
+        .event-info
           %a{"data-remote" => "#{event_path(event)} #event-show-stuff", "data-target" => "#ShowEvent", "data-toggle" => "modal"}
-            = event.name
-        %td
-          - if event.startdate?
-            = event.startdate.strftime("%A d %e. %b")
-        %td
-          = link_to accept_fruit_event_path(event), method: "post", :class => "btn btn-success btn-xs" do
-            %i.fa.fa-thumbs-up
-  %hr/
+            = event.name.capitalize
+          %p
+            - if event.startdate?
+              %small.grey= event.startdate.strftime("%A d %e. %b")
+            = link_to accept_fruit_event_path(event), method: "post", :class => "btn btn-success btn-xs pull-right" do
+              Stem op
+              %i.fa.fa-thumbs-up
+        .clearfix
   = link_to "Se alle", suggestions_path, :class => "btn btn-primary"
-
