@@ -13,9 +13,12 @@
 
 ActiveRecord::Schema.define(version: 20141018125821) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "events", force: true do |t|
     t.string   "name"
-    t.text     "description",  limit: 255
+    t.text     "description"
     t.time     "starttime"
     t.integer  "week_number"
     t.datetime "created_at"
@@ -24,7 +27,7 @@ ActiveRecord::Schema.define(version: 20141018125821) do
     t.integer  "duration"
     t.integer  "hour"
     t.integer  "minute"
-    t.boolean  "confirmed",                default: false
+    t.boolean  "confirmed",    default: false
     t.integer  "user_id"
     t.integer  "fruits_count"
   end
@@ -43,8 +46,8 @@ ActiveRecord::Schema.define(version: 20141018125821) do
     t.datetime "updated_at"
   end
 
-  add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", unique: true
-  add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at"
+  add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", unique: true, using: :btree
+  add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false
@@ -66,7 +69,7 @@ ActiveRecord::Schema.define(version: 20141018125821) do
     t.boolean  "confirm_payment",        default: false
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

@@ -43,6 +43,8 @@ gem 'annotate'
 # Internationalization
 gem 'rails-i18n', '~> 4.0.0' # For 4.0.x
 
+# Use postgres
+gem "pg"
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -50,9 +52,6 @@ group :doc do
 end
 
 group :production, :staging do
-  # Use postgres for Heroku production
-  gem "pg"
-
   # Help serving assets in produciton on Heroku
   gem 'rails_12factor'
 end
