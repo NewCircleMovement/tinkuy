@@ -2,9 +2,13 @@
 .container
   .row
     .col-md-8
-      %h4
+      %h4.pull-left
         Uge
         = session[:monday_date].strftime('%V - %B, %Y')
+      .pull-right
+        = link_to new_event_path, :class => "btn btn-primary" do
+          Foreslå ny aktivitet
+      .clearfix
       %hr/
       .row      
         .col-md-3
@@ -45,9 +49,6 @@
           = render :partial => "list_events", :locals => {:week_day => 0, :events => @events}
         .col-md-12
           %hr/
-          .pull-left
-            = link_to new_event_path, :class => "btn btn-primary" do
-              Foreslå ny aktivitet
           .pull-right
             = link_to events_path(:uge => "#{session[:week_number]-1}"), :class => "btn btn-default" do
               %i.fa.fa-angle-left

@@ -29,7 +29,7 @@ class Admin::EventsController < Admin::BaseController
   def destroy
     @event.destroy
     respond_to do |format|
-      format.html { redirect_to admin_events_url }
+      format.html { redirect_to admin_path , notice: "Aktiviteten er nu slettet."}
       format.json { head :no_content }
     end
   end
