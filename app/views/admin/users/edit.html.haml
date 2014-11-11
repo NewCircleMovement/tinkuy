@@ -16,6 +16,5 @@
                 %li= msg
         = f.input :firstname, :label => "Fornavn"
         = f.input :surname, :label => "Efternavn"
-        = f.input :pending
-        = f.input :active
+        = f.input :status, :collection => ['active', 'pending', 'passive'], :include_blank => false
         = f.submit "Save", :class => "btn btn-default"

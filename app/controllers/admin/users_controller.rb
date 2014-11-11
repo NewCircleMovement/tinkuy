@@ -2,8 +2,8 @@ class Admin::UsersController < Admin::BaseController
   before_action :set_user, only: [:edit, :update, :destroy]
   
   def index
-    @confirmed_users = User.where(:active => true)
-    @pending_users = User.where(:pending => true)
+    @confirmed_users = User.where(:status => 'active').order(:firstname, :surname)
+    @pending_users = User.where(:status => 'pending').order(:firstname, :surname)
   end
 
   def edit
@@ -39,7 +39,7 @@ class Admin::UsersController < Admin::BaseController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:firstname, :surname, :pending, :active)
+      params.require(:user).permit(:firstname, :surname, :status)
       # params.require(:user).permit!
     end
 end

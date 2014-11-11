@@ -1,12 +1,16 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, except: [:index, :show]
-  before_filter :active_user, only: [:new, :edit]
+  # before_filter :active_user, only: [:new, :edit]
   before_filter :get_dates
 
   # GET /events
   # GET /events.json
   def index
+    if session[:event_id].present?
+      @new_event = Event.find(session[:event_id])
+      session[:event_id] = nil
+    end
     @events = Event.where(:confirmed => true).order(startdate: :asc, starttime: :asc)
 
     if params[:uge].present?
@@ -64,15 +68,23 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
 
-    respond_to do |format|
-      if @event.save
-        format.html { redirect_to @event, notice: 'Tak, dit forslag er registreret.' }
-        format.json { render action: 'show', status: :created, location: @event }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
+    if @event.save
+      session[:event_id] = @event.id
+      # redirect_to events_path(:event_id => id)
+      redirect_to events_path
+    else
+      render action: 'new'
     end
+
+    # respond_to do |format|
+    #   if @event.save
+    #     format.html { redirect_to @event, notice: 'Tak, dit forslag er nu registreret.' }
+    #     format.json { render action: 'show', status: :created, location: @event }
+    #   else
+    #     format.html { render action: 'new' }
+    #     format.json { render json: @event.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /events/1
