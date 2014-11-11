@@ -4,7 +4,6 @@
       %h1 
         Ret bruger:
         = @user.email
-
       = simple_form_for [:admin, @user], :html => {:role => 'form' } do |f|
         - if @user.errors.any?
           #error_explanation

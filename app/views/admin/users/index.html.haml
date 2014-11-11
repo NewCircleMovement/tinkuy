@@ -3,42 +3,45 @@
     %h1 Medlemmer
 .row
   .col-md-6
-    %h3 
-      Bekræftede medlemmer:
-      = @confirmed_users.length
-    %hr/
-    %table
-      %thead
-        %th Navn
-        %th Logins
-        %th Sidste
-        %th Aktion
-      %tbody
-        - @confirmed_users.each do |user|
-          %tr
-            %td= link_to "#{user.firstname} #{user.surname}", "mailto:#{user.email}"
-            %td= user.sign_in_count
-            %td= user.last_sign_in_at.strftime("%d/%m/%Y")
-            %td
-              = link_to 'Edit', edit_admin_user_path(user), :class => "btn btn-xs btn-primary"
-              = link_to 'Slet', user, method: :delete, data: { confirm: 'Vil du slette denne bruger?' }, :class => "btn btn-xs btn-danger"
+    .panel.panel-default
+      .panel-heading        
+        %h2.panel-title 
+          Bekræftede medlemmer:
+          = @confirmed_users.length
+      %table.table-striped.table-condensed
+        %thead
+          %th Navn
+          %th Logins
+          %th Sidste
+          %th Aktion
+        %tbody
+          - @confirmed_users.each do |user|
+            %tr
+              %td= link_to "#{user.firstname} #{user.surname}", "mailto:#{user.email}"
+              %td= user.sign_in_count
+              %td= user.last_sign_in_at.strftime("%d/%m/%Y")
+              %td
+                = link_to 'Edit', edit_admin_user_path(user), :class => "btn btn-xs btn-primary"
+                = link_to 'Slet', user, method: :delete, data: { confirm: 'Vil du slette denne bruger?' }, :class => "btn btn-xs btn-danger"
+
   .col-md-6
-    %h3
-      Afventer bekræftelse:
-      = @pending_users.length
-    %hr/
-    %table
-      %thead
-        %th Navn
-        %th Logins
-        %th Sidste
-        %th Aktion
-      %tbody
-        - @pending_users.each do |user|
-          %tr
-            %td= link_to "#{user.firstname} #{user.surname}", "mailto:#{user.email}"
-            %td= user.sign_in_count
-            %td= user.last_sign_in_at.strftime("%d/%m/%Y")
-            %td
-              = link_to 'Edit', edit_admin_user_path(user), :class => "btn btn-xs btn-primary"
-              = link_to 'Slet', user, method: :delete, data: { confirm: 'Vil du slette denne bruger?' }, :class => "btn btn-xs btn-danger"
+    .panel.panel-default
+      .panel-heading        
+        %h2.panel-title 
+          Afventer bekræftelse:
+          = @pending_users.length
+      %table.table-striped.table-condensed
+        %thead
+          %th Navn
+          %th Logins
+          %th Sidste
+          %th Aktion
+        %tbody
+          - @pending_users.each do |user|
+            %tr
+              %td= link_to "#{user.firstname} #{user.surname}", "mailto:#{user.email}"
+              %td= user.sign_in_count
+              %td= user.last_sign_in_at.strftime("%d/%m/%Y")
+              %td
+                = link_to 'Edit', edit_admin_user_path(user), :class => "btn btn-xs btn-primary"
+                = link_to 'Slet', user, method: :delete, data: { confirm: 'Vil du slette denne bruger?' }, :class => "btn btn-xs btn-danger"

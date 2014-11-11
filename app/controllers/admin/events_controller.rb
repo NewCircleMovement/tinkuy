@@ -3,7 +3,14 @@ class Admin::EventsController < Admin::BaseController
 
   def index
     @confirmed_events = Event.where(:confirmed => true).order(startdate: :asc, starttime: :asc)
-    @unconfirmed_events = Event.where(:confirmed => false).order(startdate: :asc, starttime: :asc)
+    
+    if params[:old] == 'yes'
+      @confirmed_events = @confirmed_events.where("startdate < ?", Date.today)
+    else
+      @confirmed_events = @confirmed_events.where("startdate >= ?", Date.today)
+    end
+    
+    @unconfirmed_events = Event.where(:confirmed => false).where("startdate >= ?", Date.today).order(startdate: :asc, starttime: :asc)
   end
 
   # GET /events/1/edit
