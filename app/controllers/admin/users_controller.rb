@@ -4,6 +4,7 @@ class Admin::UsersController < Admin::BaseController
   def index
     @confirmed_users = User.where(:status => 'active').order(:firstname, :surname)
     @pending_users = User.where(:status => 'pending').order(:firstname, :surname)
+    @passive_users = User.where(:status => 'passive').order(:firstname, :surname)
   end
 
   def edit
