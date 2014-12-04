@@ -8,6 +8,12 @@
         Uge
         = session[:monday_date].strftime('%V - %B, %Y')
       .pull-right
+        = link_to events_path(:uge => "#{session[:week_number]-1}"), :class => "btn btn-default" do
+          %i.fa.fa-angle-left
+          Forrige uge
+        = link_to events_path(:uge => "#{session[:week_number]+1}"), :class => "btn btn-default" do
+          Næste uge
+          %i.fa.fa-angle-right
         = link_to new_event_path, :class => "btn btn-primary" do
           Foreslå ny aktivitet
       .clearfix

@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
   end
 
   def get_places_left
-    @places_left = MAX_USERS - User.all.length
+    @places_left = MAX_USERS - User.where(status: ['active', 'pending']).length 
   end
 
 end
