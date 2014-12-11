@@ -6,6 +6,7 @@
     = javascript_include_tag "application", "data-turbolinks-track" => true
     %link{:href => "http://fonts.googleapis.com/css?family=Indie+Flower", :rel => "stylesheet", :type => "text/css"}/
     = csrf_meta_tags
+    %meta{:content => image_url('test.jpg'), :name => "og:image"}/
 
     :javascript
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -17,6 +18,16 @@
       ga('send', 'pageview');
 
   %body
+    #fb-root
+      :javascript
+        (function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=344493419068459&version=v2.0";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
     %nav.navbar.navbar-default{:role => "navigation"}
       .container-fluid
         / Brand and toggle get grouped for better mobile display
