@@ -13,30 +13,11 @@ class EventsController < ApplicationController
     end
     @events = Event.where(:confirmed => true).order(startdate: :asc, starttime: :asc)
 
-    if params[:uge].present?
-
-      # set current number of weeks in the year
-      weeks_in_this_year = session[:monday_date].end_of_year.strftime('%W').to_i
-      weeks_in_prev_year = (session[:monday_date].beginning_of_year - 1).strftime('%W').to_i
-
-      # If user clicks "next week" then add 7 to :monday_date
-      # if user requests a week number larger than total weeknumbers in year
-      if params[:uge].to_i > weeks_in_this_year
-        params[:uge] = "1"
-        session[:monday_date] = session[:monday_date] + 7
-      elsif params[:uge].to_i < 1
-        params[:uge] = weeks_in_prev_year
-        session[:monday_date] = session[:monday_date] - 7
-      else
-        # Otherwise: within the year 
-        if params[:uge].to_i > session[:week_number]
-          session[:monday_date] = session[:monday_date] + 7
-        elsif params[:uge].to_i < session[:week_number]
-          session[:monday_date] = session[:monday_date] - 7
-        end
-      end
-      session[:week_number] = params[:uge].to_i
+    if params[:dato].present?
+      session[:dato] = params[:dato].to_date
     end
+    session[:next] = session[:dato] + 7.days
+    session[:prev] = session[:dato] - 7.days
 
     @unconfirmed_events = Event.where(:confirmed => false).order(startdate: :asc, starttime: :asc)
     @top_events = Event.where(:confirmed => false).where("startdate >= ?", Date.today).order(fruits_count: :desc).limit(10)
@@ -126,6 +107,9 @@ class EventsController < ApplicationController
   end
 
   def get_dates
+    session[:dato] = Date.today.beginning_of_week
+
+
     unless session[:is_new].present?
       session[:week_number] = Time.now.strftime("%V").to_i
       session[:monday_date] = Date.today.beginning_of_week

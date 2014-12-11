@@ -6,12 +6,13 @@
         = @event.name
       %h4.pull-left
         Uge
-        = session[:monday_date].strftime('%V - %B, %Y')
+        = session[:dato].strftime('%V - %B, %Y')
+      
       .pull-right
-        = link_to events_path(:uge => "#{session[:week_number]-1}"), :class => "btn btn-default" do
+        = link_to events_path(:dato => "#{session[:prev]}"), :class => "btn btn-default" do
           %i.fa.fa-angle-left
           Forrige uge
-        = link_to events_path(:uge => "#{session[:week_number]+1}"), :class => "btn btn-default" do
+        = link_to events_path(:dato => "#{session[:next]}"), :class => "btn btn-default" do
           Næste uge
           %i.fa.fa-angle-right
         = link_to new_event_path, :class => "btn btn-primary" do
@@ -22,46 +23,46 @@
         .col-md-3
           %h4.day-of-week
             Mandag
-            %small= "(#{session[:monday_date].strftime('%-d. %b')})"
+            %small= "(#{session[:dato].strftime('%-d. %b')})"
           = render :partial => "list_events", :locals => {:week_day => 1, :events => @events}
         .col-md-3
           %h4.day-of-week
             Tirsdag
-            %small= "(#{(session[:monday_date]+1).strftime('%-d. %b')})"
+            %small= "(#{(session[:dato]+1).strftime('%-d. %b')})"
           = render :partial => "list_events", :locals => {:week_day => 2, :events => @events}
         .col-md-3
           %h4.day-of-week
             Onsdag
-            %small= "(#{(session[:monday_date]+2).strftime('%-d. %b')})"
+            %small= "(#{(session[:dato]+2).strftime('%-d. %b')})"
           = render :partial => "list_events", :locals => {:week_day => 3, :events => @events}
         .col-md-3
           %h4.day-of-week
             Torsdag
-            %small= "(#{(session[:monday_date]+3).strftime('%-d. %b')})"
+            %small= "(#{(session[:dato]+3).strftime('%-d. %b')})"
           = render :partial => "list_events", :locals => {:week_day => 4, :events => @events}
       .row
         .col-md-3
           %h4.day-of-week
             Fredag
-            %small= "(#{(session[:monday_date]+4).strftime('%-d. %b')})"
+            %small= "(#{(session[:dato]+4).strftime('%-d. %b')})"
           = render :partial => "list_events", :locals => {:week_day => 5, :events => @events}
         .col-md-3
           %h4.day-of-week
             Lørdag
-            %small= "(#{(session[:monday_date]+5).strftime('%-d. %b')})"
+            %small= "(#{(session[:dato]+5).strftime('%-d. %b')})"
           = render :partial => "list_events", :locals => {:week_day => 6, :events => @events}
         .col-md-3
           %h4.day-of-week
             Søndag
-            %small= "(#{(session[:monday_date]+6).strftime('%-d. %b')})"
+            %small= "(#{(session[:dato]+6).strftime('%-d. %b')})"
           = render :partial => "list_events", :locals => {:week_day => 0, :events => @events}
         .col-md-12
           %hr/
           .pull-right
-            = link_to events_path(:uge => "#{session[:week_number]-1}"), :class => "btn btn-default" do
+            = link_to events_path(:uge => "#{session[:prev]}"), :class => "btn btn-default" do
               %i.fa.fa-angle-left
               Forrige uge
-            = link_to events_path(:uge => "#{session[:week_number]+1}"), :class => "btn btn-default" do
+            = link_to events_path(:uge => "#{session[:next]}"), :class => "btn btn-default" do
               Næste uge
               %i.fa.fa-angle-right
     .col-md-4
