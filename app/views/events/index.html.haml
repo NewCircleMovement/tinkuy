@@ -9,14 +9,15 @@
         = session[:dato].strftime('%V - %B, %Y')
       
       .pull-right
+        = link_to new_event_path, :class => "btn btn-primary" do
+          Foreslå ny aktivitet
         = link_to events_path(:dato => "#{session[:prev]}"), :class => "btn btn-default" do
           %i.fa.fa-angle-left
           Forrige uge
         = link_to events_path(:dato => "#{session[:next]}"), :class => "btn btn-default" do
           Næste uge
           %i.fa.fa-angle-right
-        = link_to new_event_path, :class => "btn btn-primary" do
-          Foreslå ny aktivitet
+        
       .clearfix
       %hr/
       .row      
@@ -59,12 +60,15 @@
         .col-md-12
           %hr/
           .pull-right
-            = link_to events_path(:uge => "#{session[:prev]}"), :class => "btn btn-default" do
+            = link_to new_event_path, :class => "btn btn-primary" do
+              Foreslå ny aktivitet
+            = link_to events_path(:dato => "#{session[:prev]}"), :class => "btn btn-default" do
               %i.fa.fa-angle-left
               Forrige uge
-            = link_to events_path(:uge => "#{session[:next]}"), :class => "btn btn-default" do
+            = link_to events_path(:dato => "#{session[:next]}"), :class => "btn btn-default" do
               Næste uge
               %i.fa.fa-angle-right
+            
     .col-md-4
       = render :partial => "top10", :locals => {:top_events => @top_events}
 

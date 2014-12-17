@@ -30,7 +30,7 @@
           fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
 
-    %nav.navbar.navbar-default{:role => "navigation"}
+    %nav.navbar.navbar-default#top{:role => "navigation"}
       .container-fluid
         / Brand and toggle get grouped for better mobile display
         .navbar-header
@@ -47,6 +47,8 @@
               = link_to "Aktiviteter", events_path
             %li{:class => ( controller_name == 'users' ? 'active' : '' )}
               = link_to "Medlemmer", users_path
+            %li{:class => ( controller_name == 'pages' && action_name == 'faq' ? 'active' : '' )}
+              = link_to "Spørgsmål og svar", faq_path
             %li{:class => ( controller_name == 'pages' && action_name == 'info' ? 'active' : '' )} 
               = link_to "Praktisk", info_path
           %ul.nav.navbar-nav.navbar-right

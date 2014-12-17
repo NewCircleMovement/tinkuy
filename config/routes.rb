@@ -18,7 +18,7 @@ Tinkuy::Application.routes.draw do
   get '/suggestions' => 'events#suggestions'
   
   get '/info' => 'pages#info'
-
+  get '/faq' => 'pages#faq'
 
   root :to => "pages#index"
 
