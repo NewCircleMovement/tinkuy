@@ -19,6 +19,7 @@ Tinkuy::Application.routes.draw do
   
   get '/info' => 'pages#info'
   get '/faq' => 'pages#faq'
+  get '/behandler' => 'pages#behandler'
 
   root :to => "pages#index"
 

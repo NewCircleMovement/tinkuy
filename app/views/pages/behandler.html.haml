@@ -1,0 +1,123 @@
+.jumbotron.page
+  .container
+    .row
+      .col-md-12
+        %h1.page
+          Leje af behandlerrum
+
+.container
+  .row
+    .col-md-8
+      = link_to "https://www.google.com/calendar/embed?src=tinkuy.therapy%40gmail.com&ctz=Europe%2FCopenhagen", :class => "btn btn-xl btn-primary" do
+        Se kalenderen
+
+      
+      %hr/
+      %ul.list-unstyled
+        %li= link_to "What is Tinkuy’s Therapy Room", "#what"
+        %li= link_to "Who can book the Therapy Room?", "#who"
+        %li= link_to "Payment/Rent", "#payment"
+        %li= link_to "How to make a booking?", "#booking"
+        %li= link_to "Short Guidelines when using the Therapy Room", "#guidelines"
+        %li= link_to "FAQ by our Therapists", "#faq"
+      %hr/
+
+      %h3#what What is Tinkuy’s Therapy Room
+      %p
+        The Therapy Room is a a space within Tinkuy that offers the privacy, quiet and safe environment conducive to holding individual sessions and treatments. We want to make this space available to therapists with different backgrounds who offer sessions aimed at bringing healing and a more harmonious way of being.
+      = render :partial => 'top'
+
+      %h3#who Who can book the Therapy Room?
+      %p
+        The use of the Therapy Room is made available to our active members and share holders.
+        If you’re not a member yet, please visit www.tinkuy.dk and follow the instructions there.
+      = render :partial => 'top'
+
+      %h3#payment Payment/Rent
+      %p
+        If you wish to rent the space and you’re not a shareholder/investor in Tinkuy, we ask you for a one time deposit of 500dkk.
+      
+      %h5 Regular Therapists
+      %p
+        Therapists who book a fixed number of hours every week, pay the rent at the end of the month based on the income they generated. Meaning, we ask for a minimum of 25dkk/hour. This minimum is set in place to protect our regular therapists in case they don’t have any bookings from their own clients during their regular time slot.  
+      %p
+        However, we ask each therapist to consider setting aside 10% of their asking rate per hour. Example, if you charge 700dkk per session, we ask you to set aside 70dkk for Tinkuy. At the end of the day, based on your number of treated clients and generated income, you can make an estimate of your contribution for the monthly rent. 
+      %br/
+      %h5 Temporary Therapists
+      %p 
+        Flexible Rent is available to Therapists who wish to make use of the Therapy Room from time to time, without having an ongoing commitment. 
+      %p
+        Upon consulting the published calendar, you can book any of the time slots that are available.
+        Payment for the use of the therapy room should be settled on the same day.
+      %p
+        We ask for 10% of your treatment fee. The minimum rate per hour is 50 dkk. This is to allow our therapists a minimal risk with cancellations and to offer them the freedom to have different asking prices for certain clients (example: If the therapist wishes to offer reduced prices for students, unemployed, members, practice sessions etc, for which the fee is usually very user friendly).
+      = render :partial => 'top'
+
+      %h3#booking How to make a booking?
+      %p
+        Please consult the calendar before making any requests. 
+        If you’re interested in booking the therapy room, call or text Martina at 28 87 73 77
+        Alternatively, if you’re not in a hurry, you can send her an email to: 
+        = link_to "tinkuy.therapy@gmail.com", "mailto:tinkuy.therapy@gmail.com"
+        The brief email should contain the following: 
+      %ul
+        %li type of activity, treatment etc.
+        %li date for the booking
+        %li your asking price per hour (for your clients)
+        %li contact details (phone number and web site)
+      = render :partial => 'top'
+
+      %h3#guidelines Short Guidelines when using the Therapy Room
+      %ul
+        %li Make sure to leave the room on time.
+        %li Leave the space, clean, tidy, ready to use. 
+        %li Please remember to take any personal items with you.
+        %li Shortly air out the room before you leave.
+      %p
+        If you have any comments in regards to how the room was found upon your arrival, or you have any special requirements, please contact Johan on johan@tinkuy.dk or at the center.
+      = render :partial => 'top'
+
+      %h3#faq FAQ by our Therapists
+      %h5 What is provided in the Room and on the premises?
+      %p
+        The Therapy Room is freshly refurbished and currently is equipped with a massage table, a desk and two chairs.
+      %p
+        When renting the Therapy Room you have access to the kitchen, bathroom and toilet rooms.
+
+      %br/
+      %h5 What is not provided and what should I bring?
+      %p
+        For the time being, we kindly ask you to think about bringing additional items you might need, such as bed sheets, towels or any other items you might need for your treatment. 
+
+      %br/
+      %h5 Is it allowed to do Aromatherapy, use oils, candles etc?
+      %p
+        It is allowed to use Aromatherapy on Wednesday, Thursday and Friday.
+      %p
+        Oils are of course allowed, but we ask you to protect the bed and furniture and to be mindful about the overall look and feeling of the room since it is used by many therapists and different clients, hygiene and cleanliness are of the outmost importance.
+      %p
+        Candles are allowed as long as you are present inside the room. Please make sure you put them all out before you leave the room, regardless of whether another therapist is using it just after you.
+
+      %br/
+      %h5 How often can I use the therapy room?
+      %p
+        The therapy room is being shared by several therapists, 5 of which have booked regular time frames every week. However, despite that, the schedule has many openings.
+      %p
+        You are most welcome to apply for a regular use of the room. We accept applications on ongoing basis. If interested, 
+        = link_to "send us an email", "mailto:tinkuy.therapy@gmail.com" 
+        with an introduction about yourself and your activity, as well as the day of week and the number of hours you’d like to book
+
+    .col-md-4
+      .well.well-small
+        %h4 Make a booking
+        %br/
+        %p 
+          Call or send a text to Martina at 
+          %br/
+          %strong 28 87 73 77
+        %p 
+          Or send her an email at
+          %br/
+          = link_to "tinkuy.therapy@gmail.com", "mailto:tinkuy.therapy@gmail.com" 
+
+        
