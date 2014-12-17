@@ -29,15 +29,21 @@
       %h3#tinkuy Hvad er Tinkuy?
       %p
         Tinkuy er et spirituelt fitnesscenter hvor du sammen med andre kan træne din 'spirituelle muskel' via meditation, bevægelse og inspirerende oplæg. Vores tre kerneværdier er:
-        SAMSKABENDE - Bevæg og lad dig bevæge i krop, sind og ånd via inspirerende oplæg, playshops og mødet med andre.
-      %p
-        SAMVÆR - Mød nye mennesker i et trygt og hjertevarmt miljø, øg pulsen med dans og sænk den igen i vores oxytocinstimulerende café.
-      %p
-        FOKUS - Vedligehold din spirituelle praksis via meditation, yoga og "open space" arrangementer. Mærk hvordan din disciplin styrkes.
+      %ul
+        %li
+          %strong SAMSKABENDE:
+          Bevæg og lad dig bevæge i krop, sind og ånd via inspirerende oplæg, playshops og mødet med andre.
+        %li
+          %strong SAMVÆR:
+          Mød nye mennesker i et trygt og hjertevarmt miljø, øg pulsen med dans og sænk den igen i vores oxytocinstimulerende café.
+        %li
+          %strong FOKUS:
+          Vedligehold din spirituelle praksis via meditation, yoga og "open space" arrangementer. Mærk hvordan din disciplin styrkes.
       %p
         Centeret har en stor undervisningssal, behandlerrum, kontor og fælles lounge område. Medlemskab koster kr 108/md og giver fri adgang til de fleste af aktiviteterne i hverdagene mandag til torsdag og ofte rabat på weekendarrangementer.
       %p
-        Vi har plads til et begrænset antal medlemmer - du kan registere dit medlemskab på www.tinkuy.dk
+        Vi har plads til et begrænset antal medlemmer - 
+        = link_to "bliv medlem her", new_user_registration_path
       = render :partial => 'top'
       
       
@@ -48,7 +54,8 @@
       
       %h3#medlem Hvordan bliver jeg medlem?
       %p
-        Du kan registere dit medlemskab på www.tinkuy.dk - brug knappen “Bliv medlem nu”
+        Du kan registere dit medlemskab ved at 
+        = link_to "klikke her", new_user_registration_path
       = render :partial => 'top'
       
       %h3#alle Kan alle blive medlem? 
@@ -73,7 +80,12 @@
       
       %h3#udbytte Hvad får jeg for mit medlemskab? 
       %p
-        Vi har morgen meditation 7.00 – 8.00 og Drop IN Morgenyoga 8.00 – 10.00 mandage til torsdage. Vi har forskellige former for bevægelse 1530-1700 mandag til torsdag. Endelig har vi også open stage arrangementer 19-21 flere af aftnerne mandag til torsdag, hvor medlemmerne deler ud af deres evner og gaver til glæde for andre. Derudover har vi en række af arrangementer på andre tidspunkter, hvor betalende medlemmer af Tinkuy ofte kommer med til reduceret pris. Du kan se alle arrangementer på tinkuy.dk/events og på facebookgrupperne “Tinkuy – medlemmer” og “Spirituelt Fitnesscenter i  Hjertet af København”
+        Vi har morgen meditation 7.00 – 8.00 og Drop IN Morgenyoga 8.00 – 10.00 mandage til torsdage. Vi har forskellige former for bevægelse 1530-1700 mandag til torsdag. Endelig har vi også open stage arrangementer 19-21 flere af aftnerne mandag til torsdag, hvor medlemmerne deler ud af deres evner og gaver til glæde for andre. Derudover har vi en række af arrangementer på andre tidspunkter, hvor betalende medlemmer af Tinkuy ofte kommer med til reduceret pris. Du kan se alle arrangementer på 
+        = link_to "tinkuy kalenderen", events_path
+        og på facebookgrupperne 
+        = link_to "Tinkuy – medlemmer", "https://www.facebook.com/groups/273265506201488/" 
+        og 
+        = link_to "Spirituelt Fitnesscenter i  Hjertet af København", "https://www.facebook.com/groups/683828591709690/"
       = render :partial => 'top'
       
       %h3#billigt Hvorfor er det så biligt?
@@ -83,7 +95,11 @@
       
       %h3#oversigt Hvor finder jeg en oversigt over aktiviteter i centret?
       %p
-        Du finder en overskuelig uge oversigt på tinkuy.dk/events hvor du også kan læse mere om den enkelte aktivitet. Når du finder en aktivitet, du ønsker at deltage i, må du meget gerne melde dig til via facebook events (på en af grupperne “tinkuy – medlemmer” eller “Sprituelt FitnessCenter i Hjertet af København”). Det er nemlig rigtig rart for arrangøren at have overblik over hvor mange der ca kommer til aktiviteten.
+        Du finder en overskuelig uge oversigt på tinkuy.dk/events hvor du også kan læse mere om den enkelte aktivitet. Når du finder en aktivitet, du ønsker at deltage i, må du meget gerne melde dig til via facebook events (på en af grupperne 
+        = link_to "Tinkuy – medlemmer", "https://www.facebook.com/groups/273265506201488/" 
+        eller
+        = succeed ")." do
+          = link_to "Spirituelt Fitnesscenter i  Hjertet af København", "https://www.facebook.com/groups/683828591709690/"
       = render :partial => 'top'
       
       %h3#pladser Hvor mange pladser er der på holdene?
@@ -93,7 +109,12 @@
       
       %h3#tilmelding Hvor tilmelder jeg mig aktiviteterne? 
       %p
-        Se under den enkelte aktivitet på tinkuy.dk/events og følg det. Du må også meget gerne melde dig til via facebook events (på en af grupperne “tinkuy – medlemmer” eller “Sprituelt FitnessCenter i Hjertet af København”). Det er nemlig rigtig rart for arrangøren at have overblik over hvor mange der ca kommer.
+        Se under den enkelte aktivitet på tinkuy.dk/events og følg det. Du må også meget gerne melde dig til via facebook events (på en af grupperne 
+        = link_to "Tinkuy – medlemmer", "https://www.facebook.com/groups/273265506201488/" 
+        eller
+        = succeed ")." do
+          = link_to "Spirituelt Fitnesscenter i  Hjertet af København", "https://www.facebook.com/groups/683828591709690/"
+        Det er nemlig rigtig rart for arrangøren at have overblik over hvor mange der ca kommer.
       = render :partial => 'top'
       
       %h3#born Dækker medlemskabet også mine børn?
@@ -103,12 +124,17 @@
       
       %h3#opsigelse Hvordan opsiger jeg mit medlemskab? 
       %p
-        Du kan til enhver tid opsige dit medlemskab eller holde en pause. Du sender en mail til info@tinkuy.dk, så sørger vi for at registrere dig som passiv. 
+        Du kan til enhver tid opsige dit medlemskab eller holde en pause. Du sender en mail til 
+        = succeed "," do
+          = link_to "info@tinkuy.dk", "mailto:info@tinkuy.dk" 
+        så sørger vi for at registrere dig som passiv. 
       = render :partial => 'top'
 
       %h3#andre Andre spørgsmål?
       %p
-        Skriv endelig en mail på info@tinkuy.dk hvis du har spørgsmål du endnu ikke har fået svar på. 
+        Skriv endelig en mail på 
+        = link_to "info@tinkuy.dk", "mailto:info@tinkuy.dk" 
+        hvis du har spørgsmål du endnu ikke har fået svar på. 
       = render :partial => 'top'
 
 
