@@ -11,23 +11,35 @@
       %h3 
         Bekræftede medlemmer:
         = @confirmed_users.length
-      %hr/
-      %ul.list-unstyled
-        - @confirmed_users.each do |user|
-          %li
-            = user.firstname.titleize
-            = user.surname.titleize
+      - if current_user
+        %hr/
+        %ul.list-unstyled
+          - @confirmed_users.each do |user|
+            %li
+              = user.firstname.titleize
+              = user.surname.titleize
       
     .col-md-6
       %h3
         Afventer bekræftelse:
         = @pending_users.length
-      %hr/
-      %ul.list-unstyled
-        - @pending_users.each do |user|
-          %li
-            = user.firstname.titleize
-            = user.surname.titleize
+      - if current_user
+        %hr/
+        %ul.list-unstyled
+          - @pending_users.each do |user|
+            %li
+              = user.firstname.titleize
+              = user.surname.titleize
+
+    - unless current_user
+      .col-md-12
+        %hr/
+        = link_to new_user_registration_path, :class => "btn btn-lg btn-success btn-signup" do            
+          Bliv medlem nu
+          %i.fa.fa-chevron-circle-right
+          %br
+          %span.small For kr. 108 per måned
+
 
 
 

@@ -23,6 +23,12 @@
           - else
             Uoplyst     
     %hr/
+    - unless @event.confirmed?
+      .alert.alert-success
+        %strong Bemærk: 
+        Dette er en foreslået aktivitet. Det er endnu ikke aktuelt.
+      %br/
+
     %h4
       Beskrivelse
     %p
