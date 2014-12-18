@@ -1,4 +1,4 @@
 class Admin::BaseController < ApplicationController
   layout "admin"
-  http_basic_authenticate_with :name => "admin", :password => "tinkuyrules"
+  http_basic_authenticate_with :name => "admin", :password => "tillidtilalt"
 end
