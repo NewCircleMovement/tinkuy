@@ -18,17 +18,19 @@ class Fruitbasket < ActiveRecord::Base
   # TODO: vi skal have en slags "time index" så frugterne altid ligger i kronologisk orden
 
   def give_fruits_to(receiver_basket, number)
+    # pick oldest fruits
     fruits = self.fruits(:order => 'created_at asc').limit(number)
+    puts "number of fruits to give: #{fruits.count}"
     receiver_basket.fruits << fruits
     receiver_basket.fruits(:order => 'created_at asc')
     
-    self.update_counter_cache(-number)
-    receiver_basket.update_counter_cache(number)
-  end
+    # update counter cache
+    self.fruits_count = self.fruits_count - number
+    receiver_basket.fruits_count = receiver_basket.fruits_count + number
 
-  def update_counter_cache(number)
-    self.fruits_count = self.fruits_count + number
+    # save baskets
     self.save!
+    receiver_basket.save!
   end
 
 end

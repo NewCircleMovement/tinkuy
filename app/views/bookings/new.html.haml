@@ -9,28 +9,55 @@
 .container
   .row
     .col-md-8
-      %p
-        Hej
-        = current_user.firstname if current_user.present?
-      %p
-        Du er ved at booke 
-        = @room.name
-      %p
-        = @timeslot.startdate
-        |
-        = @timeslot.starttime.strftime("%H:%M")
+      .well
+        - if @timeslot.current_booking.present?
+          .alert.alert-danger
+            %strong Bemærk:
+            = @timeslot.current_booking.user.firstname
+            har budt
+            %span
+              .badge= @timeslot.score
+            frugter for denne tid.
+        - else
+          .alert.alert-info
+            Der er i øjeblikket ingen aktive bud for denne tid
+        %h3
+          = "#{@room.name}:"
+          Nyt bud
+        %p
+          Hej
+          = current_user.firstname if current_user.present?
+        %p
+          Du er ved at byde ind på tiden
+          %strong
+            = @timeslot.starttime.strftime("%H:%M -")
+            = (@timeslot.starttime + 2.hours).strftime("%H:%M")
+          den
+          %strong= @timeslot.startdate.strftime('%d. %b, %Y')
+          %hr/
+        .row
+          .col-md-4
+            = render 'form'
+    
+    .col-md-4
+      .well
+        %h4 Book med sikkerhed
+        %p
+          - if @timeslot.current_booking.present? or @timeslot.startdate > Date.today.end_of_week
+            Du kan sikre dig denne tid ved at byde
+            .badge 50
+            frugter
+          
+          - elsif @timeslot.startdate <= Date.today.end_of_week
+            Du kan sikre dig denne tid ved at byde
+            .badge= @timeslot.minimum
+            frugter
+      .well
+        %h4 Byd op
+        %p
+          Du kan også sætte flere frugter på. Hvis dit bud stadig er højst
+          %strong
+            = @timeslot.startdate.last_week.end_of_week.strftime('%d. %b, %Y')
+            klokken 24.00
 
-      = simple_form_for [@room, @timeslot, @booking] do |f|
-        - if @booking.errors.any?
-          #error_explanation
-            %h2
-              = pluralize(@booking.errors.count, "error")
-              prohibited this event from being saved:
-            %ul
-              - @booking.errors.full_messages.each do |msg|
-                %li= msg
-        
-        = f.input :lemons, :label => "Frugter", :collection => (5..100).step(5)
-        - if current_user.present?
-          = f.hidden_field :user_id, :value => current_user.id
-        = f.submit "Book", :class => "btn btn-primary"
+    

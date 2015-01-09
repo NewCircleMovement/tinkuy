@@ -19,27 +19,39 @@ class Timeslot < ActiveRecord::Base
 
 
   def owner
-    return current_booking.user.firstname
+    if current_booking
+      return current_booking.user.firstname
+    else
+      return "galt"
+    end
   end
 
   def score
-    return current_booking.fruitbasket.fruits_count
+    if self.current_booking.present?
+      return self.current_booking.fruitbasket.fruits_count
+    else
+      return 0
+    end
+  end
+
+  def minimum
+    return self.score + 5
   end
 
   def current_booking
-    score = 0
-    for booking in self.bookings
-      if booking.fruitbasket.fruits_count > score
-        result = booking
-        score = booking.fruitbasket.fruits_count
+    fruits = 0
+    self.bookings.each do |booking|
+      if booking.fruitbasket.present?
+        if booking.fruitbasket.fruits_count > fruits
+          @result = booking
+          fruits = booking.fruitbasket.fruits_count
+        end
       end
     end
-    return result
+    return @result
   end
 
-  def book_and_save
-    booking = current_booking
-
+  def book_and_save(booking)
     bids = self.bookings.where.not(id: booking.id)
     for bid in bids
       puts "#{bid.user.firstname} får #{bid.fruitbasket.fruits_count} frugter tilbage"

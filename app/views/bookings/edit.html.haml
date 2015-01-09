@@ -1,0 +1,23 @@
+.jumbotron.page
+  .container
+    .row
+      .col-md-12
+        %h1.page
+          Book
+          = @room.name
+
+.container
+  .row
+    .col-md-8
+      %p
+        Hej
+        = current_user.firstname if current_user.present?
+      %p
+        Vil du ændre din booking af
+        = @room.name
+      %p
+        = @timeslot.startdate
+        |
+        = @timeslot.starttime.strftime("%H:%M")
+
+      = render 'form'
