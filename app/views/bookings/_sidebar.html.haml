@@ -1,0 +1,20 @@
+.well
+  %h4 Book med sikkerhed
+  %p
+    - if @timeslot.current_booking.present? or @timeslot.startdate > Date.today.end_of_week
+      Du kan sikre dig denne tid ved at byde
+      .badge 50
+      frugter
+    
+    - elsif @timeslot.startdate <= Date.today.end_of_week
+      Du kan sikre dig denne tid ved at byde
+      .badge= @timeslot.minimum
+      frugter
+.well
+  %h4 Byd op
+  %p
+    Du kan også sætte flere frugter på. Du får tiden hvis dit bud er højst
+    %strong
+      = @timeslot.startdate.last_week.end_of_week.strftime('%d. %b, %Y')
+      klokken 24.00
+

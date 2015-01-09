@@ -9,15 +9,39 @@
 .container
   .row
     .col-md-8
-      %p
-        Hej
-        = current_user.firstname if current_user.present?
-      %p
-        Vil du ændre din booking af
-        = @room.name
-      %p
-        = @timeslot.startdate
-        |
-        = @timeslot.starttime.strftime("%H:%M")
-
-      = render 'form'
+      .well
+        - if @timeslot.current_booking.present?
+          .alert.alert-danger
+            - if @timeslot.current_booking.user == current_user
+              %strong Du
+            - else
+              Du har budt
+              .badge= @booking.fruitbasket.fruits_count
+              frugter, men
+              %strong= @timeslot.current_booking.user.firstname
+            står til at få tiden med
+            %span
+              .badge= @timeslot.score
+            frugter
+        %h3
+          Ændring af bud 
+        %p
+          Hej
+          = current_user.firstname if current_user.present?
+        %p
+          Vil du ændre dit bud for
+          %br/
+          %span.label.label-default= "#{@room.name}"
+          %strong
+            = @timeslot.starttime.strftime("%H:%M -")
+            = (@timeslot.starttime + 2.hours).strftime("%H:%M")
+          den
+          %strong= @timeslot.startdate.strftime('%d. %b, %Y')
+          %hr/
+        .row
+          .col-md-4
+            = render 'form'
+    
+    .col-md-4
+      = render 'sidebar'
+      

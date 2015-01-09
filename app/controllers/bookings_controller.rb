@@ -52,4 +52,28 @@ class BookingsController < ApplicationController
     end
   end
 
+
+  def update
+    @room = Resource.find(params[:resource_id])
+    @timeslot = Timeslot.find(params[:timeslot_id])
+    @booking = Booking.find(params[:id])
+
+    if @booking.update(params[:booking].permit(:user_id, :timeslot_id, :lemons))
+
+      # user gives additional fruites to booking
+      @increase = @booking.lemons - @booking.fruitbasket.fruits_count
+      current_user.fruitbasket.give_fruits_to( @booking.fruitbasket, @increase)
+
+      # book if fruits >= 50
+      if @booking.lemons >= 50
+        @timeslot.book_and_save(@booking)
+        redirect_to resources_path(:b_dato => session[:b_dato]), :notice => "Tillykke! Rummet er dit"
+      else
+        redirect_to resources_path(:b_dato => session[:b_dato]), :notice => "Du har nu budt ind med #{@booking.lemons} frugter"
+      end
+    else
+      render action: 'edit'
+    end
+  end  
+
 end
