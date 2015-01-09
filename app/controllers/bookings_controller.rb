@@ -4,6 +4,8 @@ class BookingsController < ApplicationController
     @room = Resource.find(params[:resource_id])
     @timeslot = Timeslot.find(params[:timeslot_id])
     @booking = @timeslot.bookings.build
+
+    ## TODO: check if user already has made booking... and if so... edit that booking instead
   end
 
   def create
@@ -20,12 +22,12 @@ class BookingsController < ApplicationController
         # booking must first have fruits
         current_user.fruitbasket.give_fruits_to( booking_fruitbasket, @booking.lemons )
 
-        # book if booking is in current week - or fruits more than 50
+        # book if booking is in current week or fruits more than 50
         if (timeslot.startdate.cweek == Date.today.cweek) or (@booking.lemons >= 50)
           timeslot.book_and_save
-          redirect_to resources_path, :notice => "Tillykke! Rummet er dit"
+          redirect_to resources_path(:b_dato => session[:b_dato]), :notice => "Tillykke! Rummet er dit"
         else
-          redirect_to resources_path, :notice => "Du har budt ind med #{@booking.lemons} frugter"
+          redirect_to resources_path(:b_dato => session[:b_dato]), :notice => "Du har budt ind med #{@booking.lemons} frugter"
         end
       else
         render action: 'new'

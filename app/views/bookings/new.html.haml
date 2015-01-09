@@ -30,7 +30,6 @@
               - @booking.errors.full_messages.each do |msg|
                 %li= msg
         
-
         = f.input :lemons, :label => "Frugter", :collection => (5..100).step(5)
         - if current_user.present?
           = f.hidden_field :user_id, :value => current_user.id
