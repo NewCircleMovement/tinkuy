@@ -109,10 +109,8 @@ class EventsController < ApplicationController
   def get_dates
     session[:dato] = Date.today.beginning_of_week
 
-
     unless session[:is_new].present?
       session[:week_number] = Time.now.strftime("%V").to_i
-      session[:monday_date] = Date.today.beginning_of_week
     end
     session[:is_new] = "nej"
   end

@@ -9,11 +9,19 @@
   .row
     .col-md-8
       %div{:role => "tabpanel"}
-        %ul.nav.nav-tabs{:role => "tablist"}
+        %ul.nav.nav-pills{:role => "tablist"}
           - @rooms.each do |room|
             %li{:role => "presentation", :class => ( room.name == 'Behandlerrum' ? 'active' : '' ) }
               %a{"aria-controls" => "#{room.name}", "data-toggle" => "tab", :href => "##{room.name}", :role => "tab"} 
                 = room.name 
+          .pull-right
+            %strong= "#{session[:b_dato].beginning_of_week.strftime('%d. %b')} - #{session[:b_dato].end_of_week.strftime('%d. %b')} (Uge #{session[:b_dato].cweek})"
+            = link_to resources_path(:b_dato => "#{session[:prev]}"), :class => "btn btn-default" do
+              %i.fa.fa-angle-left
+              = "Uge #{session[:prev].cweek}"
+            = link_to resources_path(:b_dato => "#{session[:next]}"), :class => "btn btn-default" do
+              = "Uge #{session[:next].cweek}"
+              %i.fa.fa-angle-right
 
         .tab-content
           - @rooms.each do |room|
@@ -23,7 +31,7 @@
                   .col-md-3
                     %strong.weekday= @weekdays[weekday]
                     - room.timeslots.order(starttime: :asc).each do |timeslot|
-                      - if timeslot.startdate.cweek == @week
+                      - if timeslot.startdate.cweek == @show_week
                         - if timeslot.startdate.wday == weekday
                           - if timeslot.booked == true
                             .well.well-sm.well-timeslot.well-booked
@@ -41,7 +49,7 @@
                                 %p
                                   %strong.pull-left= timeslot.starttime.strftime("%H:%M")
                                   - if timeslot.bookings.present?
-                                    %small.pull-right Book
+                                    %small.pull-right Byd
                                 .clearfix
 
                                 - unless timeslot.bookings.present?

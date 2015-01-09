@@ -16,8 +16,11 @@ class BookingsController < ApplicationController
 
     if @booking.lemons <= current_user.fruitbasket.fruits_count
       if @booking.save
+
+        # booking must first have fruits
         current_user.fruitbasket.give_fruits_to( booking_fruitbasket, @booking.lemons )
 
+        # book if booking is in current week - or fruits more than 50
         if (timeslot.startdate.cweek == Date.today.cweek) or (@booking.lemons >= 50)
           timeslot.book_and_save
           redirect_to resources_path, :notice => "Tillykke! Rummet er dit"
