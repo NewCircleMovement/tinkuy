@@ -2,11 +2,12 @@
 #
 # Table name: fruits
 #
-#  id         :integer          not null, primary key
-#  user_id    :integer
-#  created_at :datetime
-#  updated_at :datetime
-#  event_id   :integer
+#  id             :integer          not null, primary key
+#  user_id        :integer
+#  created_at     :datetime
+#  updated_at     :datetime
+#  event_id       :integer
+#  fruitbasket_id :integer
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

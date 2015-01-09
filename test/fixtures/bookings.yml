@@ -1,0 +1,22 @@
+# == Schema Information
+#
+# Table name: bookings
+#
+#  id          :integer          not null, primary key
+#  user_id     :integer
+#  timeslot_id :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  fruitbasket_id: 1
+  timeslot_id: 1
+
+two:
+  user_id: 1
+  fruitbasket_id: 1
+  timeslot_id: 1

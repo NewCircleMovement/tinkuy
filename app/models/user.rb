@@ -17,9 +17,8 @@
 #  updated_at             :datetime
 #  firstname              :string(255)
 #  surname                :string(255)
-#  active                 :boolean          default(FALSE)
-#  pending                :boolean          default(TRUE)
 #  confirm_payment        :boolean          default(FALSE)
+#  status                 :string(50)       default("pending")
 #
 
 class User < ActiveRecord::Base
@@ -32,13 +31,16 @@ class User < ActiveRecord::Base
   validates :firstname, :surname, :presence => true
     
   has_many :events
+  has_many :bookings
   has_many :fruits
+  has_one :fruitbasket, as: :owner
 
-  after_create :produce_fruits
+  after_create :create_fruitbasket
 
-  def produce_fruits
+  def create_fruitbasket
+    fruitbasket = Fruitbasket.create(:owner_id => self.id, :owner_type => 'User')
     100.times do
-      Fruit.create(:user_id => self.id)
+      Fruit.create(:user_id => self.id, :fruitbasket_id => fruitbasket.id)
     end
   end
 

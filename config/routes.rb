@@ -4,10 +4,18 @@ Tinkuy::Application.routes.draw do
     get '/' => 'events#index'
     resources :users
     resources :events
+    resources :resources
   end
   
   devise_for :users, :controllers => {:registrations => "registrations"}
   resources :users
+  
+  resources :resources do
+    # resources :bookings
+    resources :timeslots do
+      resources :bookings
+    end
+  end
 
   resources :events do
     member { 

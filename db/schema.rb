@@ -11,11 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141111123841) do
+ActiveRecord::Schema.define(version: 20150109090423) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "pg_stat_statements"
+
+  create_table "bookings", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "timeslot_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "events", force: true do |t|
     t.string   "name"
@@ -33,11 +40,28 @@ ActiveRecord::Schema.define(version: 20141111123841) do
     t.integer  "fruits_count"
   end
 
+  create_table "fruitbaskets", force: true do |t|
+    t.integer  "owner_id"
+    t.string   "owner_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "fruits_count", default: 0
+  end
+
   create_table "fruits", force: true do |t|
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "event_id"
+    t.integer  "fruitbasket_id"
+  end
+
+  create_table "resources", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "duration"
   end
 
   create_table "sessions", force: true do |t|
@@ -49,6 +73,16 @@ ActiveRecord::Schema.define(version: 20141111123841) do
 
   add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", unique: true, using: :btree
   add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
+
+  create_table "timeslots", force: true do |t|
+    t.integer  "resource_id"
+    t.date     "startdate"
+    t.time     "starttime"
+    t.integer  "duration"
+    t.boolean  "booked",      default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                             default: "",        null: false

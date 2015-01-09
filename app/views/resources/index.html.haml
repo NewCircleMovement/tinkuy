@@ -1,0 +1,70 @@
+.jumbotron.page
+  .container
+    .row
+      .col-md-12
+        %h1.page
+          Book rum
+
+.container
+  .row
+    .col-md-8
+      %div{:role => "tabpanel"}
+        %ul.nav.nav-tabs{:role => "tablist"}
+          - @rooms.each do |room|
+            %li{:role => "presentation", :class => ( room.name == 'Behandlerrum' ? 'active' : '' ) }
+              %a{"aria-controls" => "#{room.name}", "data-toggle" => "tab", :href => "##{room.name}", :role => "tab"} 
+                = room.name 
+
+        .tab-content
+          - @rooms.each do |room|
+            %div{:id => "#{room.name}", :class => "tab-pane #{room.name == 'Behandlerrum' ? 'active' : ''}", :role => "tabpanel"}
+              .row
+                - @weekdays.keys.each do |weekday|
+                  .col-md-3
+                    %strong.weekday= @weekdays[weekday]
+                    - room.timeslots.order(starttime: :asc).each do |timeslot|
+                      - if timeslot.startdate.cweek == @week
+                        - if timeslot.startdate.wday == weekday
+                          - if timeslot.booked == true
+                            .well.well-sm.well-timeslot.well-booked
+                              %p
+                                %strong.pull-left= timeslot.starttime.strftime("%H:%M")
+                              .clearfix
+                              %p
+                                %small
+                                  .pull-left= timeslot.owner
+                                  .pull-right.badge= timeslot.score
+                              .clearfix
+                          - else
+                            = link_to new_resource_timeslot_booking_path(room, timeslot) do
+                              .well.well-sm.well-timeslot{ :class => ( timeslot.bookings.count > 0 ? 'well-active' : '' ) }
+                                %p
+                                  %strong.pull-left= timeslot.starttime.strftime("%H:%M")
+                                  - if timeslot.bookings.present?
+                                    %small.pull-right Book
+                                .clearfix
+
+                                - unless timeslot.bookings.present?
+                                  %p
+                                    %small.pull-left Available
+                                  .clearfix
+                                - if timeslot.bookings.present?
+                                  %small
+                                    .pull-left= timeslot.owner
+                                    .pull-right.badge= timeslot.score
+                                  .clearfix
+                              
+
+                              
+    .col-md-4
+      %h4 Hvordan booker du et rum?
+      %p Du kan bruge dine frugter til at booke et rum
+      .well.well-sm.well-timeslot.well-explain
+        %p Ledigt
+      .well.well-sm.well-timeslot.well-active.well-explain
+        %p 
+          Lagt billet ind med
+          %span.badge x
+          fruger. Du kan byde over
+      .well.well-sm.well-timeslot.well-booked.well-explain
+        %p Taget

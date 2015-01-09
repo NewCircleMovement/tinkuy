@@ -1,4 +1,41 @@
 namespace :tinkuy do
+
+  desc "Create timeslots"
+  task :timeslots => :environment do
+    Time.zone = 'Copenhagen'
+
+    Resource.all.each do |resource|
+      begin_date = Date.today
+      begin_time = "8:00:00".to_time
+      end_time = "22:00:00".to_time
+
+      current_date = begin_date
+      7.times do |count|
+        puts current_date
+        current_time = begin_time
+        while current_time < end_time do
+          t = Timeslot.find_or_create_by_resource_id_and_startdate_and_starttime(resource.id, current_date, current_time)
+          t.duration = resource.duration
+          unless t.booked == true
+            t.booked = false
+          end
+          t.save!
+          current_time = current_time + resource.duration.hours
+        end
+        current_date = current_date + 1.days
+      end
+
+      if resource.name == 'Arbejdsrum'
+        resource.timeslots.each do |t|
+          if [1,2].include? t.startdate.wday
+            t.destroy
+          end
+        end
+      end
+
+    end
+  end
+
   desc "Erase and fill database" 
   task :populate => :environment do
     Time.zone = 'Copenhagen'

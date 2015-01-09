@@ -4,7 +4,7 @@
 #
 #  id           :integer          not null, primary key
 #  name         :string(255)
-#  description  :string(255)
+#  description  :text
 #  starttime    :time
 #  week_number  :integer
 #  created_at   :datetime
@@ -21,6 +21,7 @@
 class Event < ActiveRecord::Base
   belongs_to :user
   has_many :fruits
+  has_one :fruitbasket, as: :owner
 
   after_create :fruit_donation
 

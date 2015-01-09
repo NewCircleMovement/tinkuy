@@ -17,9 +17,8 @@
 #  updated_at             :datetime
 #  firstname              :string(255)
 #  surname                :string(255)
-#  active                 :boolean          default(FALSE)
-#  pending                :boolean          default(TRUE)
 #  confirm_payment        :boolean          default(FALSE)
+#  status                 :string(50)       default("pending")
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

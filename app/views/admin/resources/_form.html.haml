@@ -1,0 +1,10 @@
+= simple_form_for [:admin, @resource], :html => {:role => 'form' } do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :description
+    = f.input :duration
+
+  .form-actions
+    = f.button :submit
