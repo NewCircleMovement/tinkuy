@@ -76,4 +76,18 @@ class BookingsController < ApplicationController
     end
   end  
 
+
+  def destroy
+    @booking = Booking.find(params[:id])
+    @timeslot = @booking.timeslot
+
+    @fruits = @booking.fruitbasket.fruits_count
+    @booking.fruitbasket.give_fruits_to(current_user.fruitbasket, @fruits)
+    
+    @booking.destroy
+    @timeslot.booked = false
+    @timeslot.save!
+    redirect_to resources_path(:b_dato => session[:b_dato]), :notice => "Booking slettet. Du har fået #{@fruits} frugter tilbage"
+  end
+
 end

@@ -37,10 +37,13 @@
                             .well.well-sm.well-timeslot.well-booked
                               %p
                                 %strong.pull-left= timeslot.starttime.strftime("%H:%M")
+                                - if timeslot.owner == current_user
+                                  %small.pull-right 
+                                    = link_to "Slet", resource_timeslot_booking_path(room, timeslot, timeslot.current_booking), :confirm => "Vil du slette dit bud?", :method => :delete
                               .clearfix
                               %p
                                 %small
-                                  .pull-left= timeslot.owner
+                                  .pull-left= timeslot.owner.firstname
                                   .pull-right.badge= timeslot.score
                               .clearfix
                           - else
@@ -58,7 +61,7 @@
                                   .clearfix
                                 - if timeslot.bookings.present?
                                   %small
-                                    .pull-left= timeslot.owner
+                                    .pull-left= timeslot.owner.firstname
                                     .pull-right.badge= timeslot.score
                                   .clearfix
                               

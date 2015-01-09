@@ -41,6 +41,7 @@
         .row
           .col-md-4
             = render 'form'
+            = link_to "Slet", resource_timeslot_booking_path(@room, @timeslot, @booking), :confirm => "Vil du slette dit bud?", :class => "btn btn-xs btn-danger", :method => :delete
     
     .col-md-4
       = render 'sidebar'

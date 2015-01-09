@@ -20,7 +20,7 @@ class Timeslot < ActiveRecord::Base
 
   def owner
     if current_booking
-      return current_booking.user.firstname
+      return current_booking.user
     else
       return "galt"
     end
