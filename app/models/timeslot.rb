@@ -7,7 +7,7 @@
 #  startdate   :date
 #  starttime   :time
 #  duration    :integer
-#  booked      :boolean
+#  booked      :boolean          default(FALSE)
 #  created_at  :datetime
 #  updated_at  :datetime
 #
@@ -63,5 +63,11 @@ class Timeslot < ActiveRecord::Base
     self.booked = true
     self.save!
   end
+
+  def schedule_book_and_save
+    @booking = self.current_booking
+    self.book_and_save(@booking)
+  end
+
   
 end

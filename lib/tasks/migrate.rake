@@ -6,6 +6,14 @@ namespace :migrate do
     end
   end
   
+  task :give_me_fruit => :environment do
+    u = User.find(20)
+    100.times do |t|
+      Fruit.create(:user_id => u.id, :fruitbasket_id => u.fruitbasket.id)      
+    end
+  end
+
+
 
   task :distribute_fruits => :environment do
 
