@@ -7,17 +7,27 @@
         %p.subtitle
           København
       .col-md-6
-        = link_to new_user_registration_path, :class => 'bliv_medlem_box' do
-          %p.first
-            Kom og besøg os i Skyttegade 3, 
-            %br/ 
-            2200 Kbh N. 
-          %p.last
-            %strong Klik her 
-            for at blive medlem            
-            %i.fa.fa-chevron-circle-right.fa-lg
-            .clearfix
-            %span For kr. 108 per måned
+        - if current_user
+          .well.lead
+            Velkommen
+            %span
+              = succeed "!" do
+                %strong= current_user.firstname
+              %em
+                Se alle 
+                = link_to "aktiviteter her", events_path
+        - else
+          = link_to new_user_registration_path, :class => 'bliv_medlem_box' do
+            %p.first
+              Kom og besøg os i Skyttegade 3, 
+              %br/ 
+              2200 Kbh N. 
+            %p.last
+              %strong Klik her 
+              for at blive medlem            
+              %i.fa.fa-chevron-circle-right.fa-lg
+              .clearfix
+              %span For kr. 108 per måned
 
 
 .container
