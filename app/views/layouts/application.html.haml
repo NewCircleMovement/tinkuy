@@ -60,7 +60,8 @@
               %li
                 = link_to "" do
                   %i.fa.fa-lemon-o
-                  = current_user.fruitbasket.fruits_count
+                  - if current_user.fruitbasket.present?
+                    = current_user.fruitbasket.fruits_count
               %li.dropdown
                 %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
                   Min profil
