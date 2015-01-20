@@ -12,4 +12,7 @@ class PagesController < ApplicationController
   def behandler
   end
 
+  def bliv_medlem
+  end
+
 end

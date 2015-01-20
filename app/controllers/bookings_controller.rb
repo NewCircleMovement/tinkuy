@@ -1,6 +1,5 @@
 class BookingsController < ApplicationController
 
-
   def new
     @room = Resource.find(params[:resource_id])
     @timeslot = Timeslot.find(params[:timeslot_id])

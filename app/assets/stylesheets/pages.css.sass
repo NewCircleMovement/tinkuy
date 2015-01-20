@@ -1,0 +1,39 @@
+// Place all the styles related to the pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+h1.medlem
+  margin: 0 0 20px 0
+
+a.bliv_medlem_box
+  background: $green
+  padding: 10px 20px
+  display: block
+  text-decoration: none 
+  color: white
+  p.first
+    color: darken(white, 10)
+    font-size: 25px
+  p.last
+    font-size: 30px
+    margin-bottom: 0  
+  box-shadow: 0 0 10px 0 darken(#A2838B, 20)
+  @include border-top-radius(15px)
+  @include border-bottom-radius(15px)
+  span
+    padding-bottom: 12px
+    margin: 0
+    font-size: 1.1em
+    color: darken(white, 10)
+  &:hover
+    box-shadow: 0 0 20px 0 black
+    background: darken($green, 10)
+
+.medlem-badge
+  margin-bottom: 30px
+  padding: 5px 15px
+  background: white
+  border: 1px solid darken(white, 10)
+  @include border-top-radius(3px)
+  @include border-bottom-radius(3px)
+  box-shadow: 0 0 5px 0 darken(white, 10)
