@@ -38,9 +38,9 @@ class BookingsController < ApplicationController
         # book if booking is in current week or if fruits >= 50
         if (@timeslot.startdate.cweek == Date.today.cweek) or (@booking.lemons >= 50)
           @timeslot.book_and_save(@booking)
-          redirect_to resources_path(:b_dato => session[:b_dato]), :notice => "Tillykke! Rummet er dit"
+          redirect_to resource_path(@room, :b_dato => session[:b_dato]), :notice => "Tillykke! Rummet er dit"
         else
-          redirect_to resources_path(:b_dato => session[:b_dato]), :notice => "Du har budt ind med #{@booking.lemons} frugter"
+          redirect_to resource_path(@room, :b_dato => session[:b_dato]), :notice => "Du har budt ind med #{@booking.lemons} frugter"
         end
       else
         booking_fruitbasket.destroy
@@ -66,9 +66,9 @@ class BookingsController < ApplicationController
       # book if fruits >= 50
       if @booking.lemons >= 50
         @timeslot.book_and_save(@booking)
-        redirect_to resources_path(:b_dato => session[:b_dato]), :notice => "Tillykke! Rummet er dit"
+        redirect_to resource_path(@room, :b_dato => session[:b_dato]), :notice => "Tillykke! Rummet er dit"
       else
-        redirect_to resources_path(:b_dato => session[:b_dato]), :notice => "Du har nu budt ind med #{@booking.lemons} frugter"
+        redirect_to resource_path(@room, :b_dato => session[:b_dato]), :notice => "Du har nu budt ind med #{@booking.lemons} frugter"
       end
     else
       render action: 'edit'
@@ -77,6 +77,7 @@ class BookingsController < ApplicationController
 
 
   def destroy
+    @room = Resource.find(params[:resource_id])
     @booking = Booking.find(params[:id])
     @timeslot = @booking.timeslot
 
@@ -86,7 +87,7 @@ class BookingsController < ApplicationController
     @booking.destroy
     @timeslot.booked = false
     @timeslot.save!
-    redirect_to resources_path(:b_dato => session[:b_dato]), :notice => "Booking slettet. Du har fået #{@fruits} frugter tilbage"
+    redirect_to resource_path(@room, :b_dato => session[:b_dato]), :notice => "Booking slettet. Du har fået #{@fruits} frugter tilbage"
   end
 
 end
