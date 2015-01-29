@@ -24,10 +24,7 @@ class Admin::UsersController < Admin::BaseController
 
   def destroy
     @user.destroy
-    respond_to do |format|
-      format.html { redirect_to admin_users_path, notice: 'Brugeren blev slettet' }
-      format.json { head :no_content }
-    end
+    redirect_to admin_users_path, notice: 'Brugeren blev slettet' 
   end
 
   
