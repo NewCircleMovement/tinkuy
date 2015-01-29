@@ -33,12 +33,19 @@
                         %strong.pull-left= timeslot.starttime.strftime("%H:%M")
                         - if timeslot.owner == current_user
                           %small.pull-right 
-                            = link_to "Slet", resource_timeslot_booking_path(@room, timeslot, timeslot.current_booking), :confirm => "Vil du slette dit bud?", :method => :delete
+                            - if timeslot.is_recurring
+                              = link_to "Slet", recurring_booking_path(timeslot.recurring_booking, :from_time => timeslot.startdate, :b_dato => timeslot.startdate.beginning_of_week),:confirm => "Vil du slette din faste booking fra #{timeslot.startdate.strftime('%-d/%-m')} og frem?", :method => :delete
+                            - else  
+                              = link_to "Slet", resource_timeslot_booking_path(@room, timeslot, timeslot.current_booking), :confirm => "Vil du slette dit bud?", :method => :delete
                       .clearfix
                       %p
                         %small
-                          .pull-left= timeslot.owner.firstname
-                          .pull-right.badge= timeslot.score
+                          .pull-left= timeslot.owner_first_name
+                          .pull-right.badge
+                            - if timeslot.is_recurring
+                              %i.fa.fa-lock
+                            - else
+                              = timeslot.score
                       .clearfix
                   - else
                     = link_to new_resource_timeslot_booking_path(@room, timeslot) do
@@ -51,7 +58,7 @@
 
                         - unless timeslot.bookings.present?
                           %p
-                            %small.pull-left Frit
+                            %small.pull-left Fri
                           .clearfix
                         - if timeslot.bookings.present?
                           %small

@@ -4,7 +4,13 @@ Tinkuy::Application.routes.draw do
     get '/' => 'events#index'
     resources :users
     resources :events
-    resources :resources
+    resources :resources do
+      resources :timeslots do
+        member do
+          put :toggle_booking
+        end
+      end
+    end
   end
   
   devise_for :users, :controllers => {:registrations => "registrations"}
@@ -17,20 +23,22 @@ Tinkuy::Application.routes.draw do
     end
   end
 
+  resources :recurring_bookings
+
   resources :events do
     member { 
       post :accept_fruit
     }
   end
-  # get 'events/suggestions' => "events#suggestions"
+
   get '/suggestions' => 'events#suggestions'
   
   get '/info' => 'pages#info'
   get '/faq' => 'pages#faq'
-  get '/behandler' => 'pages#behandler'
   get '/bliv_medlem' => 'pages#bliv_medlem'
 
   root :to => "pages#bliv_medlem"
+  # root :to => "pages#index"
 
 
   

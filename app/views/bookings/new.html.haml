@@ -21,26 +21,35 @@
         - else
           .alert.alert-info
             Der er i øjeblikket ingen aktive bud for denne tid
-        %h3
-          Nyt bud
-
-        %p
-          Hej
-          = current_user.firstname if current_user.present?
-        %p
-          Du er ved at byde ind på
-          %br/
-          %span.label.label-default= "#{@room.name}"
-          %strong
-            = @timeslot.starttime.strftime("%H:%M -")
-            = (@timeslot.starttime + 2.hours).strftime("%H:%M")
-          den
-          %strong= @timeslot.startdate.strftime('%d. %b, %Y')
-
-          %hr/
         .row
-          .col-md-4
-            = render 'form'
-    
+          .col-md-6
+            %h3
+              Nyt bud
+            %p
+              Hej
+              = current_user.firstname if current_user.present?
+            %p
+              Du er ved at byde ind på
+              %br/
+              %span.label.label-default= "#{@room.name}"
+              %strong
+                = @timeslot.starttime.strftime("%H:%M -")
+                = (@timeslot.starttime + 2.hours).strftime("%H:%M")
+              den
+              %strong= @timeslot.startdate.strftime('%d. %b, %Y')
+
+              %hr/
+            .row
+              .col-md-4
+                = render 'form'
+          / .col-md-6
+          /   %h3
+          /     Ugentlig fast booking
+          /   %p
+          /     Vil du booke denne tid fast fremover hver uge?
+          /   %p
+          /     = link_to "Ja tak", recurring_bookings_path( :recurring_booking => { :resource_id => @room.id,:day => @timeslot.startdate.wday, :time => @timeslot.starttime, :user_id => current_user.id, :startdate => @timeslot.startdate }, :resource_id => @timeslot.resource_id, :b_dato => @timeslot.startdate), :method => :post, :class => 'btn btn-primary'
+          /   %p
+      
     .col-md-4
       = render 'sidebar'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150109090423) do
+ActiveRecord::Schema.define(version: 20150129173153) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,16 @@ ActiveRecord::Schema.define(version: 20150109090423) do
     t.integer  "fruitbasket_id"
   end
 
+  create_table "recurring_bookings", force: true do |t|
+    t.integer  "day"
+    t.time     "time"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.date     "startdate"
+    t.integer  "resource_id"
+  end
+
   create_table "resources", force: true do |t|
     t.string   "name"
     t.text     "description"
@@ -79,9 +89,11 @@ ActiveRecord::Schema.define(version: 20150109090423) do
     t.date     "startdate"
     t.time     "starttime"
     t.integer  "duration"
-    t.boolean  "booked",      default: false
+    t.boolean  "booked",       default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "day"
+    t.boolean  "is_recurring", default: false
   end
 
   create_table "users", force: true do |t|

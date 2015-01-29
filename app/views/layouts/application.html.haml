@@ -8,7 +8,7 @@
     = csrf_meta_tags
     %meta{:content => "Tinkuy - spirituelt fitnesscenter", :property => "og:title"}/
     %meta{:content => "Bevægelse i krop sind og ånd gennem dans, yoga, meditation, foredrag og meget mere", :property => "og:description"}/
-    %meta{:content => image_url('test.jpg'), :property => "og:image"}/
+    %meta{:content => image_url('tinkuy.jpg'), :property => "og:image"}/
 
     :javascript
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -49,8 +49,6 @@
               = link_to "Medlemmer", users_path
             %li{:class => ( controller_name == 'resources' ? 'active' : '' )}
               = link_to "Book rum", resources_path
-            %li{:class => ( controller_name == 'pages' && action_name == 'behandler' ? 'active' : '' )}
-              = link_to "Leje af behandlerrum", behandler_path
             %li{:class => ( controller_name == 'pages' && action_name == 'faq' ? 'active' : '' )}
               = link_to "Spørgsmål og svar", faq_path
             %li{:class => ( controller_name == 'pages' && action_name == 'info' ? 'active' : '' )} 

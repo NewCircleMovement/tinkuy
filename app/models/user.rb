@@ -31,9 +31,10 @@ class User < ActiveRecord::Base
   validates :firstname, :surname, :presence => true
     
   has_many :events
-  has_many :bookings
-  has_many :fruits
-  has_one :fruitbasket, as: :owner
+  has_many :bookings, :dependent => :destroy
+  has_many :fruits, :dependent => :destroy
+  has_many :recurring_bookings, :dependent => :destroy
+  has_one :fruitbasket, as: :owner, :dependent => :destroy
 
   after_create :create_fruitbasket
 

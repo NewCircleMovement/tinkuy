@@ -2,14 +2,16 @@
 #
 # Table name: timeslots
 #
-#  id          :integer          not null, primary key
-#  resource_id :integer
-#  startdate   :date
-#  starttime   :time
-#  duration    :integer
-#  booked      :boolean          default(FALSE)
-#  created_at  :datetime
-#  updated_at  :datetime
+#  id           :integer          not null, primary key
+#  resource_id  :integer
+#  startdate    :date
+#  starttime    :time
+#  duration     :integer
+#  booked       :boolean          default(FALSE)
+#  created_at   :datetime
+#  updated_at   :datetime
+#  day          :integer
+#  is_recurring :boolean          default(FALSE)
 #
 
 class Timeslot < ActiveRecord::Base
@@ -17,14 +19,29 @@ class Timeslot < ActiveRecord::Base
   belongs_to :resource
   has_many :bookings, :dependent => :destroy
 
-
   def owner
     if current_booking
-      return current_booking.user
+      user = current_booking.user
+    elsif recurring_booking
+      user = recurring_booking.user
     else
-      return "galt"
+      user = "galt"
     end
+    return user
   end
+
+
+  def owner_first_name
+    if current_booking
+      user = current_booking.user.firstname
+    elsif recurring_booking
+      user = recurring_booking.user.firstname
+    else
+      user = "Admin"
+    end
+    return user
+  end
+
 
   def score
     if self.current_booking.present?
@@ -34,12 +51,14 @@ class Timeslot < ActiveRecord::Base
     end
   end
 
+
   def minimum
     return self.score + 5
   end
 
   def current_booking
     fruits = 0
+
     self.bookings.each do |booking|
       if booking.fruitbasket.present?
         if booking.fruitbasket.fruits_count > fruits
@@ -50,6 +69,17 @@ class Timeslot < ActiveRecord::Base
     end
     return @result
   end
+
+  def recurring_booking
+    # find om der eksisterer en recurring_booking med timeslottens dag og tid
+    @result = RecurringBooking.where(:day => self.day, :time => self.starttime).first
+    if @result.present?
+      return @result
+    else
+      return nil
+    end
+  end
+
 
   def book_and_save(booking)
     bids = self.bookings.where.not(id: booking.id)
@@ -64,10 +94,23 @@ class Timeslot < ActiveRecord::Base
     self.save!
   end
 
+
   def schedule_book_and_save
     @booking = self.current_booking
     self.book_and_save(@booking)
   end
 
-  
+
+  def recurring_book_and_save( user )
+    if self.current_booking.present?
+      success = false
+    else
+      self.is_recurring = true
+      self.booked = true
+      self.save!
+      success = true
+    end
+    return success
+  end
+
 end

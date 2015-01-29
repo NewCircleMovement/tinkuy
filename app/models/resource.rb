@@ -14,5 +14,6 @@ class Resource < ActiveRecord::Base
   validates :duration, :presence => :true
 
   has_many :timeslots
+  has_many :recurring_bookings
 
 end

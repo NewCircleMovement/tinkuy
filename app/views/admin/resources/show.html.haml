@@ -1,12 +1,61 @@
 %p#notice= notice
 
-%p
-  %b Name:
+%h2
   = @resource.name
-%p
-  %b Description:
-  = @resource.description
-
 = link_to 'Edit', edit_resource_path(@resource)
 \|
 = link_to 'Back', resources_path
+
+
+.row
+  .col-md-8
+    %h4.pull-left
+      = "#{session[:b_dato].beginning_of_week.strftime('%-d. %b')} - #{session[:b_dato].end_of_week.strftime('%-d. %b')} (Uge #{session[:b_dato].cweek})"
+    .pull-right
+      = link_to admin_resource_path(@room, :b_dato => "#{session[:prev]}"), :class => "btn btn-default" do
+        %i.fa.fa-angle-left
+        = "Uge #{session[:prev].cweek}"
+      = link_to admin_resource_path(@room, :b_dato => "#{session[:next]}"), :class => "btn btn-default" do
+        = "Uge #{session[:next].cweek}"
+        %i.fa.fa-angle-right
+    .clearfix
+    %hr/
+    .row
+      - @weekdays.keys.each do |weekday|
+        .col-md-3
+          %strong.weekday= @weekdays[weekday]
+          - @room.timeslots.order(starttime: :asc).each do |timeslot|
+            - if timeslot.startdate.cweek == @show_week
+              - if timeslot.startdate.wday == weekday
+                = link_to toggle_booking_admin_resource_timeslot_path(@room, timeslot), :method => :put do
+                  - if timeslot.booked == true
+                    .well.well-sm.well-timeslot.well-booked
+                      %p
+                        %strong.pull-left= timeslot.starttime.strftime("%H:%M")
+                      .clearfix
+                      %p
+                        %small
+                          .pull-left= timeslot.owner_first_name
+                          .pull-right.badge
+                            - if timeslot.is_recurring
+                              %i.fa.fa-lock
+                            - else
+                              = timeslot.score
+                      .clearfix
+                  - else                    
+                    .well.well-sm.well-timeslot{ :class => ( timeslot.bookings.count > 0 ? 'well-active' : '' ) }
+                      %p
+                        %strong.pull-left= timeslot.starttime.strftime("%H:%M")
+                        - if timeslot.bookings.present?
+                          %small.pull-right Byd
+                      .clearfix
+
+                      - unless timeslot.bookings.present?
+                        %p
+                          %small.pull-left Fri
+                        .clearfix
+                      - if timeslot.bookings.present?
+                        %small
+                          .pull-left= timeslot.owner.firstname
+                          .pull-right.badge= timeslot.score
+                        .clearfix

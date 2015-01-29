@@ -37,12 +37,14 @@ namespace :tinkuy do
       end_time = "22:00:00".to_time
 
       current_date = begin_date
-      14.times do |count|
+      90.times do |count|
         puts current_date
         current_time = begin_time
         while current_time < end_time do
           t = Timeslot.find_or_create_by_resource_id_and_startdate_and_starttime(resource.id, current_date, current_time)
           t.duration = resource.duration
+          t.day = current_date.wday
+          t.is_recurring = false
           unless t.booked == true
             t.booked = false
           end
