@@ -35,13 +35,13 @@ class User < ActiveRecord::Base
   has_many :fruits
   has_one :fruitbasket, as: :owner
 
-  # after_create :create_fruitbasket
+  after_create :create_fruitbasket
 
-  # def create_fruitbasket
-  #   fruitbasket = Fruitbasket.create(:owner_id => self.id, :owner_type => 'User')
-  #   100.times do
-  #     Fruit.create(:user_id => self.id, :fruitbasket_id => fruitbasket.id)
-  #   end
-  # end
+  def create_fruitbasket
+    @fruitbasket = Fruitbasket.create(:owner_id => self.id, :owner_type => 'User')
+    100.times do
+      Fruit.create(:user_id => self.id, :fruitbasket_id => @fruitbasket.id)
+    end
+  end
 
 end

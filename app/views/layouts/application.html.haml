@@ -47,8 +47,8 @@
               = link_to "Aktiviteter", events_path
             %li{:class => ( controller_name == 'users' ? 'active' : '' )}
               = link_to "Medlemmer", users_path
-            / %li{:class => ( controller_name == 'resources' ? 'active' : '' )}
-            /   = link_to "Book rum", resources_path
+            %li{:class => ( controller_name == 'resources' ? 'active' : '' )}
+              = link_to "Book rum", resources_path
             %li{:class => ( controller_name == 'pages' && action_name == 'behandler' ? 'active' : '' )}
               = link_to "Leje af behandlerrum", behandler_path
             %li{:class => ( controller_name == 'pages' && action_name == 'faq' ? 'active' : '' )}

@@ -1,0 +1,75 @@
+.jumbotron.page
+  .container
+    .row
+      .col-md-12
+        %h1.page
+          Book
+          = @room.name
+
+.container
+  .row
+    .col-md-8
+      %h4.pull-left
+        = "#{session[:b_dato].beginning_of_week.strftime('%-d. %b')} - #{session[:b_dato].end_of_week.strftime('%-d. %b')} (Uge #{session[:b_dato].cweek})"
+      .pull-right
+        = link_to resource_path(@room, :b_dato => "#{session[:prev]}"), :class => "btn btn-default" do
+          %i.fa.fa-angle-left
+          = "Uge #{session[:prev].cweek}"
+        = link_to resource_path(@room, :b_dato => "#{session[:next]}"), :class => "btn btn-default" do
+          = "Uge #{session[:next].cweek}"
+          %i.fa.fa-angle-right
+      .clearfix
+      %hr/
+      .row
+        - @weekdays.keys.each do |weekday|
+          .col-md-3
+            %strong.weekday= @weekdays[weekday]
+            - @room.timeslots.order(starttime: :asc).each do |timeslot|
+              - if timeslot.startdate.cweek == @show_week
+                - if timeslot.startdate.wday == weekday
+                  - if timeslot.booked == true
+                    .well.well-sm.well-timeslot.well-booked
+                      %p
+                        %strong.pull-left= timeslot.starttime.strftime("%H:%M")
+                        - if timeslot.owner == current_user
+                          %small.pull-right 
+                            = link_to "Slet", resource_timeslot_booking_path(@room, timeslot, timeslot.current_booking), :confirm => "Vil du slette dit bud?", :method => :delete
+                      .clearfix
+                      %p
+                        %small
+                          .pull-left= timeslot.owner.firstname
+                          .pull-right.badge= timeslot.score
+                      .clearfix
+                  - else
+                    = link_to new_resource_timeslot_booking_path(@room, timeslot) do
+                      .well.well-sm.well-timeslot{ :class => ( timeslot.bookings.count > 0 ? 'well-active' : '' ) }
+                        %p
+                          %strong.pull-left= timeslot.starttime.strftime("%H:%M")
+                          - if timeslot.bookings.present?
+                            %small.pull-right Byd
+                        .clearfix
+
+                        - unless timeslot.bookings.present?
+                          %p
+                            %small.pull-left Frit
+                          .clearfix
+                        - if timeslot.bookings.present?
+                          %small
+                            .pull-left= timeslot.owner.firstname
+                            .pull-right.badge= timeslot.score
+                          .clearfix
+                              
+
+                              
+    .col-md-4
+      %h4 Hvordan booker du et rum?
+      %p Du kan bruge dine frugter til at booke et rum
+      .well.well-sm.well-timeslot.well-explain
+        %p Ledigt
+      .well.well-sm.well-timeslot.well-active.well-explain
+        %p 
+          Lagt billet ind med
+          %span.badge x
+          fruger. Du kan byde over
+      .well.well-sm.well-timeslot.well-booked.well-explain
+        %p Taget

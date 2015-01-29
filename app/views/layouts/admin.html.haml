@@ -23,6 +23,8 @@
               = link_to "Aktiviteter", admin_events_path
             %li{:class => ( controller_name == 'users' ? 'active' : '' )}
               = link_to "Medlemmer", admin_users_path
+            %li{:class => ( controller_name == 'resources' ? 'active' : '' )}
+              = link_to "Resourcer", admin_resources_path
           
     .container
       - flash.each do |name, msg|
