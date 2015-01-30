@@ -26,15 +26,23 @@ li.event
     text-decoration: none
 
 .well-event
+  @include border-bottom-radius(0px)
   margin-bottom: 0px
   color: black
   border: 1px solid darken(#E6E6E6, 10)
+  border-bottom: none
+  
 
 .well-event-admin
+  @include border-top-radius(0px)
   margin-bottom: 4px
-  background: darken(white, 20)
+  border-left: 1px solid darken(#E6E6E6, 10)
+  border-right: 1px solid darken(#E6E6E6, 10)
+  border-bottom: 1px solid darken(#E6E6E6, 10)
+  border-top: none
   margin-top: 0
   padding: 0 8px
+  background: none
 
 a
   text-decoration: none
