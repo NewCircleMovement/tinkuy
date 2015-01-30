@@ -8,16 +8,17 @@
         - @event.errors.full_messages.each do |msg|
           %li= msg
   .form-group
-    - if current_user.admin
-      .well.well-sm
-        .row
-          .col-md-12
-            .label.label-success
-              ADMIN OPTIONS
-          .col-md-6
-            = f.input :confirmed, :as => :radio_buttons, :label => "Gør aktiviteten aktuel", :include_blank => false
-          .col-md-6
-            = f.input :user_id, :label => "Admin for aktiviteten", :value => current_user.id
+    - if current_user.present?
+      - if current_user.admin
+        .well.well-sm
+          .row
+            .col-md-12
+              .label.label-success
+                ADMIN OPTIONS
+            .col-md-6
+              = f.input :confirmed, :as => :radio_buttons, :label => "Gør aktiviteten aktuel", :include_blank => false
+            .col-md-6
+              = f.input :user_id, :label => "Admin for aktiviteten", :value => current_user.id
     - if current_user.present?
       = f.hidden_field :user_id, :value => current_user.id
     = f.input :name, :label => "Navn på aktivitet"

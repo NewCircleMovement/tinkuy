@@ -11,11 +11,11 @@
         %small
           - if event.user.present?
             = event.user.firstname
-            - if event.user == current_user
+            - if current_user and event.user == current_user
               = link_to edit_event_path(event) do
                 %i.fa.fa-pencil
           - else
             Admin
-            - if current_user.admin?
+            - if current_user and current_user.admin?
               = link_to edit_event_path(event) do
                 %i.fa.fa-pencil

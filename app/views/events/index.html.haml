@@ -7,7 +7,6 @@
       %h4.pull-left
         Uge
         = session[:dato].strftime('%V - %B, %Y')
-        = current_user.admin
       .pull-right
         = link_to new_event_path, :class => "btn btn-primary" do
           Foreslå ny aktivitet
