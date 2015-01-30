@@ -2,15 +2,18 @@
   .row
     .col-md-8
       %h1
-        Edit:
         = @event.name
-        %small
-          = @event.startdate.strftime("%A den %e. %b, %Y - ")
-          = @event.starttime.strftime("klokken %H:%M")
+      .well.well-sm
+        = @event.startdate.strftime("%A den %e. %b, %Y - ")
+        = @event.starttime.strftime("klokken %H:%M")
       
       = simple_form_for [:admin, @event], :html => {:role => 'form' } do |f|
-        = f.input :confirmed, :as => :radio_buttons, :label => "Gør aktiviteten aktuel", :include_blank => false
-        = f.input :name, :label => "Navn"
+        .row
+          .col-md-6
+            = f.input :confirmed, :as => :radio_buttons, :label => "Gør aktiviteten aktuel", :include_blank => false
+          .col-md-6
+            = f.input :user_id, :label => "Bruger admin"
+        = f.input :name, :label => "Navn på aktivitet"
         = f.input :description, :label => "Beskrivelse", :input_html => { :rows => 5 }
         .row
           .col-md-6

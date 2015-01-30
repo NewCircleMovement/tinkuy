@@ -27,7 +27,7 @@ class Event < ActiveRecord::Base
 
   validates :startdate, :presence => true
   validates :starttime, :presence => true
-
+  validates :user_id, :presence => true
 
   def week_number
     startdate.beginning_of_week(start_day = :monday).strftime("%V").to_i

@@ -1,7 +1,21 @@
-%ul.list-unstyled
-  - @events.each do |event|
-    - if event.startdate.wday == week_day && event.week_number == session[:dato].cweek
-      %li.event
-        %strong= event.starttime.strftime("%H:%M")
-        %a{"data-remote" => "#{event_path(event)} #event-show-stuff", "data-target" => "#ShowEvent", "data-toggle" => "modal"}
+- @events.each do |event|
+  - if event.startdate.wday == week_day && event.week_number == session[:dato].cweek
+    %a{"data-remote" => "#{event_path(event)} #event-show-stuff", "data-target" => "#ShowEvent", "data-toggle" => "modal"}
+      .well.well-sm.well-event
+        %p
+          %strong= event.starttime.strftime("%H:%M")
+        %p
           = event.name
+    .well.well-sm.well-event-admin
+      %p
+        %small
+          - if event.user.present?
+            = event.user.firstname
+            - if event.user == current_user
+              = link_to edit_event_path(event) do
+                %i.fa.fa-pencil
+          - else
+            Admin
+            - if current_user.admin?
+              = link_to edit_event_path(event) do
+                %i.fa.fa-pencil

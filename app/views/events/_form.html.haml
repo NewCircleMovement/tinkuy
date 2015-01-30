@@ -8,6 +8,8 @@
         - @event.errors.full_messages.each do |msg|
           %li= msg
   .form-group
+    - if current_user.present?
+      = f.hidden_field :user_id, :value => current_user.id
     = f.input :name, :label => "Navn på aktivitet"
   .form-group
     .row
@@ -33,7 +35,7 @@
             Vælg dato for aktivitet
       .col-md-6
         .form-group
-          %label Tidspunkt
+          %label Tidspunkt for start
           #datetimepicker_time.input-group.date
             - if @event.starttime?
               = f.text_field :starttime, :class => 'date form_time form-control', "date-date-format" => "DD/MM/YYYY HH/MM", :value => nice_time_format(@event.starttime)

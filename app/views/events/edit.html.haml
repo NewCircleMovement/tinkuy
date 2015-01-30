@@ -1,3 +1,11 @@
-%h1 Edit event
-= render 'form'
-= link_to 'Back', events_path
+.container
+  .row
+    .col-md-8
+      %h1
+        = @event.name
+      .well.well-sm
+        = @event.startdate.strftime("%A den %e. %b, %Y - ")
+        = @event.starttime.strftime("klokken %H:%M")
+
+      = render 'form'
+      = link_to 'Back', events_path

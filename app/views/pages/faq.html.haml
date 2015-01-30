@@ -1,9 +1,15 @@
 .jumbotron.page
   .container
     .row
-      .col-md-12
+      .col-md-8
         %h1.page
           Spørgsmål og svar
+      .col-md-4
+        - unless current_user
+          - if @places_left > ZERO
+            = link_to new_user_registration_path, :class => "btn btn-success btn-signup btn-signup-small" do            
+              Bliv medlem nu
+              %i.fa.fa-chevron-circle-right
 
 .container
   .row
@@ -37,7 +43,7 @@
           %strong SAMVÆR:
           Mød nye mennesker i et trygt og hjertevarmt miljø, øg pulsen med dans og sænk den igen i vores oxytocinstimulerende café.
         %li
-          %strong FOKUS:
+          %strong NÆRVÆR:
           Vedligehold din spirituelle praksis via meditation, yoga og "open space" arrangementer. Mærk hvordan din disciplin styrkes.
       %p
         Centeret har en stor undervisningssal, behandlerrum, kontor og fælles lounge område. Medlemskab koster kr 108/md og giver fri adgang til de fleste af aktiviteterne i hverdagene mandag til torsdag og ofte rabat på weekendarrangementer.
