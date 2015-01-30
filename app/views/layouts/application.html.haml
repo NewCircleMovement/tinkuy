@@ -53,6 +53,11 @@
               = link_to "Spørgsmål og svar", faq_path
             %li{:class => ( controller_name == 'pages' && action_name == 'info' ? 'active' : '' )} 
               = link_to "Praktisk", info_path
+            - if current_user.admin
+              %li
+                %a
+                  .label.label-success
+                    ADMIN
           %ul.nav.navbar-nav.navbar-right
             - if user_signed_in?
               %li

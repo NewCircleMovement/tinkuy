@@ -85,7 +85,10 @@
             %span{"aria-hidden" => "true"} &times;
             %span.sr-only Close
           %h4#myModalLabel.modal-title
-            Forslag til ny aktivitet gemt
+            - if @new_event.confirmed
+              Ny aktivitet gemt
+            - else
+              Forslag til ny aktivitet gemt
         .modal-body
           %h4
             = @new_event.name

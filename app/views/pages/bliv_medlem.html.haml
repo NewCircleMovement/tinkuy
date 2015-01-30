@@ -120,9 +120,10 @@
         %p.lead
           Tinkuy er en oase lige midt i København. Kom og mærk stemningen i vores chill-out lounge.
     .col-md-12
-      - if @places_left > ZERO
-        = link_to new_user_registration_path, :class => "btn btn-lg btn-success btn-signup" do            
-          Bliv medlem nu
-          %i.fa.fa-chevron-circle-right
-          %br
-          %span.small For kr. 108 per måned
+      - unless current_user
+        - if @places_left > ZERO
+          = link_to new_user_registration_path, :class => "btn btn-lg btn-success btn-signup" do            
+            Bliv medlem nu
+            %i.fa.fa-chevron-circle-right
+            %br
+            %span.small For kr. 108 per måned

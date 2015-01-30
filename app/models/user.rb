@@ -31,6 +31,7 @@ class User < ActiveRecord::Base
   validates :firstname, :surname, :presence => true
     
   has_many :events
+  has_many :votes
   has_many :bookings, :dependent => :destroy
   has_many :fruits, :dependent => :destroy
   has_many :recurring_bookings, :dependent => :destroy
@@ -43,6 +44,15 @@ class User < ActiveRecord::Base
     100.times do
       Fruit.create(:user_id => self.id, :fruitbasket_id => @fruitbasket.id)
     end
+  end
+
+  def has_voted_on(event)
+    for vote in event.votes do
+      if self.id == vote.user_id
+        return true
+      end
+    end
+    return false
   end
 
 end

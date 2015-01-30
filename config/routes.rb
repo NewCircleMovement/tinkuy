@@ -27,7 +27,7 @@ Tinkuy::Application.routes.draw do
 
   resources :events do
     member { 
-      post :accept_fruit
+      post :upvote
     }
   end
 

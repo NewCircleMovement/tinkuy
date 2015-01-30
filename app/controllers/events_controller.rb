@@ -40,36 +40,23 @@ class EventsController < ApplicationController
     @event = Event.new
   end
 
-  # GET /events/1/edit
+  
   def edit
   end
 
-  # POST /events
-  # POST /events.json
+  
   def create
     @event = Event.new(event_params)
 
     if @event.save
       session[:event_id] = @event.id
-      # redirect_to events_path(:event_id => id)
       redirect_to events_path
     else
       render action: 'new'
     end
-
-    # respond_to do |format|
-    #   if @event.save
-    #     format.html { redirect_to @event, notice: 'Tak, dit forslag er nu registreret.' }
-    #     format.json { render action: 'show', status: :created, location: @event }
-    #   else
-    #     format.html { render action: 'new' }
-    #     format.json { render json: @event.errors, status: :unprocessable_entity }
-    #   end
-    # end
   end
 
-  # PATCH/PUT /events/1
-  # PATCH/PUT /events/1.json
+
   def update
     respond_to do |format|
       if @event.update(event_params)
@@ -82,8 +69,7 @@ class EventsController < ApplicationController
     end
   end
 
-  # DELETE /events/1
-  # DELETE /events/1.json
+
   def destroy
     @event.destroy
     respond_to do |format|
@@ -92,19 +78,18 @@ class EventsController < ApplicationController
     end
   end
 
-  def accept_fruit
-    value = 1
-    if current_user.fruits.where(:event_id => nil).count > 0
-      @event = Event.find(params[:id])
-      @fruit = current_user.fruits.where(:event_id => nil).first
-      @fruit.event_id = @event.id
-      @fruit.save!
-      # @Fruit.create(:event_id => @event.id, :user_id => current_user.id)
+  def upvote
+    @event = Event.find(params[:id])
+
+    unless current_user.has_voted_on(@event)
+      @vote = Vote.create(:event_id => @event.id, :user_id => current_user.id)
+      @vote.save!
       redirect_to :back, notice: "Tak for din stemme!"
     else
-      redirect_to :back, notice: "Du har ikke flere frugter i denne måned"
+      redirect_to :back, notice: "Du har allerede stemt"
     end
   end
+
 
   def get_dates
     session[:dato] = Date.today.beginning_of_week
@@ -123,7 +108,7 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:name, :description, :duration, :starttime, :startdate, :hour, :minute, :user_id)
+      params.require(:event).permit(:name, :description, :duration, :starttime, :startdate, :hour, :minute, :user_id, :confirmed)
       # params.require(:event).permit!
     end
 end

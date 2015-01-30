@@ -19,22 +19,17 @@
 #
 
 class Event < ActiveRecord::Base
-  belongs_to :user
-  has_many :fruits
-  has_one :fruitbasket, as: :owner
-
-  after_create :fruit_donation
-
   validates :startdate, :presence => true
   validates :starttime, :presence => true
   validates :user_id, :presence => true
+  
+  belongs_to :user
+
+  has_many :votes, :dependent => :destroy
+  has_one :fruitbasket, as: :owner
 
   def week_number
     startdate.beginning_of_week(start_day = :monday).strftime("%V").to_i
-  end
-
-  def fruit_donation
-    Fruit.create(:event_id => self.id)
   end
 
 end
