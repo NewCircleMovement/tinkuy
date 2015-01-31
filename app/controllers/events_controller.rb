@@ -58,14 +58,10 @@ class EventsController < ApplicationController
 
 
   def update
-    respond_to do |format|
-      if @event.update(event_params)
-        format.html { redirect_to @event, notice: 'Aktiviteten er nu blevet opdateret.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
+    if @event.update(event_params)
+      redirect_to events_path, notice: 'Aktiviteten er nu blevet opdateret.'
+    else
+      render action: 'edit'
     end
   end
 
