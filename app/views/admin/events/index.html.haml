@@ -23,7 +23,7 @@
           - @confirmed_events.each do |event|
             %tr
               %td
-                .fruit-score= event.fruits.count
+                .fruit-score= event.votes.count
               %td
                 - if event.startdate?
                   = event.startdate.strftime("%-d. %b")
@@ -54,7 +54,7 @@
         - @unconfirmed_events.each do |event|
           %tr
             %td
-              .fruit-score= event.fruits.count
+              .fruit-score= event.votes.count
             %td
               - if event.startdate?
                 = event.startdate.strftime("%-d. %b")

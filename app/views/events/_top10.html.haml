@@ -11,6 +11,9 @@
         .event-info
           %a{"data-remote" => "#{event_path(event)} #event-show-stuff", "data-target" => "#ShowEvent", "data-toggle" => "modal"}
             = event.name.capitalize
+            - if current_user and current_user.admin = true
+              = link_to edit_event_path(event) do
+                %i.fa.fa-pencil
           %p
             - if event.startdate?
               %small.grey= event.startdate.strftime("%A d %e. %b")
