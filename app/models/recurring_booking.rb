@@ -2,13 +2,14 @@
 #
 # Table name: recurring_bookings
 #
-#  id         :integer          not null, primary key
-#  day        :integer
-#  time       :time
-#  user_id    :integer
-#  created_at :datetime
-#  updated_at :datetime
-#  startdate  :date
+#  id          :integer          not null, primary key
+#  day         :integer
+#  time        :time
+#  user_id     :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#  startdate   :date
+#  resource_id :integer
 #
 
 class RecurringBooking < ActiveRecord::Base

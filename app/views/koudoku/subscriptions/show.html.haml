@@ -1,0 +1,29 @@
+/ .jumbotron.page
+/   .container
+/     .row
+/       .col-md-8
+/         %h1.page
+/           Aktiviteter
+/       .col-md-4
+/         - unless current_user
+/           - if @places_left > ZERO
+/             = link_to new_user_registration_path, :class => "btn btn-success btn-signup btn-signup-small" do            
+/               Bliv medlem nu
+/               %i.fa.fa-chevron-circle-right
+
+
+- if @subscription.plan.present?
+  %h2 You're Subscribed!
+  %p
+    You're currently subscribed to the #{@subscription.plan.name} plan.
+  = link_to 'Choose Another Plan', edit_owner_subscription_path(@owner, @subscription), class: 'btn'
+- else
+  %h2 No Subscription
+  %p You are not subscribed to a paid plan.
+  = link_to 'Choose A Plan', edit_owner_subscription_path(@owner, @subscription), class: 'btn'
+%br/
+%br/
+%h4 Payment Information
+%p
+  The card on file for your account ends with #{@subscription.last_four}.
+= link_to 'Update Payment Information', edit_owner_subscription_path(@owner, @subscription, update: 'card'), class: 'btn'

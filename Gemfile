@@ -37,6 +37,10 @@ gem 'jbuilder', '~> 1.2'
 # Authentication
 gem 'devise'
 
+# Subscriptions
+# gem 'koudoku', :git => 'https://github.com/andrewculver/koudoku.git'
+gem 'koudoku', :path => '~/sites/koudoku'
+
 # Annotate models
 gem 'annotate'
 

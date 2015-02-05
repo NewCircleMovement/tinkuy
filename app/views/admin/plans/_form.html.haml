@@ -1,0 +1,15 @@
+= simple_form_for [:admin, @plan], :html => {:role => 'form' } do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :id
+    = f.input :price, :label => "Pris for medlemsskab"
+    = f.input :interval
+    = f.input :stripe_id
+    = f.input :features
+    = f.input :display_order
+    = f.input :highlight
+
+  .form-actions
+    = f.button :submit

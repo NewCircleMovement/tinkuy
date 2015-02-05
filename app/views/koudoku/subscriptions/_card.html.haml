@@ -1,0 +1,73 @@
+- content_for :koudoku do
+  %script{:src => "https://js.stripe.com/v2/", :type => "text/javascript"}
+= form_for @subscription, url: url, html: {id: 'payment-form', class: 'form-horizontal'} do |f|
+  %fieldset
+    %legend= title
+    .control-group
+      %label.control-label Card Number
+      .controls
+        %input.card-number{:autocomplete => "off", :size => "20", :type => "text"}/
+    .control-group
+      %label.control-label Expiration (MM/YYYY)
+      .controls
+        %input.card-expiry-month.input-mini{:size => "2", :type => "text"}/
+        %span /
+        %input.card-expiry-year.input-mini{:size => "4", :type => "text"}/
+    .control-group
+      %label.control-label CVC
+      .controls
+        %input.card-cvc.input-small{:autocomplete => "off", :size => "4", :type => "text"}/
+    .alert.alert-error.payment-errors
+    = f.hidden_field :plan_id
+  .control-group
+    .controls
+      - if Koudoku.free_trial?
+        %button.btn.btn-primary.submit-button{:type => "submit"} Save Billing Information
+      - else
+        %button.btn.btn-primary.submit-button{:type => "submit"} Upgrade Your Account
+      = link_to "Cancel", owner_subscriptions_path(@owner), class: 'btn'
+:javascript
+  // All this code taken from Stripe's own examples at:
+  // https://stripe.com/docs/tutorials/forms .
+  
+  function stripeResponseHandler(status, response) {
+
+      if (response.error) {
+          // show the errors on the form
+          $(".payment-errors").text(response.error.message).show();
+          $(".submit-button").removeAttr("disabled");
+      } else {
+          var form$ = $("#payment-form");
+          // token contains id, last4, and card type
+          // insert the token into the form so it gets submitted to the server
+          form$.append("<input type='hidden' name='subscription[credit_card_token]' value='" + response['id'] + "'/>");
+          form$.append("<input type='hidden' name='subscription[last_four]' value='" + response['last4'] + "'/>");
+          form$.append("<input type='hidden' name='subscription[card_type]' value='" + response['card_type'] + "'/>");
+          // and submit
+          form$.get(0).submit();
+      }
+  }
+
+  $(document).ready(function() {
+
+    Stripe.setPublishableKey("#{Koudoku.stripe_publishable_key}");
+    
+    // By default, don't show errors.
+    $(".payment-errors").hide()
+    
+    $("#payment-form").submit(function(event) {
+
+      // disable the submit button to prevent repeated clicks
+      $('.submit-button').attr("disabled", "disabled");
+
+      Stripe.createToken({
+          number: $('.card-number').val(),
+          cvc: $('.card-cvc').val(),
+          exp_month: $('.card-expiry-month').val(),
+          exp_year: $('.card-expiry-year').val()
+      }, stripeResponseHandler);
+
+      // prevent the form from submitting with the default action
+      return false;
+    });
+  });

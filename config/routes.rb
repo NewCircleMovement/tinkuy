@@ -1,9 +1,18 @@
 Tinkuy::Application.routes.draw do
 
+  
+  # Added by Koudoku.
+  mount Koudoku::Engine, at: 'koudoku'
+  scope module: 'koudoku' do
+    get 'pricing' => 'subscriptions#index', as: 'pricing'
+  end
+
+
   namespace :admin do
     get '/' => 'events#index'
     resources :users
     resources :events
+    resources :plans
     resources :resources do
       resources :timeslots do
         member do

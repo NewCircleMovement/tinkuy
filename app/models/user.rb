@@ -19,6 +19,7 @@
 #  surname                :string(255)
 #  confirm_payment        :boolean          default(FALSE)
 #  status                 :string(50)       default("pending")
+#  admin                  :boolean          default(FALSE)
 #
 
 class User < ActiveRecord::Base
@@ -36,6 +37,7 @@ class User < ActiveRecord::Base
   has_many :fruits, :dependent => :destroy
   has_many :recurring_bookings, :dependent => :destroy
   has_one :fruitbasket, as: :owner, :dependent => :destroy
+  has_one :subscription
 
   after_create :create_fruitbasket
 

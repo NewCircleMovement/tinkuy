@@ -1,0 +1,11 @@
+
+- if params['update'] == 'card'
+  = render 'card', title: "Update Your Payment Information", url: owner_subscription_path(@owner, @subscription)
+- else
+  = render :partial => 'membership'
+  .container
+    .row
+      .col-md-12
+        = render 'pricing_table'
+        %p
+          You can also #{link_to 'cancel your subscription', cancel_owner_subscription_path(@owner, @subscription), method: :post}.
