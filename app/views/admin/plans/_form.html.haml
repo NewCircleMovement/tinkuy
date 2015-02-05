@@ -2,14 +2,20 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :name
-    = f.input :id
-    = f.input :price, :label => "Pris for medlemsskab"
-    = f.input :interval
-    = f.input :stripe_id
-    = f.input :features
-    = f.input :display_order
-    = f.input :highlight
+    .row
+      .col-md-6
+        = f.input :name
+        = f.input :price, :label => "Pris for medlemsskab"
+        = f.input :fruits_per_month
+        = f.input :max_recur_bookings
+        = f.input :features    
+        = f.input :description
+      .col-md-6
+        = f.input :id
+        = f.input :stripe_id
+        = f.input :interval
+        = f.input :display_order
+        = f.input :highlight
 
   .form-actions
     = f.button :submit

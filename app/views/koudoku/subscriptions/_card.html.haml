@@ -4,11 +4,11 @@
   %fieldset
     %legend= title
     .control-group
-      %label.control-label Card Number
+      %label.control-label Kortnummer
       .controls
         %input.card-number{:autocomplete => "off", :size => "20", :type => "text"}/
     .control-group
-      %label.control-label Expiration (MM/YYYY)
+      %label.control-label Udløbsdato (MM/YYYY)
       .controls
         %input.card-expiry-month.input-mini{:size => "2", :type => "text"}/
         %span /
@@ -21,11 +21,12 @@
     = f.hidden_field :plan_id
   .control-group
     .controls
+      %hr/
       - if Koudoku.free_trial?
-        %button.btn.btn-primary.submit-button{:type => "submit"} Save Billing Information
+        %button.btn.btn-primary.submit-button{:type => "submit"} Gem betalingskort
       - else
-        %button.btn.btn-primary.submit-button{:type => "submit"} Upgrade Your Account
-      = link_to "Cancel", owner_subscriptions_path(@owner), class: 'btn'
+        %button.btn.btn-primary.submit-button{:type => "submit"} Gem betalingskort
+      = link_to "Fortryd", owner_subscriptions_path(@owner), class: 'btn'
 :javascript
   // All this code taken from Stripe's own examples at:
   // https://stripe.com/docs/tutorials/forms .

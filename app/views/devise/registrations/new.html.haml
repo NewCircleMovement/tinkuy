@@ -3,106 +3,112 @@
     .row
       .col-md-12
         %h1.page
-          Bliv medlem
+          - if @plan.present?
+            = @plan.name
+            medlemskab
+          - else
+            Bliv medlem
         %p.white
-          Medlemsskab koster kr. 108 per måned og giver adgang til centerets aktiviteter mandag til torsdag
+          - if @plan.present?
+            - if @plan.id == 1
+              Tusind tak for din støtte. Du kan altid ændre dit medlemsskab.
+            - if @plan.id == 2 
+              Her får du gratis adgang til mange af centerets aktiviteter fra mandag til torsdag
+            - if @plan.id >= 3
+              Få gratis adgang til mange af aktiviterne, og book 
+          - else
+            Bliv medlem fra kr. 54. Få gratis adgang til mange af centerets aktiviteter fra mandag til torsdag for kr. 108.
+          
+
 .container
   .row
     .col-md-6
       %h3.header
         Dine informationer
-      = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-        = devise_error_messages!
-        .row
-          .col-md-6
-            .form-group
-              = f.input :firstname, label: 'Fornavn'
-          .col-md-6
-            .form-group
-              = f.input :surname, label: 'Efternavn'
-          .col-md-12
-            .form-group
-              = f.input :email, :label => "Email"
-          .col-md-6
-            .form-group
-              = f.input :password, autocomplete: "off", :label => "Password"
-              - if @validatable
-                %p.help-block
-                  (mindst #{@minimum_password_length} tegn)
-          .col-md-6
-            .form-group
-              = f.input :password_confirmation, autocomplete: "off", :label => "Befkræft password"
-          .col-md-12
-            .form-group
-              = f.check_box :confirm_payment
-              Jeg bekræfter hermed, at jeg har oprettet, eller snarest vil oprette, en månedlig overførsel på kr 108,- til reg:
-              %strong 9860
-              konto: 
-              %strong 8730066121
-              (Husk at skrive dit navn når du overfører)
-            .form-group
-              = f.submit "Ja, tilmeld mig", :class => "btn btn-primary"
-            Allerede medlem?
-            = render "devise/shared/links"
+      .well
+        = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+          = devise_error_messages!
+          .row
+            .col-md-6
+              .form-group
+                = f.input :firstname, label: 'Fornavn'
+            .col-md-6
+              .form-group
+                = f.input :surname, label: 'Efternavn'
+            .col-md-12
+              .form-group
+                = f.input :email, :label => "Email"
+            .col-md-6
+              .form-group
+                = f.input :password, autocomplete: "off", :label => "Password"
+                - if @validatable
+                  %p.help-block
+                    (mindst #{@minimum_password_length} tegn)
+            .col-md-6
+              .form-group
+                = f.input :password_confirmation, autocomplete: "off", :label => "Befkræft password"
+            .col-md-12
+              .form-group
+                = f.submit "Ja, tilmeld mig", :class => "btn btn-primary"
+              Allerede medlem?
+              = render "devise/shared/links"
     .col-md-6
       %h3.header
         Medlemsfordele
-    .col-md-3
-      .medlem-badge
-        %h5
-          %span.fa-stack
-            %i.fa.fa-circle.fa-stack-2x.green
-            %i.fa.fa-paw.fa-stack-1x.fa-inverse
-          Gratis "træning"
-        %p
-          Som medlem har du gratis adgang til meditation, yoga, dans, og workshops.
-        .clearfix
-          
-    .col-md-3
-      .medlem-badge
-        %h5
-          %span.fa-stack
-            %i.fa.fa-circle.fa-stack-2x.blue
-            %i.fa.fa-plug.fa-stack-1x.fa-inverse
-          Morgenmeditation
-        %p
-          Kom godt fra start! Kom til morgenmeditation fra 7 til 8 på hverdage (undtagen fredag)
-
-    .col-md-3
-      .medlem-badge
-        %h5
-          %span.fa-stack
-            %i.fa.fa-circle.fa-stack-2x.red
-            %i.fa.fa-leaf.fa-stack-1x.fa-inverse
-          Drop-in Yoga
-        %p
-          Er du træt af at lave yoga hjemme i stuen? Gør det sammen med os, og få en kop the bagefter.
-    .col-md-3
-      .medlem-badge
-        %h5
-          %span.fa-stack
-            %i.fa.fa-circle.fa-stack-2x.red
-            %i.fa.fa-heart.fa-stack-1x.fa-inverse
-          Dine egne events
-        %p
-          Har du noget på hjerte du vil dele? På hverdagsaftener er der mulighed for at slå dit eget event op.
-    .col-md-3
-      .medlem-badge
-        %h5
-          %span.fa-stack
-            %i.fa.fa-circle.fa-stack-2x.green
-            %i.fa.fa-lightbulb-o.fa-stack-1x.fa-inverse
-          Mange aktiviteter 
-        %p
-          Prøv noget nyt, og bliv inspireret. Se vores mange forskellige arrangementer under 
-          = link_to "aktiviteter", events_path
-
-    .col-md-3
-      .medlem-badge
-        %h5
-          %span.fa-stack
-            %i.fa.fa-circle.fa-stack-2x.blue
-            %i.fa.fa-coffee.fa-stack-1x.fa-inverse
-          Et pusterum
-        %p
-          Tinkuy er en oase lige midt i København. Kom og mærk stemningen i vores chill-out lounge.
+      .row
+        .col-md-6     
+          .medlem-badge
+            %h5
+              %span.fa-stack
+                %i.fa.fa-circle.fa-stack-2x.green
+                %i.fa.fa-paw.fa-stack-1x.fa-inverse
+              Gratis "træning"
+            %p
+              Som medlem har du gratis adgang til meditation, yoga, dans, og workshops.
+            .clearfix
+        .col-md-6     
+          .medlem-badge
+            %h5
+              %span.fa-stack
+                %i.fa.fa-circle.fa-stack-2x.blue
+                %i.fa.fa-plug.fa-stack-1x.fa-inverse
+              Morgenmeditation
+            %p
+              Kom godt fra start! Kom til morgenmeditation fra 7 til 8 på hverdage (undtagen fredag)
+        .col-md-6
+          .medlem-badge
+            %h5
+              %span.fa-stack
+                %i.fa.fa-circle.fa-stack-2x.red
+                %i.fa.fa-leaf.fa-stack-1x.fa-inverse
+              Drop-in Yoga
+            %p
+              Er du træt af at lave yoga hjemme i stuen? Gør det sammen med os, og få en kop the bagefter.
+        .col-md-6
+          .medlem-badge
+            %h5
+              %span.fa-stack
+                %i.fa.fa-circle.fa-stack-2x.red
+                %i.fa.fa-heart.fa-stack-1x.fa-inverse
+              Dine egne events
+            %p
+              Har du noget på hjerte du vil dele? På hverdagsaftener er der mulighed for at slå dit eget event op.
+        .col-md-6
+          .medlem-badge
+            %h5
+              %span.fa-stack
+                %i.fa.fa-circle.fa-stack-2x.green
+                %i.fa.fa-lightbulb-o.fa-stack-1x.fa-inverse
+              Mange aktiviteter 
+            %p
+              Prøv noget nyt, og bliv inspireret. Se vores mange forskellige arrangementer under 
+              = link_to "aktiviteter", events_path
+        .col-md-6
+          .medlem-badge
+            %h5
+              %span.fa-stack
+                %i.fa.fa-circle.fa-stack-2x.blue
+                %i.fa.fa-coffee.fa-stack-1x.fa-inverse
+              Et pusterum
+            %p
+              Tinkuy er en oase lige midt i København. Kom og mærk stemningen i vores chill-out lounge.

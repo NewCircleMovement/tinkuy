@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150203100251) do
+ActiveRecord::Schema.define(version: 20150205124620) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,9 @@ ActiveRecord::Schema.define(version: 20150203100251) do
     t.integer  "display_order"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "max_recur_bookings"
+    t.integer  "fruits_per_month"
+    t.text     "description"
   end
 
   create_table "recurring_bookings", force: true do |t|

@@ -1,29 +1,25 @@
-/ .jumbotron.page
-/   .container
-/     .row
-/       .col-md-8
-/         %h1.page
-/           Aktiviteter
-/       .col-md-4
-/         - unless current_user
-/           - if @places_left > ZERO
-/             = link_to new_user_registration_path, :class => "btn btn-success btn-signup btn-signup-small" do            
-/               Bliv medlem nu
-/               %i.fa.fa-chevron-circle-right
+.jumbotron.page
+  .container
+    .row
+      .col-md-8
+        %h1.page
+          Medlemsskab
 
-
-- if @subscription.plan.present?
-  %h2 You're Subscribed!
-  %p
-    You're currently subscribed to the #{@subscription.plan.name} plan.
-  = link_to 'Choose Another Plan', edit_owner_subscription_path(@owner, @subscription), class: 'btn'
-- else
-  %h2 No Subscription
-  %p You are not subscribed to a paid plan.
-  = link_to 'Choose A Plan', edit_owner_subscription_path(@owner, @subscription), class: 'btn'
-%br/
-%br/
-%h4 Payment Information
-%p
-  The card on file for your account ends with #{@subscription.last_four}.
-= link_to 'Update Payment Information', edit_owner_subscription_path(@owner, @subscription, update: 'card'), class: 'btn'
+.container
+  .row
+    .col-md-8
+      - if @subscription.plan.present?
+        %h2 Du er medlemd!
+        %p
+          Du er i øjeblikket medlem med #{@subscription.plan.name} medlemsskabet.
+        = link_to 'Ændre dit medlemsskab', edit_owner_subscription_path(@owner, @subscription), class: 'btn btn-default'
+      - else
+        %h2 Du er ikke medlem
+        %p Du er i øjeblikket ikke skrevet op som medlem af Tinkuy
+        = link_to 'Vælg et medlemsskab', edit_owner_subscription_path(@owner, @subscription), class: 'btn btn-primary'
+      %br/
+      %br/
+      %h4 Betalingskort
+      %p
+        Vi har i øjeblikket registreret et betalingskort på din konto som slutter med #{@subscription.last_four}.
+      = link_to 'Opdater betalingsinformation', edit_owner_subscription_path(@owner, @subscription, update: 'card'), class: 'btn btn-default'

@@ -1,11 +1,28 @@
-
 - if params['update'] == 'card'
-  = render 'card', title: "Update Your Payment Information", url: owner_subscription_path(@owner, @subscription)
+  .jumbotron.page
+    .container
+      .row
+        .col-md-12
+          %h1.page
+            Betalingskort
+  .container
+    .row
+      .col-md-12
+        = render 'card', title: "Update Your Payment Information", url: owner_subscription_path(@owner, @subscription)
 - else
-  = render :partial => 'membership'
+  .jumbotron.page
+    .container
+      .row
+        .col-md-12
+          %h1.page
+            Dit medlemsskab
+          %p.white
+            Vælg det medlemsskab som passer dig bedst
+
   .container
     .row
       .col-md-12
         = render 'pricing_table'
         %p
-          You can also #{link_to 'cancel your subscription', cancel_owner_subscription_path(@owner, @subscription), method: :post}.
+          Du kan også 
+          = link_to 'opsige dit medlemsskab', cancel_owner_subscription_path(@owner, @subscription), method: :post, :confirm => 'Er du sikker på at du ikke længere vil være medlem af Tinkuy?'

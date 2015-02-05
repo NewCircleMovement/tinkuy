@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
   has_many :fruits, :dependent => :destroy
   has_many :recurring_bookings, :dependent => :destroy
   has_one :fruitbasket, as: :owner, :dependent => :destroy
-  has_one :subscription
+  has_one :subscription, :dependent => :destroy
 
   after_create :create_fruitbasket
 
@@ -55,6 +55,40 @@ class User < ActiveRecord::Base
       end
     end
     return false
+  end
+
+  def can_book_recurring
+    if self.subscription.present?
+      if [3,4].include? self.subscription.plan_id
+        result = true
+      else
+        result = false
+      end
+    else
+      result = false
+    end
+    return result
+  end
+
+  def has_max_recurring_bookings
+    rec_bookings = self.recurring_bookings.length
+    
+    if rec_bookings == self.subscription.plan.max_recur_bookings
+      result = true
+    else
+      result = false
+    end
+    return result
+  end
+
+  def can_upgrade
+    max_plan = Plan.order(:price).last
+    if self.subscription.plan == max_plan
+      result = false
+    else
+      result = true
+    end
+    return result
   end
 
 end

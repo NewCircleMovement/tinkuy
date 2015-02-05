@@ -1,0 +1,22 @@
+%h3
+  Ugentlig fast booking
+
+- if current_user.can_book_recurring
+  - if current_user.has_max_recurring_bookings
+    %p
+      Du har ikke flere faste månedlige bookinger tilbage.
+    - if current_user.can_upgrade
+      %p
+        Hvis du vil have en fast månedlig booking mere kan du opgradere dit medlemsskab
+      %p 
+        = link_to 'Opgrader', pricing_path, class: 'btn btn-default btn-success'
+  - else
+    %p
+      Vil du booke denne tid fast fremover hver uge?
+    %p
+      = link_to "Ja tak", recurring_bookings_path( :recurring_booking => { :resource_id => @room.id,:day => @timeslot.startdate.wday, :time => @timeslot.starttime, :user_id => current_user.id, :startdate => @timeslot.startdate }, :resource_id => @timeslot.resource_id, :b_dato => @timeslot.startdate), :method => :post, :class => 'btn btn-success'
+- else
+  %p
+    Du kan lave en fast ugentlig booking, hvis du opgraderer dit medlemsskab
+  %p
+    = link_to 'Opgrader', pricing_path, class: 'btn btn-default btn-success'

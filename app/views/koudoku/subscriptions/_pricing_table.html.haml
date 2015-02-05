@@ -1,30 +1,40 @@
 .row
-  .koudoku-pricing-table
-    - @plans.each do |plan|
-      .col-md-3
-        %div{:class => "span3 plan #{'plan-primary' if plan.highlight?}"}
-          .thumbnail
-            .caption
-              %h3= plan.name
-              %h4= plan_price(plan)
-              .call-to-action
-                - if @subscription.nil?
-                  = link_to Koudoku.free_trial? ? 'Start Trial' : 'Sign Up', koudoku.new_subscription_path(plan: plan.id), class: "btn btn-success btn-large"
-                - elsif @subscription.persisted?
-                  - if @subscription.plan == plan
-                    = form_for @subscription, url: owner_subscription_path(@owner, @subscription) do |f|
-                      = f.submit 'Selected', class: "btn btn-large", disabled: 'disabled'
-                  - else
-                    = form_for @subscription, url: owner_subscription_path(@owner, @subscription) do |f|
-                      = f.hidden_field :plan_id, value: plan.id
-                      = f.submit @subscription.describe_difference(plan), class: "btn btn-success btn-large"
-                - else
-                  = link_to Koudoku.free_trial? ? 'Start Trial' : 'Upgrade', new_owner_subscription_path(@owner, plan: plan.id), class: "btn btn-success btn-large"
-              %ul.features
-                - if Koudoku.free_trial?
-                  %li.muted
-                    = Koudoku.free_trial_length
-                    \-day Free Trial
-                = BlueCloth.new(plan.features.gsub(/\n/, "\n\n")).to_html.gsub(/<(\/?)p>/, '<\1li>').html_safe
-  / .span3.social-proof
-  /   = render 'koudoku/subscriptions/social_proof'
+  .col-md-12
+    %ul.list-unstyled.koudoku-pricing-table
+      .row
+        - @plans.each do |plan|
+          .col-md-3
+            %li{:class => "plan #{'plan-primary' if plan.highlight?}"}
+              .well
+                .caption
+                  %h3= plan.name
+                  %h4= plan_price(plan)
+                  .call-to-action
+                    - if @subscription.nil?
+                      = link_to Koudoku.free_trial? ? 'Start prøve' : 'Bliv medlem', koudoku.new_subscription_path(plan: plan.id), class: "btn btn-success btn-large"
+                    - elsif @subscription.persisted?
+                      - if @subscription.plan == plan
+                        = form_for @subscription, url: owner_subscription_path(@owner, @subscription) do |f|
+                          = f.submit 'Din plan', class: "btn btn-lg", disabled: 'disabled'
+                      - else
+                        = form_for @subscription, url: owner_subscription_path(@owner, @subscription) do |f|
+                          = f.hidden_field :plan_id, value: plan.id
+                          = f.submit @subscription.describe_difference(plan), class: "btn btn-success btn-lg"
+                    - else
+                      = link_to Koudoku.free_trial? ? 'Start prøve' : 'Bliv medlem', new_owner_subscription_path(@owner, plan: plan.id), class: "btn btn-success btn-large"
+                  %ul.list-unstyled.features
+                    - if Koudoku.free_trial?
+                      %li.muted
+                        = Koudoku.free_trial_length
+                        \-day Free Trial
+                    = BlueCloth.new(plan.features.gsub(/\n/, "\n\n")).to_html.gsub(/<(\/?)p>/, '<\1li>').html_safe
+        .clearfix
+        - @plans.each do |plan|
+          .col-md-3
+            .alert.alert-info
+              %p
+                Med
+                %strong= plan.name.downcase
+                = plan.description  
+      / .span3.social-proof
+      /   = render 'koudoku/subscriptions/social_proof'
