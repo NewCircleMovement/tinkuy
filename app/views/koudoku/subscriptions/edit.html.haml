@@ -7,8 +7,9 @@
             Betalingskort
   .container
     .row
-      .col-md-12
-        = render 'card', title: "Update Your Payment Information", url: owner_subscription_path(@owner, @subscription)
+      .col-md-6
+        .well.well-sm
+          = render 'card', title: "Opdater din kortinformation", url: owner_subscription_path(@owner, @subscription)
 - else
   .jumbotron.page
     .container

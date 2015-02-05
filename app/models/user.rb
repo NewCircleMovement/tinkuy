@@ -28,8 +28,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates :confirm_payment, :acceptance => {:accept => true}
-  validates :firstname, :surname, :presence => true
+  validates :firstname, :surname, :email, :presence => true
     
   has_many :events
   has_many :votes

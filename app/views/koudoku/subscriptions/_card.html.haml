@@ -3,29 +3,26 @@
 = form_for @subscription, url: url, html: {id: 'payment-form', class: 'form-horizontal'} do |f|
   %fieldset
     %legend= title
-    .control-group
-      %label.control-label Kortnummer
-      .controls
-        %input.card-number{:autocomplete => "off", :size => "20", :type => "text"}/
-    .control-group
-      %label.control-label Udløbsdato (MM/YYYY)
-      .controls
-        %input.card-expiry-month.input-mini{:size => "2", :type => "text"}/
-        %span /
-        %input.card-expiry-year.input-mini{:size => "4", :type => "text"}/
-    .control-group
-      %label.control-label CVC
-      .controls
-        %input.card-cvc.input-small{:autocomplete => "off", :size => "4", :type => "text"}/
+    %label Kortnummer
+    %input.form-control.card-number{:autocomplete => "off", :size => "20", :type => "text"}/
+    %label Udløbsdato (MM / YYYY)
+    .form-inline
+      %input.form-control.card-expiry-month.input-mini{:size => "2", :type => "text"}/
+      %span /
+      %input.form-control.card-expiry-year.input-mini{:size => "4", :type => "text"}/
+    
+    %label.control-label CVC
+    .form-inline
+      %input.form-control.card-cvc.input-mini{:autocomplete => "off", :size => "2", :type => "text"}/
     .alert.alert-error.payment-errors
     = f.hidden_field :plan_id
   .control-group
     .controls
       %hr/
       - if Koudoku.free_trial?
-        %button.btn.btn-primary.submit-button{:type => "submit"} Gem betalingskort
+        %button.btn.btn-primary.submit-button{:type => "submit"} Gem
       - else
-        %button.btn.btn-primary.submit-button{:type => "submit"} Gem betalingskort
+        %button.btn.btn-primary.submit-button{:type => "submit"} Gem
       = link_to "Fortryd", owner_subscriptions_path(@owner), class: 'btn'
 :javascript
   // All this code taken from Stripe's own examples at:

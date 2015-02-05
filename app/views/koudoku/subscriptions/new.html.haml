@@ -1,1 +1,22 @@
-= render 'card', title: (Koudoku.free_trial? ? "Start prøvemedlemsskab" : "Ændre dit medlemsskab"), url: owner_subscriptions_path(@owner)
+.jumbotron.page
+  .container
+    .row
+      .col-md-12
+        %h1.page
+          Din bruger er registreret
+        %p.white
+          Venligst angiv betalingsinfo
+  
+.container
+  .row
+    .col-md-12
+      %h3.header
+        = @plan.name
+        medlemsskab
+        .lead
+          Kr. 
+          = @plan.price.to_i
+          pr. måned
+    .col-md-6
+      .well.well-sm
+        = render 'card', title: (Koudoku.free_trial? ? "Start prøvemedlemsskab" : "Betalingsinfo"), url: owner_subscriptions_path(@owner)

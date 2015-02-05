@@ -9,9 +9,11 @@
   .row
     .col-md-8
       - if @subscription.plan.present?
-        %h2 Du er medlemd!
+        %h2 Du er medlem
         %p
-          Du er i øjeblikket medlem med #{@subscription.plan.name} medlemsskabet.
+          Du er i øjeblikket medlem med 
+          %strong= @subscription.plan.name 
+          medlemsskabet.
         = link_to 'Ændre dit medlemsskab', edit_owner_subscription_path(@owner, @subscription), class: 'btn btn-default'
       - else
         %h2 Du er ikke medlem
@@ -21,5 +23,5 @@
       %br/
       %h4 Betalingskort
       %p
-        Vi har i øjeblikket registreret et betalingskort på din konto som slutter med #{@subscription.last_four}.
+        Du har registreret et betalingskort som slutter med #{@subscription.last_four}.
       = link_to 'Opdater betalingsinformation', edit_owner_subscription_path(@owner, @subscription, update: 'card'), class: 'btn btn-default'

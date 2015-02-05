@@ -2,9 +2,9 @@ Tinkuy::Application.routes.draw do
 
   
   # Added by Koudoku.
-  mount Koudoku::Engine, at: 'koudoku'
+  mount Koudoku::Engine, at: 'members'
   scope module: 'koudoku' do
-    get 'pricing' => 'subscriptions#index', as: 'pricing'
+    get 'membership' => 'subscriptions#index', as: 'membership'
   end
 
 
