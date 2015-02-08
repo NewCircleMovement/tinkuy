@@ -7,15 +7,18 @@
         = f.input :name
         = f.input :price, :label => "Pris for medlemsskab"
         = f.input :fruits_per_month
+        = f.input :max_members
         = f.input :max_recur_bookings
-        = f.input :features    
-        = f.input :description
+        = f.input :features
+        = f.input :description, :label => "Med #{f.object.name} ... (fortsæt her)"  
       .col-md-6
-        = f.input :id
-        = f.input :stripe_id
-        = f.input :interval
-        = f.input :display_order
-        = f.input :highlight
+        .well.well-sm
+          Pas på med ændringer her
+          = f.input :id
+          = f.input :stripe_id
+          = f.input :interval
+          = f.input :display_order
+          = f.input :highlight
 
   .form-actions
     = f.button :submit

@@ -34,7 +34,7 @@ da:
       updated_not_active: "Dit password er ændret."
     registrations:
       destroyed: "Farvel. Din konto er nu lukket."
-      signed_up: "Din registrering er godkendt."
+      signed_up: "Din bruger blev oprettet, venligst udfyld betalingsinfo."
       signed_up_but_inactive: "Din registrering er godkendt, men vi kunne ikke logge dig ind, da din konto endnu ikke er blevet aktiveret."
       signed_up_but_locked: "Din registrering er godkendt, men vi kunne ikke logge dig ind, da din konto er låst."
       signed_up_but_unconfirmed: "En besked med bekræftelses link er blevet sendt til din email adresse. Åbn venligst linket for at aktivere din konto."

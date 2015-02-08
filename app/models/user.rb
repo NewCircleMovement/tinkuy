@@ -90,4 +90,12 @@ class User < ActiveRecord::Base
     return result
   end
 
+  def is_bank_member
+    if ['pending', 'active'].include? self.status and self.subscription == nil
+      return true
+    else
+      return false
+    end
+  end
+
 end

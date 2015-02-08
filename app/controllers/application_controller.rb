@@ -22,6 +22,7 @@ class ApplicationController < ActionController::Base
 
   def get_places_left
     @places_left = MAX_USERS - User.where(status: ['active', 'pending']).length 
+    @bank_members = User.where(status: ['active','pending']).includes(:subscription).where( :subscriptions => { :user_id => nil } ).length
   end
 
 end

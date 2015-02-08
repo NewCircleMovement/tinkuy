@@ -5,12 +5,27 @@
     .col-md-3
       .well
         %h4= plan.name
-        %p
-          %strong= plan.price
-          Kroner
-        %p
-          = link_to 'Edit', edit_admin_plan_path(plan)
-          = link_to 'Destroy', admin_plan_path(plan), :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %hr/
+        %table.table-condensed.table-bordered
+          %tr
+            %td Pris pr. måned
+            %td= plan.price
+          %tr
+            %td Max medlemmer:
+            %td= plan.max_members
+          %tr
+            %td Frugter pr. måned
+            %td= plan.fruits_per_month
+          %tr
+            %td Max faste bookings
+            %td= plan.max_recur_bookings
+        .well.well-sm
+          Med 
+          %strong= plan.name.downcase
+          = plan.description
+
+        = link_to 'Edit', edit_admin_plan_path(plan), :class => 'btn btn-default'
+        = link_to 'Destroy', admin_plan_path(plan), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-danger'
 
   .col-md-12
     = link_to 'Ny plan', new_admin_plan_path

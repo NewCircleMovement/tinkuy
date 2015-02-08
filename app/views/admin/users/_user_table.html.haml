@@ -1,0 +1,51 @@
+.col-md-6
+  .panel.panel-default
+    .panel-heading        
+      %h2.panel-title 
+        = focus
+        medlemmer:
+        = users.length
+    %table.table-striped.table-condensed
+      %thead
+        %th Navn
+        %th Plan
+        %th Betaling
+        %th Logins
+        %th Aktion
+      %tbody
+        - users.each do |user|
+          %tr
+            %td= link_to "#{user.firstname} #{user.surname}", "mailto:#{user.email}"
+            %td
+              - if user.is_bank_member
+                108
+              - elsif user.subscription.present?
+                - if user.subscription.plan.present?
+                  = user.subscription.plan.price.to_i
+                - else
+                  No
+              - else
+                No
+            %td
+              - if user.is_bank_member
+                %i.fa.fa-bank
+              - elsif user.subscription.present?
+                - if user.subscription.plan.present?
+                  %i.fa.fa-credit-card
+                - else
+                  check
+              - else
+                Check
+            %td
+              = user.sign_in_count
+              %small.grey
+                = "- #{user.last_sign_in_at.strftime("%d/%m/%Y")}"
+            %td
+              = link_to edit_admin_user_path(user) do
+                %span.fa-stack
+                  %i.fa.fa-circle.fa-stack-2x
+                  %i.fa.fa-pencil.fa-stack-1x.fa-inverse
+              = link_to [:admin, user], method: :delete, data: { confirm: 'Vil du slette denne bruger?' } do
+                %span.fa-stack.red
+                  %i.fa.fa-circle.fa-stack-2x
+                  %i.fa.fa-trash.fa-stack-1x.fa-inverse

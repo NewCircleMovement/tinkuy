@@ -2,8 +2,12 @@
   .container
     .row
       .col-md-12
-        %h1.page
-          Bliv medlem
+        - if current_user.present? and current_user.is_bank_member
+          %h1.page
+            Medlemsskab
+        - else
+          %h1.page
+            Bliv medlem
         %p.white
           Vælg det medlemsskab som passer dig bedst
 

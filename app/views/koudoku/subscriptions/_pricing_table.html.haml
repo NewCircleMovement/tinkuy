@@ -1,5 +1,10 @@
 .row
   .col-md-12
+    - if current_user.present? and current_user.is_bank_member
+      .alert.alert-success
+        Du er i øjeblikket 108 kroners medlem via bankoverførsel. Du kan sætte en 
+        %strong ny betalingsform 
+        op her
     %ul.list-unstyled.koudoku-pricing-table
       .row
         - @plans.each do |plan|
@@ -8,10 +13,12 @@
               .well
                 .caption
                   %h3= plan.name
-                  %h4= plan_price(plan)
+                  %h4
+                    Kroner #{plan.price.to_i},- pr. måned
+                    / = plan_price(plan)
                   .call-to-action
                     - if @subscription.nil?
-                      = link_to Koudoku.free_trial? ? 'Start prøve' : 'Bliv medlem', koudoku.new_subscription_path(plan: plan.id), class: "btn btn-success btn-large"
+                      = link_to Koudoku.free_trial? ? 'Start prøve' : 'Vælg', koudoku.new_subscription_path(plan: plan.id), class: "btn btn-success btn-large"
                     - elsif @subscription.persisted?
                       - if @subscription.plan == plan
                         = form_for @subscription, url: owner_subscription_path(@owner, @subscription) do |f|
@@ -21,17 +28,28 @@
                           = f.hidden_field :plan_id, value: plan.id
                           = f.submit @subscription.describe_difference(plan), class: "btn btn-success btn-lg"
                     - else
-                      = link_to Koudoku.free_trial? ? 'Start prøve' : 'Bliv medlem', new_owner_subscription_path(@owner, plan: plan.id), class: "btn btn-success btn-large"
+                      = link_to Koudoku.free_trial? ? 'Start prøve' : 'Vælg', new_owner_subscription_path(@owner, plan: plan.id), class: "btn btn-success btn-large"
                   %ul.list-unstyled.features
                     - if Koudoku.free_trial?
                       %li.muted
                         = Koudoku.free_trial_length
                         \-day Free Trial
+                    %li
+                      - if plan.max_members.present?
+                        - unless false #current_user.is_bank_member
+                          - if plan.id == 2
+                            = plan.max_members - @bank_members - plan.subscriptions.count
+                          - else
+                            = plan.max_members - plan.subscriptions.count
+                          pladser tilbage
+                      - else
+                        Støt Tinkuy
+
                     = BlueCloth.new(plan.features.gsub(/\n/, "\n\n")).to_html.gsub(/<(\/?)p>/, '<\1li>').html_safe
         .clearfix
         - @plans.each do |plan|
           .col-md-3
-            .alert.alert-info
+            .well
               %p
                 Med
                 %strong= plan.name.downcase

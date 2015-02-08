@@ -19,11 +19,12 @@
             Dit medlemsskab
           %p.white
             Vælg det medlemsskab som passer dig bedst
-
   .container
     .row
       .col-md-12
         = render 'pricing_table'
+        %hr/
         %p
-          Du kan også 
-          = link_to 'opsige dit medlemsskab', cancel_owner_subscription_path(@owner, @subscription), method: :post, :confirm => 'Er du sikker på at du ikke længere vil være medlem af Tinkuy?'
+          Opsigelse af medlemsskab
+        %p
+          = link_to 'opsig medlemsskab', cancel_owner_subscription_path(@owner, @subscription), method: :post, :confirm => 'Er du sikker på at du ikke længere vil være medlem af Tinkuy?', :class => 'btn btn-danger'
