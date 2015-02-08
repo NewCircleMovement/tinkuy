@@ -16,8 +16,9 @@ GIT
       activerecord (>= 4.0.0, < 5)
       railties (>= 4.0.0, < 5)
 
-PATH
-  remote: ~/sites/koudoku
+GIT
+  remote: https://github.com/kbjerring/koudoku.git
+  revision: 105ef46488591fcd8968409b4e45be5a636e18c5
   specs:
     koudoku (0.0.13)
       bluecloth
@@ -80,6 +81,7 @@ GEM
       html2haml
     erubis (2.7.0)
     execjs (2.2.1)
+    ffi (1.9.6-x86-mingw32)
     font-awesome-sass (4.2.0)
       sass (~> 3.2)
     haml (4.0.5)
@@ -145,6 +147,10 @@ GEM
     rdoc (4.1.2)
       json (~> 1.4)
     rest-client (1.7.2)
+      mime-types (>= 1.16, < 3.0)
+      netrc (~> 0.7)
+    rest-client (1.7.2-x86-mingw32)
+      ffi (~> 1.9)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
     ruby_parser (3.1.3)

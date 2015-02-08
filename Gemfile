@@ -67,7 +67,7 @@ group :development do
   gem 'erb2haml'
 
   # Subscriptions (use local developemnt)
-  gem 'koudoku', :path => '~/sites/koudoku'
+  # gem 'koudoku', :path => '~/sites/koudoku'
 end
 
 # Use ActiveModel has_secure_password
