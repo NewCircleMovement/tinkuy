@@ -8,8 +8,8 @@ Koudoku.setup do |config|
     #   :stripe_publishable_key => ENV['STRIPE_PUBLISHABLE_KEY'],
     #   :stripe_secret_key => ENV['STRIPE_SECRET_KEY']
     # }
-    config.stripe_publishable_key = ENV[:STRIPE_PUBLISHABLE_KEY]
-    config.stripe_secret_key = ENV[:STRIPE_SECRET_KEY]
+    config.stripe_publishable_key = ENV['STRIPE_PUBLISHABLE_KEY']
+    config.stripe_secret_key = ENV['STRIPE_SECRET_KEY']
   else
     # get credentials from YML file
     STRIPE_CREDENTIALS = YAML.load_file(Rails.root.join("config/stripe.yml"))[Rails.env].try(:symbolize_keys)
