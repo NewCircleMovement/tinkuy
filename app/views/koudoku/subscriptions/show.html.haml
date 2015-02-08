@@ -11,10 +11,12 @@
       - if @subscription.plan.present?
         %h2 Du er medlem
         %p
-          Du er i øjeblikket medlem med 
+          Du er i øjeblikket
           %strong= @subscription.plan.name 
-          medlemsskabet.
-        = link_to 'Ændre dit medlemsskab', edit_owner_subscription_path(@owner, @subscription), class: 'btn btn-default'
+          medlem.
+        = link_to 'Ændre dit medlemsskab', edit_owner_subscription_path(@owner, @subscription), class: 'btn btn-primary'
+        = link_to 'Opsig medlemsskab', cancel_owner_subscription_path(@owner, @subscription), method: :post, :confirm => 'Er du sikker på at du ikke længere vil være medlem af Tinkuy?', :class => 'btn btn-danger'
+
       - else
         %h2 Du er ikke medlem
         %p Du er i øjeblikket ikke skrevet op som medlem af Tinkuy

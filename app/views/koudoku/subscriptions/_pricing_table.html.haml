@@ -18,17 +18,26 @@
                     / = plan_price(plan)
                   .call-to-action
                     - if @subscription.nil?
-                      = link_to Koudoku.free_trial? ? 'Start prøve' : 'Vælg', koudoku.new_subscription_path(plan: plan.id), class: "btn btn-success btn-large"
+                      = link_to Koudoku.free_trial? ? 'Start prøve' : 'Vælg XX', koudoku.new_subscription_path(plan: plan.id), class: "btn btn-success btn-large"
                     - elsif @subscription.persisted?
                       - if @subscription.plan == plan
                         = form_for @subscription, url: owner_subscription_path(@owner, @subscription) do |f|
                           = f.submit 'Din plan', class: "btn btn-lg", disabled: 'disabled'
                       - else
-                        = form_for @subscription, url: owner_subscription_path(@owner, @subscription) do |f|
-                          = f.hidden_field :plan_id, value: plan.id
-                          = f.submit @subscription.describe_difference(plan), class: "btn btn-success btn-lg"
+                        - if plan.subscriptions.present?
+                          - if plan.subscriptions.count >= plan.max_members
+                            = form_for @subscription, url: owner_subscription_path(@owner, @subscription) do |f|
+                              = f.submit 'Ingen pladser', class: "btn btn-lg", disabled: 'disabled'
+                          - else
+                            = form_for @subscription, url: owner_subscription_path(@owner, @subscription) do |f|
+                              = f.hidden_field :plan_id, value: plan.id
+                              = f.submit @subscription.describe_difference(plan), class: "btn btn-success btn-lg"
+                        - else
+                          = form_for @subscription, url: owner_subscription_path(@owner, @subscription) do |f|
+                            = f.hidden_field :plan_id, value: plan.id
+                            = f.submit @subscription.describe_difference(plan), class: "btn btn-success btn-lg"
                     - else
-                      = link_to Koudoku.free_trial? ? 'Start prøve' : 'Vælg', new_owner_subscription_path(@owner, plan: plan.id), class: "btn btn-success btn-large"
+                      = link_to Koudoku.free_trial? ? 'Start prøve' : 'Vælg XX', new_owner_subscription_path(@owner, plan: plan.id), class: "btn btn-success btn-large"
                   %ul.list-unstyled.features
                     - if Koudoku.free_trial?
                       %li.muted

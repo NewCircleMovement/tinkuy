@@ -26,5 +26,7 @@
         %hr/
         %p
           Opsigelse af medlemsskab
+          = @owner
+          = @subscription
         %p
-          = link_to 'opsig medlemsskab', cancel_owner_subscription_path(@owner, @subscription), method: :post, :confirm => 'Er du sikker på at du ikke længere vil være medlem af Tinkuy?', :class => 'btn btn-danger'
+          = link_to 'Opsig medlemsskab', cancel_owner_subscription_path(@owner, @subscription), method: :post, :confirm => 'Er du sikker på at du ikke længere vil være medlem af Tinkuy?', :class => 'btn btn-danger'

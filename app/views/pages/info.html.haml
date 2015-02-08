@@ -7,7 +7,7 @@
       .col-md-4
         - unless current_user
           - if @places_left > ZERO
-            = link_to new_user_registration_path, :class => "btn btn-success btn-signup btn-signup-small" do            
+            = link_to membership_path, :class => "btn btn-success btn-signup btn-signup-small" do            
               Bliv medlem nu
               %i.fa.fa-chevron-circle-right
 

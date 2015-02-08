@@ -7,7 +7,7 @@
       .col-md-4
         - unless current_user
           - if @places_left > ZERO
-            = link_to new_user_registration_path, :class => "btn btn-success btn-signup btn-signup-small" do            
+            = link_to membership_path, :class => "btn btn-success btn-signup btn-signup-small" do            
               Bliv medlem nu
               %i.fa.fa-chevron-circle-right
 
@@ -49,7 +49,7 @@
         Centeret har en stor undervisningssal, behandlerrum, kontor og fælles lounge område. Medlemskab koster kr 108/md og giver fri adgang til de fleste af aktiviteterne i hverdagene mandag til torsdag og ofte rabat på weekendarrangementer.
       %p
         Vi har plads til et begrænset antal medlemmer - 
-        = link_to "bliv medlem her", new_user_registration_path
+        = link_to "bliv medlem her", membership_path
       = render :partial => 'top'
       
       
@@ -61,7 +61,7 @@
       %h3#medlem Hvordan bliver jeg medlem?
       %p
         Du kan registere dit medlemskab ved at 
-        = link_to "klikke her", new_user_registration_path
+        = link_to "klikke her", membership_path
       = render :partial => 'top'
       
       %h3#alle Kan alle blive medlem? 

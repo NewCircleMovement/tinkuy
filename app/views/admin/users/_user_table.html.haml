@@ -10,6 +10,7 @@
         %th Navn
         %th Plan
         %th Betaling
+        %th Frugt
         %th Logins
         %th Aktion
       %tbody
@@ -36,6 +37,8 @@
                   check
               - else
                 Check
+            %td
+              = user.fruitbasket.fruits_count
             %td
               = user.sign_in_count
               %small.grey

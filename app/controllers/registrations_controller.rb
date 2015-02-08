@@ -8,4 +8,12 @@ class RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  # def destroy
+  #   super
+  #   @subscription.plan_id = nil
+  #   @subscription.save
+  #   redirect_to owner_subscription_path(@owner, @subscription)
+  # end
+
+
 end

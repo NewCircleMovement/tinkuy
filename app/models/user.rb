@@ -98,4 +98,19 @@ class User < ActiveRecord::Base
     end
   end
 
+  def update_status
+    if self.subscription.present? and self.subscription.plan_id != nil
+      case self.subscription.plan_id
+      when 1
+        self.status = 'support'
+      when 2,3,4
+        self.status = 'active'
+      end
+    else
+      self.status = 'passive'
+    end
+    self.save!
+  end
+
+
 end

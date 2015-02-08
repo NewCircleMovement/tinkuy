@@ -21,8 +21,8 @@
                     %strong Tidspunkt
                     = event.starttime.strftime("- %H:%M")
             .vote
-              %span.score= event.fruits_count
-              = link_to accept_fruit_event_path(event), method: "post", :class => "btn btn-success btn" do
+              %span.score= event.votes.count
+              = link_to upvote_event_path(event), method: "post", :class => "btn btn-success" do
                 Stem op
                 %i.fa.fa-thumbs-up
             .clearfix

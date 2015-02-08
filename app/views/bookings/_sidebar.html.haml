@@ -1,12 +1,12 @@
 .well
   %h4 Book med sikkerhed
   %p
-    - if @timeslot.current_booking.present? or @timeslot.startdate > Date.today.end_of_week
+    - if @timeslot.current_booking.present? or @timeslot.startdate > Date.today + 6.days
       Du kan sikre dig denne tid ved at byde
       .badge 50
       frugter
     
-    - elsif @timeslot.startdate <= Date.today.end_of_week
+    - elsif @timeslot.startdate <= Date.today + 6.days
       Du kan sikre dig denne tid ved at byde
       .badge= @timeslot.minimum
       frugter

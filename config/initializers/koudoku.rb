@@ -17,9 +17,6 @@ Koudoku.setup do |config|
     config.stripe_secret_key = STRIPE_CREDENTIALS[:STRIPE_SECRET_KEY]
   end
 
-  # config.stripe_publishable_key = STRIPE_CREDENTIALS[:STRIPE_PUBLISHABLE_KEY]
-  # config.stripe_secret_key = STRIPE_CREDENTIALS[:STRIPE_SECRET_KEY]
-
   # config.prorate = false # Default is true, set to false to disable prorating subscriptions
   # config.free_trial_length = 30
 end

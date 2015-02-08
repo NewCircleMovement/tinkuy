@@ -30,7 +30,7 @@
                 = link_to "aktiviteter her", events_path
         - else
           - if @places_left > ZERO
-            = link_to new_user_registration_path, :class => "btn btn-lg btn-success btn-signup" do            
+            = link_to membership_path, :class => "btn btn-lg btn-success btn-signup" do            
               Bliv medlem nu
               %i.fa.fa-chevron-circle-right
               %br

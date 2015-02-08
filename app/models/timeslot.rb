@@ -113,4 +113,12 @@ class Timeslot < ActiveRecord::Base
     return success
   end
 
+  def can_be_booked
+    if self.startdate >= Date.today
+      return true
+    else
+      return false
+    end
+  end
+
 end
