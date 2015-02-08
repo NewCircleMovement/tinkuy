@@ -37,10 +37,6 @@ gem 'jbuilder', '~> 1.2'
 # Authentication
 gem 'devise'
 
-# Subscriptions
-# gem 'koudoku', :git => 'https://github.com/andrewculver/koudoku.git'
-gem 'koudoku', :path => '~/sites/koudoku'
-
 # Annotate models
 gem 'annotate'
 
@@ -58,6 +54,9 @@ end
 group :production, :staging do
   # Help serving assets in produciton on Heroku
   gem 'rails_12factor'
+
+  # Subscriptions
+  gem 'koudoku', :git => 'https://github.com/kbjerring/koudoku.git'
 end
 
 group :development do
@@ -66,6 +65,9 @@ group :development do
 
   # We love haml... use "rake haml:replace_erbs"
   gem 'erb2haml'
+
+  # Subscriptions (use local developemnt)
+  gem 'koudoku', :path => '~/sites/koudoku'
 end
 
 # Use ActiveModel has_secure_password
