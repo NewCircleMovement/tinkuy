@@ -34,8 +34,9 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
-# Authentication
+# Authentication and permissions
 gem 'devise'
+# gem 'cancancan', '~> 1.10'
 
 # Annotate models
 gem 'annotate'
@@ -68,6 +69,9 @@ group :development do
 
   # Subscriptions (use local developemnt)
   # gem 'koudoku', :path => '~/sites/koudoku'
+
+  # server
+  gem 'thin'
 end
 
 # Use ActiveModel has_secure_password

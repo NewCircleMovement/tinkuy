@@ -1,4 +1,5 @@
 class BookingsController < ApplicationController
+  before_filter :get_permission, only: [:new, :edit, :update, :destroy]
 
   def new
     @room = Resource.find(params[:resource_id])

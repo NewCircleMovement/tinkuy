@@ -7,9 +7,10 @@
       %ul
         - @event.errors.full_messages.each do |msg|
           %li= msg
+  
   .form-group
     - if current_user.present?
-      - if current_user.admin
+      - if current_user.admin?
         .well.well-sm
           .row
             .col-md-12
@@ -26,10 +27,11 @@
     .row
       .col-md-6
         .form-group
-          %label Dato
+          %label 
+            Dato
           #datetimepicker_date.input-group.date
             - if @event.startdate?
-              = f.text_field :startdate, :class => 'form-control', :type => "text", "data-date-format" => "DD/MM/YYYY", :value => nice_date_format(@event.startdate)
+              = f.text_field :startdate, :class => 'form-control', :type => "text", "data-date-format" => "DD/MM/YYYY", :value => nice_date_format(@event.startdate), disabled: !current_user.admin?
             - else
               = f.text_field :startdate, :class => 'form-control', "data-date-format" => "DD/MM/YYYY", :type => "text"
             %span.input-group-addon
@@ -46,10 +48,12 @@
             Vælg dato for aktivitet
       .col-md-6
         .form-group
-          %label Tidspunkt for start
+          %label 
+            Tidspunkt for start
+
           #datetimepicker_time.input-group.date
             - if @event.starttime?
-              = f.text_field :starttime, :class => 'date form_time form-control', "date-date-format" => "DD/MM/YYYY HH/MM", :value => nice_time_format(@event.starttime)
+              = f.text_field :starttime, :class => 'date form_time form-control', "date-date-format" => "DD/MM/YYYY HH/MM", :value => nice_time_format(@event.starttime), disabled: !current_user.admin?
             - else
               = f.text_field :starttime, :class => 'date form_time form-control', "date-date-format" => "DD/MM/YYYY HH/MM"
             %span.input-group-addon

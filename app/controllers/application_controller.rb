@@ -25,4 +25,17 @@ class ApplicationController < ActionController::Base
     @bank_members = User.where(status: ['active','pending']).includes(:subscription).where( :subscriptions => { :user_id => nil } ).length
   end
 
+  def get_permission
+    if current_user
+      unless current_user.can_do
+        if current_user.status == 'passive'
+          message = 'Du er ikke aktiv medlem af Tinkuy'
+        else
+          message = 'Dit medlemsskab understøtter desværre ikke denne handling'
+        end
+        redirect_to :back, notice: message
+      end
+    end
+  end
+
 end

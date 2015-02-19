@@ -56,22 +56,21 @@
               = link_to "Spørgsmål og svar", main_app.faq_path
             %li{:class => ( controller_name == 'pages' && action_name == 'info' ? 'active' : '' )} 
               = link_to "Praktisk", main_app.info_path
-            - if current_user and current_user.subscription.present?
-              %li
-                %a
-                  .label.label-info
-                    - if current_user.subscription.plan.present?
-                      = current_user.subscription.plan.name
-                      medlem
-
-            - if current_user and current_user.admin
+            - if current_user and current_user.admin?
               %li
                 %a
                   .label.label-success
                     ADMIN
-          
+
           %ul.nav.navbar-nav.navbar-right
             - if user_signed_in?
+              - if current_user.subscription.present?
+                %li
+                  %a
+                    .label.label-info
+                      - if current_user.subscription.plan.present?
+                        = current_user.subscription.plan.name
+                        medlem
               %li
                 = link_to "" do
                   %i.fa.fa-lemon-o

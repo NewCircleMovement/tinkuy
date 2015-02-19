@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, except: [:index, :show]
-  # before_filter :active_user, only: [:new, :edit]
+  before_filter :get_permission, only: [:new, :edit, :update, :destroy, :upvote]
   before_filter :get_dates
 
   # GET /events
@@ -86,7 +86,6 @@ class EventsController < ApplicationController
     end
   end
 
-
   def get_dates
     session[:dato] = Date.today.beginning_of_week
 
@@ -95,6 +94,7 @@ class EventsController < ApplicationController
     end
     session[:is_new] = "nej"
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
