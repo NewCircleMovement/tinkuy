@@ -56,8 +56,7 @@ group :production, :staging do
   # Help serving assets in produciton on Heroku
   gem 'rails_12factor'
 
-  # Subscriptions
-  gem 'koudoku', :git => 'https://github.com/kbjerring/koudoku.git'
+  
 end
 
 group :development do
@@ -73,6 +72,9 @@ group :development do
   # server
   gem 'thin'
 end
+
+# Subscriptions
+gem 'koudoku', :git => 'https://github.com/kbjerring/koudoku.git'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
