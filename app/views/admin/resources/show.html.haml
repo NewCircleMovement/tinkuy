@@ -56,6 +56,6 @@
                         .clearfix
                       - if timeslot.bookings.present?
                         %small
-                          .pull-left= timeslot.owner.firstname
+                          .pull-left= timeslot.owner_first_name
                           .pull-right.badge= timeslot.score
                         .clearfix

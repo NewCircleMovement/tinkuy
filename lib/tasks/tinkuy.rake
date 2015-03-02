@@ -20,7 +20,8 @@ namespace :tinkuy do
     if Date.today == Date.today.end_of_month
       User.where(:status => "active").each do |user|
         puts user.firstname
-        100.times do |t|
+
+        user.monthly_fruits.times do |t|
           Fruit.create(:user_id => user.id, :fruitbasket_id => user.fruitbasket.id)      
         end
       end

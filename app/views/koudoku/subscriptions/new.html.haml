@@ -20,3 +20,11 @@
     .col-md-6
       .well.well-sm
         = render 'card', title: (Koudoku.free_trial? ? "Start prøvemedlemsskab" : "Betalingsinfo"), url: owner_subscriptions_path(@owner)
+    .col-md-6
+      %h4
+        Betalingen
+      %p
+        Din betaling bliver sikkert gennemført med
+        = link_to "Stripe", "http://www.stripe.com/dk", :target => "_blank"
+      %p
+        Vi gemmer ikke dine kortoplysninger

@@ -70,7 +70,7 @@ group :development do
   # gem 'koudoku', :path => '~/sites/koudoku'
 
   # server
-  gem 'thin'
+  # gem 'thin'
 end
 
 # Subscriptions

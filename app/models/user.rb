@@ -107,6 +107,24 @@ class User < ActiveRecord::Base
     end
   end
 
+
+  def monthly_fruits
+    if ['support','pending','active'].include? self.status
+      if self.subscription.present?
+        if self.subscription.plan.present?
+          return self.subscription.plan.fruits_per_month
+        else
+          return 0
+        end
+      else
+        return 100
+      end
+    else
+      return 0
+    end
+  end
+
+
   def update_status
     if self.subscription.present? and self.subscription.plan_id != nil
       case self.subscription.plan_id
