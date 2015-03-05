@@ -53,15 +53,19 @@ class Timeslot < ActiveRecord::Base
 
 
   def minimum
-    return self.score + 5
+    if self.bookings.count > 0
+      return self.score + 5
+    else
+      return 5
+    end
   end
 
   def current_booking
     fruits = 0
-
+    
     self.bookings.each do |booking|
       if booking.fruitbasket.present?
-        if booking.fruitbasket.fruits_count > fruits
+        if booking.fruitbasket.fruits_count >= fruits
           @result = booking
           fruits = booking.fruitbasket.fruits_count
         end

@@ -28,13 +28,13 @@ class BookingsController < ApplicationController
     @timeslot = Timeslot.find(params[:timeslot_id])
     @booking = @timeslot.bookings.create( params[:booking].permit(:user_id, :timeslot_id, :lemons) )
 
-    if @booking.lemons <= current_user.fruitbasket.fruits_count      
+    if [@booking.lemons, 5].max <= current_user.fruitbasket.fruits_count      
       # create fruitbasket for the booking
       booking_fruitbasket = Fruitbasket.create(:owner_id => @booking.id, :owner_type => 'Booking')
       
       if @booking.save
         # user gives fruit to booking
-        current_user.fruitbasket.give_fruits_to( booking_fruitbasket, @booking.lemons )
+        current_user.fruitbasket.give_fruits_to( booking_fruitbasket, [@booking.lemons, 5].max )
 
         # book if booking is in current week or if fruits >= 50
         if (@timeslot.startdate.cweek == Date.today.cweek) or (@booking.lemons >= 50)

@@ -42,6 +42,7 @@
                         %small
                           .pull-left= timeslot.owner_first_name
                           .pull-right.badge
+                            / TODO: old way... we need to include better check
                             - if timeslot.is_recurring
                               %i.fa.fa-lock
                             - else
