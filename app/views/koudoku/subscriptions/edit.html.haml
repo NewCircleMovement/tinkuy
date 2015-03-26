@@ -12,12 +12,15 @@
           = render 'card', title: "Opdater din kortinformation", url: owner_subscription_path(@owner, @subscription)
       .col-md-6
         %h4
-          Betalingen
+          Sikker betaling
         %p
           Din betaling bliver sikkert gennemført med
           = link_to "Stripe", "http://www.stripe.com/dk", :target => "_blank"
         %p
           Vi gemmer ikke dine kortoplysninger
+        %p
+          %a{:href => "https://www.expeditedssl.com/simple-ssl-scanner/scan?target_domain=www.tinkuy.dk", :rel => "nofollow", :target => "_blank"}
+            %img{:alt => "Expedited SSL Scanner", :src => "https://www.expeditedssl.com/ssl-secure-badge.png"}/
 
 - else
   .jumbotron.page
