@@ -65,4 +65,21 @@ namespace :tinkuy do
 
     end
   end
+
+  desc "Reserve recurring bookings"
+  task :reserve_recurring_bookings => :environment do
+    Time.zone = 'Copenhagen'
+
+    RecurringBooking.all.each do |r|
+      for timeslot in Timeslot.where(:day => r.day, :starttime => r.time, :resource_id => r.resource_id).where('startdate >= ?', r.startdate) do
+        timeslot.booked = true
+        timeslot.is_recurring = true
+        timeslot.save!
+      end
+    end
+
+
+  end
+
+
 end
