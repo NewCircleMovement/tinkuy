@@ -17,7 +17,7 @@
                 Se alle 
                 = link_to "aktiviteter her", events_path
         - else
-          - if @places_left > ZERO
+          - if @places_left > 0
             = link_to membership_path, :class => "btn btn-lg btn-success btn-signup" do            
               Bliv medlem nu
               %i.fa.fa-chevron-circle-right
@@ -37,6 +37,9 @@
         - else
           .number-counter
             0
+          .pull-right
+            = link_to "Bliv Støttemedlem", membership_path, :class => "btn btn-primary btn-lg"
+
         %h3.pladser
           pladser tilbage
         

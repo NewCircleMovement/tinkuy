@@ -76,7 +76,7 @@ class Timeslot < ActiveRecord::Base
 
   def recurring_booking
     # find om der eksisterer en recurring_booking med timeslottens dag og tid
-    @result = RecurringBooking.where(:day => self.day, :time => self.starttime).first
+    @result = RecurringBooking.where(:day => self.day, :time => self.starttime, :resource_id => self.resource_id).first
     if @result.present?
       return @result
     else

@@ -1,0 +1,24 @@
+.container
+  .row
+    .col-md-12
+
+      %h1 Listing centers
+
+      %table
+        %tr
+          %th Name
+          %th Max members
+          %th
+          %th
+          %th
+
+        - @centers.each do |center|
+          %tr
+            %td= center.name
+            %td= center.max_members
+            %td= link_to 'Edit', edit_admin_center_path(center)
+            %td= link_to 'Destroy', admin_center_path(center), :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+      %br
+
+      = link_to 'New center', new_admin_center_path, :class => 'btn btn-primary'

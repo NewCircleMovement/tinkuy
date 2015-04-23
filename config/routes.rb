@@ -13,6 +13,7 @@ Tinkuy::Application.routes.draw do
     resources :users
     resources :events
     resources :plans
+    resources :centers
     resources :resources do
       resources :timeslots do
         member do

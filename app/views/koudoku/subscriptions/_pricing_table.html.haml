@@ -12,20 +12,25 @@
             %li{:class => "plan #{'plan-primary' if plan.highlight?}"}
               .well
                 .caption
-                  %h3= plan.name
+                  %h3
+                    = plan.name
                   %h4
                     Kroner #{plan.price.to_i},- pr. måned
                     / = plan_price(plan)
                   .call-to-action
                     - if @subscription.nil?
-                      = link_to Koudoku.free_trial? ? 'Start prøve' : 'Vælg', koudoku.new_subscription_path(plan: plan.id), class: "btn btn-success btn-large"
+                      - if plan.id == 1 or places_left_for(plan) > 0
+                        = link_to Koudoku.free_trial? ? 'Start prøve' : 'Vælg', koudoku.new_subscription_path(plan: plan.id), class: "btn btn-success btn-large"
+                      - else
+                        = button_to "Ingen pladser", "#", :class => "btn btn-lg disabled"
+
                     - elsif @subscription.persisted?
                       - if @subscription.plan == plan
                         = form_for @subscription, url: owner_subscription_path(@owner, @subscription) do |f|
                           = f.submit 'Din plan', class: "btn btn-lg", disabled: 'disabled'
                       - else
                         - if plan.subscriptions.present?
-                          - if plan.subscriptions.count >= plan.max_members
+                          - if plan.id != 1 && places_left_for(plan) < 1
                             = form_for @subscription, url: owner_subscription_path(@owner, @subscription) do |f|
                               = f.submit 'Ingen pladser', class: "btn btn-lg", disabled: 'disabled'
                           - else
@@ -44,15 +49,10 @@
                         = Koudoku.free_trial_length
                         \-day Free Trial
                     %li
-                      - if plan.max_members.present?
-                        - unless false #current_user.is_bank_member
-                          - if plan.id == 2
-                            = plan.max_members - @bank_members - plan.subscriptions.count
-                          - else
-                            = plan.max_members - plan.subscriptions.count
-                          pladser tilbage
-                      - else
+                      - if plan.id == 1
                         Støt Tinkuy
+                      - else
+                        = places_left_for(plan)
 
                     = BlueCloth.new(plan.features.gsub(/\n/, "\n\n")).to_html.gsub(/<(\/?)p>/, '<\1li>').html_safe
         .clearfix

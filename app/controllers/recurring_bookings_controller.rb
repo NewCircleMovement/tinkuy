@@ -6,7 +6,7 @@ class RecurringBookingsController < ApplicationController
     @resource = Resource.find(params[:resource_id])
 
     if @recurring_booking.save
-      @reserve_timeslots = Timeslot.where("startdate >= ?", params[:b_dato].to_date).where(:day => @recurring_booking.day, :starttime => @recurring_booking.time)
+      @reserve_timeslots = Timeslot.where("startdate >= ?", params[:b_dato].to_date).where(:day => @recurring_booking.day, :starttime => @recurring_booking.time, :resource_id => @resource.id)
       
       @already_booked = []
       @reserve_timeslots.each do |timeslot|
@@ -35,7 +35,7 @@ class RecurringBookingsController < ApplicationController
 
   def destroy
     @recurring_booking = RecurringBooking.find(params[:id])
-    booked_timeslots = Timeslot.where(:day => @recurring_booking.day, :starttime => @recurring_booking.time)
+    booked_timeslots = Timeslot.where(:day => @recurring_booking.day, :starttime => @recurring_booking.time, :resource_id => @recurring_booking.resource_id)
 
     resource = booked_timeslots.first.resource
 
