@@ -53,6 +53,7 @@
                         Støt Tinkuy
                       - else
                         = places_left_for(plan)
+                        pladser tilbage
 
                     = BlueCloth.new(plan.features.gsub(/\n/, "\n\n")).to_html.gsub(/<(\/?)p>/, '<\1li>').html_safe
         .clearfix
