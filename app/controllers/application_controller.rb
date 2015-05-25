@@ -26,9 +26,9 @@ class ApplicationController < ActionController::Base
     else
       max_members = 500
     end
-    @places_left = max_members - User.where(status: ['active', 'pending']).length 
     @bank_members = User.where(status: ['active','pending']).includes(:subscription).where( :subscriptions => { :user_id => nil } ).length
     @max_plan3_and_4 = Plan.find(3).max_members + Plan.find(4).max_members
+    @places_left = max_members - @bank_members - Plan.find(2).subscriptions.count
   end
 
   def get_permission
