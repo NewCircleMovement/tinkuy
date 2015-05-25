@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
     if Center.first.present?
       max_members = Center.first.max_members
     else
-      max_members = 400
+      max_members = 500
     end
     @places_left = max_members - User.where(status: ['active', 'pending']).length 
     @bank_members = User.where(status: ['active','pending']).includes(:subscription).where( :subscriptions => { :user_id => nil } ).length

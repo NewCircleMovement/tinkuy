@@ -65,16 +65,9 @@
 
       %h3#booking How to make a booking?
       %p
-        Please consult the calendar before making any requests. 
-        If you’re interested in booking the therapy room, call or text Martina at 28 87 73 77
-        Alternatively, if you’re not in a hurry, you can send her an email to: 
-        = link_to "tinkuy.therapy@gmail.com", "mailto:tinkuy.therapy@gmail.com"
-        The brief email should contain the following: 
-      %ul
-        %li type of activity, treatment etc.
-        %li date for the booking
-        %li your asking price per hour (for your clients)
-        %li contact details (phone number and web site)
+        Go to 
+        = link_to "Book rum", resources_path
+        and pick the room you want to book. You can make bookings by clicking the Timeslot for which you would like the room.
       = render :partial => 'top'
 
       %h3#guidelines Short Guidelines when using the Therapy Room
@@ -128,7 +121,7 @@
           %span.badge 5
           frugter inden for de nærmeste 7 dage
         %p
-          Herudover kan ethvert rum kan sikres med 
+          Herudover kan ethvert rum sikres med 
           %span.badge 50
           frugter
         

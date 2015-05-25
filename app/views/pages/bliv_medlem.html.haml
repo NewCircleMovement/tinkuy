@@ -29,19 +29,21 @@
                 Der er desværre ikke plads til flere medlemmer på nuværende tidspunkt. Skriv til 
                 = link_to "venteliste@tinkuy,dk", "mailto:venteliste@tinkuy.dk"
                 hvis du vil have besked når der åbnes for flere medlemmer.
-        .clearfix
-        - if @places_left > ZERO
-          - @places_left.to_s.chars.map(&:to_i).each do |digit|
-            .number-counter
-              = digit
-        - else
-          .number-counter
-            0
-          .pull-right
-            = link_to "Bliv Støttemedlem", membership_path, :class => "btn btn-primary btn-lg"
+              / = link_to "Bliv Støttemedlem", membership_path, :class => "btn btn-primary btn-lg"
 
-        %h3.pladser
-          pladser tilbage
+        .clearfix
+        - unless current_user
+          - if @places_left > ZERO
+            - @places_left.to_s.chars.map(&:to_i).each do |digit|
+              .number-counter
+                = digit
+          - else
+            .number-counter
+              0
+            .pull-right
+              = link_to "Bliv Støttemedlem", membership_path, :class => "btn btn-primary btn-lg"
+          %h3.pladser
+            pladser tilbage
         
         / BIG BUTTON OMITTED
         / - else
@@ -71,7 +73,7 @@
             %i.fa.fa-paw.fa-stack-1x.fa-inverse
           Gratis "træning"
         %p.lead
-          Som medlem har du gratis adgang til meditation, yoga, dans, og workshops.
+          Som medlem har du fri adgang til meditation, yoga, dans, og workshops.
         .clearfix
           
     .col-md-4
@@ -90,7 +92,7 @@
           %span.fa-stack
             %i.fa.fa-circle.fa-stack-2x.red
             %i.fa.fa-leaf.fa-stack-1x.fa-inverse
-          Drop-in Yoga
+          Morgenyoga
         %p.lead
           Er du træt af at lave yoga hjemme i stuen? Gør det sammen med os, og få en kop the bagefter.
     .col-md-4
