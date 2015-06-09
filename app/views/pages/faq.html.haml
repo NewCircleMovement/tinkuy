@@ -130,10 +130,36 @@
       
       %h3#opsigelse Hvordan opsiger jeg mit medlemskab? 
       %p
-        Du kan til enhver tid opsige dit medlemskab eller holde en pause. Du sender en mail til 
-        = succeed "," do
-          = link_to "info@tinkuy.dk", "mailto:info@tinkuy.dk" 
-        så sørger vi for at registrere dig som passiv. 
+        Du kan til enhver tid opsige dit medlemskab uden opsigelsesvarsel. 
+
+      - if current_user.present?
+        - if current_user.is_bank_member
+          %p
+            Da du er tilmeldt bankoverførsel stopper du blot din automatiske overførsel via din egen bank/netbank. Ved opsigelse må du meget gerne sende en mail til 
+            = link_to "medlem@tinkuy.dk", "mailto:medlem@tinkuy.dk"  
+
+        - elsif current_user.subscription.present?
+          %p
+            Da du er tilmeldt via kreditkort kan du
+            = link_to "opsige dit medlemskab her", koudoku.owner_subscription_path(current_user.id, current_user.subscription.id)
+      - else
+        %p 
+          Hvis du er tilmeldt via kreditkort opsiges medlemskab ved at klikke på 'medlemskab' under 'min profil' i øverste højre hjørne på websiden. 
+        %p
+          Du kan
+          = link_to "logge ind her", new_user_session_path
+        %p
+          Hvis du er tilmeldt bankoverførsel stopper du blot din automatiske overførsel via din egen bank/ netbank. Ved opsigelse må du meget gerne sende en mail til 
+          = link_to "medlem@tinkuy.dk", "mailto:medlem@tinkuy.dk"
+      %ul
+        %li 
+          Hvis du opsiger og har betalt for en måned stopper medlemskabet efter udløb af den måned.       
+        %li
+          Vedr pause i medlemskabet: Nogle måneder er du nok mere aktiv og bruger de tilbud centeret har meget, og andre måneder er du mindre aktiv og holder en pause (men betaler stadig kontingent). Når du holder pause opsparer du frugter til fx at booke behandlerrummet på et tidspunkt. 
+        %li
+          Hvis du holder betalingspause i medlemsbetalingen skal du informere os via 
+          = link_to "medlem@tinkuy.dk", "mailto:medlem@tinkuy.dk" 
+          hvorefter vi vil stoppe medlemsskabet - herefter kan du tilmelde dig igen senere såfremt der er ledige pladser.
       = render :partial => 'top'
 
       %h3#andre Andre spørgsmål?
