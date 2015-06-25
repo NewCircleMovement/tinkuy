@@ -1,5 +1,6 @@
 [![Gemnasium](https://img.shields.io/gemnasium/NewCircleMovement/tinkuy.svg?style=flat-square)](https://gemnasium.com/NewCircleMovement/tinkuy)
 [![Code Climate](https://img.shields.io/codeclimate/github/NewCircleMovement/tinkuy.svg?style=flat-square)](https://codeclimate.com/github/NewCircleMovement/tinkuy)
+[![Build Status](https://img.shields.io/travis/NewCircleMovement/tinkuy.svg?style=flat-square)](https://travis-ci.org/NewCircleMovement/tinkuy)
 
 
 Website for [tinkuy.dk](https://tinkuy.dk).
