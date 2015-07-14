@@ -19,6 +19,8 @@
         / Collect the nav links, forms, and other content for toggling
         #bs-example-navbar-collapse-1.collapse.navbar-collapse
           %ul.nav.navbar-nav
+            %li{:class => ( controller_name == 'centers' ? 'active' : '' )}
+              = link_to "Centre", admin_centers_path
             %li{:class => ( controller_name == 'events' ? 'active' : '' )}
               = link_to "Aktiviteter", admin_events_path
             %li{:class => ( controller_name == 'users' ? 'active' : '' )}

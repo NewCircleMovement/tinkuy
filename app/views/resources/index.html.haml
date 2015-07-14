@@ -26,7 +26,7 @@
       %ul.list-unstyled
         %li= link_to "What is Tinkuy’s Therapy Room", "#what"
         %li= link_to "Who can book the Therapy Room?", "#who"
-        %li= link_to "Payment/Rent", "#payment"
+        -# %li= link_to "Payment/Rent", "#payment"
         %li= link_to "How to make a booking?", "#booking"
         %li= link_to "Short Guidelines when using the Therapy Room", "#guidelines"
         %li= link_to "FAQ by our Therapists", "#faq"
@@ -43,38 +43,23 @@
         If you’re not a member yet, please visit www.tinkuy.dk and follow the instructions there.
       = render :partial => 'top'
 
-      %h3#payment Payment/Rent
-      %p
-        If you wish to rent the space and you’re not a shareholder/investor in Tinkuy, we ask you for a one time deposit of 500dkk.
+      -# %h3#payment Payment/Rent
+      -# %p
+      -#   If you wish to rent the space and you’re not a shareholder/investor in Tinkuy, we ask you for a one time deposit of 500dkk.
       
-      %h5 Regular Therapists
-      %p
-        Therapists who book a fixed number of hours every week, pay the rent at the end of the month based on the income they generated. Meaning, we ask for a minimum of 25dkk/hour. This minimum is set in place to protect our regular therapists in case they don’t have any bookings from their own clients during their regular time slot.  
-      %p
-        However, we ask each therapist to consider setting aside 10% of their asking rate per hour. Example, if you charge 700dkk per session, we ask you to set aside 70dkk for Tinkuy. At the end of the day, based on your number of treated clients and generated income, you can make an estimate of your contribution for the monthly rent. 
-      %br/
-      %h5 Temporary Therapists
-      %p 
-        Flexible Rent is available to Therapists who wish to make use of the Therapy Room from time to time, without having an ongoing commitment. 
-      %p
-        Upon consulting the published calendar, you can book any of the time slots that are available.
-        Payment for the use of the therapy room should be settled on the same day.
-      %p
-        We ask for 10% of your treatment fee. The minimum rate per hour is 50 dkk. This is to allow our therapists a minimal risk with cancellations and to offer them the freedom to have different asking prices for certain clients (example: If the therapist wishes to offer reduced prices for students, unemployed, members, practice sessions etc, for which the fee is usually very user friendly).
-      = render :partial => 'top'
+      -# %h5 Regular Therapists
+      -# %p
+      -#   Therapists who book a fixed number of hours every week, pay the rent at the end of the month based on the income they generated. Meaning, we ask for a minimum of 25dkk/hour. This minimum is set in place to protect our regular therapists in case they don’t have any bookings from their own clients during their regular time slot.  
+      -# %p
+      -#   However, we ask each therapist to consider setting aside 10% of their asking rate per hour. Example, if you charge 700dkk per session, we ask you to set aside 70dkk for Tinkuy. At the end of the day, based on your number of treated clients and generated income, you can make an estimate of your contribution for the monthly rent. 
+      -# %br/
+      -# = render :partial => 'top'
 
       %h3#booking How to make a booking?
       %p
-        Please consult the calendar before making any requests. 
-        If you’re interested in booking the therapy room, call or text Martina at 28 87 73 77
-        Alternatively, if you’re not in a hurry, you can send her an email to: 
-        = link_to "tinkuy.therapy@gmail.com", "mailto:tinkuy.therapy@gmail.com"
-        The brief email should contain the following: 
-      %ul
-        %li type of activity, treatment etc.
-        %li date for the booking
-        %li your asking price per hour (for your clients)
-        %li contact details (phone number and web site)
+        Go to 
+        = link_to "Book rum", resources_path
+        and pick the room you want to book. You can make bookings by clicking the Timeslot for which you would like the room.
       = render :partial => 'top'
 
       %h3#guidelines Short Guidelines when using the Therapy Room
@@ -119,25 +104,4 @@
 
 
     .col-md-4
-      .well
-        %h4 Hvordan booker du et rum?
-        %hr/
-        %p Du kan bruge dine frugter til at booke et rum
-        %p
-          Ethvert frit rum kan sikres med
-          %span.badge 5
-          frugter inden for de nærmeste 7 dage
-        %p
-          Herudover kan ethvert rum kan sikres med 
-          %span.badge 50
-          frugter
-        
-        .well.well-sm.well-timeslot.well-explain
-          %p Frit
-        .well.well-sm.well-timeslot.well-active.well-explain
-          %p 
-            Lagt billet ind med
-            %span.badge x
-            frugter. Du kan byde over
-        .well.well-sm.well-timeslot.well-booked.well-explain
-          %p Taget
+      = render :partial => 'sidebar'
