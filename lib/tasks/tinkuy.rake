@@ -30,56 +30,64 @@ namespace :tinkuy do
 
   desc "Create timeslots"
   task :create_timeslots => :environment do
-    Time.zone = 'Copenhagen'
 
-    Resource.all.each do |resource|
-      begin_date = Date.today.beginning_of_week
-      begin_time = "8:00:00".to_time
-      end_time = "22:00:00".to_time
+    if Date.today.day == 15
+      Time.zone = 'Copenhagen'
 
-      current_date = begin_date
-      90.times do |count|
-        puts current_date
-        current_time = begin_time
-        while current_time < end_time do
-          t = Timeslot.find_or_create_by_resource_id_and_startdate_and_starttime(resource.id, current_date, current_time)
-          t.duration = resource.duration
-          t.day = current_date.wday
-          t.is_recurring = false
-          unless t.booked == true
-            t.booked = false
+      Resource.all.each do |resource|
+        begin_date = Date.today.beginning_of_week
+        begin_time = "8:00:00".to_time
+        end_time = "22:00:00".to_time
+        
+        current_date = begin_date
+        90.times do |count|
+          puts current_date
+          current_time = begin_time
+          while current_time < end_time do
+            
+            # see if timeslot exist
+            t = Timeslot.find_by_resource_id_and_startdate_and_starttime(resource.id, current_date, current_time)
+
+            # if it does not exist, then create and give parameters
+            unless t
+              t = Timeslot.new(:resource_id => resource.id, :startdate => current_date, :starttime => current_time)
+              t.duration = resource.duration
+              t.day = current_date.wday
+              t.is_recurring = false
+              t.booked = false
+              t.save!
+            end
+            current_time = current_time + resource.duration.hours
           end
-          t.save!
-          current_time = current_time + resource.duration.hours
+          current_date = current_date + 1.days
         end
-        current_date = current_date + 1.days
       end
 
-      # if resource.name == 'Arbejdsrum'
-      #   resource.timeslots.each do |t|
-      #     if [1,2].include? t.startdate.wday
-      #       t.destroy
-      #     end
-      #   end
-      # end
+      # make sure all new timeslots is booked for users with recurring bookings
+      begin_date = Date.today.beginning_of_week
+      future_timeslots = Timeslot.where('startdate >= ?', begin_date)
+      
+      RecurringBooking.all.each do |r|        
+        make_recurring = future_timeslots.where(:resource_id => r.resource_id, :day => r.day, :starttime => r.time)
+        for timeslot in make_recurring
+          if timeslot.current_booking
+            # obs: right now the fruits will disappear
+            timeslot.current_booking.destroy
+          end
+
+          timeslot.booked = true
+          timeslot.is_recurring = true
+          timeslot.save!
+        end
+      end      
+
+      # Delete old timeslots
+      history_date = Date.today - 60
+      for timeslot in Timeslot.where("startdate < ?", history_date)
+        timeslot.destroy
+      end
 
     end
   end
-
-  desc "Reserve recurring bookings"
-  task :reserve_recurring_bookings => :environment do
-    Time.zone = 'Copenhagen'
-
-    RecurringBooking.all.each do |r|
-      for timeslot in Timeslot.where(:day => r.day, :starttime => r.time, :resource_id => r.resource_id).where('startdate >= ?', r.startdate) do
-        timeslot.booked = true
-        timeslot.is_recurring = true
-        timeslot.save!
-      end
-    end
-
-
-  end
-
 
 end

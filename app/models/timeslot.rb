@@ -20,10 +20,10 @@ class Timeslot < ActiveRecord::Base
   has_many :bookings, :dependent => :destroy
 
   def owner
-    if current_booking
-      user = current_booking.user
-    elsif recurring_booking
+    if recurring_booking
       user = recurring_booking.user
+    elsif current_booking
+      user = current_booking.user
     else
       user = "galt"
     end
@@ -32,10 +32,10 @@ class Timeslot < ActiveRecord::Base
 
 
   def owner_first_name
-    if current_booking
-      user = current_booking.user.firstname
-    elsif recurring_booking
+    if recurring_booking
       user = recurring_booking.user.firstname
+    elsif current_booking
+      user = current_booking.user.firstname
     else
       user = "Admin"
     end
