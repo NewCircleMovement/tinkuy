@@ -2,6 +2,7 @@
   .col-md-12
     %h1 Medlemmer
 .row
-  = render partial: 'user_table', :locals => {:users => @confirmed_users, :focus => 'Bekræftede'}
   = render partial: 'user_table', :locals => {:users => @pending_users, :focus => 'Afventer bekræftelse'}
+  = render partial: 'user_table', :locals => {:users => @confirmed_users, :focus => 'Bekræftede'}
+  = render partial: 'user_table', :locals => {:users => @supporter_users, :focus => 'Supporters'}
   = render partial: 'user_table', :locals => {:users => @passive_users, :focus => 'Passive'}

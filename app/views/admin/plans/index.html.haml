@@ -1,12 +1,20 @@
 .row
   .col-md-12
-    %h1 Medlemsskaber
+    %h1 Betalingsplaner
   - @plans.each do |plan|
     .col-md-3
       .well
         %h4= plan.name
         %hr/
         %table.table-condensed.table-bordered
+          %tr
+            %td Medlemsskab
+            %td
+              - if plan.membership.present?
+                = plan.membership.name
+              - else
+                IKKE TILDELT
+
           %tr
             %td Pris pr. måned
             %td= plan.price

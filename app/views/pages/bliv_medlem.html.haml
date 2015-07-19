@@ -17,54 +17,44 @@
                 Se alle 
                 = link_to "aktiviteter her", events_path
         - else
-          - if @places_left > 0
+          - if @places_left
             = link_to membership_path, :class => "btn btn-lg btn-success btn-signup" do            
               Bliv medlem nu
               %i.fa.fa-chevron-circle-right
               %br
               %span.small For kr. 108 per måned
+          
           - else
             .well.well-small
               %p 
                 Der er desværre ikke plads til flere medlemmer på nuværende tidspunkt. Skriv til 
-                = link_to "venteliste@tinkuy,dk", "mailto:venteliste@tinkuy.dk"
+                = link_to "venteliste@tinkuy.dk", "mailto:venteliste@tinkuy.dk"
                 hvis du vil have besked når der åbnes for flere medlemmer.
               / = link_to "Bliv Støttemedlem", membership_path, :class => "btn btn-primary btn-lg"
 
         .clearfix
         - unless current_user
-          - if @places_left > ZERO
-            - @places_left.to_s.chars.map(&:to_i).each do |digit|
-              .number-counter
-                = digit
-          - else
-            .number-counter
-              0
-            .pull-right
-              = link_to "Bliv Støttemedlem", membership_path, :class => "btn btn-primary btn-lg"
-          %h3.pladser
-            pladser tilbage
-        
-        / BIG BUTTON OMITTED
-        / - else
-        /   = link_to new_user_registration_path, :class => 'bliv_medlem_box' do
-        /     %p.first
-        /       Kom og besøg os i Skyttegade 3, 
-        /       %br/ 
-        /       2200 Kbh N. 
-        /     %p.last
-        /       %strong Klik her 
-        /       for at blive medlem            
-        /       %i.fa.fa-chevron-circle-right.fa-lg
-        /       .clearfix
-        /       %span For kr. 108 per måned
-
+          - if @places_left
+            - for membership in @basis_and_weekend_memberships
+              .row
+                .col-md-3
+                  .pull-right
+                    - Center.first.places_left( membership ).to_s.chars.map(&:to_i).each do |digit|
+                      .number-counter
+                        = digit
+                .col-md-9
+                  %p.pladser
+                    = membership.name
+                    pladser tilbage
 
 .container
   .row
     .col-md-12
       %h1.medlem
         Medlemsfordele
+        .pull-right
+        - unless current_user
+          = link_to "Bliv Støttemedlem", membership_path, :class => "btn btn-primary btn-lg"
     .col-md-4
       .medlem-badge
         %h3
@@ -126,7 +116,7 @@
           Tinkuy er en oase lige midt i København. Kom og mærk stemningen i vores chill-out lounge.
     .col-md-12
       - unless current_user
-        - if @places_left > ZERO
+        - if @places_left
           = link_to membership_path, :class => "btn btn-lg btn-success btn-signup" do            
             Bliv medlem nu
             %i.fa.fa-chevron-circle-right

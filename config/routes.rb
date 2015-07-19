@@ -14,6 +14,7 @@ Tinkuy::Application.routes.draw do
     resources :events
     resources :plans
     resources :centers
+    resources :memberships
     resources :resources do
       resources :timeslots do
         member do

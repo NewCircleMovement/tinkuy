@@ -23,6 +23,7 @@ class Plan < ActiveRecord::Base
 
   include Koudoku::Plan
   
+  belongs_to :membership
   belongs_to :user
   belongs_to :coupon
 

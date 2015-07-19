@@ -5,64 +5,17 @@
         Du er i øjeblikket 108 kroners medlem via bankoverførsel. Du kan sætte en 
         %strong ny betalingsform 
         op her
-    %ul.list-unstyled.koudoku-pricing-table
-      .row
-        - @plans.each do |plan|
-          .col-md-3
-            %li{:class => "plan #{'plan-primary' if plan.highlight?}"}
-              .well
-                .caption
-                  %h3
-                    = plan.name
-                  %h4
-                    Kroner #{plan.price.to_i},- pr. måned
-                    / = plan_price(plan)
-                  .call-to-action
-                    - if @subscription.nil?
-                      - if plan.id == 1 or places_left_for(plan) > 0
-                        = link_to Koudoku.free_trial? ? 'Start prøve' : 'Vælg', koudoku.new_subscription_path(plan: plan.id), class: "btn btn-success btn-large"
-                      - else
-                        = button_to "Ingen pladser", "#", :class => "btn btn-lg disabled"
-
-                    - elsif @subscription.persisted?
-                      - if @subscription.plan == plan
-                        = form_for @subscription, url: owner_subscription_path(@owner, @subscription) do |f|
-                          = f.submit 'Din plan', class: "btn btn-lg", disabled: 'disabled'
-                      - else
-                        - if plan.subscriptions.present?
-                          - if plan.id != 1 && places_left_for(plan) < 1
-                            = form_for @subscription, url: owner_subscription_path(@owner, @subscription) do |f|
-                              = f.submit 'Ingen pladser', class: "btn btn-lg", disabled: 'disabled'
-                          - else
-                            = form_for @subscription, url: owner_subscription_path(@owner, @subscription) do |f|
-                              = f.hidden_field :plan_id, value: plan.id
-                              = f.submit @subscription.describe_difference(plan), class: "btn btn-success btn-lg"
-                        - else
-                          = form_for @subscription, url: owner_subscription_path(@owner, @subscription) do |f|
-                            = f.hidden_field :plan_id, value: plan.id
-                            = f.submit @subscription.describe_difference(plan), class: "btn btn-success btn-lg"
-                    - else
-                      = link_to Koudoku.free_trial? ? 'Start prøve' : 'Vælg', new_owner_subscription_path(@owner, plan: plan.id), class: "btn btn-success btn-large"
-                  %ul.list-unstyled.features
-                    - if Koudoku.free_trial?
-                      %li.muted
-                        = Koudoku.free_trial_length
-                        \-day Free Trial
-                    %li
-                      - if plan.id == 1
-                        Støt Tinkuy
-                      - else
-                        = places_left_for(plan)
-                        pladser tilbage
-
-                    = BlueCloth.new(plan.features.gsub(/\n/, "\n\n")).to_html.gsub(/<(\/?)p>/, '<\1li>').html_safe
-        .clearfix
-        - @plans.each do |plan|
-          .col-md-3
-            .well
-              %p
-                Med
-                %strong= plan.name.downcase
-                = plan.description  
+    = render :partial => 'plans', :locals => {:plans => @plans[0..3]}
+    
+    #accordion.panel-group{:role => "tablist"}
+      .panel.panel-default
+        #headingOne.panel-heading{:role => "tab"}
+          %h4.panel-title
+            %a{"aria-controls" => "collapseOne", "aria-expanded" => "false", "data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapseOne", :role => "button"}
+              Professionelle medlemskaber
+        #collapseOne.panel-collapse.collapse.out{"aria-labelledby" => "headingOne", :role => "tabpanel"}
+          .panel-body
+            = render :partial => 'plans', :locals => {:plans => @plans[4..5]}
+    
       / .span3.social-proof
       /   = render 'koudoku/subscriptions/social_proof'

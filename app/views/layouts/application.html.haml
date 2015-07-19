@@ -58,18 +58,17 @@
               = link_to "Praktisk", main_app.info_path
             - if current_user and current_user.admin?
               %li
-                %a
+                %a{:href => main_app.admin_path}
                   .label.label-success
                     ADMIN
 
           %ul.nav.navbar-nav.navbar-right
             - if user_signed_in?
-              - if current_user.subscription.present?
+              - if current_user.membership.present?
                 %li
                   %a
                     .label.label-info
-                      - if current_user.subscription.plan.present?
-                        = current_user.subscription.plan.name
+                      = current_user.membership.name.humanize
               %li
                 = link_to "" do
                   %i.fa.fa-lemon-o
@@ -88,7 +87,7 @@
                       = link_to "Medlemsskab", main_app.membership_path
                     = link_to "Log ud", main_app.destroy_user_session_path, :method => :delete
             - else
-              - if @places_left > ZERO
+              - if @places_left
                 %li{:class => (( controller_name == 'registrations' or controller_name == 'subscriptions') ? 'active' : '' )}
                   = link_to "Bliv medlem", main_app.membership_path
               %li= link_to "Log ind", main_app.new_user_session_path

@@ -4,7 +4,11 @@
   .form-inputs
     .row
       .col-md-6
-        = f.input :name
+        .row
+          .col-md-6
+            = f.input :name
+          .col-md-6
+            = f.association :membership, :collection => Membership.all, :label_method => :name, :value_method => :id
         = f.input :price, :label => "Pris for medlemsskab"
         = f.input :fruits_per_month
         = f.input :max_members

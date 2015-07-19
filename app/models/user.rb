@@ -29,16 +29,26 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :firstname, :surname, :email, :presence => true
-    
+
   has_many :events
   has_many :votes
   has_many :bookings, :dependent => :destroy
   has_many :fruits, :dependent => :destroy
   has_many :recurring_bookings, :dependent => :destroy
+  
+  belongs_to :membership
   has_one :fruitbasket, as: :owner, :dependent => :destroy
   has_one :subscription, :dependent => :destroy
 
   after_create :create_fruitbasket
+
+  def plan_id=(new_value)
+    @plan_id = new_value.to_i
+  end
+
+  def plan_id
+    @plan_id
+  end
 
   def create_fruitbasket
     @fruitbasket = Fruitbasket.create(:owner_id => self.id, :owner_type => 'User')

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150423145402) do
+ActiveRecord::Schema.define(version: 20150719121923) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,14 @@ ActiveRecord::Schema.define(version: 20150423145402) do
     t.integer  "fruitbasket_id"
   end
 
+  create_table "memberships", force: true do |t|
+    t.string   "name"
+    t.integer  "center_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "max_members"
+  end
+
   create_table "plans", force: true do |t|
     t.string   "name"
     t.string   "stripe_id"
@@ -84,6 +92,7 @@ ActiveRecord::Schema.define(version: 20150423145402) do
     t.integer  "fruits_per_month"
     t.text     "description"
     t.integer  "max_members"
+    t.integer  "membership_id"
   end
 
   create_table "recurring_bookings", force: true do |t|
@@ -156,6 +165,8 @@ ActiveRecord::Schema.define(version: 20150423145402) do
     t.boolean  "confirm_payment",                   default: false
     t.string   "status",                 limit: 50, default: "pending"
     t.boolean  "admin",                             default: false
+    t.integer  "membertype"
+    t.integer  "membership_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

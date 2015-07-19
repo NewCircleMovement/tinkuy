@@ -49,6 +49,7 @@
                 = f.input :password_confirmation, autocomplete: "off", :label => "Befkræft password"
             .col-md-12
               .form-group
+                = f.hidden_field :plan_id, :value => params[:plan_id]
                 = f.submit "Ja, tilmeld mig", :class => "btn btn-primary"
               Allerede medlem?
               = render "devise/shared/links"

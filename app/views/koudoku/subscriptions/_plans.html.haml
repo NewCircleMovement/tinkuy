@@ -1,0 +1,57 @@
+- current_user.present? ? (user = current_user) : (user=nil)
+
+%ul.list-unstyled.koudoku-pricing-table
+  .row
+    - plans.each do |plan|
+      .col-md-3
+        %li{:class => "plan #{'plan-primary' if plan.highlight?}"}
+          .well
+            .caption
+              %h3
+                = plan.name
+              %h4
+                Kroner #{plan.price.to_i},- pr. måned
+                / = plan_price(plan)
+              .call-to-action
+                - if @subscription.nil?
+                  - if plan.id == 1 or Center.first.places_left(plan.membership, user) > 0
+                    = link_to Koudoku.free_trial? ? 'Start prøve' : 'Vælg', koudoku.new_subscription_path(plan: plan.id), class: "btn btn-success btn-large"
+                  - else
+                    = button_to "Ingen pladser", "#", :class => "btn btn-lg disabled"
+
+                - elsif @subscription.persisted?
+                  - if @subscription.plan == plan
+                    = form_for @subscription, url: owner_subscription_path(@owner, @subscription) do |f|
+                      = f.submit 'Din plan', class: "btn btn-lg", disabled: 'disabled'
+                  - else
+                    - if plan.subscriptions.present?
+                      - if plan.id != 1 && Center.first.places_left(plan.membership, user) < 1
+                        = form_for @subscription, url: owner_subscription_path(@owner, @subscription) do |f|
+                          = f.submit 'Ingen pladser', class: "btn btn-lg", disabled: 'disabled'
+                      - else
+                        = form_for @subscription, url: owner_subscription_path(@owner, @subscription) do |f|
+                          = f.hidden_field :plan_id, value: plan.id
+                          = f.submit @subscription.describe_difference(plan), class: "btn btn-success btn-lg"
+                    - else
+                      = form_for @subscription, url: owner_subscription_path(@owner, @subscription) do |f|
+                        = f.hidden_field :plan_id, value: plan.id
+                        = f.submit @subscription.describe_difference(plan), class: "btn btn-success btn-lg"
+                - else
+                  = link_to Koudoku.free_trial? ? 'Start prøve' : 'Vælg', new_owner_subscription_path(@owner, plan: plan.id), class: "btn btn-success btn-large"
+              %ul.list-unstyled.features
+                %li
+                  - if plan.id == 1
+                    Støt Tinkuy
+                  - else
+                    = Center.first.places_left( plan.membership, user )
+                    pladser tilbage
+
+                = BlueCloth.new(plan.features.gsub(/\n/, "\n\n")).to_html.gsub(/<(\/?)p>/, '<\1li>').html_safe
+    .clearfix
+    - plans.each do |plan|
+      .col-md-3
+        .well
+          %p
+            Med
+            %strong= plan.name.downcase
+            = plan.description  

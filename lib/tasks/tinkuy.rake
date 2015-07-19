@@ -90,4 +90,23 @@ namespace :tinkuy do
     end
   end
 
+
+  desc "Set/reset membership types"
+  task :reset_memberships => :environment do
+
+    for user in User.where('status <> ?', 'passive')
+      if user.subscription.present?
+        user.membership_id = user.subscription.plan.membership.id
+      else
+        if user.status == 'active' or user.status == 'pending'
+          user.membership_id = Membership.find_by_name('BASIS').id
+        elsif user.status == 'support'
+          user.membership_id = Membership.find_by_name('SUPPORTER').id
+        end
+      end
+      user.save!
+    end
+  end
+
+
 end

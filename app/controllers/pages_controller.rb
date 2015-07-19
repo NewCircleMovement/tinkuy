@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
 
   def index
+
   end
 
   def info
@@ -13,6 +14,7 @@ class PagesController < ApplicationController
   end
 
   def bliv_medlem
+    @basis_and_weekend_memberships = Membership.where('name=? or name=?', 'BASIS', 'WEEKEND')
   end
 
 end

@@ -1,4 +1,4 @@
-.col-md-6
+.col-md-12
   .panel.panel-default
     .panel-heading        
       %h2.panel-title 
@@ -8,8 +8,9 @@
     %table.table-striped.table-condensed
       %thead
         %th Navn
-        %th Plan
-        %th Betaling
+        %th Medlemsskab
+        %th Pris
+        %th Betalingsmåde
         %th Frugt
         %th Logins
         %th Aktion
@@ -17,6 +18,11 @@
         - users.each do |user|
           %tr
             %td= link_to "#{user.firstname} #{user.surname}", "mailto:#{user.email}"
+            %td
+              - if user.membership.present?
+                = user.membership.name
+              - else
+                IKKE MEDLEM
             %td
               - if user.is_bank_member
                 108
@@ -36,7 +42,7 @@
                 - else
                   check
               - else
-                Check
+                check
             %td
               = user.fruitbasket.fruits_count
             %td

@@ -2,7 +2,6 @@ class RegistrationsController < Devise::RegistrationsController
   before_filter :get_plan, :only => [:new]
   before_filter :check_if_full
 
-
   def get_plan
     if session["new_plan"].present?
       @plan = Plan.find(session["new_plan"].to_i)
@@ -17,8 +16,10 @@ class RegistrationsController < Devise::RegistrationsController
   # end
 
   def check_if_full
-    if @places_left <= 0
-      redirect_to root_url, :notice => "Der er ingen pladser tilbage"
+    if @places_left == false
+      unless @plan.membership.name == 'SUPPORTER'
+        redirect_to root_url, :notice => "Der er ingen pladser tilbage"
+      end
     end
   end
 

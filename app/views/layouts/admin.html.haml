@@ -28,7 +28,10 @@
             %li{:class => ( controller_name == 'resources' ? 'active' : '' )}
               = link_to "Resourcer", admin_resources_path
             %li{:class => ( controller_name == 'plans' ? 'active' : '' )}
-              = link_to "Medlemsskaber", admin_plans_path
+              = link_to "Medlemsskaber", admin_memberships_path
+            %li{:class => ( controller_name == 'plans' ? 'active' : '' )}
+              = link_to "Planer", admin_plans_path
+
           
     .container
       - flash.each do |name, msg|

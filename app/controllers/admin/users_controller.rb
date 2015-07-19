@@ -3,6 +3,7 @@ class Admin::UsersController < Admin::BaseController
   
   def index
     @confirmed_users = User.where(:status => 'active').order(:firstname, :surname)
+    @supporter_users = User.where(:status => 'support').order(:firstname, :surname)
     @pending_users = User.where(:status => 'pending').order(:firstname, :surname)
     @passive_users = User.where(:status => 'passive').order(:firstname, :surname)
   end
@@ -37,7 +38,7 @@ class Admin::UsersController < Admin::BaseController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:firstname, :surname, :status)
+      params.require(:user).permit(:firstname, :surname, :status, :membership_id)
       # params.require(:user).permit!
     end
 end

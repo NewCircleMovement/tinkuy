@@ -16,4 +16,5 @@
         = f.input :firstname, :label => "Fornavn"
         = f.input :surname, :label => "Efternavn"
         = f.input :status, :collection => ['active', 'pending', 'passive', 'support'], :include_blank => false
+        = f.association :membership, :colleciton => Membership.all, :label_method => :name, :value_method => :id
         = f.submit "Save", :class => "btn btn-default"

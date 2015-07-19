@@ -15,10 +15,22 @@
 #
 
 class Subscription < ActiveRecord::Base
+  after_create :update_membership
+  after_update :update_membership
+
   include Koudoku::Subscription
 
-  
   belongs_to :user
   belongs_to :coupon
+
+  def update_membership
+
+    if self.plan_id.present?
+      user = self.user  
+      plan = Plan.find(plan_id)
+      user.membership_id = plan.membership.id
+      user.save!
+    end
+  end
 
 end

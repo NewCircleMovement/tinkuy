@@ -11,7 +11,7 @@
         /   Et spirituelt fitnesscenter
         %h3
           Antal pladser tilbage
-        - if @places_left > ZERO
+        - if @places_left
           - @places_left.to_s.chars.map(&:to_i).each do |digit|
             .number-counter
               = digit
@@ -29,7 +29,7 @@
                 Se alle 
                 = link_to "aktiviteter her", events_path
         - else
-          - if @places_left > ZERO
+          - if @places_left
             = link_to membership_path, :class => "btn btn-lg btn-success btn-signup" do            
               Bliv medlem nu
               %i.fa.fa-chevron-circle-right
