@@ -53,8 +53,8 @@
       %h1.medlem
         Medlemsfordele
         .pull-right
-        - unless current_user
-          = link_to "Bliv Støttemedlem", membership_path, :class => "btn btn-primary btn-lg"
+          - unless current_user
+            = link_to "Bliv Støttemedlem", membership_path, :class => "btn btn-primary btn-lg"
     .col-md-4
       .medlem-badge
         %h3

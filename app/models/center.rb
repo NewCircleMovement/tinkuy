@@ -14,7 +14,11 @@ class Center < ActiveRecord::Base
       weekend = Membership.find_by_name('WEEKEND')
 
       if user
-        add_extra_space = 1
+        if user.membership.present?
+          if ['BASIS', 'WEEKEND'].include? user.membership.name
+            add_extra_space = 1
+          end
+        end
       end
 
       result = [ self.places_left(basis), self.places_left(weekend) ].min + add_extra_space
