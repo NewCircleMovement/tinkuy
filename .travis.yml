@@ -1,3 +1,8 @@
 language: ruby
 rvm:
     - 2.2.1
+addons:
+  postgresql: "9.3"
+before_script:
+  - psql -c "tinkuy_development"
+  - xzcat sample-db.pgsql.xz | psql tinkuy_development
