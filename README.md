@@ -9,7 +9,7 @@ Website for [tinkuy.dk](https://tinkuy.dk).
 ## How to build
 
 - Install ruby on rails, ie. for example with rvm.io (and then source dotfiles)
-- install postgresql and postgresql-server-dev
+- install postgresql and postgresql-server-dev (and postgresql-contrib for rake test)
 - gem install pg
 - bundle install
 - fix config/stripe.yml / config/initializers/koudoku.rb
