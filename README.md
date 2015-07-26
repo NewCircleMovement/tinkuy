@@ -15,7 +15,7 @@ Website for [tinkuy.dk](https://tinkuy.dk).
 - fix config/stripe.yml / config/initializers/koudoku.rb
 - create pg user `createuser -s -r $USERNAME` as postgres
 - createdb tinkuy_development
-- xzcat sample-db.pgsql.xz | psql tinkuy_development 
+- xzcat test2/sample-db.pgsql.xz | psql tinkuy_development 
 - rake db:migrate RAILS_ENV=development
 
 
