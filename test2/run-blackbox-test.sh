@@ -8,7 +8,7 @@ for x in \
   "/info" 
 do
   echo $x
-  curl "http://localhost:3000$x" | grep -v token > ".$x"
+  curl -s "http://localhost:3000$x" | grep -v token > ".$x"
 done
 
 cd ..
