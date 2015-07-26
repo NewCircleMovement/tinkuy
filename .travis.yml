@@ -4,5 +4,5 @@ rvm:
 addons:
   postgresql: "9.3"
 before_script:
-  - psql -c "tinkuy_development"
+  - psql -c "CREATE DATABASE tinkuy_development;"
   - xzcat sample-db.pgsql.xz | psql tinkuy_development
