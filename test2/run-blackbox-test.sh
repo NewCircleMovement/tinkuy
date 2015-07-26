@@ -1,3 +1,6 @@
+dropdb tinkuy_development
+createdb tinkuy_development
+xzcat test2/sample-db.pgsql.xz | psql tinkuy_development
 gem install rails
 rails server &
 sleep 10
