@@ -3,8 +3,6 @@ rvm:
   - 2.2.1
 addons:
   - postgresql: "9.4"
-install:
-  - gem install rails
 before_script:
   - psql -c "CREATE DATABASE tinkuy_development;"
   - xzcat test2/sample-db.pgsql.xz | psql tinkuy_development
