@@ -15,5 +15,4 @@ done
 ls -l
 cd ..
 killall ruby
-sleep 1
-# diff -r expected result
+diff -r expected result
