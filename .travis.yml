@@ -10,6 +10,5 @@ before_script:
   - xzcat test2/sample-db.pgsql.xz | psql tinkuy_test
   - gem install rails
 script:
-  - rails server & sleep 10 && curl http://localhost:3000/
+  - ./test2/run-blackbox-test.sh
   - rake test
-  - #./test2/run-blackbox-test.sh
