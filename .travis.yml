@@ -6,6 +6,8 @@ addons:
 before_script:
   - createdb tinkuy_development
   - xzcat test2/sample-db.pgsql.xz | psql tinkuy_development
+  - gem install rails
 script:
-  - rake test
-  - ./test2/run-blackbox-test.sh
+  - rails server && curl http://localhost:3000/
+  - # rake test
+  - #./test2/run-blackbox-test.sh
