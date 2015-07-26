@@ -23,3 +23,15 @@ start
 - `rails server`
 - open localhost:3000 and create user
 - `psql tinkuy_development` 
+
+## Testing
+
+There are automated tests, with support for continuous integration through travis.ci. We have two kinds of tests at the moment: unit testing and functional testing
+
+### Unit-testing
+
+We are just using `rake test` which comes built in with ruby. Unfortunately it is a bit out of date, and thus disabled at the moment, - but 
+
+### Functional testing
+
+Currently we just start the `rails server`, fetch some pages, and compare them with what we expect. On the long run, it would make sense to replace this with a selenium test, or similar.
