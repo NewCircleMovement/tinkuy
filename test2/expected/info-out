@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Tinkuy</title>
+<link data-turbolinks-track="true" href="/assets/application.css" media="all" rel="stylesheet" />
+<script data-turbolinks-track="true" src="/assets/application.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+
+<meta content='Tinkuy - spirituelt fitnesscenter' property='og:title'>
+<meta content='Bevægelse i krop sind og ånd gennem dans, yoga, meditation, foredrag og meget mere' property='og:description'>
+<meta content='http://localhost:3000/assets/tinkuy.jpg' property='og:image'>
+<script src='https://js.stripe.com/v1/' type='text/javascript'></script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+  ga('create', 'UA-56633343-1', 'tinkuy.dk');
+  ga('send', 'pageview');
+</script>
+</head>
+<body>
+<div id='fb-root'>
+<script>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=344493419068459&version=v2.0";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+</div>
+<nav class='navbar navbar-default' id='top' role='navigation'>
+<div class='container-fluid'>
+<!-- Brand and toggle get grouped for better mobile display -->
+<div class='navbar-header'>
+<button class='navbar-toggle collapsed' data-target='#bs-example-navbar-collapse-1' data-toggle='collapse' type='button'>
+<span class='sr-only'>Toggle navigation</span>
+<span class='icon-bar'></span>
+<span class='icon-bar'></span>
+<span class='icon-bar'></span>
+</button>
+<a class='navbar-brand' href='/'>Tinkuy</a>
+</div>
+<!-- Collect the nav links, forms, and other content for toggling -->
+<div class='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
+<ul class='nav navbar-nav'>
+<li class=''>
+<a href="/events">Aktiviteter</a>
+</li>
+<li class=''>
+<a href="/users">Medlemmer</a>
+</li>
+<li class=''>
+<a href="/resources">Book rum</a>
+</li>
+<li class=''>
+<a href="/faq">Spørgsmål og svar</a>
+</li>
+<li class='active'>
+<a href="/info">Praktisk</a>
+</li>
+</ul>
+<ul class='nav navbar-nav navbar-right'>
+<li class=''>
+<a href="/membership">Bliv medlem</a>
+</li>
+<li><a href="/users/sign_in">Log ind</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<div class='jumbotron page'>
+<div class='container'>
+<div class='row'>
+<div class='col-md-8'>
+<h1 class='page'>
+Praktisk
+</h1>
+</div>
+<div class='col-md-4'>
+<a class="btn btn-success btn-signup btn-signup-small" href="/membership">Bliv medlem nu
+<i class='fa fa-chevron-circle-right'></i>
+</a></div>
+</div>
+</div>
+</div>
+<div class='container'>
+<div class='row'>
+<div class='col-md-8'>
+<h3>Adresse</h3>
+<p>Skyttegade 3, 2200 København N</p>
+<hr>
+<h3>Konto</h3>
+<p>
+Reg.
+<strong>9860</strong>
+konto
+<strong>8730066121</strong>
+</p>
+<hr>
+</div>
+<div class='col-md-4'>
+<div class='well well-small'>
+<h4>
+Kontakt
+</h4>
+<hr>
+<table>
+<tr>
+<td>Medlemmer</td>
+<td><a href="mailto:medlem@tinkuy.dk">medlem@tinkuy.dk</a></td>
+</tr>
+<tr>
+<td>Generelt:</td>
+<td><a href="mailto:info@tinkuy.dk">info@tinkuy.dk</a></td>
+</tr>
+<tr>
+<td>Udlejning</td>
+<td><a href="mailto:lej@tinkuy.dk">lej@tinkuy.dk</a></td>
+</tr>
+<tr>
+<td>Telefon:</td>
+<td>22 24 05 42</td>
+</tr>
+</table>
+</div>
+<!-- /%hr/ -->
+<!-- /= link_to "Se", suggestions_path, :class => "btn btn-primary" -->
+</div>
+</div>
+</div>
+
+<div class='navbar navbar-bottom custom-footer'>
+<div class='jumbotron bottom'>
+<div class='container'>
+<div class='row'>
+<div class='col-md-12'>
+<p class='text-center'>
+<small>Skyttegade 3, 2200 København N &nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;  tlf. 22 24 05 42 &nbsp;&nbsp;&nbsp;  - &nbsp;&nbsp;&nbsp;  info@tinkuy.dk</small>
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</body>
+</html>

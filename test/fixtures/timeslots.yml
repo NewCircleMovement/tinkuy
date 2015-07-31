@@ -15,14 +15,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  belongs_to: 
+  id: 1
   startdate: 2015-01-03
   starttime: 2015-01-03 11:56:48
   duration: 1
   booked: false
 
 two:
-  belongs_to: 
+  id: 2
   startdate: 2015-01-03
   starttime: 2015-01-03 11:56:48
   duration: 1

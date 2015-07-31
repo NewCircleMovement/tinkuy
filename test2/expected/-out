@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Tinkuy</title>
+<link data-turbolinks-track="true" href="/assets/application.css" media="all" rel="stylesheet" />
+<script data-turbolinks-track="true" src="/assets/application.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+
+<meta content='Tinkuy - spirituelt fitnesscenter' property='og:title'>
+<meta content='Bevægelse i krop sind og ånd gennem dans, yoga, meditation, foredrag og meget mere' property='og:description'>
+<meta content='http://localhost:3000/assets/tinkuy.jpg' property='og:image'>
+<script src='https://js.stripe.com/v1/' type='text/javascript'></script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+  ga('create', 'UA-56633343-1', 'tinkuy.dk');
+  ga('send', 'pageview');
+</script>
+</head>
+<body>
+<div id='fb-root'>
+<script>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=344493419068459&version=v2.0";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+</div>
+<nav class='navbar navbar-default' id='top' role='navigation'>
+<div class='container-fluid'>
+<!-- Brand and toggle get grouped for better mobile display -->
+<div class='navbar-header'>
+<button class='navbar-toggle collapsed' data-target='#bs-example-navbar-collapse-1' data-toggle='collapse' type='button'>
+<span class='sr-only'>Toggle navigation</span>
+<span class='icon-bar'></span>
+<span class='icon-bar'></span>
+<span class='icon-bar'></span>
+</button>
+<a class='navbar-brand' href='/'>Tinkuy</a>
+</div>
+<!-- Collect the nav links, forms, and other content for toggling -->
+<div class='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
+<ul class='nav navbar-nav'>
+<li class=''>
+<a href="/events">Aktiviteter</a>
+</li>
+<li class=''>
+<a href="/users">Medlemmer</a>
+</li>
+<li class=''>
+<a href="/resources">Book rum</a>
+</li>
+<li class=''>
+<a href="/faq">Spørgsmål og svar</a>
+</li>
+<li class=''>
+<a href="/info">Praktisk</a>
+</li>
+</ul>
+<ul class='nav navbar-nav navbar-right'>
+<li class=''>
+<a href="/membership">Bliv medlem</a>
+</li>
+<li><a href="/users/sign_in">Log ind</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<div class='jumbotron'>
+<div class='container'>
+<div class='row'>
+<div class='col-md-6'>
+<h1 class='home'>
+Tinkuy
+</h1>
+<p class='subtitle'>
+København
+</p>
+</div>
+<div class='col-md-6'>
+<a class="btn btn-lg btn-success btn-signup" href="/membership">Bliv medlem nu
+<i class='fa fa-chevron-circle-right'></i>
+<br>
+<span class='small'>For kr. 108 per måned</span>
+</a><div class='clearfix'></div>
+<div class='number-counter'>
+3
+</div>
+<h3 class='pladser'>
+pladser tilbage
+</h3>
+<!-- BIG BUTTON OMITTED -->
+<!-- - else -->
+<!-- = link_to new_user_registration_path, :class => 'bliv_medlem_box' do -->
+<!-- %p.first -->
+<!-- Kom og besøg os i Skyttegade 3, -->
+<!-- %br/ -->
+<!-- 2200 Kbh N. -->
+<!-- %p.last -->
+<!-- %strong Klik her -->
+<!-- for at blive medlem -->
+<!-- %i.fa.fa-chevron-circle-right.fa-lg -->
+<!-- .clearfix -->
+<!-- %span For kr. 108 per måned -->
+</div>
+</div>
+</div>
+</div>
+<div class='container'>
+<div class='row'>
+<div class='col-md-12'>
+<h1 class='medlem'>
+Medlemsfordele
+</h1>
+</div>
+<div class='col-md-4'>
+<div class='medlem-badge'>
+<h3>
+<span class='fa-stack'>
+<i class='fa fa-circle fa-stack-2x green'></i>
+<i class='fa fa-paw fa-stack-1x fa-inverse'></i>
+</span>
+Gratis "træning"
+</h3>
+<p class='lead'>
+Som medlem har du fri adgang til meditation, yoga, dans, og workshops.
+</p>
+<div class='clearfix'></div>
+</div>
+</div>
+<div class='col-md-4'>
+<div class='medlem-badge'>
+<h3>
+<span class='fa-stack'>
+<i class='fa fa-circle fa-stack-2x blue'></i>
+<i class='fa fa-plug fa-stack-1x fa-inverse'></i>
+</span>
+Morgenmeditation
+</h3>
+<p class='lead'>
+Kom godt fra start! Kom til morgenmeditation fra 7 til 8 på hverdage (undtagen fredag)
+</p>
+</div>
+</div>
+<div class='col-md-4'>
+<div class='medlem-badge'>
+<h3>
+<span class='fa-stack'>
+<i class='fa fa-circle fa-stack-2x red'></i>
+<i class='fa fa-leaf fa-stack-1x fa-inverse'></i>
+</span>
+Morgenyoga
+</h3>
+<p class='lead'>
+Er du træt af at lave yoga hjemme i stuen? Gør det sammen med os, og få en kop the bagefter.
+</p>
+</div>
+</div>
+<div class='col-md-4'>
+<div class='medlem-badge'>
+<h3>
+<span class='fa-stack'>
+<i class='fa fa-circle fa-stack-2x red'></i>
+<i class='fa fa-heart fa-stack-1x fa-inverse'></i>
+</span>
+Dine egne events
+</h3>
+<p class='lead'>
+Har du noget på hjerte du vil dele? På hverdagsaftener er der mulighed for at slå dit eget event op.
+</p>
+</div>
+</div>
+<div class='col-md-4'>
+<div class='medlem-badge'>
+<h3>
+<span class='fa-stack'>
+<i class='fa fa-circle fa-stack-2x green'></i>
+<i class='fa fa-lightbulb-o fa-stack-1x fa-inverse'></i>
+</span>
+Mange aktiviteter
+</h3>
+<p class='lead'>
+Prøv noget nyt, og bliv inspireret. Se vores mange forskellige arrangementer under
+<a href="/events">aktiviteter</a>
+</p>
+</div>
+</div>
+<div class='col-md-4'>
+<div class='medlem-badge'>
+<h3>
+<span class='fa-stack'>
+<i class='fa fa-circle fa-stack-2x blue'></i>
+<i class='fa fa-coffee fa-stack-1x fa-inverse'></i>
+</span>
+Et pusterum
+</h3>
+<p class='lead'>
+Tinkuy er en oase lige midt i København. Kom og mærk stemningen i vores chill-out lounge.
+</p>
+</div>
+</div>
+<div class='col-md-12'>
+<a class="btn btn-lg btn-success btn-signup" href="/membership">Bliv medlem nu
+<i class='fa fa-chevron-circle-right'></i>
+<br>
+<span class='small'>For kr. 108 per måned</span>
+</a></div>
+</div>
+</div>
+
+<div class='navbar navbar-bottom custom-footer'>
+<div class='jumbotron bottom'>
+<div class='container'>
+<div class='row'>
+<div class='col-md-12'>
+<p class='text-center'>
+<small>Skyttegade 3, 2200 København N &nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;  tlf. 22 24 05 42 &nbsp;&nbsp;&nbsp;  - &nbsp;&nbsp;&nbsp;  info@tinkuy.dk</small>
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</body>
+</html>

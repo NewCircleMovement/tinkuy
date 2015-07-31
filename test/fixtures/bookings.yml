@@ -13,10 +13,8 @@
 
 one:
   user_id: 1
-  fruitbasket_id: 1
   timeslot_id: 1
 
 two:
   user_id: 1
-  fruitbasket_id: 1
   timeslot_id: 1
