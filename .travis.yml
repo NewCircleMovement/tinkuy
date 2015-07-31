@@ -1,3 +1,12 @@
 language: ruby
 rvm:
-    - 2.2.1
+  - 2.2.1
+addons:
+  - postgresql: "9.4"
+before_script:
+  - createdb tinkuy_test
+  - xzcat test2/sample-db.pgsql.xz | psql tinkuy_test
+  - gem install rails
+script:
+  - ./test2/run-blackbox-test.sh
+  - rake test
