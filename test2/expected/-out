@@ -90,25 +90,42 @@ København
 <br>
 <span class='small'>For kr. 108 per måned</span>
 </a><div class='clearfix'></div>
+<div class='row'>
+<div class='col-md-3'>
+<div class='pull-right'>
 <div class='number-counter'>
-3
+1
 </div>
-<h3 class='pladser'>
+</div>
+</div>
+<div class='col-md-9'>
+<p class='pladser'>
+BASIS
 pladser tilbage
-</h3>
-<!-- BIG BUTTON OMITTED -->
-<!-- - else -->
-<!-- = link_to new_user_registration_path, :class => 'bliv_medlem_box' do -->
-<!-- %p.first -->
-<!-- Kom og besøg os i Skyttegade 3, -->
-<!-- %br/ -->
-<!-- 2200 Kbh N. -->
-<!-- %p.last -->
-<!-- %strong Klik her -->
-<!-- for at blive medlem -->
-<!-- %i.fa.fa-chevron-circle-right.fa-lg -->
-<!-- .clearfix -->
-<!-- %span For kr. 108 per måned -->
+</p>
+</div>
+</div>
+<div class='row'>
+<div class='col-md-3'>
+<div class='pull-right'>
+<div class='number-counter'>
+1
+</div>
+<div class='number-counter'>
+5
+</div>
+<div class='number-counter'>
+0
+</div>
+</div>
+</div>
+<div class='col-md-9'>
+<p class='pladser'>
+WEEKEND
+pladser tilbage
+</p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -118,6 +135,9 @@ pladser tilbage
 <div class='col-md-12'>
 <h1 class='medlem'>
 Medlemsfordele
+<div class='pull-right'>
+<a class="btn btn-primary btn-lg" href="/membership">Bliv Støttemedlem</a>
+</div>
 </h1>
 </div>
 <div class='col-md-4'>
