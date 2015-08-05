@@ -77,18 +77,22 @@ class BookingsController < ApplicationController
   end  
 
 
-  def destroy
+  def destroy    
     @room = Resource.find(params[:resource_id])
     @booking = Booking.find(params[:id])
     @timeslot = @booking.timeslot
 
-    @fruits = @booking.fruitbasket.fruits_count
-    @booking.fruitbasket.give_fruits_to(current_user.fruitbasket, @fruits)
-    
-    @booking.destroy
-    @timeslot.booked = false
-    @timeslot.save!
-    redirect_to resource_path(@room, :b_dato => session[:b_dato]), :notice => "Booking slettet. Du har fået #{@fruits} frugter tilbage"
+    if (Date.today <= @timeslot.startdate) and (Time.now.hour <= @timeslot.starttime.hour)
+      @fruits = @booking.fruitbasket.fruits_count
+      @booking.fruitbasket.give_fruits_to(current_user.fruitbasket, @fruits)
+      
+      @booking.destroy
+      @timeslot.booked = false
+      @timeslot.save!
+      redirect_to resource_path(@room, :b_dato => session[:b_dato]), :notice => "Booking slettet. Du har fået #{@fruits} frugter tilbage"
+    else
+      redirect_to resource_path(@room, :b_dato => session[:b_dato]), :notice => "Du kan ikke slette bookinger i fortiden"
+    end
   end
 
 end
