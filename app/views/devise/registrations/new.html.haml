@@ -53,63 +53,65 @@
                 = f.submit "Ja, tilmeld mig", :class => "btn btn-primary"
               Allerede medlem?
               = render "devise/shared/links"
-    .col-md-6
-      %h3.header
-        Medlemsfordele
-      .row
-        .col-md-6     
-          .medlem-badge
-            %h5
-              %span.fa-stack
-                %i.fa.fa-circle.fa-stack-2x.green
-                %i.fa.fa-paw.fa-stack-1x.fa-inverse
-              Fri "træning"
-            %p
-              Som medlem har du fri adgang til meditation, yoga, dans, og workshops.
-            .clearfix
-        .col-md-6     
-          .medlem-badge
-            %h5
-              %span.fa-stack
-                %i.fa.fa-circle.fa-stack-2x.blue
-                %i.fa.fa-plug.fa-stack-1x.fa-inverse
-              Morgenmeditation
-            %p
-              Kom godt fra start! Kom til morgenmeditation fra 7 til 8 på hverdage (undtagen fredag)
+    - if @plan.present?
+      - if @plan.id == 2
         .col-md-6
-          .medlem-badge
-            %h5
-              %span.fa-stack
-                %i.fa.fa-circle.fa-stack-2x.red
-                %i.fa.fa-leaf.fa-stack-1x.fa-inverse
-              Morgenyoga
-            %p
-              Er du træt af at lave yoga hjemme i stuen? Gør det sammen med os, og få en kop the bagefter.
-        .col-md-6
-          .medlem-badge
-            %h5
-              %span.fa-stack
-                %i.fa.fa-circle.fa-stack-2x.red
-                %i.fa.fa-heart.fa-stack-1x.fa-inverse
-              Dine egne events
-            %p
-              Har du noget på hjerte du vil dele? På hverdagsaftener er der mulighed for at slå dit eget event op.
-        .col-md-6
-          .medlem-badge
-            %h5
-              %span.fa-stack
-                %i.fa.fa-circle.fa-stack-2x.green
-                %i.fa.fa-lightbulb-o.fa-stack-1x.fa-inverse
-              Mange aktiviteter 
-            %p
-              Prøv noget nyt, og bliv inspireret. Se vores mange forskellige arrangementer under 
-              = link_to "aktiviteter", events_path
-        .col-md-6
-          .medlem-badge
-            %h5
-              %span.fa-stack
-                %i.fa.fa-circle.fa-stack-2x.blue
-                %i.fa.fa-coffee.fa-stack-1x.fa-inverse
-              Et pusterum
-            %p
-              Tinkuy er en oase lige midt i København. Kom og mærk stemningen i vores chill-out lounge.
+          %h3.header
+            Medlemsfordele
+          .row
+            .col-md-6     
+              .medlem-badge
+                %h5
+                  %span.fa-stack
+                    %i.fa.fa-circle.fa-stack-2x.green
+                    %i.fa.fa-paw.fa-stack-1x.fa-inverse
+                  Fri "træning"
+                %p
+                  Som medlem har du fri adgang til meditation, yoga, dans, og workshops.
+                .clearfix
+            .col-md-6     
+              .medlem-badge
+                %h5
+                  %span.fa-stack
+                    %i.fa.fa-circle.fa-stack-2x.blue
+                    %i.fa.fa-plug.fa-stack-1x.fa-inverse
+                  Morgenmeditation
+                %p
+                  Kom godt fra start! Kom til morgenmeditation fra 7 til 8 på hverdage (undtagen fredag)
+            .col-md-6
+              .medlem-badge
+                %h5
+                  %span.fa-stack
+                    %i.fa.fa-circle.fa-stack-2x.red
+                    %i.fa.fa-leaf.fa-stack-1x.fa-inverse
+                  Morgenyoga
+                %p
+                  Er du træt af at lave yoga hjemme i stuen? Gør det sammen med os, og få en kop the bagefter.
+            .col-md-6
+              .medlem-badge
+                %h5
+                  %span.fa-stack
+                    %i.fa.fa-circle.fa-stack-2x.red
+                    %i.fa.fa-heart.fa-stack-1x.fa-inverse
+                  Dine egne events
+                %p
+                  Har du noget på hjerte du vil dele? På hverdagsaftener er der mulighed for at slå dit eget event op.
+            .col-md-6
+              .medlem-badge
+                %h5
+                  %span.fa-stack
+                    %i.fa.fa-circle.fa-stack-2x.green
+                    %i.fa.fa-lightbulb-o.fa-stack-1x.fa-inverse
+                  Mange aktiviteter 
+                %p
+                  Prøv noget nyt, og bliv inspireret. Se vores mange forskellige arrangementer under 
+                  = link_to "aktiviteter", events_path
+            .col-md-6
+              .medlem-badge
+                %h5
+                  %span.fa-stack
+                    %i.fa.fa-circle.fa-stack-2x.blue
+                    %i.fa.fa-coffee.fa-stack-1x.fa-inverse
+                  Et pusterum
+                %p
+                  Tinkuy er en oase lige midt i København. Kom og mærk stemningen i vores chill-out lounge.
