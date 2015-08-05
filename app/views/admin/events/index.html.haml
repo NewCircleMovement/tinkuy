@@ -31,7 +31,10 @@
               %td
                 - if event.starttime?
                   = event.starttime.strftime('%H:%M')
-              %td= event.name
+              %td
+                %strong= event.name
+                %br/
+                %small.grey= "#{event.user.firstname} #{event.user.surname}"
               %td
                 = link_to "Ret", edit_admin_event_path(event), :class => "btn btn-primary btn-xs"
                 = link_to 'Slet', [:admin, event], method: :delete, data: { confirm: 'Er du sikker?' }, :class => "btn btn-danger btn-xs"
@@ -62,7 +65,10 @@
             %td
               - if event.starttime?
                 = event.starttime.strftime('%H:%M')
-            %td= event.name
+            %td
+              %strong= event.name
+              %br/
+              %small.grey= "#{event.user.firstname} #{event.user.surname}"
             %td
               = link_to "Ret", edit_admin_event_path(event), :class => "btn btn-primary btn-xs"
-              = link_to 'Slet', event, method: :delete, data: { confirm: 'Er du sikker?' }, :class => "btn btn-danger btn-xs"
+              = link_to 'Slet', [:admin, event], method: :delete, data: { confirm: 'Er du sikker?' }, :class => "btn btn-danger btn-xs"

@@ -2,8 +2,8 @@
 <html>
 <head>
 <title>Tinkuy</title>
-<link rel="stylesheet" media="all" href="/assets/application.css" data-turbolinks-track="true" />
-<script src="/assets/application.js" data-turbolinks-track="true"></script>
+<link data-turbolinks-track="true" href="/assets/application.css" media="all" rel="stylesheet" />
+<script data-turbolinks-track="true" src="/assets/application.js"></script>
 <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
 
 <meta content='Tinkuy - spirituelt fitnesscenter' property='og:title'>
@@ -409,7 +409,7 @@ Osho kundalini meditation
 </a>
 <p>
 <small class='grey'>Wednesday d  4. Nov</small>
-<a class="btn btn-success btn-xs pull-right" rel="nofollow" data-method="post" href="/events/1541/upvote">Stem op
+<a class="btn btn-success btn-xs pull-right" data-method="post" href="/events/1541/upvote" rel="nofollow">Stem op
 <i class='fa fa-thumbs-up'></i>
 </a></p>
 </div>
@@ -427,7 +427,7 @@ Smag pÅ meditationen v/ inez dahlbæk
 </a>
 <p>
 <small class='grey'>Friday d  4. Sep</small>
-<a class="btn btn-success btn-xs pull-right" rel="nofollow" data-method="post" href="/events/1524/upvote">Stem op
+<a class="btn btn-success btn-xs pull-right" data-method="post" href="/events/1524/upvote" rel="nofollow">Stem op
 <i class='fa fa-thumbs-up'></i>
 </a></p>
 </div>
@@ -445,7 +445,7 @@ Smag pÅ meditationen v/ inez dahlbæk
 </a>
 <p>
 <small class='grey'>Friday d 11. Sep</small>
-<a class="btn btn-success btn-xs pull-right" rel="nofollow" data-method="post" href="/events/1525/upvote">Stem op
+<a class="btn btn-success btn-xs pull-right" data-method="post" href="/events/1525/upvote" rel="nofollow">Stem op
 <i class='fa fa-thumbs-up'></i>
 </a></p>
 </div>
@@ -463,7 +463,7 @@ Smag pÅ meditationen v/ inez dahlbæk
 </a>
 <p>
 <small class='grey'>Friday d 18. Sep</small>
-<a class="btn btn-success btn-xs pull-right" rel="nofollow" data-method="post" href="/events/1526/upvote">Stem op
+<a class="btn btn-success btn-xs pull-right" data-method="post" href="/events/1526/upvote" rel="nofollow">Stem op
 <i class='fa fa-thumbs-up'></i>
 </a></p>
 </div>
@@ -481,7 +481,7 @@ Smag pÅ meditationen v/ inez dahlbæk
 </a>
 <p>
 <small class='grey'>Friday d 25. Sep</small>
-<a class="btn btn-success btn-xs pull-right" rel="nofollow" data-method="post" href="/events/1527/upvote">Stem op
+<a class="btn btn-success btn-xs pull-right" data-method="post" href="/events/1527/upvote" rel="nofollow">Stem op
 <i class='fa fa-thumbs-up'></i>
 </a></p>
 </div>
@@ -499,7 +499,7 @@ Osho kundalini meditation
 </a>
 <p>
 <small class='grey'>Wednesday d 11. Nov</small>
-<a class="btn btn-success btn-xs pull-right" rel="nofollow" data-method="post" href="/events/1542/upvote">Stem op
+<a class="btn btn-success btn-xs pull-right" data-method="post" href="/events/1542/upvote" rel="nofollow">Stem op
 <i class='fa fa-thumbs-up'></i>
 </a></p>
 </div>
@@ -517,7 +517,7 @@ Contact improvisation
 </a>
 <p>
 <small class='grey'>Thursday d  6. Aug</small>
-<a class="btn btn-success btn-xs pull-right" rel="nofollow" data-method="post" href="/events/1292/upvote">Stem op
+<a class="btn btn-success btn-xs pull-right" data-method="post" href="/events/1292/upvote" rel="nofollow">Stem op
 <i class='fa fa-thumbs-up'></i>
 </a></p>
 </div>
@@ -535,7 +535,7 @@ Contact improvisation
 </a>
 <p>
 <small class='grey'>Thursday d 13. Aug</small>
-<a class="btn btn-success btn-xs pull-right" rel="nofollow" data-method="post" href="/events/1293/upvote">Stem op
+<a class="btn btn-success btn-xs pull-right" data-method="post" href="/events/1293/upvote" rel="nofollow">Stem op
 <i class='fa fa-thumbs-up'></i>
 </a></p>
 </div>
@@ -553,7 +553,7 @@ Contact improvisation
 </a>
 <p>
 <small class='grey'>Thursday d 20. Aug</small>
-<a class="btn btn-success btn-xs pull-right" rel="nofollow" data-method="post" href="/events/1294/upvote">Stem op
+<a class="btn btn-success btn-xs pull-right" data-method="post" href="/events/1294/upvote" rel="nofollow">Stem op
 <i class='fa fa-thumbs-up'></i>
 </a></p>
 </div>
@@ -571,7 +571,7 @@ Langsomme lørdage – meditativ yoga v/ inez dahlbæk
 </a>
 <p>
 <small class='grey'>Saturday d  5. Sep</small>
-<a class="btn btn-success btn-xs pull-right" rel="nofollow" data-method="post" href="/events/1520/upvote">Stem op
+<a class="btn btn-success btn-xs pull-right" data-method="post" href="/events/1520/upvote" rel="nofollow">Stem op
 <i class='fa fa-thumbs-up'></i>
 </a></p>
 </div>
