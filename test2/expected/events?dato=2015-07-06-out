@@ -512,24 +512,6 @@ Osho kundalini meditation
 </div>
 </div>
 <div class='event-info'>
-<a data-remote='/events/1292 #event-show-stuff' data-target='#ShowEvent' data-toggle='modal'>
-Contact improvisation
-</a>
-<p>
-<small class='grey'>Thursday d  6. Aug</small>
-<a class="btn btn-success btn-xs pull-right" data-method="post" href="/events/1292/upvote" rel="nofollow">Stem op
-<i class='fa fa-thumbs-up'></i>
-</a></p>
-</div>
-<div class='clearfix'></div>
-</li>
-<li class='top-event'>
-<div class='event-score'>
-<div class='fruit-score'>
-9
-</div>
-</div>
-<div class='event-info'>
 <a data-remote='/events/1293 #event-show-stuff' data-target='#ShowEvent' data-toggle='modal'>
 Contact improvisation
 </a>
@@ -554,6 +536,24 @@ Contact improvisation
 <p>
 <small class='grey'>Thursday d 20. Aug</small>
 <a class="btn btn-success btn-xs pull-right" data-method="post" href="/events/1294/upvote" rel="nofollow">Stem op
+<i class='fa fa-thumbs-up'></i>
+</a></p>
+</div>
+<div class='clearfix'></div>
+</li>
+<li class='top-event'>
+<div class='event-score'>
+<div class='fruit-score'>
+4
+</div>
+</div>
+<div class='event-info'>
+<a data-remote='/events/1295 #event-show-stuff' data-target='#ShowEvent' data-toggle='modal'>
+Contact improvisation
+</a>
+<p>
+<small class='grey'>Thursday d 27. Aug</small>
+<a class="btn btn-success btn-xs pull-right" data-method="post" href="/events/1295/upvote" rel="nofollow">Stem op
 <i class='fa fa-thumbs-up'></i>
 </a></p>
 </div>
