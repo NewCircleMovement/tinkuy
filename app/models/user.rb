@@ -31,6 +31,7 @@ class User < ActiveRecord::Base
   validates :firstname, :surname, :email, :presence => true
 
   has_many :events
+  has_many :bids
   has_many :votes
   has_many :bookings, :dependent => :destroy
   has_many :fruits, :dependent => :destroy

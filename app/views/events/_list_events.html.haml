@@ -1,6 +1,6 @@
 - @events.each do |event|
   - if event.startdate.wday == week_day && event.week_number == session[:dato].cweek and event.startdate.year == session[:dato].year
-    %a{"data-remote" => "#{event_path(event)} #event-show-stuff", "data-target" => "#ShowEvent", "data-toggle" => "modal"}
+    = link_to event_path(event) do
       .well.well-sm.well-event
         %p
           %strong= event.starttime.strftime("%H:%M")
