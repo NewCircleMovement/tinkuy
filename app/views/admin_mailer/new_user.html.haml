@@ -1,0 +1,8 @@
+%p
+  %strong Hejsa
+%p
+  Der er kommet en ny Tinkuy bruger
+%p
+  = "#{@user.firstname} #{@user.surname}"
+%p
+  = link_to "Email bruger", "mailto:#{@user.email}"

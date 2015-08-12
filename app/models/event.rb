@@ -26,6 +26,8 @@ class Event < ActiveRecord::Base
   belongs_to :user
 
   has_many :votes, :dependent => :destroy
+  has_many :bids, :dependent => :destroy
+  
   has_one :fruitbasket, as: :owner
 
   def week_number
