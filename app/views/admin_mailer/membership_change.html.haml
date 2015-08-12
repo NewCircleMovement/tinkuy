@@ -1,0 +1,12 @@
+%p
+  %strong Hejsa
+%p
+  Brugeren
+  %strong= "#{@user.firstname} #{@user.surname}"
+  - if @plan.present?
+    har ændret sit medlemskab til: 
+    %strong= @plan.name
+  - else
+    har opsagt sit medlemsskab
+%p
+  = link_to "Email bruger", "mailto:#{@user.email}"
