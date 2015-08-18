@@ -48,3 +48,12 @@ There is an sample database in `test2/sample-db.pgsql.xz`. All user information 
 - 147email@example.com is an extended member (type 5)
 - 183email@example.com is a professional member (type 6)
 - 128email@example.com is passive 
+
+## Migrating sample database
+
+When there are changes in schema, then the sample database needs to be migrated: first load database, then migrate, and then store the new one, ie.:
+
+- createdb tinkuy_development
+- xzcat test2/sample-db.pgsql.xz | psql tinkuy_development 
+- rake db:migrate RAILS_ENV=development
+- pg_dump tinkuy_development | xz -9 > test2/sample-db.pgsql.xz

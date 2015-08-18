@@ -111,8 +111,7 @@ Forrige uge
 Mandag
 <small>(6. Jul)</small>
 </h4>
-<a data-remote='/events/1385 #event-show-stuff' data-target='#ShowEvent' data-toggle='modal'>
-<div class='well well-sm well-event'>
+<a href="/events/1385"><div class='well well-sm well-event'>
 <p>
 <strong>08:00</strong>
 </p>
@@ -120,16 +119,14 @@ Mandag
 Morgenyoga
 </p>
 </div>
-</a>
-<div class='well well-sm well-event-admin'>
+</a><div class='well well-sm well-event-admin'>
 <p>
 <small>
 first name
 </small>
 </p>
 </div>
-<a data-remote='/events/1446 #event-show-stuff' data-target='#ShowEvent' data-toggle='modal'>
-<div class='well well-sm well-event'>
+<a href="/events/1446"><div class='well well-sm well-event'>
 <p>
 <strong>18:00</strong>
 </p>
@@ -137,8 +134,7 @@ first name
 RECONNECTIVE YOGA w/ Marcello
 </p>
 </div>
-</a>
-<div class='well well-sm well-event-admin'>
+</a><div class='well well-sm well-event-admin'>
 <p>
 <small>
 first name
@@ -152,8 +148,7 @@ first name
 Tirsdag
 <small>(7. Jul)</small>
 </h4>
-<a data-remote='/events/1405 #event-show-stuff' data-target='#ShowEvent' data-toggle='modal'>
-<div class='well well-sm well-event'>
+<a href="/events/1405"><div class='well well-sm well-event'>
 <p>
 <strong>08:00</strong>
 </p>
@@ -161,16 +156,14 @@ Tirsdag
 Morgenyoga v/Christina Stougaard
 </p>
 </div>
-</a>
-<div class='well well-sm well-event-admin'>
+</a><div class='well well-sm well-event-admin'>
 <p>
 <small>
 first name
 </small>
 </p>
 </div>
-<a data-remote='/events/1445 #event-show-stuff' data-target='#ShowEvent' data-toggle='modal'>
-<div class='well well-sm well-event'>
+<a href="/events/1445"><div class='well well-sm well-event'>
 <p>
 <strong>10:00</strong>
 </p>
@@ -178,16 +171,14 @@ first name
 RECONNECTIVE YOGA w/ Marcello
 </p>
 </div>
-</a>
-<div class='well well-sm well-event-admin'>
+</a><div class='well well-sm well-event-admin'>
 <p>
 <small>
 first name
 </small>
 </p>
 </div>
-<a data-remote='/events/1439 #event-show-stuff' data-target='#ShowEvent' data-toggle='modal'>
-<div class='well well-sm well-event'>
+<a href="/events/1439"><div class='well well-sm well-event'>
 <p>
 <strong>19:00</strong>
 </p>
@@ -195,8 +186,7 @@ first name
 Osho kundalini meditation event
 </p>
 </div>
-</a>
-<div class='well well-sm well-event-admin'>
+</a><div class='well well-sm well-event-admin'>
 <p>
 <small>
 first name
@@ -210,8 +200,7 @@ first name
 Onsdag
 <small>(8. Jul)</small>
 </h4>
-<a data-remote='/events/1406 #event-show-stuff' data-target='#ShowEvent' data-toggle='modal'>
-<div class='well well-sm well-event'>
+<a href="/events/1406"><div class='well well-sm well-event'>
 <p>
 <strong>08:00</strong>
 </p>
@@ -219,16 +208,14 @@ Onsdag
 Morgenyoga
 </p>
 </div>
-</a>
-<div class='well well-sm well-event-admin'>
+</a><div class='well well-sm well-event-admin'>
 <p>
 <small>
 first name
 </small>
 </p>
 </div>
-<a data-remote='/events/903 #event-show-stuff' data-target='#ShowEvent' data-toggle='modal'>
-<div class='well well-sm well-event'>
+<a href="/events/903"><div class='well well-sm well-event'>
 <p>
 <strong>17:30</strong>
 </p>
@@ -236,8 +223,7 @@ first name
 Bellyfit Holistic Female Fitness
 </p>
 </div>
-</a>
-<div class='well well-sm well-event-admin'>
+</a><div class='well well-sm well-event-admin'>
 <p>
 <small>
 first name
@@ -251,8 +237,7 @@ first name
 Torsdag
 <small>(9. Jul)</small>
 </h4>
-<a data-remote='/events/1407 #event-show-stuff' data-target='#ShowEvent' data-toggle='modal'>
-<div class='well well-sm well-event'>
+<a href="/events/1407"><div class='well well-sm well-event'>
 <p>
 <strong>08:00</strong>
 </p>
@@ -260,16 +245,14 @@ Torsdag
 Morgenyoga v/Christina Stougaard
 </p>
 </div>
-</a>
-<div class='well well-sm well-event-admin'>
+</a><div class='well well-sm well-event-admin'>
 <p>
 <small>
 first name
 </small>
 </p>
 </div>
-<a data-remote='/events/1288 #event-show-stuff' data-target='#ShowEvent' data-toggle='modal'>
-<div class='well well-sm well-event'>
+<a href="/events/1288"><div class='well well-sm well-event'>
 <p>
 <strong>19:00</strong>
 </p>
@@ -277,8 +260,7 @@ first name
 Contact Improvisation, dance the Kundalini
 </p>
 </div>
-</a>
-<div class='well well-sm well-event-admin'>
+</a><div class='well well-sm well-event-admin'>
 <p>
 <small>
 first name
@@ -294,8 +276,7 @@ first name
 Fredag
 <small>(10. Jul)</small>
 </h4>
-<a data-remote='/events/1443 #event-show-stuff' data-target='#ShowEvent' data-toggle='modal'>
-<div class='well well-sm well-event'>
+<a href="/events/1443"><div class='well well-sm well-event'>
 <p>
 <strong>08:00</strong>
 </p>
@@ -303,16 +284,14 @@ Fredag
 RECONNECTIVE YOGA w/ Marcello
 </p>
 </div>
-</a>
-<div class='well well-sm well-event-admin'>
+</a><div class='well well-sm well-event-admin'>
 <p>
 <small>
 first name
 </small>
 </p>
 </div>
-<a data-remote='/events/1444 #event-show-stuff' data-target='#ShowEvent' data-toggle='modal'>
-<div class='well well-sm well-event'>
+<a href="/events/1444"><div class='well well-sm well-event'>
 <p>
 <strong>14:00</strong>
 </p>
@@ -320,16 +299,14 @@ first name
 RECONNECTIVE YOGA w/ Marcello
 </p>
 </div>
-</a>
-<div class='well well-sm well-event-admin'>
+</a><div class='well well-sm well-event-admin'>
 <p>
 <small>
 first name
 </small>
 </p>
 </div>
-<a data-remote='/events/1422 #event-show-stuff' data-target='#ShowEvent' data-toggle='modal'>
-<div class='well well-sm well-event'>
+<a href="/events/1422"><div class='well well-sm well-event'>
 <p>
 <strong>19:00</strong>
 </p>
@@ -337,8 +314,7 @@ first name
 Kirtan with Eostar Kamala
 </p>
 </div>
-</a>
-<div class='well well-sm well-event-admin'>
+</a><div class='well well-sm well-event-admin'>
 <p>
 <small>
 first name
@@ -359,8 +335,7 @@ Lørdag
 Søndag
 <small>(12. Jul)</small>
 </h4>
-<a data-remote='/events/1387 #event-show-stuff' data-target='#ShowEvent' data-toggle='modal'>
-<div class='well well-sm well-event'>
+<a href="/events/1387"><div class='well well-sm well-event'>
 <p>
 <strong>13:00</strong>
 </p>
@@ -368,8 +343,7 @@ Søndag
 UNTAMED YOGA &amp; DANCE WORKSHOP FOR WOMEN
 </p>
 </div>
-</a>
-<div class='well well-sm well-event-admin'>
+</a><div class='well well-sm well-event-admin'>
 <p>
 <small>
 first name
@@ -508,24 +482,6 @@ Osho kundalini meditation
 <li class='top-event'>
 <div class='event-score'>
 <div class='fruit-score'>
-9
-</div>
-</div>
-<div class='event-info'>
-<a data-remote='/events/1293 #event-show-stuff' data-target='#ShowEvent' data-toggle='modal'>
-Contact improvisation
-</a>
-<p>
-<small class='grey'>Thursday d 13. Aug</small>
-<a class="btn btn-success btn-xs pull-right" data-method="post" href="/events/1293/upvote" rel="nofollow">Stem op
-<i class='fa fa-thumbs-up'></i>
-</a></p>
-</div>
-<div class='clearfix'></div>
-</li>
-<li class='top-event'>
-<div class='event-score'>
-<div class='fruit-score'>
 6
 </div>
 </div>
@@ -562,6 +518,24 @@ Contact improvisation
 <li class='top-event'>
 <div class='event-score'>
 <div class='fruit-score'>
+0
+</div>
+</div>
+<div class='event-info'>
+<a data-remote='/events/1544 #event-show-stuff' data-target='#ShowEvent' data-toggle='modal'>
+Osho kundalini meditation
+</a>
+<p>
+<small class='grey'>Wednesday d 11. Nov</small>
+<a class="btn btn-success btn-xs pull-right" data-method="post" href="/events/1544/upvote" rel="nofollow">Stem op
+<i class='fa fa-thumbs-up'></i>
+</a></p>
+</div>
+<div class='clearfix'></div>
+</li>
+<li class='top-event'>
+<div class='event-score'>
+<div class='fruit-score'>
 3
 </div>
 </div>
@@ -582,11 +556,6 @@ Langsomme lørdage – meditativ yoga v/ inez dahlbæk
 </div>
 
 </div>
-</div>
-</div>
-<div aria-hidden='true' aria-labelledby='myModalLabel' class='modal fade' id='ShowEvent' role='dialog' tabindex='-1'>
-<div class='modal-dialog'>
-<div class='modal-content'></div>
 </div>
 </div>
 
