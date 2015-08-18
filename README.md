@@ -38,3 +38,22 @@ Currently we just start the `rails server`, fetch some pages, and compare them w
 _Important:_ when changes are done that affects the outpage of the pages, this test will likely fail, - verify that the behaviour is as expected, and then move the content of `test2/result` into `test2/expected`.
 
 This is just a quick hack to be able to test, if the application runs, and has the expected output. On the long run, it would make sense to replace this with a selenium tests, or similar. 
+
+# Sample data
+
+There is an sample database in `test2/sample-db.pgsql.xz`. All user information has been anonymised, and every user has the password `12345678`. Some user logins with different roles are:
+
+- 20email@example.com is an admin
+- 420email@example.com is a normal member (type 3)
+- 147email@example.com is an extended member (type 5)
+- 183email@example.com is a professional member (type 6)
+- 128email@example.com is passive 
+
+## Migrating sample database
+
+When there are changes in schema, then the sample database needs to be migrated: first load database, then migrate, and then store the new one, ie.:
+
+- createdb tinkuy_development
+- xzcat test2/sample-db.pgsql.xz | psql tinkuy_development 
+- rake db:migrate RAILS_ENV=development
+- pg_dump tinkuy_development | xz -9 > test2/sample-db.pgsql.xz
