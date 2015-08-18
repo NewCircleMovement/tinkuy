@@ -31,6 +31,7 @@ class User < ActiveRecord::Base
   validates :firstname, :surname, :email, :presence => true
 
   has_many :events
+  has_many :bids
   has_many :votes
   has_many :bookings, :dependent => :destroy
   has_many :fruits, :dependent => :destroy
@@ -41,6 +42,7 @@ class User < ActiveRecord::Base
   has_one :subscription, :dependent => :destroy
 
   after_create :create_fruitbasket
+  after_create :send_admin_email
 
   def plan_id=(new_value)
     @plan_id = new_value.to_i
@@ -149,5 +151,8 @@ class User < ActiveRecord::Base
     self.save!
   end
 
+  def send_admin_email
+    AdminMailer.new_user(self).deliver
+  end
 
 end

@@ -1,1 +1,13 @@
-= render 'show_event'
+= render :partial => "events_header"
+.container
+  .row
+    .col-md-8
+      %h2
+        = @event.name
+      %p
+        = @event.description
+
+      = link_to "Tilmeld", "", :class => 'btn btn-default'
+      -# - if current_user
+      -#   - simple_form_for :bid do
+

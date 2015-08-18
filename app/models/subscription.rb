@@ -24,12 +24,18 @@ class Subscription < ActiveRecord::Base
   belongs_to :coupon
 
   def update_membership
-
     if self.plan_id.present?
       user = self.user  
       plan = Plan.find(plan_id)
       user.membership_id = plan.membership.id
       user.save!
+      AdminMailer.membership_change(user, plan).deliver
+    else
+      user = self.user
+      user.membership_id = nil
+      user.save!
+      puts self
+      AdminMailer.membership_change(user, plan).deliver
     end
   end
 

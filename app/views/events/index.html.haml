@@ -71,50 +71,50 @@
     .col-md-4
       = render :partial => "top10", :locals => {:top_events => @top_events}
 
-#ShowEvent.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
-  .modal-dialog
-    .modal-content
+-# #ShowEvent.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+-#   .modal-dialog
+-#     .modal-content
 
-- if @new_event.present?
-  #new_event.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
-    .modal-dialog
-      .modal-content
-        .modal-header
-          %button.close{"data-dismiss" => "modal", :type => "button"}
-            %span{"aria-hidden" => "true"} &times;
-            %span.sr-only Close
-          %h4#myModalLabel.modal-title
-            - if @new_event.confirmed
-              Ny aktivitet gemt
-            - else
-              Forslag til ny aktivitet gemt
-        .modal-body
-          %h4
-            = @new_event.name
-          %hr/
-          %table
-            %tr
-              %td
-                %strong Dato:
-                = @new_event.startdate.strftime("%A %-d. %b, %Y")
-              %td
-                %strong Tidspunkt:
-                - if @new_event.starttime?
-                  = @new_event.starttime.strftime("%H:%M")
-              %td
-                %strong Varighed:
-                - if @new_event.duration
-                  = @new_event.duration
-                  min
-                - else
-                  Uoplyst     
-          %hr/
-          %h4
-            Beskrivelse
-          %p
-            = @new_event.description.gsub(/\n/, '<br />').html_safe
-        .modal-footer
-          %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Luk
+-# - if @new_event.present?
+-#   #new_event.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+-#     .modal-dialog
+-#       .modal-content
+-#         .modal-header
+-#           %button.close{"data-dismiss" => "modal", :type => "button"}
+-#             %span{"aria-hidden" => "true"} &times;
+-#             %span.sr-only Close
+-#           %h4#myModalLabel.modal-title
+-#             - if @new_event.confirmed
+-#               Ny aktivitet gemt
+-#             - else
+-#               Forslag til ny aktivitet gemt
+-#         .modal-body
+-#           %h4
+-#             = @new_event.name
+-#           %hr/
+-#           %table
+-#             %tr
+-#               %td
+-#                 %strong Dato:
+-#                 = @new_event.startdate.strftime("%A %-d. %b, %Y")
+-#               %td
+-#                 %strong Tidspunkt:
+-#                 - if @new_event.starttime?
+-#                   = @new_event.starttime.strftime("%H:%M")
+-#               %td
+-#                 %strong Varighed:
+-#                 - if @new_event.duration
+-#                   = @new_event.duration
+-#                   min
+-#                 - else
+-#                   Uoplyst     
+-#           %hr/
+-#           %h4
+-#             Beskrivelse
+-#           %p
+-#             = @new_event.description.gsub(/\n/, '<br />').html_safe
+-#         .modal-footer
+-#           %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Luk
 
-  :javascript
-    $('#new_event').modal('show')
+-#   :javascript
+-#     $('#new_event').modal('show')
