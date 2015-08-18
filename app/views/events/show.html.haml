@@ -7,7 +7,19 @@
       %p
         = @event.description
 
-      = link_to "Tilmeld", "", :class => 'btn btn-default'
+      %hr/
+      %h4 Tilmeldte
+      #participants
+        - for user in @event.users
+          %p= user.firstname
+
+      - if current_user.present?
+        = link_to "Tilmeld", @event.request_signup(current_user), :remote => true
+
+
+      -#   = button_to "Tilmeld", @event.request_signup( current_user ), :remote => true, :class => 'btn btn-default'
+
+
       -# - if current_user
       -#   - simple_form_for :bid do
 

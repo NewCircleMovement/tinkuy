@@ -42,6 +42,8 @@ Tinkuy::Application.routes.draw do
     }
   end
 
+  resources :bids
+
   get '/suggestions' => 'events#suggestions'
   
   get '/info' => 'pages#info'
