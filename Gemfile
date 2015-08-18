@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+# CORS for api
+gem 'rack-cors', :require => 'rack/cors'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.3'
 
