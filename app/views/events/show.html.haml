@@ -8,6 +8,7 @@
         = @event.description
 
       %hr/
+      %button.event-signup{"data-event" => @event.id} "Tilmeld"
       %h4 Tilmeldte
       #participants
         - for user in @event.users
