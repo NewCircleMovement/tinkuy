@@ -48,13 +48,13 @@ class Event < ActiveRecord::Base
     # Bid.find_or_create_by(:event_id => id, :user_id => user.id)
     # bid = Bid.where(:event_id => self.id, :user_id => user.id).first
     # bid.amount = 200
-    # puts "///////////////////////////////////////////"
+    puts "///////////////////////////////////////////"
     # # puts bid
     # # puts bid.event_id
     # # puts bid.user_id
     # # bid = Bid.new(:event_id => id, :user_id => user.id)
     # bid.save
-    bid = Bid.find_or_create_by(:event_id => id, :user_id => user.id)
+    # bid = Bid.find_or_create_by(:event_id => id, :user_id => user.id)
 
   end
 
