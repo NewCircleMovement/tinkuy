@@ -2,12 +2,13 @@
 .container
   .row
     .col-md-8
+      %button{:onclick => "history.back()"} Tilbage
       %h2
         = @event.name
       %p
-        = @event.description
+        = @event.description.gsub(/\n/, '<br />').html_safe
 
-      = link_to "Tilmeld", "", :class => 'btn btn-default'
+      -# = link_to "Tilmeld", "", :class => 'btn btn-default'
       -# - if current_user
       -#   - simple_form_for :bid do
 
