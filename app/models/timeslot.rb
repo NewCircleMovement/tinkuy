@@ -45,11 +45,10 @@ class Timeslot < ActiveRecord::Base
 
   def score
     if self.current_booking.present?
-      # TODO: this check is because current bookings do not have a fruitbasket
-      # maybe we should check if the current_booking is recurring and then return something else
-      if self.current_booking.fruitbasket.present?
+      if self.current_booking.class == Booking
         return self.current_booking.fruitbasket.fruits_count
       else
+        # TODO: this method will return 0 if the current booking is a recurring booking
         return 0
       end
     else
