@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Tinkuy</title>
+<link data-turbolinks-track="true" href="/assets/application.css" media="all" rel="stylesheet" />
+<script data-turbolinks-track="true" src="/assets/application.js"></script>
+<link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+
+<meta content='Tinkuy - spirituelt fitnesscenter' property='og:title'>
+<meta content='Bevægelse i krop sind og ånd gennem dans, yoga, meditation, foredrag og meget mere' property='og:description'>
+<meta content='http://localhost:3000/assets/tinkuy.jpg' property='og:image'>
+<script src='https://js.stripe.com/v1/' type='text/javascript'></script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+  ga('create', 'UA-56633343-1', 'tinkuy.dk');
+  ga('send', 'pageview');
+</script>
+</head>
+<body>
+<div id='fb-root'>
+<script>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=344493419068459&version=v2.0";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+</div>
+<nav class='navbar navbar-default' id='top' role='navigation'>
+<div class='container-fluid'>
+<!-- Brand and toggle get grouped for better mobile display -->
+<div class='navbar-header'>
+<button class='navbar-toggle collapsed' data-target='#bs-example-navbar-collapse-1' data-toggle='collapse' type='button'>
+<span class='sr-only'>Toggle navigation</span>
+<span class='icon-bar'></span>
+<span class='icon-bar'></span>
+<span class='icon-bar'></span>
+</button>
+<a class='navbar-brand' href='/'>Tinkuy</a>
+</div>
+<!-- Collect the nav links, forms, and other content for toggling -->
+<div class='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
+<ul class='nav navbar-nav'>
+<li class='active'>
+<a href="/events">Aktiviteter</a>
+</li>
+<li class=''>
+<a href="/users">Medlemmer</a>
+</li>
+<li class=''>
+<a href="/resources">Book rum</a>
+</li>
+<li class=''>
+<a href="/faq">Spørgsmål og svar</a>
+</li>
+<li class=''>
+<a href="/info">Praktisk</a>
+</li>
+</ul>
+<ul class='nav navbar-nav navbar-right'>
+<li class=''>
+<a href="/membership">Bliv medlem</a>
+</li>
+<li><a href="/users/sign_in">Log ind</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<div class='jumbotron page'>
+<div class='container'>
+<div class='row'>
+<div class='col-md-8'>
+<h1 class='page'>
+Aktiviteter
+</h1>
+</div>
+<div class='col-md-4'>
+<a class="btn btn-success btn-signup btn-signup-small" href="/membership">Bliv medlem nu
+<i class='fa fa-chevron-circle-right'></i>
+</a></div>
+</div>
+</div>
+</div>
+
+<div class='container'>
+<div class='row'>
+<div class='col-md-8'>
+<h4 class='pull-left'>
+Uge
+28 - July, 2015
+</h4>
+<div class='pull-right'>
+<a class="btn btn-primary" href="/events/new">Foreslå ny aktivitet
+</a><a class="btn btn-default" href="/events?dato=2015-06-29"><i class='fa fa-angle-left'></i>
+Forrige uge
+</a><a class="btn btn-default" href="/events?dato=2015-07-13">Næste uge
+<i class='fa fa-angle-right'></i>
+</a></div>
+<div class='clearfix'></div>
+<hr>
+<div class='row'>
+<div class='col-md-3'>
+<h4 class='day-of-week'>
+Mandag
+<small>(6. Jul)</small>
+</h4>
+<a href="/events/1385"><div class='well well-sm well-event'>
+<p>
+<strong>08:00</strong>
+</p>
+<p>
+Morgenyoga
+</p>
+</div>
+</a><div class='well well-sm well-event-admin'>
+<p>
+<small>
+first name
+</small>
+</p>
+</div>
+<a href="/events/1446"><div class='well well-sm well-event'>
+<p>
+<strong>18:00</strong>
+</p>
+<p>
+RECONNECTIVE YOGA w/ Marcello
+</p>
+</div>
+</a><div class='well well-sm well-event-admin'>
+<p>
+<small>
+first name
+</small>
+</p>
+</div>
+
+</div>
+<div class='col-md-3'>
+<h4 class='day-of-week'>
+Tirsdag
+<small>(7. Jul)</small>
+</h4>
+<a href="/events/1405"><div class='well well-sm well-event'>
+<p>
+<strong>08:00</strong>
+</p>
+<p>
+Morgenyoga v/Christina Stougaard
+</p>
+</div>
+</a><div class='well well-sm well-event-admin'>
+<p>
+<small>
+first name
+</small>
+</p>
+</div>
+<a href="/events/1445"><div class='well well-sm well-event'>
+<p>
+<strong>10:00</strong>
+</p>
+<p>
+RECONNECTIVE YOGA w/ Marcello
+</p>
+</div>
+</a><div class='well well-sm well-event-admin'>
+<p>
+<small>
+first name
+</small>
+</p>
+</div>
+<a href="/events/1439"><div class='well well-sm well-event'>
+<p>
+<strong>19:00</strong>
+</p>
+<p>
+Osho kundalini meditation event
+</p>
+</div>
+</a><div class='well well-sm well-event-admin'>
+<p>
+<small>
+first name
+</small>
+</p>
+</div>
+
+</div>
+<div class='col-md-3'>
+<h4 class='day-of-week'>
+Onsdag
+<small>(8. Jul)</small>
+</h4>
+<a href="/events/1406"><div class='well well-sm well-event'>
+<p>
+<strong>08:00</strong>
+</p>
+<p>
+Morgenyoga
+</p>
+</div>
+</a><div class='well well-sm well-event-admin'>
+<p>
+<small>
+first name
+</small>
+</p>
+</div>
+<a href="/events/903"><div class='well well-sm well-event'>
+<p>
+<strong>17:30</strong>
+</p>
+<p>
+Bellyfit Holistic Female Fitness
+</p>
+</div>
+</a><div class='well well-sm well-event-admin'>
+<p>
+<small>
+first name
+</small>
+</p>
+</div>
+
+</div>
+<div class='col-md-3'>
+<h4 class='day-of-week'>
+Torsdag
+<small>(9. Jul)</small>
+</h4>
+<a href="/events/1407"><div class='well well-sm well-event'>
+<p>
+<strong>08:00</strong>
+</p>
+<p>
+Morgenyoga v/Christina Stougaard
+</p>
+</div>
+</a><div class='well well-sm well-event-admin'>
+<p>
+<small>
+first name
+</small>
+</p>
+</div>
+<a href="/events/1288"><div class='well well-sm well-event'>
+<p>
+<strong>19:00</strong>
+</p>
+<p>
+Contact Improvisation, dance the Kundalini
+</p>
+</div>
+</a><div class='well well-sm well-event-admin'>
+<p>
+<small>
+first name
+</small>
+</p>
+</div>
+
+</div>
+</div>
+<div class='row'>
+<div class='col-md-3'>
+<h4 class='day-of-week'>
+Fredag
+<small>(10. Jul)</small>
+</h4>
+<a href="/events/1443"><div class='well well-sm well-event'>
+<p>
+<strong>08:00</strong>
+</p>
+<p>
+RECONNECTIVE YOGA w/ Marcello
+</p>
+</div>
+</a><div class='well well-sm well-event-admin'>
+<p>
+<small>
+first name
+</small>
+</p>
+</div>
+<a href="/events/1444"><div class='well well-sm well-event'>
+<p>
+<strong>14:00</strong>
+</p>
+<p>
+RECONNECTIVE YOGA w/ Marcello
+</p>
+</div>
+</a><div class='well well-sm well-event-admin'>
+<p>
+<small>
+first name
+</small>
+</p>
+</div>
+<a href="/events/1422"><div class='well well-sm well-event'>
+<p>
+<strong>19:00</strong>
+</p>
+<p>
+Kirtan with Eostar Kamala
+</p>
+</div>
+</a><div class='well well-sm well-event-admin'>
+<p>
+<small>
+first name
+</small>
+</p>
+</div>
+
+</div>
+<div class='col-md-3'>
+<h4 class='day-of-week'>
+Lørdag
+<small>(11. Jul)</small>
+</h4>
+
+</div>
+<div class='col-md-3'>
+<h4 class='day-of-week'>
+Søndag
+<small>(12. Jul)</small>
+</h4>
+<a href="/events/1387"><div class='well well-sm well-event'>
+<p>
+<strong>13:00</strong>
+</p>
+<p>
+UNTAMED YOGA &amp; DANCE WORKSHOP FOR WOMEN
+</p>
+</div>
+</a><div class='well well-sm well-event-admin'>
+<p>
+<small>
+first name
+</small>
+</p>
+</div>
+
+</div>
+<div class='col-md-12'>
+<hr>
+<div class='pull-right'>
+<a class="btn btn-primary" href="/events/new">Foreslå ny aktivitet
+</a><a class="btn btn-default" href="/events?dato=2015-06-29"><i class='fa fa-angle-left'></i>
+Forrige uge
+</a><a class="btn btn-default" href="/events?dato=2015-07-13">Næste uge
+<i class='fa fa-angle-right'></i>
+</a></div>
+</div>
+</div>
+</div>
+<div class='col-md-4'>
+<div class='well well-small'>
+<h4>
+Top 10 foreslåede aktiviteter
+</h4>
+<hr>
+<ul class='list-unstyled top-events'>
+<li class='top-event'>
+<div class='event-score'>
+<div class='fruit-score'>
+1
+</div>
+</div>
+<div class='event-info'>
+<a href="/events/1525">Smag pÅ meditationen v/ inez dahlbæk
+</a><p>
+<small class='grey'>Friday d 11. Sep</small>
+<a class="btn btn-success btn-xs pull-right" data-method="post" href="/events/1525/upvote" rel="nofollow">Stem op
+<i class='fa fa-thumbs-up'></i>
+</a></p>
+</div>
+<div class='clearfix'></div>
+</li>
+<li class='top-event'>
+<div class='event-score'>
+<div class='fruit-score'>
+1
+</div>
+</div>
+<div class='event-info'>
+<a href="/events/1526">Smag pÅ meditationen v/ inez dahlbæk
+</a><p>
+<small class='grey'>Friday d 18. Sep</small>
+<a class="btn btn-success btn-xs pull-right" data-method="post" href="/events/1526/upvote" rel="nofollow">Stem op
+<i class='fa fa-thumbs-up'></i>
+</a></p>
+</div>
+<div class='clearfix'></div>
+</li>
+<li class='top-event'>
+<div class='event-score'>
+<div class='fruit-score'>
+1
+</div>
+</div>
+<div class='event-info'>
+<a href="/events/1527">Smag pÅ meditationen v/ inez dahlbæk
+</a><p>
+<small class='grey'>Friday d 25. Sep</small>
+<a class="btn btn-success btn-xs pull-right" data-method="post" href="/events/1527/upvote" rel="nofollow">Stem op
+<i class='fa fa-thumbs-up'></i>
+</a></p>
+</div>
+<div class='clearfix'></div>
+</li>
+<li class='top-event'>
+<div class='event-score'>
+<div class='fruit-score'>
+0
+</div>
+</div>
+<div class='event-info'>
+<a href="/events/1542">Osho kundalini meditation
+</a><p>
+<small class='grey'>Wednesday d 11. Nov</small>
+<a class="btn btn-success btn-xs pull-right" data-method="post" href="/events/1542/upvote" rel="nofollow">Stem op
+<i class='fa fa-thumbs-up'></i>
+</a></p>
+</div>
+<div class='clearfix'></div>
+</li>
+<li class='top-event'>
+<div class='event-score'>
+<div class='fruit-score'>
+0
+</div>
+</div>
+<div class='event-info'>
+<a href="/events/1544">Osho kundalini meditation
+</a><p>
+<small class='grey'>Wednesday d 11. Nov</small>
+<a class="btn btn-success btn-xs pull-right" data-method="post" href="/events/1544/upvote" rel="nofollow">Stem op
+<i class='fa fa-thumbs-up'></i>
+</a></p>
+</div>
+<div class='clearfix'></div>
+</li>
+<li class='top-event'>
+<div class='event-score'>
+<div class='fruit-score'>
+0
+</div>
+</div>
+<div class='event-info'>
+<a href="/events/1672">Blid hatha yoga
+</a><p>
+<small class='grey'>Wednesday d 16. Sep</small>
+<a class="btn btn-success btn-xs pull-right" data-method="post" href="/events/1672/upvote" rel="nofollow">Stem op
+<i class='fa fa-thumbs-up'></i>
+</a></p>
+</div>
+<div class='clearfix'></div>
+</li>
+<li class='top-event'>
+<div class='event-score'>
+<div class='fruit-score'>
+0
+</div>
+</div>
+<div class='event-info'>
+<a href="/events/1673">Blid hatha yoga
+</a><p>
+<small class='grey'>Wednesday d 23. Sep</small>
+<a class="btn btn-success btn-xs pull-right" data-method="post" href="/events/1673/upvote" rel="nofollow">Stem op
+<i class='fa fa-thumbs-up'></i>
+</a></p>
+</div>
+<div class='clearfix'></div>
+</li>
+<li class='top-event'>
+<div class='event-score'>
+<div class='fruit-score'>
+0
+</div>
+</div>
+<div class='event-info'>
+<a href="/events/1538">Osho kundalini meditation
+</a><p>
+<small class='grey'>Wednesday d  7. Oct</small>
+<a class="btn btn-success btn-xs pull-right" data-method="post" href="/events/1538/upvote" rel="nofollow">Stem op
+<i class='fa fa-thumbs-up'></i>
+</a></p>
+</div>
+<div class='clearfix'></div>
+</li>
+<li class='top-event'>
+<div class='event-score'>
+<div class='fruit-score'>
+0
+</div>
+</div>
+<div class='event-info'>
+<a href="/events/1539">Osho kundalini meditation
+</a><p>
+<small class='grey'>Wednesday d 21. Oct</small>
+<a class="btn btn-success btn-xs pull-right" data-method="post" href="/events/1539/upvote" rel="nofollow">Stem op
+<i class='fa fa-thumbs-up'></i>
+</a></p>
+</div>
+<div class='clearfix'></div>
+</li>
+<li class='top-event'>
+<div class='event-score'>
+<div class='fruit-score'>
+0
+</div>
+</div>
+<div class='event-info'>
+<a href="/events/1541">Osho kundalini meditation
+</a><p>
+<small class='grey'>Wednesday d  4. Nov</small>
+<a class="btn btn-success btn-xs pull-right" data-method="post" href="/events/1541/upvote" rel="nofollow">Stem op
+<i class='fa fa-thumbs-up'></i>
+</a></p>
+</div>
+<div class='clearfix'></div>
+</li>
+</ul>
+<a class="btn btn-primary" href="/suggestions">Se alle</a>
+</div>
+
+</div>
+</div>
+</div>
+
+<div class='navbar navbar-bottom custom-footer'>
+<div class='jumbotron bottom'>
+<div class='container'>
+<div class='row'>
+<div class='col-md-12'>
+<p class='text-center'>
+<small>Skyttegade 3, 2200 København N &nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;  tlf. 22 24 05 42 &nbsp;&nbsp;&nbsp;  - &nbsp;&nbsp;&nbsp;  info@tinkuy.dk</small>
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</body>
+</html>
