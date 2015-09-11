@@ -4,4 +4,6 @@
       .row
         .col-md-12
           %p.text-center 
-            %small Skyttegade 3, 2200 København N &nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;  tlf. 22 24 05 42 &nbsp;&nbsp;&nbsp;  - &nbsp;&nbsp;&nbsp;  info@tinkuy.dk           
+            %small Skyttegade 3, 2200 København N &nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;  tlf. 22 24 05 42 &nbsp;&nbsp;&nbsp;  - &nbsp;&nbsp;&nbsp;  info@tinkuy.dk
+- if current_user
+  %span{:class => "solsort-data", :style => "display:none", "data-userid" => current_user.id}
