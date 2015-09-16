@@ -39,8 +39,10 @@
 
       %h3#who Who can book the Therapy Room?
       %p
-        The use of the Therapy Room is made available to our active members and share holders.
-        If you’re not a member yet, please visit www.tinkuy.dk and follow the instructions there.
+        The use of the Therapy Room is made available to our active members.
+        If you’re not a member yet, you can sign up 
+        %a{:href => "/membership"} 
+          here.
       = render :partial => 'top'
 
       -# %h3#payment Payment/Rent
@@ -77,7 +79,7 @@
       %p
         The Therapy Room is freshly refurbished and currently is equipped with a massage table, a desk and two chairs.
       %p
-        When renting the Therapy Room you have access to the kitchen, bathroom and toilet rooms.
+        When using the Therapy Room you have access to the kitchen, bathroom and toilet rooms.
 
       %br/
       %h5 What is not provided and what should I bring?
@@ -96,9 +98,11 @@
       %br/
       %h5 How often can I use the therapy room?
       %p
-        The therapy room is being shared by several therapists, 5 of which have booked regular time frames every week. However, despite that, the schedule has many openings.
+        The therapy room is being shared by several therapists, 5 of which have booked regular time frames every week. However, despite that, the schedule has many openings for basic members and weekend members.
       %p
-        You are most welcome to apply for a regular use of the room. We accept applications on ongoing basis. If interested, 
+        You are most welcome to apply for a regular use of the room. 
+        We have two kinds of memberships for therapists - Extended and Professional
+        If interested, 
         = link_to "send us an email", "mailto:tinkuy.therapy@gmail.com" 
         with an introduction about yourself and your activity, as well as the day of week and the number of hours you’d like to book
 

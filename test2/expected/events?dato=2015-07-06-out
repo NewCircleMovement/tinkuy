@@ -104,6 +104,13 @@ Forrige uge
 <i class='fa fa-angle-right'></i>
 </a></div>
 <div class='clearfix'></div>
+<div class='row'>
+<div class='col-md-8'>
+<a class='pull-left' href='/faq#tilmelding'>
+Hvordan tilmelder jeg mig aktiviterne?
+</a>
+</div>
+</div>
 <hr>
 <div class='row'>
 <div class='col-md-3'>
@@ -369,24 +376,9 @@ Forrige uge
 <h4>
 Top 10 foreslåede aktiviteter
 </h4>
+<small>Disse aktiviteter er endnu ikke kommet  i kalenderen. Vis din interesse for aktiviteten ved at trykke på "Stem op"</small>
 <hr>
 <ul class='list-unstyled top-events'>
-<li class='top-event'>
-<div class='event-score'>
-<div class='fruit-score'>
-1
-</div>
-</div>
-<div class='event-info'>
-<a href="/events/1525">Smag pÅ meditationen v/ inez dahlbæk
-</a><p>
-<small class='grey'>Friday d 11. Sep</small>
-<a class="btn btn-success btn-xs pull-right" data-method="post" href="/events/1525/upvote" rel="nofollow">Stem op
-<i class='fa fa-thumbs-up'></i>
-</a></p>
-</div>
-<div class='clearfix'></div>
-</li>
 <li class='top-event'>
 <div class='event-score'>
 <div class='fruit-score'>
@@ -510,6 +502,22 @@ Top 10 foreslåede aktiviteter
 </a><p>
 <small class='grey'>Wednesday d 21. Oct</small>
 <a class="btn btn-success btn-xs pull-right" data-method="post" href="/events/1539/upvote" rel="nofollow">Stem op
+<i class='fa fa-thumbs-up'></i>
+</a></p>
+</div>
+<div class='clearfix'></div>
+</li>
+<li class='top-event'>
+<div class='event-score'>
+<div class='fruit-score'>
+0
+</div>
+</div>
+<div class='event-info'>
+<a href="/events/1540">Osho kundalini meditation
+</a><p>
+<small class='grey'>Wednesday d 28. Oct</small>
+<a class="btn btn-success btn-xs pull-right" data-method="post" href="/events/1540/upvote" rel="nofollow">Stem op
 <i class='fa fa-thumbs-up'></i>
 </a></p>
 </div>

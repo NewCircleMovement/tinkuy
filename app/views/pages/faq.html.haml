@@ -66,7 +66,7 @@
       
       %h3#alle Kan alle blive medlem? 
       %p
-        Ja, alle kan blive medlem så længe vi har plads. Når vi når 300 medlemmer vurderer vi, hvor mange medlemmer centret kan bære. 
+        Ja, alle kan blive medlem så længe vi har plads. Når vi når 700 basis medlemmer og 300 weekend medlemmer vurderer vi, om centret kan bære flere medlemmer.
       = render :partial => 'top'
       
       %h3#hvad_nu Nu har jeg tilmeldt mig – hvad så?
@@ -76,15 +76,29 @@
       
       %h3#betaling Hvordan foregår betalingen? 
       %p
-        Prisen er 108 kr/md. Du kan indbetale på kontonummer i JAK Slagelse Reg. 9860 konto 8730066121  HUSK at skrive dit navn i meddelelsesteksten på overførslen, når du betaler for dit medlemskab og sæt ”hak” ved fast overførsel til den første i måneden. 
+        Prisen er 108 kr/md og du kan betale på en af disse to måder; 
+      %h4
+        Kreditkortbetaling: 
+      %p
+        Du kan enten betale via dit kreditkort på tinkuy.dk – denne metode kører automatisk. 
+      %h4
+        Bankoverførsel:
+      %p
+        Ellers kan du betale på kontonummer i JAK Slagelse Reg. 9860 konto 8730066121 VIGTIGT! Husk hvis du betaler via bankoverførsel at sætte det til en fast månedlig overførsel. Og husk endelig at skrive dit navn i overførselslinjen (max 20 tegn), når du betaler for dit medlemskab, så kan vi finde din indbetaling på kontoudtoget. Så snart betalingen er tikket ind på bank kontoen sender vi dig en velkomstmail.
       = render :partial => 'top'
       
       %h3#brug Hvornår kan jeg gøre brug af mit medlemskab?
       %p
-        Såsnart vi har modtaget din betaling og du har modtaget en velkomstmail kan du benytte dig af de gratis aktiviteter, som medlemskabet giver adgang til. 
+        Såsnart du har betalt for dit medlemskab enten via kreditkort eller 
+        bankoverførsel kan du benytte dig af de fri aktiviteter, der er inkluderet i dit 
+        medlemskab. Når vi har modtaget din betaling sender vi dig snarest en 
+        velkomstmail med mere info.
       = render :partial => 'top'
       
       %h3#udbytte Hvad får jeg for mit medlemskab? 
+      %p
+        Se mere under de forskellige 
+        = link_to "medlemskaber", membership_path
       %p
         Vi har morgen meditation 7.00 – 8.00 og Drop IN Morgenyoga 8.00 – 10.00 mandage til torsdage. Vi har forskellige former for bevægelse 1530-1700 mandag til torsdag. Endelig har vi også open stage arrangementer 19-21 flere af aftnerne mandag til torsdag, hvor medlemmerne deler ud af deres evner og gaver til glæde for andre. Derudover har vi en række af arrangementer på andre tidspunkter, hvor betalende medlemmer af Tinkuy ofte kommer med til reduceret pris. Du kan se alle arrangementer på 
         = link_to "tinkuy kalenderen", events_path
@@ -101,11 +115,7 @@
       
       %h3#oversigt Hvor finder jeg en oversigt over aktiviteter i centret?
       %p
-        Du finder en overskuelig uge oversigt på tinkuy.dk/events hvor du også kan læse mere om den enkelte aktivitet. Når du finder en aktivitet, du ønsker at deltage i, må du meget gerne melde dig til via facebook events (på en af grupperne 
-        = link_to "Tinkuy – medlemmer", "https://www.facebook.com/groups/273265506201488/" 
-        eller
-        = succeed ")." do
-          = link_to "Spirituelt Fitnesscenter i  Hjertet af København", "https://www.facebook.com/groups/683828591709690/"
+        Du finder en overskuelig uge oversigt på tinkuy.dk/events hvor du også kan læse mere om den enkelte aktivitet. 
       = render :partial => 'top'
       
       %h3#pladser Hvor mange pladser er der på holdene?
@@ -130,9 +140,27 @@
       
       %h3#opsigelse Hvordan opsiger jeg mit medlemskab? 
       %p
-        Du kan til enhver tid opsige dit medlemskab uden opsigelsesvarsel. 
+        Du kan til enhver tid opsige dit medlemskab uden opsigelsesvarsel. Ved opsigelse må du meget gerne sende en mail til 
+        = link_to "medlem@tinkuy.dk", "mailto:medlem@tinkuy.dk" 
+      %p
+        Hvis du er tilmeldt bankoverførsel stopper du herefter din automatiske 
+        overførsel via din egen bank/netbank. Hvis du opsiger og har betalt for en 
+        måned stopper medlemskabet efter udløb af den måned.
+      %p
+        Hvis du er tilmeldt via kreditkort skal du afmelde din betaling under “min profil”  
+        for at betalingsaftalen ophører.
+      %p
+        Vedr pause i medlemskabet: Nogle måneder er du nok mere aktiv og bruger de 
+        tilbud centeret har meget, og andre måneder er du mindre aktiv og holder en 
+        pause (men betaler stadig kontingent). Når du holder pause opsparer du frugter 
+        til fx at booke behandlerrummet på et tidspunkt.
+      %p
+        Hvis du holder betalingspause i medlemsbetalingen skal du informere os via 
+        medlem@tinkuy.dk hvorefter vi vil stoppe medlemsskabet - herefter kan du 
+        tilmelde dig igen senere såfremt der er ledige pladser.
 
-      - if current_user.present?
+        
+      -# if current_user.present?
         - if current_user.is_bank_member
           %p
             Da du er tilmeldt bankoverførsel stopper du blot din automatiske overførsel via din egen bank/netbank. Ved opsigelse må du meget gerne sende en mail til 
@@ -142,7 +170,7 @@
           %p
             Da du er tilmeldt via kreditkort kan du
             = link_to "opsige dit medlemskab her", koudoku.owner_subscription_path(current_user.id, current_user.subscription.id)
-      - else
+      -# else
         %p 
           Hvis du er tilmeldt via kreditkort opsiges medlemskab ved at klikke på 'medlemskab' under 'min profil' i øverste højre hjørne på websiden. 
         %p
@@ -151,7 +179,7 @@
         %p
           Hvis du er tilmeldt bankoverførsel stopper du blot din automatiske overførsel via din egen bank/ netbank. Ved opsigelse må du meget gerne sende en mail til 
           = link_to "medlem@tinkuy.dk", "mailto:medlem@tinkuy.dk"
-      %ul
+      -# %ul
         %li 
           Hvis du opsiger og har betalt for en måned stopper medlemskabet efter udløb af den måned.       
         %li
