@@ -11,7 +11,7 @@ gem 'sass-rails', '~> 4.0.0'
 gem 'haml-rails'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
-gem 'simple_form', '~> 3.1.0.rc1', github: 'plataformatec/simple_form', branch: 'master'
+gem 'simple_form', '~> 3.2.0', github: 'plataformatec/simple_form', branch: 'master'
 
 gem 'momentjs-rails', '>= 2.8.1'
 gem 'bootstrap3-datetimepicker-rails', '~> 3.1.3'
