@@ -374,54 +374,6 @@ Top 10 foreslåede aktiviteter
 <li class='top-event'>
 <div class='event-score'>
 <div class='fruit-score'>
-1
-</div>
-</div>
-<div class='event-info'>
-<a href="/events/1525">Smag pÅ meditationen v/ inez dahlbæk
-</a><p>
-<small class='grey'>Friday d 11. Sep</small>
-<a class="btn btn-success btn-xs pull-right" data-method="post" href="/events/1525/upvote" rel="nofollow">Stem op
-<i class='fa fa-thumbs-up'></i>
-</a></p>
-</div>
-<div class='clearfix'></div>
-</li>
-<li class='top-event'>
-<div class='event-score'>
-<div class='fruit-score'>
-1
-</div>
-</div>
-<div class='event-info'>
-<a href="/events/1526">Smag pÅ meditationen v/ inez dahlbæk
-</a><p>
-<small class='grey'>Friday d 18. Sep</small>
-<a class="btn btn-success btn-xs pull-right" data-method="post" href="/events/1526/upvote" rel="nofollow">Stem op
-<i class='fa fa-thumbs-up'></i>
-</a></p>
-</div>
-<div class='clearfix'></div>
-</li>
-<li class='top-event'>
-<div class='event-score'>
-<div class='fruit-score'>
-1
-</div>
-</div>
-<div class='event-info'>
-<a href="/events/1527">Smag pÅ meditationen v/ inez dahlbæk
-</a><p>
-<small class='grey'>Friday d 25. Sep</small>
-<a class="btn btn-success btn-xs pull-right" data-method="post" href="/events/1527/upvote" rel="nofollow">Stem op
-<i class='fa fa-thumbs-up'></i>
-</a></p>
-</div>
-<div class='clearfix'></div>
-</li>
-<li class='top-event'>
-<div class='event-score'>
-<div class='fruit-score'>
 0
 </div>
 </div>
@@ -458,38 +410,6 @@ Top 10 foreslåede aktiviteter
 </div>
 </div>
 <div class='event-info'>
-<a href="/events/1672">Blid hatha yoga
-</a><p>
-<small class='grey'>Wednesday d 16. Sep</small>
-<a class="btn btn-success btn-xs pull-right" data-method="post" href="/events/1672/upvote" rel="nofollow">Stem op
-<i class='fa fa-thumbs-up'></i>
-</a></p>
-</div>
-<div class='clearfix'></div>
-</li>
-<li class='top-event'>
-<div class='event-score'>
-<div class='fruit-score'>
-0
-</div>
-</div>
-<div class='event-info'>
-<a href="/events/1673">Blid hatha yoga
-</a><p>
-<small class='grey'>Wednesday d 23. Sep</small>
-<a class="btn btn-success btn-xs pull-right" data-method="post" href="/events/1673/upvote" rel="nofollow">Stem op
-<i class='fa fa-thumbs-up'></i>
-</a></p>
-</div>
-<div class='clearfix'></div>
-</li>
-<li class='top-event'>
-<div class='event-score'>
-<div class='fruit-score'>
-0
-</div>
-</div>
-<div class='event-info'>
 <a href="/events/1538">Osho kundalini meditation
 </a><p>
 <small class='grey'>Wednesday d  7. Oct</small>
@@ -510,6 +430,86 @@ Top 10 foreslåede aktiviteter
 </a><p>
 <small class='grey'>Wednesday d 21. Oct</small>
 <a class="btn btn-success btn-xs pull-right" data-method="post" href="/events/1539/upvote" rel="nofollow">Stem op
+<i class='fa fa-thumbs-up'></i>
+</a></p>
+</div>
+<div class='clearfix'></div>
+</li>
+<li class='top-event'>
+<div class='event-score'>
+<div class='fruit-score'>
+0
+</div>
+</div>
+<div class='event-info'>
+<a href="/events/1540">Osho kundalini meditation
+</a><p>
+<small class='grey'>Wednesday d 28. Oct</small>
+<a class="btn btn-success btn-xs pull-right" data-method="post" href="/events/1540/upvote" rel="nofollow">Stem op
+<i class='fa fa-thumbs-up'></i>
+</a></p>
+</div>
+<div class='clearfix'></div>
+</li>
+<li class='top-event'>
+<div class='event-score'>
+<div class='fruit-score'>
+0
+</div>
+</div>
+<div class='event-info'>
+<a href="/events/1675">Blid hatha yoga
+</a><p>
+<small class='grey'>Wednesday d  7. Oct</small>
+<a class="btn btn-success btn-xs pull-right" data-method="post" href="/events/1675/upvote" rel="nofollow">Stem op
+<i class='fa fa-thumbs-up'></i>
+</a></p>
+</div>
+<div class='clearfix'></div>
+</li>
+<li class='top-event'>
+<div class='event-score'>
+<div class='fruit-score'>
+0
+</div>
+</div>
+<div class='event-info'>
+<a href="/events/1479">Bellyfit holistic female fitness
+</a><p>
+<small class='grey'>Tuesday d  6. Oct</small>
+<a class="btn btn-success btn-xs pull-right" data-method="post" href="/events/1479/upvote" rel="nofollow">Stem op
+<i class='fa fa-thumbs-up'></i>
+</a></p>
+</div>
+<div class='clearfix'></div>
+</li>
+<li class='top-event'>
+<div class='event-score'>
+<div class='fruit-score'>
+0
+</div>
+</div>
+<div class='event-info'>
+<a href="/events/1480">Bellyfit holistic female fitness
+</a><p>
+<small class='grey'>Tuesday d 13. Oct</small>
+<a class="btn btn-success btn-xs pull-right" data-method="post" href="/events/1480/upvote" rel="nofollow">Stem op
+<i class='fa fa-thumbs-up'></i>
+</a></p>
+</div>
+<div class='clearfix'></div>
+</li>
+<li class='top-event'>
+<div class='event-score'>
+<div class='fruit-score'>
+0
+</div>
+</div>
+<div class='event-info'>
+<a href="/events/1481">Bellyfit holistic female fitness
+</a><p>
+<small class='grey'>Tuesday d 13. Oct</small>
+<a class="btn btn-success btn-xs pull-right" data-method="post" href="/events/1481/upvote" rel="nofollow">Stem op
 <i class='fa fa-thumbs-up'></i>
 </a></p>
 </div>
