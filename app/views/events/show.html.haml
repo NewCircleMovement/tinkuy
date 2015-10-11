@@ -5,6 +5,22 @@
       %button{:onclick => "history.back()"} Tilbage
       %h2
         = @event.name
+
+      %p
+        %strong Tidspunkt:
+        %span 
+          = @event.startdate.strftime("%-d. %b., kl")
+          = @event.starttime.strftime("%H:%M")
+        %br
+        %strong Varighed:
+        %span
+          = @event.duration
+          minutter
+        %br
+        %strong Tovholder:
+        %span
+          = @event.user.firstname
+
       %p
         = @event.description.gsub(/\n/, '<br />').html_safe
 
