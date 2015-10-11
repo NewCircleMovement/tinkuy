@@ -104,6 +104,13 @@ Forrige uge
 <i class='fa fa-angle-right'></i>
 </a></div>
 <div class='clearfix'></div>
+<div class='row'>
+<div class='col-md-8'>
+<a class='pull-left' href='/faq#tilmelding'>
+Hvordan tilmelder jeg mig aktiviterne?
+</a>
+</div>
+</div>
 <hr>
 <div class='row'>
 <div class='col-md-3'>
@@ -369,6 +376,7 @@ Forrige uge
 <h4>
 Top 10 foreslåede aktiviteter
 </h4>
+<small>Disse aktiviteter er endnu ikke kommet  i kalenderen. Vis din interesse for aktiviteten ved at trykke på "Stem op"</small>
 <hr>
 <ul class='list-unstyled top-events'>
 <li class='top-event'>
