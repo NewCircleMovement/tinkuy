@@ -57,3 +57,8 @@ When there are changes in schema, then the sample database needs to be migrated:
 - xzcat test2/sample-db.pgsql.xz | psql tinkuy_development 
 - rake db:migrate RAILS_ENV=development
 - pg_dump tinkuy_development | xz -9 > test2/sample-db.pgsql.xz
+
+
+# Deploy
+
+    git@heroku.com:tinkuy-staging.git
