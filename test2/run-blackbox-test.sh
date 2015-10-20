@@ -16,6 +16,7 @@ do
   curl -s "http://localhost:3000/$x" | grep -v token > "./`echo $x | tr /? __`-out"
 done
 
+perl -pi -e 'BEGIN{undef $/;} s/Top 10 foreslåede aktiviteter.*href...suggestions..Se alle..a..//smg' "events_dato=2015-07-06-out";
 ls -l
 cd ..
 killall ruby
