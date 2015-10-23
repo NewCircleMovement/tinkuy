@@ -34,4 +34,19 @@ class Event < ActiveRecord::Base
     startdate.beginning_of_week(start_day = :monday).strftime("%V").to_i
   end
 
+  def user_name
+    firstname, surname = '', ''
+    if user.firstname.present?
+      firstname = user.firstname
+    end
+
+    if user.surname.present?
+      surname = ' ' + user.surname
+    end
+
+    return (firstname + surname).strip()
+
+
+  end
+
 end

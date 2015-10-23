@@ -34,7 +34,7 @@
               %td
                 %strong= event.name
                 %br/
-                %small.grey= "#{event.user.firstname} #{event.user.surname}"
+                %small.grey= event.user_name
               %td
                 = link_to "Ret", edit_admin_event_path(event), :class => "btn btn-primary btn-xs"
                 = link_to 'Slet', [:admin, event], method: :delete, data: { confirm: 'Er du sikker?' }, :class => "btn btn-danger btn-xs"
@@ -68,7 +68,7 @@
             %td
               %strong= event.name
               %br/
-              %small.grey= "#{event.user.firstname} #{event.user.surname}"
+              %small.grey= user_name
             %td
               = link_to "Ret", edit_admin_event_path(event), :class => "btn btn-primary btn-xs"
               = link_to 'Slet', [:admin, event], method: :delete, data: { confirm: 'Er du sikker?' }, :class => "btn btn-danger btn-xs"
