@@ -35,18 +35,21 @@ class Event < ActiveRecord::Base
   end
 
   def user_name
-    firstname, surname = '', ''
-    if user.firstname.present?
-      firstname = user.firstname
+
+    if user.present?
+      firstname, surname = '', ''
+      if user.firstname.present?
+        firstname = user.firstname
+      end
+
+      if user.surname.present?
+        surname = ' ' + user.surname
+      end
+      return (firstname + surname).strip()
+    else
+      return 'NO OWNER'
     end
-
-    if user.surname.present?
-      surname = ' ' + user.surname
-    end
-
-    return (firstname + surname).strip()
-
-
+    
   end
 
 end
