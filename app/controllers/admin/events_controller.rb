@@ -2,8 +2,8 @@ class Admin::EventsController < Admin::BaseController
   before_action :set_event, only: [:edit, :update, :destroy]
 
   def index
-    events = Event.eager_load(:fruitbasket)
-    @confirmed_events = Event.where(:confirmed => true).order(startdate: :asc, starttime: :asc)
+    events = Event.includes(:fruitbasket).includes(:votes).order(startdate: :asc, starttime: :asc)
+    @confirmed_events = events.where(:confirmed => true)
     
     if params[:old] == 'yes'
       @confirmed_events = @confirmed_events.where("startdate < ?", Date.today)
@@ -11,7 +11,7 @@ class Admin::EventsController < Admin::BaseController
       @confirmed_events = @confirmed_events.where("startdate >= ?", Date.today)
     end
     
-    @unconfirmed_events = Event.where(:confirmed => false).where("startdate >= ?", Date.today).order(startdate: :asc, starttime: :asc)
+    @unconfirmed_events = events.where(:confirmed => false).where("startdate >= ?", Date.today)
   end
 
   # GET /events/1/edit
