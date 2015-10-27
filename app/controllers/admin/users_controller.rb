@@ -2,10 +2,12 @@ class Admin::UsersController < Admin::BaseController
   before_action :set_user, only: [:edit, :update, :destroy]
   
   def index
-    @confirmed_users = User.where(:status => 'active').order(:firstname, :surname)
-    @supporter_users = User.where(:status => 'support').order(:firstname, :surname)
-    @pending_users = User.where(:status => 'pending').order(:firstname, :surname)
-    @passive_users = User.where(:status => 'passive').order(:firstname, :surname)
+    users = User.eager_load(:fruitbasket)
+    
+    @confirmed_users = users.where(:status => 'active').order(:firstname, :surname)
+    @supporter_users = users.where(:status => 'support').order(:firstname, :surname)
+    @pending_users = users.where(:status => 'pending').order(:firstname, :surname)
+    @passive_users = users.where(:status => 'passive').order(:firstname, :surname)
   end
 
   def edit

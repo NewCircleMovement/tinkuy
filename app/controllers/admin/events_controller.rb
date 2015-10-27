@@ -2,6 +2,7 @@ class Admin::EventsController < Admin::BaseController
   before_action :set_event, only: [:edit, :update, :destroy]
 
   def index
+    events = Event.eager_load(:fruitbasket)
     @confirmed_events = Event.where(:confirmed => true).order(startdate: :asc, starttime: :asc)
     
     if params[:old] == 'yes'
