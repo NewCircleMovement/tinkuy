@@ -67,7 +67,7 @@ class Admin::ResourcesController < Admin::BaseController
   def destroy
     @resource.destroy
     respond_to do |format|
-      format.html { redirect_to resources_url }
+      format.html { redirect_to admin_resources_path }
       format.json { head :no_content }
     end
   end
