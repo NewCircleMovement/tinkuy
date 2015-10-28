@@ -6,11 +6,12 @@
       %h2 Foreslå ny aktivitet
 
       = render 'form'
-      = link_to 'Tilbage', events_path
+      = link_to 'Tilbage', :back
     .col-md-6
       %h2 Husk
-      %div
-        Når du ”foreslår ny aktivitet” beder vi dig huske: 
+      .well
+        %h4 Når du ”foreslår ny aktivitet” beder vi dig huske: 
+        %hr
         %ul
           %li Under ”Navn på aktiviteter” kan du efter ”titlen” skrive hvis den afholdes udenfor workshoprummet fx i loungen. Så kan andre workshopholdere nemt se at workshoprummet er ledigt. 
           %li Husk at notere varighed på aktiviteten under ”Varighed (minutter)”

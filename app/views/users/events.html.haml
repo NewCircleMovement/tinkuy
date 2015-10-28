@@ -1,0 +1,36 @@
+.jumbotron.page
+  .container
+    .row
+      .col-md-12
+        %h1.page
+          - if @user == current_user
+            Mine aktiviteter
+          - else
+            = "#{@user.firstname}'s aktiviteter"
+          
+.container
+  .row
+    - if not @events.present?
+      .col-md-12
+        %p Du har ikke oprettet nogen aktiviteter
+        %p= link_to "Foreslå ny aktivitet", new_event_path, :class => "btn btn-primary"
+    - else
+      - for event in @events
+        .col-md-4
+          .well.well-sm
+            %p
+              %strong= event.name
+              - if event.confirmed
+                %span.label.label-success
+                  Bekræftet
+              - else
+                %span.label.label-info
+                  Ikke aktiv
+            %p.grey
+              = event.startdate
+            %p.small
+              = event.description
+            %p
+              - if @user == current_user
+                = link_to "Ret", edit_event_path(event), :class => 'btn btn-primary'
+                = link_to 'Slet', event, method: :delete, data: { confirm: 'Er du sikker?' }, :class => "btn btn-danger"
