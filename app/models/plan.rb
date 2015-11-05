@@ -16,6 +16,7 @@
 #  fruits_per_month   :integer
 #  description        :text
 #  max_members        :integer
+#  membership_id      :integer
 #
 
 class Plan < ActiveRecord::Base

@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: centers
+#
+#  id          :integer          not null, primary key
+#  name        :string(255)
+#  max_members :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 class Center < ActiveRecord::Base
 
   has_many :memberships
