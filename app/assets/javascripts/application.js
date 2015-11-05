@@ -12,13 +12,14 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery
+//= require angular
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require moment
 //= require bootstrap-datetimepicker
-//= require_tree .
 //= require lemon
+//= require_tree .
+//= require_tree ./angularjs
 
 $(document).on('hidden.bs.modal', function (e) {
 	$(e.target).removeData('bs.modal');
