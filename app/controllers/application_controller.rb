@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
 
   def get_places_left
     if Membership.all.count > 3
-      @places_left = (Center.first.places_left( Membership.find_by_name('BASIS') ) >= 1) || (Center.first.places_left( Membership.find_by_name('WEEKEND')) >= 1 )
+      @places_left = (Center.first.places_left( Membership.find_by_name('HVERDAGS') ) >= 1) || (Center.first.places_left( Membership.find_by_name('WEEKEND')) >= 1 )
     else
       @places_left = true
     end

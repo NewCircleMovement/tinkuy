@@ -99,7 +99,7 @@ namespace :tinkuy do
         user.membership_id = user.subscription.plan.membership.id
       else
         if user.status == 'active' or user.status == 'pending'
-          user.membership_id = Membership.find_by_name('BASIS').id
+          user.membership_id = Membership.find_by_name('HVERDAGS').id
         elsif user.status == 'support'
           user.membership_id = Membership.find_by_name('SUPPORTER').id
         end

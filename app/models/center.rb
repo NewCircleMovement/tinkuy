@@ -10,12 +10,12 @@ class Center < ActiveRecord::Base
     else
       add_extra_space = 0
       
-      basis = Membership.find_by_name('BASIS')
+      basis = Membership.find_by_name('HVERDAGS')
       weekend = Membership.find_by_name('WEEKEND')
 
       if user
         if user.membership.present?
-          if ['BASIS', 'WEEKEND'].include? user.membership.name
+          if ['HVERDAGS', 'WEEKEND'].include? user.membership.name
             add_extra_space = 1
           end
         end
