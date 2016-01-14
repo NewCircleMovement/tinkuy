@@ -1,8 +1,40 @@
 .row
-  .col-md-12
-    %h1 Medlemmer
+  .col-md-6
+    %h1
+      Medlemmer:
+      - if params[:focus].present?
+        = params[:focus].capitalize
+      - if params[:filter].present?
+        %small= "(sidste #{params[:days]} dage)"
+  .col-md-6
+    .btn-group
+      %button.btn.btn-primary.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+        Nye
+        %span.caret
+      %ul.dropdown-menu
+        %li
+          %a{:href => admin_users_path(:focus => 'active', :filter => 'new', :days => 2)} 2 dage
+        %li
+          %a{:href => admin_users_path(:focus => 'active', :filter => 'new', :days => 10)} 10 dage
+        %li
+          %a{:href => admin_users_path(:focus => 'active', :filter => 'new', :days => 30)} 30 dage
+    .btn-group
+      %button.btn.btn-primary.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+        Opsagte
+        %span.caret
+      %ul.dropdown-menu
+        %li
+          %a{:href => admin_users_path(:focus => 'passive', :filter => 'goodbye', :days => 2)} 2 dage
+        %li
+          %a{:href => admin_users_path(:focus => 'passive', :filter => 'goodbye', :days => 10)} 10 dage
+        %li
+          %a{:href => admin_users_path(:focus => 'passive', :filter => 'goodbye', :days => 30)} 30 dage
+    .btn-group
+      = link_to "Active", admin_users_path(:focus => 'active'), :class => 'btn btn-primary'
+      = link_to "Pending", admin_users_path(:focus => 'pending'), :class => 'btn btn-primary'
+      = link_to "Supporters", admin_users_path(:focus => 'support'), :class => 'btn btn-primary'
+      = link_to "Passive", admin_users_path(:focus => 'passive'), :class => 'btn btn-primary'
+
+
 .row
-  = render partial: 'user_table', :locals => {:users => @pending_users, :focus => 'Afventer bekræftelse'}
-  = render partial: 'user_table', :locals => {:users => @confirmed_users, :focus => 'Bekræftede'}
-  = render partial: 'user_table', :locals => {:users => @supporter_users, :focus => 'Supporters'}
-  = render partial: 'user_table', :locals => {:users => @passive_users, :focus => 'Passive'}
+  = render partial: 'user_table', :locals => {:users => @users, :focus => params[:focus]}

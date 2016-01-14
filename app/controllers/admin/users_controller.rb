@@ -2,12 +2,26 @@ class Admin::UsersController < Admin::BaseController
   before_action :set_user, only: [:edit, :update, :destroy]
   
   def index
-    users = User.includes(:subscription).includes(:fruitbasket).order(:firstname, :surname)
-    
-    @confirmed_users = users.where(:status => 'active')
-    @supporter_users = users.where(:status => 'support')
-    @pending_users = users.where(:status => 'pending')
-    @passive_users = users.where(:status => 'passive')
+
+    focus = 'active'
+    if params[:focus].present?
+      focus = params[:focus]
+    end
+    params[:focus] = focus
+
+    @users = User.where(:status => focus).includes(:subscription).includes(:fruitbasket).order(:firstname, :surname)
+
+    criteria = Time.now
+    if params[:filter].present?
+      criteria = criteria - params[:days].to_i.days
+      if params[:filter] == 'new'
+        @users = @users.where(["created_at >= ?", criteria]).order(:created_at)
+      end
+      if params[:filter] == 'goodbye'
+        @users = @users.where(["updated_at >= ?", criteria]).order(:updated_at)
+      end
+    end
+
   end
 
   def edit
