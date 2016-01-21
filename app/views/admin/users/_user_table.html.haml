@@ -9,6 +9,7 @@
       %thead
         %th Navn
         %th Medlemsskab
+        %th Tidligere
         %th Pris
         %th Betalingsmåde
         %th Frugt
@@ -23,6 +24,12 @@
                 = user.membership.name
               - else
                 IKKE MEDLEM
+            %td
+              - if user.subscription.present?
+                - if user.subscription.old_plan_exit_date.present?
+                  - if user.subscription.old_plan_exit_date > @criteria
+                    = Plan.find(user.subscription.old_plan_id).name
+                    %small.grey=user.subscription.old_plan_exit_date
             %td
               - if user.is_bank_member
                 108

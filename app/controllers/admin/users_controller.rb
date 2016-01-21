@@ -11,14 +11,18 @@ class Admin::UsersController < Admin::BaseController
 
     @users = User.where(:status => focus).includes(:subscription).includes(:fruitbasket).order(:firstname, :surname)
 
-    criteria = Time.now
+    @criteria = Time.now
+
     if params[:filter].present?
-      criteria = criteria - params[:days].to_i.days
+      @criteria = @criteria - params[:days].to_i.days
       if params[:filter] == 'new'
-        @users = @users.where(["created_at >= ?", criteria]).order(:created_at)
+        @users = @users.where(["created_at >= ?", @criteria]).order(:created_at)
       end
       if params[:filter] == 'goodbye'
-        @users = @users.where(["updated_at >= ?", criteria]).order(:updated_at)
+        @users = @users.where(["updated_at >= ?", @criteria]).order(:updated_at)
+      end
+      if params[:filter] == 'change'
+        @users = @users.joins(:subscription).where("subscriptions.old_plan_exit_date >= ?", @criteria)
       end
     end
 

@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
   has_one :subscription, :dependent => :destroy
 
   after_create :create_fruitbasket
-  after_create :send_admin_email
+  # after_create :send_admin_email
 
   def plan_id=(new_value)
     @plan_id = new_value.to_i
@@ -137,7 +137,16 @@ class User < ActiveRecord::Base
   end
 
 
-  def update_status
+  def update_status(old_plan_id)
+
+    if self.subscription.present?
+      if old_plan_id and old_plan_id != self.subscription.plan_id
+        self.subscription.old_plan_id = old_plan_id
+        self.subscription.old_plan_exit_date = Time.now
+        self.subscription.save!
+      end
+    end
+
     if self.subscription.present? and self.subscription.plan_id != nil
       case self.subscription.plan_id
       when 1

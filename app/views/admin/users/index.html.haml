@@ -20,6 +20,17 @@
           %a{:href => admin_users_path(:focus => 'active', :filter => 'new', :days => 30)} 30 dage
     .btn-group
       %button.btn.btn-primary.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+        Ændrede
+        %span.caret
+      %ul.dropdown-menu
+        %li
+          %a{:href => admin_users_path(:focus => 'active', :filter => 'change', :days => 2)} 2 dage
+        %li
+          %a{:href => admin_users_path(:focus => 'active', :filter => 'change', :days => 10)} 10 dage
+        %li
+          %a{:href => admin_users_path(:focus => 'active', :filter => 'change', :days => 30)} 30 dage
+    .btn-group
+      %button.btn.btn-primary.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
         Opsagte
         %span.caret
       %ul.dropdown-menu
