@@ -7,15 +7,16 @@
       - if params[:filter].present?
         %small= "(sidste #{params[:days]} dage)"
   .col-md-6
-    - @filters.keys.each do |filter|
+    - @filters.each do |f|
+      - key = f.keys[0]
       .btn-group
-        %button.btn.btn-primary.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
-          = @filters[filter]
+        %button.btn.btn-primary.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"} 
+          = f[key]['label']
           %span.caret
         %ul.dropdown-menu
           - [2,7,14,28].each do |days|
             %li
-              %a{:href => admin_users_path(:focus => 'active', :filter => filter, :days => days)}
+              %a{:href => admin_users_path(:focus => f[key]['focus'], :filter => key, :days => days)}
                 = "#{days} dage"
     .btn-group
       = link_to "Active", admin_users_path(:focus => 'active'), :class => 'btn btn-primary'
