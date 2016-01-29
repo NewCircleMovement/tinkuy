@@ -7,15 +7,12 @@
         op her
     = render :partial => 'plans', :locals => {:plans => @plans[0..3]}
     
-    #accordion.panel-group{:role => "tablist"}
-      .panel.panel-default
-        #headingOne.panel-heading{:role => "tab"}
-          %h4.panel-title
-            %a{"aria-controls" => "collapseOne", "aria-expanded" => "false", "data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapseOne", :role => "button"}
-              Professionelle medlemskaber
-        #collapseOne.panel-collapse.collapse.out{"aria-labelledby" => "headingOne", :role => "tabpanel"}
-          .panel-body
-            = render :partial => 'plans', :locals => {:plans => @plans[4..5]}
-    
-      / .span3.social-proof
-      /   = render 'koudoku/subscriptions/social_proof'
+    -# #accordion.panel-group{:role => "tablist"}
+    -#   .panel.panel-default
+    -#     #headingOne.panel-heading{:role => "tab"}
+    -#       %h4.panel-title
+    -#         %a{"aria-controls" => "collapseOne", "aria-expanded" => "false", "data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapseOne", :role => "button"}
+    -#           Professionelle medlemskaber
+    -#     #collapseOne.panel-collapse.collapse.out{"aria-labelledby" => "headingOne", :role => "tabpanel"}
+    -#       .panel-body
+    -#         = render :partial => 'plans', :locals => {:plans => @plans[4..5]}
