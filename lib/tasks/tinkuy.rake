@@ -15,9 +15,17 @@ namespace :tinkuy do
     end
   end
 
-  desc "Give fruits to members"
+  desc "Update member fruits (give and take)"
   task :give_fruits_to_members => :environment do
     if Date.today == Date.today.end_of_month
+
+      # decay fruit
+      Fruitbasket.all.each do |basket|
+        basket.decay
+      end      
+
+
+      # give fruit
       User.where(:status => "active").each do |user|
         puts user.firstname
 
@@ -25,6 +33,7 @@ namespace :tinkuy do
           Fruit.create(:user_id => user.id, :fruitbasket_id => user.fruitbasket.id)      
         end
       end
+
     end
   end
 

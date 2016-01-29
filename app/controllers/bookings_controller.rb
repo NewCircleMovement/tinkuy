@@ -28,7 +28,7 @@ class BookingsController < ApplicationController
     @timeslot = Timeslot.find(params[:timeslot_id])
     @booking = @timeslot.bookings.create( params[:booking].permit(:user_id, :timeslot_id, :lemons) )
 
-    if [@booking.lemons, 5].max <= current_user.fruitbasket.fruits_count      
+    if [@booking.lemons, 5].max <= current_user.fruitbasket.fruits_count
       # create fruitbasket for the booking
       booking_fruitbasket = Fruitbasket.create(:owner_id => @booking.id, :owner_type => 'Booking')
       

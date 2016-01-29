@@ -10,6 +10,8 @@
 #  fruits_count :integer          default(0)
 #
 
+DECAY_RATE = 0.1
+
 class Fruitbasket < ActiveRecord::Base
   belongs_to :owner, polymorphic: true
   has_many :fruits, :dependent => :destroy
@@ -18,6 +20,12 @@ class Fruitbasket < ActiveRecord::Base
   # TODO: vi skal have en slags "time index" så frugterne altid ligger i kronologisk orden
 
   def give_fruits_to(receiver_basket, number)
+
+    # giving fruitbasket kan only give the amount it contains
+    if number > self.fruits.counts
+      number = self.fruits.counts
+    end
+
     # pick oldest fruits
     fruits = self.fruits(:order => 'created_at asc').limit(number)
     puts "number of fruits to give: #{fruits.count}"
@@ -32,5 +40,16 @@ class Fruitbasket < ActiveRecord::Base
     self.save!
     receiver_basket.save!
   end
+
+  def decay
+    count = fruits.count
+    if count > 0
+      decay_count = [(count * DECAY_RATE).to_i, 1].max
+      self.fruits.limit(decay_count).destroy_all
+      self.fruits_count = fruits.count
+      self.save!
+    end
+  end
+
 
 end
