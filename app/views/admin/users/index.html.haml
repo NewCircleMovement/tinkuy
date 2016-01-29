@@ -7,39 +7,16 @@
       - if params[:filter].present?
         %small= "(sidste #{params[:days]} dage)"
   .col-md-6
-    .btn-group
-      %button.btn.btn-primary.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
-        Nye
-        %span.caret
-      %ul.dropdown-menu
-        %li
-          %a{:href => admin_users_path(:focus => 'active', :filter => 'new', :days => 2)} 2 dage
-        %li
-          %a{:href => admin_users_path(:focus => 'active', :filter => 'new', :days => 10)} 10 dage
-        %li
-          %a{:href => admin_users_path(:focus => 'active', :filter => 'new', :days => 30)} 30 dage
-    .btn-group
-      %button.btn.btn-primary.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
-        Ændrede
-        %span.caret
-      %ul.dropdown-menu
-        %li
-          %a{:href => admin_users_path(:focus => 'active', :filter => 'change', :days => 2)} 2 dage
-        %li
-          %a{:href => admin_users_path(:focus => 'active', :filter => 'change', :days => 10)} 10 dage
-        %li
-          %a{:href => admin_users_path(:focus => 'active', :filter => 'change', :days => 30)} 30 dage
-    .btn-group
-      %button.btn.btn-primary.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
-        Opsagte
-        %span.caret
-      %ul.dropdown-menu
-        %li
-          %a{:href => admin_users_path(:focus => 'passive', :filter => 'goodbye', :days => 2)} 2 dage
-        %li
-          %a{:href => admin_users_path(:focus => 'passive', :filter => 'goodbye', :days => 10)} 10 dage
-        %li
-          %a{:href => admin_users_path(:focus => 'passive', :filter => 'goodbye', :days => 30)} 30 dage
+    - @filters.keys.each do |filter|
+      .btn-group
+        %button.btn.btn-primary.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+          = @filters[filter]
+          %span.caret
+        %ul.dropdown-menu
+          - [2,7,14,28].each do |days|
+            %li
+              %a{:href => admin_users_path(:focus => 'active', :filter => filter, :days => days)}
+                = "#{days} dage"
     .btn-group
       = link_to "Active", admin_users_path(:focus => 'active'), :class => 'btn btn-primary'
       = link_to "Pending", admin_users_path(:focus => 'pending'), :class => 'btn btn-primary'

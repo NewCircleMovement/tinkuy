@@ -3,6 +3,8 @@ class Admin::UsersController < Admin::BaseController
   
   def index
 
+    @filters = { 'new' => 'Nye', 'change' => 'ændringer', 'goodbye' => 'opsagte'}
+
     focus = 'active'
     if params[:focus].present?
       focus = params[:focus]

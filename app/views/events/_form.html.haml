@@ -29,35 +29,35 @@
         .form-group
           %label 
             Dato
-          #datetimepicker_date.input-group.date
-            - if @event.startdate?
-              = f.text_field :startdate, :class => 'form-control', :type => "text", "data-date-format" => "DD/MM/YYYY", :value => nice_date_format(@event.startdate), disabled: !current_user.admin?
-            - else
-              = f.text_field :startdate, :class => 'form-control', "data-date-format" => "DD/MM/YYYY", :type => "text"
-            %span.input-group-addon
-              %span.glyphicon.glyphicon-calendar
-          :javascript
-            $(function () {
-              $('#datetimepicker_date').datetimepicker({
-                pickTime: false,
-                language: 'dk',
-                useCurrent: true
+          .form-group
+            #datetimepicker_date.input-group.date
+              - if @event.startdate?
+                = f.text_field :startdate, :class => 'form-control', :type => "text", "data-date-format" => "YYYY-MM-DD", :value => nice_date_format(@event.startdate), disabled: !current_user.admin?
+              - else
+                = f.text_field :startdate, :class => 'form-control', "data-date-format" => "YYYY-MM-DD", :type => "text"
+              %span.input-group-addon
+                %i.fa.fa-calendar-o
+            :javascript
+              $(function () {
+                $('#datetimepicker_date').datetimepicker({
+                  locale: 'dk',
+                  useCurrent: true,
+                  pickTime: false
+                });
               });
-            });
-          %p.help-block
-            Vælg dato for aktivitet
+            %p.help-block
+              Vælg dato for aktivitet
       .col-md-6
         .form-group
           %label 
             Tidspunkt for start
-
           #datetimepicker_time.input-group.date
             - if @event.starttime?
               = f.text_field :starttime, :class => 'date form_time form-control', "date-date-format" => "DD/MM/YYYY HH/MM", :value => nice_time_format(@event.starttime), disabled: !current_user.admin?
             - else
               = f.text_field :starttime, :class => 'date form_time form-control', "date-date-format" => "DD/MM/YYYY HH/MM"
             %span.input-group-addon
-              %span.glyphicon.glyphicon-clock
+              %i.fa.fa-clock-o
           :javascript
             $(function () {
               $('#datetimepicker_time').datetimepicker({
@@ -65,13 +65,13 @@
                 pickDate: false,
                 pickSeconds: false,
                 pick12HourFormat: false,
-                language: 'dk',
+                locale: 'dk',
                 minuteStepping: 30,
                 useCurrent: true,
               });
             });
           %p.help-block
-            Vælg tidspunkt for aktivitet
+            Skriv tidspunkt (fx. 10:30)
   .form-group
     = f.input :duration, :label => "Varighed (minutter)"
   .form-group
