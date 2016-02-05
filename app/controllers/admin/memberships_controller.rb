@@ -48,6 +48,6 @@ class Admin::MembershipsController < Admin::BaseController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def membership_params
-      params.require(:membership).permit(:id, :name, :center_id, :max_members)
+      params.require(:membership).permit(:id, :name, :center_id, :max_members, :price)
     end
 end

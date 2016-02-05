@@ -32,14 +32,14 @@
                     %small.grey=user.subscription.old_plan_exit_date
             %td
               - if user.is_bank_member
-                108
+                = user.membership.price
               - elsif user.subscription.present?
                 - if user.subscription.plan.present?
                   = user.subscription.plan.price.to_i
                 - else
-                  No
+                  No plan
               - else
-                No
+                Not member
             %td
               - if user.is_bank_member
                 %i.fa.fa-bank
@@ -47,9 +47,9 @@
                 - if user.subscription.plan.present?
                   %i.fa.fa-credit-card
                 - else
-                  check
+                  No plan
               - else
-                check
+                Not member
             %td
               = user.fruitbasket.fruits_count
             %td

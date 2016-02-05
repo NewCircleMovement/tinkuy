@@ -7,6 +7,7 @@
         = f.association :center, :collection => Center.all, :label_method => :name, :value_method => :id
         = f.input :name
         = f.input :max_members
+        = f.input :price
         -# = f.input :category, :collection => Category.all.order(:name), :label_method => :name, :value_method => :name, :input_html => { :class => "radio" }, as: :radio_buttons
         
   .form-actions
