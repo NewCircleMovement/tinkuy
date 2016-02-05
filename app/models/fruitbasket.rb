@@ -22,8 +22,8 @@ class Fruitbasket < ActiveRecord::Base
   def give_fruits_to(receiver_basket, number)
 
     # giving fruitbasket kan only give the amount it contains
-    if number > self.fruits.counts
-      number = self.fruits.counts
+    if number > self.fruits.count
+      number = self.fruits.count
     end
 
     # pick oldest fruits
