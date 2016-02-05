@@ -87,7 +87,7 @@ Medlemmer
 <div class='container'>
 <div class='row'>
 <div class='col-md-12'>
-<div class='solsort-widget' data-route='tinkuy/behandler-list'></div>
+<!-- <div class='solsort-widget' data-route='tinkuy/behandler-list'></div> -->
 </div>
 </div>
 <div class='row'>

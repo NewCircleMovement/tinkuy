@@ -5,7 +5,7 @@
         .col-md-12
           %p.text-center 
             %small Skyttegade 3, 2200 København N &nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp;  tlf. 22 24 05 42 &nbsp;&nbsp;&nbsp;  - &nbsp;&nbsp;&nbsp;  info@tinkuy.dk
-- if current_user
-  -# data passed on to the solsort-widgets, userid+password-hash is used for authentication
-  %span{:class => "solsort-data", :style => "display:none", "data-userid" => "tinkuy:#{current_user.id}", "data-userhash" => current_user.encrypted_password}
+-# - if current_user
+-#   -# data passed on to the solsort-widgets, userid+password-hash is used for authentication
+-#   %span{:class => "solsort-data", :style => "display:none", "data-userid" => "tinkuy:#{current_user.id}", "data-userhash" => current_user.encrypted_password}
 

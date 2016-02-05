@@ -22,6 +22,7 @@ class EventsController < ApplicationController
     @unconfirmed_events = Event.where(:confirmed => false).order(startdate: :asc, starttime: :asc)
     @top_events = Event.where(:confirmed => false).where("startdate >= ?", Date.today).order(fruits_count: :desc).limit(10)
     # @top_events = Event.joins(:fruits).group("fruits.event_id").order("count(fruits.event_id) desc").limit(10)
+
   end
 
   def suggestions
