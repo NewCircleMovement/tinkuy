@@ -1,9 +1,10 @@
 .container
   .row
-    .col-md-6
+    .col-md-12
       %h1 
         Ret bruger:
         = @user.email
+    .col-md-6
       = simple_form_for [:admin, @user], :html => {:role => 'form' } do |f|
         - if @user.errors.any?
           #error_explanation
@@ -18,3 +19,10 @@
         = f.input :status, :collection => ['active', 'pending', 'passive', 'support'], :include_blank => false
         = f.association :membership, :colleciton => Membership.all, :label_method => :name, :value_method => :id
         = f.submit "Save", :class => "btn btn-default"
+    .col-md-6
+      .well
+        - if @user.subscription.present?
+          %h4 Slet brugerens kreditkort abonnement
+          = link_to "Slet", admin_user_delete_subscription_path(@user), :class => 'btn btn-danger', :confirm => 'Vil du slette?'
+        - else
+          Brugeren har ikke kreditkort abonnement

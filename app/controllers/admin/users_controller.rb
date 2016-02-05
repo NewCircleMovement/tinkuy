@@ -53,6 +53,19 @@ class Admin::UsersController < Admin::BaseController
     redirect_to admin_users_path, notice: 'Brugeren blev slettet' 
   end
 
+
+  def delete_subscription
+    @user = User.find(params[:user_id])
+    
+    if @user.subscription.present?
+      subscription = @user.subscription
+      subscription.destroy
+      redirect_to edit_admin_user_path(@user), notice: 'subscription blev slettet'
+    else
+      redirect_to edit_admin_user_path(@user), notice: 'Brugeren har ikke nogen subscription'
+    end    
+  end
+
   
   private
 

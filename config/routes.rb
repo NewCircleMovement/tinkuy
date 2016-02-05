@@ -10,7 +10,9 @@ Tinkuy::Application.routes.draw do
 
   namespace :admin do
     get '/' => 'events#index'
-    resources :users
+    resources :users do
+      get '/delete_subscription' => "users#delete_subscription"  
+    end
     resources :events
     resources :plans
     resources :centers
@@ -22,6 +24,7 @@ Tinkuy::Application.routes.draw do
         end
       end
     end
+    
   end
   
   devise_for :users, :controllers => {:registrations => "registrations"}
