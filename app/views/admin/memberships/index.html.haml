@@ -13,6 +13,7 @@
         
         %p
           - if membership.plan.present?
+            %strong Plan:
             = membership.plan.name
           - else
             Plan ikke tildelt

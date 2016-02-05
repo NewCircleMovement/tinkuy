@@ -10,8 +10,8 @@
           .col-md-6
             = f.association :membership, :collection => Membership.all, :label_method => :name, :value_method => :id
         = f.input :price, :label => "Pris for medlemsskab"
-        = f.input :fruits_per_month
-        = f.input :max_members
+        -# = f.input :fruits_per_month
+        -# = f.input :max_members
         = f.input :max_recur_bookings
         = f.input :features
         = f.input :description, :label => "Med #{f.object.name} ... (fortsæt her)"  

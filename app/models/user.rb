@@ -122,18 +122,23 @@ class User < ActiveRecord::Base
 
   def monthly_fruits
     if ['support','pending','active'].include? self.status
+
+      # check for credit card payers
       if self.subscription.present?
         if self.subscription.plan.present?
-          return self.subscription.plan.fruits_per_month
+          return self.membership.fruits_per_month
         else
           return 0
         end
+
+      # check for banke payers
       else
-        return 100
+        return self.membership.fruits_per_month
       end
     else
       return 0
     end
+
   end
 
 

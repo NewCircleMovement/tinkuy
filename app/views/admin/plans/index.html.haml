@@ -18,15 +18,15 @@
           %tr
             %td Pris pr. måned
             %td= plan.price
-          %tr
-            %td Max medlemmer:
-            %td= plan.max_members
-          %tr
-            %td Frugter pr. måned
-            %td= plan.fruits_per_month
-          %tr
-            %td Max faste bookings
-            %td= plan.max_recur_bookings
+          -# %tr
+          -#   %td Max medlemmer:
+          -#   %td= plan.max_members
+          -# %tr
+          -#   %td Frugter pr. måned
+          -#   %td= plan.fruits_per_month
+          -# %tr
+          -#   %td Max faste bookings
+          -#   %td= plan.max_recur_bookings
         .well.well-sm
           Med 
           %strong= plan.name.downcase

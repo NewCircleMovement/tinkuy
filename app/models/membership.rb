@@ -6,5 +6,4 @@ class Membership < ActiveRecord::Base
   
   has_one :plan
 
-
 end
