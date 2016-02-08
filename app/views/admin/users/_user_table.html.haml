@@ -32,7 +32,10 @@
                     %small.grey=user.subscription.old_plan_exit_date
             %td
               - if user.is_bank_member
-                = user.membership.price
+                - if user.membership.present?
+                  = user.membership.price
+                - else
+                  n/a
               - elsif user.subscription.present?
                 - if user.subscription.plan.present?
                   = user.subscription.plan.price.to_i
