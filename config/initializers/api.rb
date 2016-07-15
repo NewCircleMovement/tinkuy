@@ -6,3 +6,7 @@ else
   TINKUY_API_USER = KEYS[:tinkuy_api_user]
   TINKUY_API_PASSWORD = KEYS[:tinkuy_api_password]
 end
+
+
+puts "user", TINKUY_API_USER
+puts "password", TINKUY_API_PASSWORD
