@@ -54,11 +54,9 @@ Tinkuy::Application.routes.draw do
   get '/bliv_medlem' => 'pages#bliv_medlem'
 
 
-  # namespace :api, :defaults => { :format => :json } do
-  #   get 'get_users' => 'api#get_users'
-  # end
-  namespace :api, :defaults => { :format => :json } do
-    get 'get_users' => 'users#get_users'
+
+  namespace :api do
+    resources :users
   end
 
   root :to => "pages#bliv_medlem"

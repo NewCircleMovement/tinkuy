@@ -1,33 +1,14 @@
-class Api::UsersController < ActionController::Base
-  respond_to :json
-  layout 'api'
+module Api
+  class UsersController < ApplicationController
+    http_basic_authenticate_with name: "admin", password: "give_me_api"
 
-  skip_before_filter :verify_authenticity_token
+    respond_to :json
 
-  before_filter :cors_preflight_check
-  after_filter :cors_set_access_control_headers
-
-  def cors_set_access_control_headers
-    headers['Access-Control-Allow-Origin'] = '*'
-    headers['Access-Control-Allow-Methods'] = 'POST, GET, PUT, DELETE, OPTIONS'
-    headers['Access-Control-Allow-Headers'] = 'Origin, Content-Type, Accept, Authorization, Token'
-    headers['Access-Control-Max-Age'] = "1728000"
-  end
-
-  def cors_preflight_check
-    if request.method == 'OPTIONS'
-      headers['Access-Control-Allow-Origin'] = '*'
-      headers['Access-Control-Allow-Methods'] = 'POST, GET, PUT, DELETE, OPTIONS'
-      headers['Access-Control-Allow-Headers'] = 'X-Requested-With, X-Prototype-Version, Token'
-      headers['Access-Control-Max-Age'] = '1728000'
-
-      render :text => '', :content_type => 'text/plain'
+    def index
+      respond_with User.all
     end
-  end
-  
-  def get_users
-    @users = User.where.not(status: "passive")
-    render :json => @users
-  end
 
+
+
+  end
 end
