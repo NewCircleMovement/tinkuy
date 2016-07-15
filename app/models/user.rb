@@ -20,6 +20,9 @@
 #  confirm_payment        :boolean          default(FALSE)
 #  status                 :string(50)       default("pending")
 #  admin                  :boolean          default(FALSE)
+#  membertype             :integer
+#  membership_id          :integer
+#  admin_info             :boolean          default(FALSE)
 #
 
 class User < ActiveRecord::Base

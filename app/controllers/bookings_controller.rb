@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: bookings
+#
+#  id          :integer          not null, primary key
+#  user_id     :integer
+#  timeslot_id :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 class BookingsController < ApplicationController
   before_filter :get_permission, only: [:new, :edit, :update, :destroy]
 

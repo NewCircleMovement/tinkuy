@@ -53,6 +53,14 @@ Tinkuy::Application.routes.draw do
   get '/faq' => 'pages#faq'
   get '/bliv_medlem' => 'pages#bliv_medlem'
 
+
+  # namespace :api, :defaults => { :format => :json } do
+  #   get 'get_users' => 'api#get_users'
+  # end
+  namespace :api, :defaults => { :format => :json } do
+    get 'get_users' => 'users#get_users'
+  end
+
   root :to => "pages#bliv_medlem"
   # root :to => "pages#index"
 

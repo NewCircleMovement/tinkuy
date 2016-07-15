@@ -16,6 +16,8 @@
 #  confirmed    :boolean          default(FALSE)
 #  user_id      :integer
 #  fruits_count :integer
+#  max_spaces   :integer
+#  free_spaces  :integer
 #
 
 class Event < ActiveRecord::Base

@@ -2,16 +2,18 @@
 #
 # Table name: subscriptions
 #
-#  id            :integer          not null, primary key
-#  stripe_id     :string(255)
-#  plan_id       :integer
-#  last_four     :string(255)
-#  coupon_id     :integer
-#  card_type     :string(255)
-#  current_price :float
-#  user_id       :integer
-#  created_at    :datetime
-#  updated_at    :datetime
+#  id                 :integer          not null, primary key
+#  stripe_id          :string(255)
+#  plan_id            :integer
+#  last_four          :string(255)
+#  coupon_id          :integer
+#  card_type          :string(255)
+#  current_price      :float
+#  user_id            :integer
+#  created_at         :datetime
+#  updated_at         :datetime
+#  old_plan_id        :integer
+#  old_plan_exit_date :date
 #
 
 class Subscription < ActiveRecord::Base
