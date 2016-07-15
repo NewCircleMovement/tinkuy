@@ -5,10 +5,9 @@ module Api
     respond_to :json
 
     def index
-      respond_with User.all
+      @users = User.where.not(status: "passive")
+      render :json => @users
     end
-
-
 
   end
 end
