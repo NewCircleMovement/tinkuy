@@ -5,12 +5,13 @@ FROM ruby:2.2
 RUN apt-get update -qq && \
     apt-get install -y \
       build-essential \
-      postgresql-9.4  \
-      postgresql-server-dev-9.4 \
-      postgresql-contrib-9.4 \
+      graphicsmagick \
+      nodejs         \
       openssh-server \
-      vim \
-      nodejs
+      postgresql-9.4  \
+      postgresql-contrib-9.4 \
+      postgresql-server-dev-9.4 \
+      vim
 
 RUN gem install pg
 
