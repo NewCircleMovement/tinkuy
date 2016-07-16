@@ -23,6 +23,7 @@
 #  membertype             :integer
 #  membership_id          :integer
 #  admin_info             :boolean          default(FALSE)
+#  therapist              :boolean          default(FALSE)
 #
 
 class User < ActiveRecord::Base

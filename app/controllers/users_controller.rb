@@ -30,6 +30,11 @@ class UsersController < ApplicationController
   def index
     @confirmed_users = User.where(:status => 'active').order(:firstname, :surname)
     @pending_users = User.where(:status => 'pending').order(:firstname, :surname)
+    @therapists = User.where(:status => 'active').where(:therapist => true).order(:firstname, :surname)
+  end
+
+  def display_therapist
+    @therapist = User.find(params[:user_id])
   end
 
   def events

@@ -30,6 +30,7 @@ Tinkuy::Application.routes.draw do
   devise_for :users, :controllers => {:registrations => "registrations"}
   resources :users do
     get '/events' => "users#events"
+    get '/display_therapist' => "users#display_therapist"
   end
   
   resources :resources do

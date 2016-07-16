@@ -1,0 +1,13 @@
+.jumbotron.page
+  .container
+    .row
+      .col-md-12
+        %h1.page
+          = @therapist.firstname.titleize
+          = @therapist.surname.titleize
+
+.container
+  .row
+    .col-md-12
+      .lead
+        = @therapist.therapist_description || "Der er ingen beskrivelse af denne behandler."

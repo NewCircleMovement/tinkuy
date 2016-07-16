@@ -33,11 +33,15 @@
             .form-group
               = f.input :current_password, autocomplete: "off", :label => "Dit nuværende password"
               %p.help-block Vi har brug for dit password for at bekræfte dine ændringer
-          .col-md-12
-            .form-group
-            
-              = f.submit "Gem ændringer", :class => "btn btn-primary"
-              = link_to "Tilbage", :back, :class => "btn"
+          - if resource.therapist
+            .col-md-12
+              .form-group
+                = f.input :therapist_description, autocomplete: "off", :label => "Behandler beskrivelse"
+            .col-md-12
+              .form-group
+
+                = f.submit "Gem ændringer", :class => "btn btn-primary"
+                = link_to "Tilbage", :back, :class => "btn"
     .col-md-6
       -# .solsort-widget{"data-route"=>"tinkuy/user-edit"}
       / %h3 Slet profil
