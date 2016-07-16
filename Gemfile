@@ -1,10 +1,11 @@
 source 'https://rubygems.org'
+ruby '2.2.3'
 
 # CORS for api
 gem 'rack-cors', :require => 'rack/cors'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.3'
+gem 'rails', '4.2.5.2'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
