@@ -14,10 +14,8 @@ RUN apt-get update -qq && \
 
 RUN gem install pg
 
-WORKDIR /root
-RUN git clone https://github.com/NewCircleMovement/tinkuy.git
-
 WORKDIR /root/tinkuy
+ADD . /root/tinkuy
 RUN bundle install
 
 RUN mkdir -p /root/bin
