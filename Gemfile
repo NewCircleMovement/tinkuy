@@ -80,6 +80,8 @@ end
 # Subscriptions
 gem 'koudoku', :git => 'https://github.com/kbjerring/koudoku.git'
 
+gem 'bootsy'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

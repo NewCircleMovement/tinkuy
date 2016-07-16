@@ -1,6 +1,12 @@
 Tinkuy::Application.routes.draw do
 
-  
+  Rails.application.routes.draw do
+    mount Bootsy::Engine => '/bootsy', as: 'bootsy'
+    # ...
+  end
+
+
+
   # Added by Koudoku.
   mount Koudoku::Engine, at: 'members'
   scope module: 'koudoku' do
@@ -11,7 +17,7 @@ Tinkuy::Application.routes.draw do
   namespace :admin do
     get '/' => 'events#index'
     resources :users do
-      get '/delete_subscription' => "users#delete_subscription"  
+      get '/delete_subscription' => "users#delete_subscription"
     end
     resources :events
     resources :plans
@@ -24,15 +30,15 @@ Tinkuy::Application.routes.draw do
         end
       end
     end
-    
+
   end
-  
+
   devise_for :users, :controllers => {:registrations => "registrations"}
   resources :users do
     get '/events' => "users#events"
     get '/display_therapist' => "users#display_therapist"
   end
-  
+
   resources :resources do
     # resources :bookings
     resources :timeslots do
@@ -43,13 +49,13 @@ Tinkuy::Application.routes.draw do
   resources :recurring_bookings
 
   resources :events do
-    member { 
+    member {
       post :upvote
     }
   end
 
   get '/suggestions' => 'events#suggestions'
-  
+
   get '/info' => 'pages#info'
   get '/faq' => 'pages#faq'
   get '/bliv_medlem' => 'pages#bliv_medlem'
@@ -64,7 +70,7 @@ Tinkuy::Application.routes.draw do
   # root :to => "pages#index"
 
 
-  
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
