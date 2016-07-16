@@ -31,3 +31,6 @@ RUN sed -i -e 's@session\s*required\s*pam_loginuid.so@session optional pam_login
 RUN echo 'root:1234' | chpasswd
 
 EXPOSE 22 3000 5432
+
+ADD . /root/tinkuy
+RUN bundle install

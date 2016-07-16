@@ -60,12 +60,12 @@ group :production, :staging do
   # Help serving assets in produciton on Heroku
   gem 'rails_12factor'
 
-  
+
 end
 
 group :development do
   # Use sqlite3 as the database for Active Record
-  gem 'sqlite3' 
+  gem 'sqlite3'
 
   # We love haml... use "rake haml:replace_erbs"
   gem 'erb2haml'
