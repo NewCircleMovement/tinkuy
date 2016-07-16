@@ -19,8 +19,8 @@ ADD . /root/tinkuy
 RUN bundle install
 
 RUN mkdir -p /root/bin
-COPY tinkuy-start.sh /root/bin
-ENTRYPOINT ["/root/bin/tinkuy-start.sh"]
+COPY entrypoint.sh /root/bin
+ENTRYPOINT ["/root/bin/entrypoint.sh"]
 
 RUN sed -i -e 's|^PermitEmptyPasswords no|PermitEmptyPasswords yes|' \
            -e 's|^PermitRootLogin without-password|PermitRootLogin yes|' \
