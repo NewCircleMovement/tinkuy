@@ -12,6 +12,6 @@ su - -c 'createuser --echo -s -r root' postgres
 xzcat /root/tinkuy/test2/sample-db.pgsql.xz | psql tinkuy_development
 rake db:migrate RAILS_ENV=development
 
-rails server
+rails server -b '0.0.0.0'
 
 bash
