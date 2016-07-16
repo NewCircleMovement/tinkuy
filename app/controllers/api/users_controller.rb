@@ -27,7 +27,7 @@ module Api
     end
 
     def index
-      @users = User.where.not(status: "passive")
+      @users = User.all
       render :json => @users
     end
 
