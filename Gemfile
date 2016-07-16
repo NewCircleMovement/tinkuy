@@ -39,7 +39,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 # Authentication and permissions
-gem 'devise'
+gem 'devise', '~> 3.5.4'
 # gem 'cancancan', '~> 1.10'
 
 # Annotate models
