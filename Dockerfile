@@ -6,9 +6,11 @@ RUN apt-get update -qq && \
     apt-get install -y \
       build-essential \
       graphicsmagick \
-      nodejs         \
+      less \
+      nano \
+      nodejs \
       openssh-server \
-      postgresql-9.4  \
+      postgresql-9.4 \
       postgresql-contrib-9.4 \
       postgresql-server-dev-9.4 \
       vim
@@ -32,6 +34,3 @@ RUN sed -i -e 's@session\s*required\s*pam_loginuid.so@session optional pam_login
 RUN echo 'root:1234' | chpasswd
 
 EXPOSE 22 3000 5432
-
-ADD . /root/tinkuy
-RUN bundle install
