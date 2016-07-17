@@ -10,4 +10,4 @@
   .row
     .col-md-12
       .lead
-        = @therapist.therapist_description || "Der er ingen beskrivelse af denne behandler."
+        = (@therapist.therapist_description || "Der er ingen beskrivelse af denne behandler.").html_safe

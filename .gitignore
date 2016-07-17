@@ -22,3 +22,5 @@
 
 /config/stripe.yml
 *.swp
+
+public/uploads

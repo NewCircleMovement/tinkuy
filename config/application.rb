@@ -28,5 +28,7 @@ module Tinkuy
         resource '*', :headers => :any, :methods => [:get, :post, :options]
       end
     end
+
+    config.autoload_paths += %w(#{config.root}/app/models/ckeditor)
   end
 end

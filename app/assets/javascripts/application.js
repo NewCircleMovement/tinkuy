@@ -19,7 +19,7 @@
 //= require bootstrap-datetimepicker
 //= require_tree .
 //= require lemon
-//= require bootsy
+//= require ckeditor/init
 
 $(document).on('hidden.bs.modal', function (e) {
 	$(e.target).removeData('bs.modal');
