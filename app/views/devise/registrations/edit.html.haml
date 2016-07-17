@@ -37,11 +37,12 @@
             .col-md-12
               .form-group
                 = f.input :therapist_description, autocomplete: "off", :label => "Behandler beskrivelse"
+              .form-group
+                = f.input :profile, as: :bootsy, :html => { class: 'form-control' }
           .col-md-12
-            .form-group
-
-              = f.submit "Gem ændringer", :class => "btn btn-primary"
-              = link_to "Tilbage", :back, :class => "btn"
+            = f.submit
+        = f.submit "Gem ændringer", :class => "btn btn-primary"
+        = link_to "Tilbage", :back, :class => "btn"
     .col-md-6
       -# .solsort-widget{"data-route"=>"tinkuy/user-edit"}
       / %h3 Slet profil
